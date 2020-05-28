@@ -1,0 +1,127 @@
+= Payara Server Managed Arquillian Container
+
+The Payara Server Managed Arquillian container is remote container same as a
+ Payara Server Remote Arquillian Container but in addition, its lifecycle
+ (startup/shutdown) is managed by Arquillian and run as a separate process for
+ integration testing. 
+
+== Usage
+
+The Payara Server Managed Arquillian container can be found on Maven Central,
+and can be included in your project using the following Maven coordinates:
+
+[source,XML]
+----
+<dependency>
+  <groupId>fish.payara.arquillian</groupId>
+  <artifactId>arquillian-payara-server-managed</artifactId>
+  <version>${version}</version>
+</dependency>
+----
+
+You can find the latest artifact version https://mvnrepository.com/artifact/fish.payara.arquillian/arquillian-payara-server-managed[from here].
+
+== Configuring the Container
+
+The following configuration options are available, 
+each of which can be provided through the specified system properties in the 
+arquillian JVM:
+
+[cols="10,80,10"]
+.Configuration Options
+|===
+| Name | Description | Default
+
+| `adminHttps`
+| You can use it to specify whether the http or https protocol shall be used 
+to access the DAS. The property value can be true or false.
+| `false`
+
+| `adminHost`
+| The host to be used to access Payara Admin API.
+| `localhost`
+
+| `adminPort`
+| The port to be used to access Payara Admin API.
+| `4848`
+
+| `authorisation`
+| If true, basic access authentication is enabled. And indicates that remote server requires an `adminUser` & `adminPassword`.
+| `false`
+
+| `adminUser`
+| The name of the admin user of your DAS. If omitted, no authentication will be used to access the DAS. In this case the `adminPassword` property should also be empty.
+| `null`
+
+| `adminPassword`
+| The password of the admin user of your DAS. Cannot be omitted if you declare the admin user. If no authentication will be used to access the DAS you must have empty password for your admin user of your domain.
+| `null`
+
+| `libraries`
+| A comma-separated list of library JAR files. Specify the library JAR files by their relative or absolute paths. Specify relative paths relative to `domain-dir/lib/applibs`. The libraries are made available to the application in the order specified.
+| `N/A`
+
+| `properties`
+| Optional keyword-value pair that specify additional properties for the deployment. The available properties are determined by the implementation of the component that is being deployed.
+| `N/A`
+
+| `target`
+| Payara has a notion of a target, which specifies the target to which you are 
+deploying. We use the "target" as property key with the same semantics as the standard 
+Payara utilities do.
+
+Valid values of the target are:
+ 
+ - server: Deploys the component to the default Admin Server instance (on your DAS server). This is the default value if the property is omitted.
+
+ - instance_name: Deploys the component to the specified stand-alone sever instance, which may be on the same hosts or can be on a different one as the DAS server.
+
+ - cluster_name: Deploys the component to every server instance in the cluster. They can be on the same or on several other hosts as the DAS server. Note: Arquillian use only one instance to run the test case.
+ 
+The domain name as a target is not a reasonable deployment scenario in case of testing.
+
+The HOST address and port numbers of the test server instance used by Arquillian 
+(determined by the target property) been retrieved automatically from the DAS server. 
+You have to make them accessible for your test environment (consider any firewall or 
+proxy configuration).
+
+| `server`
+
+| `outputToConsole`
+| Show the output of the admin commands on the console.
+| `true`
+
+| `domain`
+| The Payara domain to use or the default domain if not specified.
+| `null`
+
+| `debug`
+| Starts the server in debug mode using standard Payara debug port.
+| `false`
+
+| `allowConnectingToRunningServer`
+| Allow arquillian to use an already running Payara instance and skips `start-domain` command invocation.
+| `false`
+
+| `enableH2`
+| Starts/Stops the registered H2 server using standard H2 port.
+| `false`
+|===
+
+
+NOTE: The context root that will be used to run the tests is also retrieved automatically from the DAS server. If you do not have a `sun-web.xml`, `glassfish-web.xml` or `payara-web.xml` file in your web application, Payara will use the name of your deployment without the extension as context root. The same rule is applied for enterprise applications if there is no `application.xml` file. The jar test-deployments are treated as a web application. You can use the above standard GlassFish / Payara XML files as normal to declare your context root to be applied. You should consider the above description to avoid any conflict with your already deployed web or enterprise applications in your administrative domain. 
+
+The easiest way to provide these system properties to the extension runtime is through the surefire plugin.
+
+[source,XML]
+.Example
+----
+<plugin>
+  <artifactId>maven-surefire-plugin</artifactId>
+  <configuration>
+    <systemPropertyVariables>
+      <adminHttps>true</adminHttps>
+    </systemPropertyVariables>
+  </configuration>
+</plugin>
+----

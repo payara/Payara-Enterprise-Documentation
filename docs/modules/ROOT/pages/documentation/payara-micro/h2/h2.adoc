@@ -1,0 +1,13 @@
+[[h2-database]]
+= H2 Database
+
+In Payara Micro 5, Derby will be removed as default database and replaced with 
+H2. Similar to Derby, H2 is a Java based Database. More info can be found 
+http://www.h2database.com/html/main.html[here]
+
+[[why-was-derby-removed]]
+== Why was Derby Removed?
+In terms of performance, Derby is one of the slowest  embedded databases as  
+compared to H2, PostgresSQL, HSQLDB. H2 also has a smaller disk footprint; the 
+size of a jar file is around 1.5 MB. This should have positive effect on Payara 
+Micro's boot time. 

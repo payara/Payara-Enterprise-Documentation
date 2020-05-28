@@ -1,0 +1,11 @@
+[[payara-server-documentation]]
+= Payara Server Documentation
+
+Documentation of Payara Server features. Includes full documentation of the features added on top of _GlassFish Server {glassfishVersion} Open Source Edition_ as well as features shared with GlassFish Server or their improvements specific to Payara Server.
+
+All documentation for _GlassFish Server {glassfishVersion}_ is also valid for Payara Server {currentVersion} unless stated otherwise in Payara Server documentation.
+
+[[references]]
+== References
+
+* https://javaee.github.io/glassfish/documentation[GlassFish Server {glassfishVersion} Open Source Edition Documentation]

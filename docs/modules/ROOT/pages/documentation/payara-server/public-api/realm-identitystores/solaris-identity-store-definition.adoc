@@ -1,0 +1,65 @@
+[[solaris-identity-store]]
+= Solaris Identity Store
+
+_Since Payara Server 5.194_
+
+The Payara API provides a `@SolarisIdentityStoreDefinition` annotation that creates an identity store to authenticate the users using the solaris realm.
+
+[[usage]]
+== Usage
+
+The Solaris realm identity store is defined through the `@SolarisIdentityStoreDefinition` annotation.
+Specifying this in a valid place as defined by the https://jakarta.ee/specifications/security/1.0/apidocs/[Jakarta EE Security API] will create the identity store.
+Often this may mean that any class is a valid position.
+If a Solaris realm is not found with the defined name then a new Solaris realm is registered on the server using the `create-auth-realm` asadmin command,
+otherwise the existing Solaris realm instance is used to authenticate the users.
+
+[[usage-example]]
+=== Example
+
+The following code sample illustrates how to configure Solaris realm identity store:
+
+[source, java]
+----
+@ApplicationScoped
+@ApplicationPath("/rest")
+@DeclareRoles({ "a", "b"})
+@BasicAuthenticationMechanismDefinition(realmName = "solaris-realm")
+@SolarisIdentityStoreDefinition("solaris-realm")
+public class MyRestApp extends Application {
+}
+----
+
+[[configuration]]
+== Configuration
+
+The Solaris realm identity store can be configured with both `@SolarisIdentityStoreDefinition` annotation attributes and MicroProfile Config properties. The annotation and MicroProfile properties have several configuration options.
+
+They are detailed as shown below.
+
+
+|===
+| Option | MP Config property | Description | Default | Required
+
+| `value`
+|
+| The name of the solaris realm.
+|
+| true
+
+| `assignGroups`
+| `payara.security.solaris.assignGroups`
+| The users are assigned membership to these groups for the purposes of authorization decisions.
+|
+|
+
+| `jaasContext`
+| `payara.security.solaris.jaasContext`
+| The JAAS Context of Solaris realm.
+| `solarisRealm`
+|
+
+|===
+
+*Note :* If both an annotation attribute and a MicroProfile Config property are defined for the same option 
+then the MicroProfile Config property value always takes precedence over the `@SolarisIdentityStoreDefinition` annotation value.

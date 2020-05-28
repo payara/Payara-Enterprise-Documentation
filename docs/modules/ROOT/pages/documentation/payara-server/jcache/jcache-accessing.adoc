@@ -1,0 +1,55 @@
+[[accessing-the-caching-provider-and-cache-manager]]
+= Accessing the Caching Provider and Cache Manager
+
+To create a
+https://ignite.incubator.apache.org/jcache/1.0.0/javadoc/javax/cache/Cache.html[Cache],
+you will need to access
+https://ignite.incubator.apache.org/jcache/1.0.0/javadoc/javax/cache/spi/CachingProvider.html[CachingProvider]
+or
+https://ignite.incubator.apache.org/jcache/1.0.0/javadoc/javax/cache/CacheManager.html[CacheManager].
+Both are provided by Hazelcast embedded in Payara Server.
+
+[[using-injection]]
+== Using Injection
+
+You can use injection to access and use the
+https://ignite.incubator.apache.org/jcache/1.0.0/javadoc/javax/cache/spi/CachingProvider.html[CachingProvider]
+and
+https://ignite.incubator.apache.org/jcache/1.0.0/javadoc/javax/cache/CacheManager.html[CacheManager]
+embedded in Payara. Inject them into your application like so:
+
+[source, java]
+----
+import javax.cache.CacheManager;
+import javax.cache.spi.CachingProvider;
+import javax.inject.Inject;
+...
+@Inject
+CacheManager manager;
+@Inject
+CachingProvider provider;
+----
+
+NOTE: Your war or jar must be an implicit or explicit bean archive, i.e.
+contains a CDI Bean with a bean defining annotation, an EJB Session Bean
+or a beans.xml file.
+
+[[using-jndi]]
+== Using JNDI
+
+Embedded Hazelcast in Payara Server has a
+https://ignite.incubator.apache.org/jcache/1.0.0/javadoc/javax/cache/spi/CachingProvider.html[CachingProvider]
+and
+https://ignite.incubator.apache.org/jcache/1.0.0/javadoc/javax/cache/CacheManager.html[CacheManager]
+registered to JNDI, so you do not have to create your own. To access
+them, import the following classes and initialize two variables like so:
+
+[source, java]
+----
+import javax.cache.spi.CachingProvider;
+import javax.cache.CacheManager;
+...
+Context ctx = new InitialContext();
+CachingProvider provider = (CachingProvider) ctx.lookup("payara/CachingProvider");
+CacheManager manager = (CacheManager) ctx.lookup("payara/CacheManager");
+----

@@ -1,0 +1,7 @@
+[[jcache-in-payara-server]]
+= JCache in Payara Server
+
+This section covers how to use the JCache functionality in Payara
+Server.
+
+_JSR107 (JCache)_ is implemented in Payara by Hazelcast.

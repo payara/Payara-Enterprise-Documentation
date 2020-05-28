@@ -1,0 +1,193 @@
+= Using Payara Micro as a JMS Client
+
+_Since Payara 4.1.172_
+
+Payara Micro can use JCA connectors and MDBs to connect to external systems. For
+instance, as client for an Apache ActiveMQ server. ActiveMQ is an open source
+messaging server (also known as message broker) and supports the JMS 1.1 API. As
+a client Payara Micro supports both sending messages to ActiveMQ as well as
+receiving them.
+
+== Setting up Apache ActiveMQ
+
+The following is a short overview of how to install and start ActiveMQ on most
+environments (Linux/Unix/macOS). See http://activemq.apache.org/getting-started.html[
+the ActiveMQ documentation] for additional details.
+
+Download `apache-activemq-5.14.5-bin.tar` from http://activemq.apache.org/activemq-5145-release.html[
+the ActiveMQ 5.14.5 release page] and use a terminal to extract:
+
+----
+tar xvf apache-activemq-5.14.5-bin.tar
+----
+
+Next, change to the extracted directory and start ActiveMQ up in the foreground:
+
+----
+cd apache-activemq-5.14.5
+bin/activemq console
+----
+
+=== Download the driver / connector
+In order for Payara Micro to be able to connect to ActiveMQ a driver (connector)
+is needed, which comes in the form of a JCA (Java Connecter Architecture) rar
+(resource archive). Note that the version of the driver should match the version
+ of the ActiveMQ installation as much as possible. Following the above example,
+the driver is activemq-rar-5.14.5.rar and can be downloaded from:
+https://mvnrepository.com/artifact/org.apache.activemq/activemq-rar/5.14.5
+
+=== Installing the driver
+A JCA rar is installed by deploying it to Payara Micro in the same way as an
+application archive (e.g. a .war) is deployed. The following shows an example:
+
+----
+java -jar payara-micro.jar --deploy activemq-rar-5.14.5.rar
+----
+
+The connector is subsequently available to all other applications deployed to
+Payara Micro. An application using a connector and the connector itself can be
+deployed simultaneously:
+
+----
+java -jar payara-micro.jar --deploy activemq-rar-5.14.5.rar --deploy myapp.war
+----
+
+=== Sending messages
+Sending messages to ActiveMQ can be done via the JMS API. At the moment, 
+ActiveMQ 5.x only supports the _JMS 1.1_ API, so even though Payara Micro supports
+JMS 2.0, this can not be used in this example. Attempting to use JMS 2.0 anyway
+would result in exceptions like shown below:
+
+----
+java.lang.AbstractMethodError: org.apache.activemq.ra.ActiveMQConnectionFactory.createContext(I)Ljavax/jms/JMSContext;
+   at org.glassfish.jms.injection.AbstractJMSContextManager.createContext(AbstractJMSContextManager.java:80)
+   at org.glassfish.jms.injection.AbstractJMSContextManager.getContext(AbstractJMSContextManager.java:97)
+----
+
+In order to start using the JMS API to send messages, two resources have to be
+defined via the JCA API; a _connection factory_ and a _destination_.
+
+The connection factory has to be given a name, which can be any name that is
+valid for JNDI. The `java:app` namespace is typically recommended to be used.
+The type of the connection factory to be used for JMS is
+"_javax.jms.ConnectionFactory_", and we have to specify the resource adapter
+name which is here "_activemq-rar-5.14.5_".
+
+Finally the network address/port and username/password to reach the external
+ActiveMQ server have to be specified. For the default installation that we used
+above this is "_127.0.0.1:61616_" and "_admin/admin_" respectively.
+
+The following gives an example:
+
+[source, Java]
+----
+@ConnectionFactoryDefinition ( 
+    name = "java:app/activemq/factory",
+    interfaceName = "javax.jms.ConnectionFactory",
+    resourceAdapter = "activemq-rar-5.14.5",
+    properties = { "ServerUrl=tcp://127.0.0.1:61616", "UserName=admin", "Password=admin"
+)
+----
+
+Just like the connection factory shown above, the destination has to be named.
+The destination also has to have the type `javax.jms.Queue` or `java.jms.Topic`
+and we`ll have to specify the same resource adapter name again.
+
+The vendor specific implementation of our required type also has to be specified;
+for a queue implementation provided by ActiveMQ this is
+`org.apache.activemq.command.ActiveMQQueue`. Finally the name of the queue we`re
+sending to on the ActiveMQ server has to be given (if the queue doesn`t exist,
+ActiveMQ wil create it automatically, so we are not required to configure the
+broker).
+
+[source, Java]
+----
+@AdministeredObjectDefinition ( 
+    name = "java:app/activemq/queue",
+    interfaceName = "javax.jms.Queue",
+    resourceAdapter = "activemq-rar-5.14.5",
+    className = "org.apache.activemq.command.ActiveMQQueue",
+    properties = "PhysicalName=MyQueue")
+----
+
+Note the difference between the client name of the queue
+(`java:app/activemq/queue`), which is used by Payara Micro, and the server name
+of the queue (`MyQueue`), which is used by ActiveMQ.
+
+With the above shown definitions in place the following code shows an example
+of sending a message:
+
+[source, Java]
+----
+@Singleton
+@Startup
+public class SendJMSMessage {
+ 
+    private static final Logger logger = Logger.getLogger(SendJMSMessage.class.getName());
+ 
+    @Resource(lookup = "java:app/activemq/factory")
+    private ConnectionFactory factory;
+ 
+    @Resource(lookup = "java:app/activemq/queue")
+    private Queue queue;
+    @PostConstruct
+    public void myTimer() {
+        sendMessage(s -> createTextMessage(s, "Hello, world!"));
+    }
+ 
+    public void sendMessage(Function<Session, Message> message) {
+        try (Connection connection = factory.createConnection()) {
+            Session session = connection.createSession(true, AUTO_ACKNOWLEDGE);
+            session.createProducer(queue)
+                   .send(message.apply(session));
+        }
+        catch (JMSException ex) {
+            logger.log(SEVERE, "Exception sending msg", ex);
+        }
+    }
+ 
+    public TextMessage createTextMessage(Session session, String message) {
+        try {
+            return session.createTextMessage(message);
+        }
+        catch(JMSException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+}
+----
+
+=== Receiving messages
+Messages can be received from ActiveMQ by creating an MDB (Message Driven Bean)
+that implements the `javax.jms.MessageListener` interface and its activation
+config specifies as "resourceAdapter" the name of connector, which here is
+"_activemq-rar-5.14.5_".
+
+The `destination` and `destinationType` properties are mandatory, and specify
+the name of the destination we are listening to, and the type of the destination,
+which is for JMS either `javax.jms.Queue` or `javax.jms.Topic` (MDBs are not
+just for JMS, but support other systems as well).
+
+The following gives an example:
+
+[source, Java]
+----
+@MessageDriven(activationConfig = {
+    @ActivationConfigProperty(propertyName = "destination", propertyValue = "MyQueue"),
+    @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+    @ActivationConfigProperty(propertyName = "resourceAdapter", propertyValue = "activemq-rar-5.14.5")
+})
+public class MyMessageListener implements MessageListener {
+ 
+    @Override
+    public void onMessage(Message message) {
+        // handle message
+    }
+}
+----
+
+---
+[[see-also]]
+==== See Also
+
+* xref:/documentation/payara-micro/jca.adoc[JCA Support in Payara Micro]

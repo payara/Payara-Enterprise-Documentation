@@ -1,0 +1,53 @@
+= Protocols: Asadmin Commands
+:toc:
+:toclevels: 1
+
+The following asadmin commands are available for administering HTTP protocols instead of using the admin console.
+The parameters are all explained in the configuration options above.
+
+== create-protocol
+
+The `create-protocol` command creates a bare protocol to be configured with `create-http` and `create-ssl`.
+
+=== Format
+----
+asadmin> create-protocol [--help]
+           [--securityenabled={false|true}]
+           [--target target]
+           protocol-name
+----
+
+== create-http
+
+The `create-http` command creates a set of HTTP parameters for a created protocol.
+
+=== Format
+----
+asadmin> create-http [--help]
+           --default-virtual-server virtual-server
+           [--request-timeout-seconds timeout]
+           [--timeout-seconds timeout]
+           [--max-connection max-keepalive]
+           [--dns-lookup-enabled={false|true}]
+           [--servername server-name]
+           [--target target]
+           protocol-name
+----
+
+== create-ssl
+
+The `create-ssl` command creates a set of SSL parameters for a created protocol.
+
+=== Format
+----
+asadmin> create-ssl [--help]
+        --certname certname
+        --type protocol
+        [--ssl3enabled={false|true}]
+        [--ssl3tlsciphers ssl3tlsciphers]
+        [--tlsenabled={false|true}]
+        [--tlsrollbackenabled={false|true}]
+        [--clientauthenabled={false|true}]
+        [--target target]
+        listener-id
+----

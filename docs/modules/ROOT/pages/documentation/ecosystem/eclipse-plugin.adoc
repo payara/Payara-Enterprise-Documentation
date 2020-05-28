@@ -1,0 +1,81 @@
+= Payara Eclipse Plugin
+
+Payara Platform provides the Payara Tools plugin to integrate Payara Server and Payara Micro into Eclipse IDE.
+The plugins are installable from the Eclipse Marketplace.
+
+* <<installing,Installing Payara Tools Plugin>>
+* <<adding-server,Adding Payara Server to Eclipse>>
+* <<adding-resources,Adding Resources to Server>>
+* <<reconfig,Runtime Reconfiguration>>
+
+[[installing]]
+== Installing Payara Tools plugin
+
+1. Go to *Help -> Eclipse Marketplace...*
++
+image::eclipse-plugin/install-marketplace.png[Eclipse Marketplace]
+2. On the Marketplace window, type *"Payara"* and click the *Go* button at the right side.
+3. Click the *Install* button.
+4. Read and accept the license.
+5. You will see the *Security Warning*, click on *Install Anyway*.
++
+image::eclipse-plugin/install-security-warning.png[Security Warning]
+6. Finally it is needed to restart the Eclipse. Plugin is installed.
+
+
+[[adding-server]]
+== Adding Payara Server to Eclipse
+
+1. Open the *Servers* view (if not visible, it should be under menu *Window -> Show View -> Servers*).
++
+image::eclipse-plugin/new-server-menu.png[New Server menu]
+2. Select *Payara -> Payara* and set the *Host name* and some comprehensible *Server name*.
++
+image::eclipse-plugin/new-server-window.png[New Server window]
+3. Then click *Next* to another window with server runtime configuration.
++
+image::eclipse-plugin/new-server-runtime.png[New Server Runtime]
+4. Then click *Next* again to window with the configuration of the domain.
+  In this example we use domain without configured admin user and the server is not started in debug mode.
++
+image::eclipse-plugin/new-server-instance.png[New Server Instance]
+5. In the last step you can select resources which will be deployed on the server.
+  Here we don't have any deployable projects in the workspace yet, so both panels are empty.
++
+image::eclipse-plugin/new-server-resources.png[New Server Resources]
+
+[[adding-resources]]
+== Adding Resources to Server
+
+1. First import or create some project, deployable to the *Payara Server*.
+  Here we use one of the xref:https://github.com/javaee-samples/javaee7-samples[Java EE 7 Samples] .
+2. Right click the target server in the *Servers* view and click *Add and Remove...*
++
+image::eclipse-plugin/add-resource-menu.png[Add and Remove menu]
+3. Select resources you want to be managed by the *Payara Tools*, add them to the right panel and click *Finish*.
++
+image::eclipse-plugin/add-resource-window.png[Add and Remove window]
+4. Now you can watch the deployment of the application in the *Console* view.
++
+image::eclipse-plugin/add-resource-console.png[Add and Remove window]
+5. If the deployment was successful, you can use the application.
+  Here we simply opened the internal Eclipse's browser and sent the HTTP GET request - and the application responded.
++
+image::eclipse-plugin/add-resource-browser.png[Request and Response in Browser]
+6. You can also access the administration console directly from the Eclipse Browser.
+  Just right click the target server in the *Servers* view and click *Payara -> View Admin Console*
++
+image::eclipse-plugin/add-resource-admin.png[Admin Console]
+
+[[reconfig]]
+== Runtime Reconfiguration
+
+1. In the *Servers* view double click the server you want to reconfigure. The *Server Overview* will open.
++
+image::eclipse-plugin/reconfig-overview.png[Server Overview]
+2. Click on *Runtime Environment* and you will see well known window.
++
+WARNING: Be careful, because changing the runtime may result in unusable state of the server
+  because of incompatible configuration.
++
+image::eclipse-plugin/reconfig-runtime.png[Runtime Configuration]

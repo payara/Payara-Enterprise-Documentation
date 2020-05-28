@@ -1,0 +1,82 @@
+[[configuring-an-instance-from-the-command-line]]
+= Configuring an Instance from the Command Line
+
+As described in
+xref:/documentation/payara-micro/deploying/deploy-cmd-line.adoc[Deploying From the Command Line],
+the starting and configuration of an instance can be done in its entirety on
+one line.
+
+The options available can be seen by running the JAR with the `--help` option,
+or by consulting the
+xref:/documentation/payara-micro/appendices/cmd-line-opts.adoc[Payara Micro Command Line Options]
+section in the
+xref:/documentation/payara-micro/appendices/appendices.adoc[Appendices].
+
+The general structure of starting, configuring, and deploying an application to
+an instance is as follows:
+
+[source, java]
+----
+java -jar payara-micro.jar _--option1_ _--option2_ ...
+----
+
+As an example, see below for starting an instance with a non-default HTTP port:
+
+[source, java]
+----
+java -jar payara-micro.jar --port 2468
+----
+
+[[warmup]]
+== Separating Configuration from Production Run
+
+An instance can be configured separately, but only when xref:documentation/payara-micro/rootdir.adoc[persistent root configuration directory] is specified by means of command line argument `--rootDir`.
+
+When switch `--warmup` is supplied all configuration and deployment command line parameters are applied to configuration directory and the instance immediately shuts down:
+
+[source,java]
+----
+java -jar payara-micro.jar --option1 --option2 deployment.war --warmup
+----
+
+Another use case for --warmup is to collect profiling information for e. g. Class Data Sharing feature of JDK:
+
+[source,shell]
+----
+# Open JDK 11; launcher needs to be used because of simpler classpath
+java -XX:DumpLoadedClassList=classes.lst -jar rootidr/launch-micro.jar  --warmup
+
+# OpenJ9
+java -Xshareclasses:name=payara-micro -jar payara-micro.jar --warmup
+----
+
+[[read-configuration-from-a-file]]
+== Read configuration from a file
+
+With `--domainConfig` option, it is possible to define multiple options in a
+configuration file. This option would override the default Payara Micro configuration
+completely. The provided file must conform to the same structure as the `domain.xml`
+file in a Payara Server domain.
+
+The `--rootDir` option sets the root configuration directory and saves the
+configuration across restarts. If empty, this directory will be filled by the
+default configuration, including the `domain.xml` file.
+
+[[precedence]]
+== Precedence
+
+If specifying multiple options at once, the following precedence is followed:
+
+----
+rootDir < domainConfig < autoBindHttp | autoBindSsl < port | sslPort
+----
+
+In human language:
+
+* The _domain.xml_ in the directory specified by the _rootDir_ option (if one exists)
+is overridden by the _domain.xml_ specified with the `domainConfig` option
+* The HTTP and HTTPS port numbers specified in either of these _domain.xml_ files
+are overridden to be the default values of *8080* and *8081* when the `autoBindHttp`
+or `autoBindSsl` options are enabled respectively.
+* These default port values are then overridden in turn by the port numbers
+specified with the `port` or `sslPort` options.

@@ -1,0 +1,20 @@
+[[default-thread-pool-size]]
+= Default Thread Pool Size
+
+_Since Payara Server 4.1.1.164_
+
+The thread pool `thread-pool-1` starts with a minimum size of *2*
+instead of *1* (like in previous versions)
+
+This includes the benefit of allowing users to execute tasks
+concurrently using the `ManagedExecutorService` and
+`ManagedScheduledExecutorService` components included with Java EE
+Concurrency Utilities (https://jcp.org/ja/jsr/detail?id=236[JSR-236]).
+Without this change, new tasks submitted to these service components
+would just have been queued in a linear fashion.
+
+This minor optimization is configured on the _default domain_ template
+(so all newly created domains inherit it) and is also included in the
+xref:/documentation/payara-server/production-ready-domain.adoc[Production
+Ready] domain template as well, across all profiles (Full, Web, Embedded
+and Micro).

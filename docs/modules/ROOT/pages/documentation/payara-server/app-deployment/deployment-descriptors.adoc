@@ -1,0 +1,69 @@
+[[payara-server-deployment-descriptor-files]]
+= Payara Server Deployment Descriptor Files
+:toc:
+
+[[glassfish]]
+== Support of GlassFish deployment descriptors
+Payara Server supports specifying deployment configuration using GlassFish deployment descriptor files. 
+
+[[payara-web-info]]
+== Payara deployment descriptors
+
+Additionally from version __5.183__, `payara-web.xml` can be used instead of `glassfish-web.xml`. The top level element for the `payara-web.xml` file must be `_payara-web-app_` and the schema can be refererenced by:
+
+[source,xml]
+<!DOCTYPE payara-web-app PUBLIC "-//Payara.fish//DTD Payara Server 4 Servlet 3.0//EN" "{payaraWebDtd}">
+
+Since version __5.184__
+
+`payara-resources.xml` can also be used instead of `glassfish-resources.xml`. The schema can be referenced by:
+
+[source,xml]
+<!DOCTYPE resources PUBLIC "-//Payara.fish//DTD Payara Server 4 Resource Definitions//EN" "{payaraResourcesDtd}">
+
+See the xref:/schemas/README.adoc[schema reference] for the list of deployment descriptor DTD files.
+
+== Allowed configuration elements
+
+The following elements are supported in Payara Server on top of elements supported by GlassFish:
+
+[[glassfish-application.xml]]
+== _glassfish-application.xml_
+
+* `classloading-delegate`
+* `enable-implicit-cdi`
+* `default-role-mapping` (_property_)
+* `whitelist-package`
+* `scanning-exclude`
+* `scanning-include`
+
+[[glassfish-web.xml]]
+== _glassfish-web.xml_ and _payara-web.xml_
+
+* `container-initialized-enabled`
+* `default-role-mapping` (_property_)
+* `jaxrs-roles-allowed-enabled`
+* `scanning-exclude`
+* `scanning-include`
+* `jsp-config`
+* `whitelist-package`
+
+[[glassfish-ejb-jar.xml]]
+== _glassfish-ejb-jar.xml_
+
+* `webservice-default-login-config`
+* `default-role-mapping` (_property_)
+* `enterprise-beans`
+** `ejb`
+*** `ejb-name`
+*** `clustered-bean`
+*** `clustered-key-name`
+*** `clustered-lock-type`
+*** `clustered-attach-postconstruct`
+*** `clustered-detach-predestroy`
+
+[[payara-resources.xml]]
+== _payara-resources.xml_
+Since version __5.184__
+
+* `snapshot` (_property of transaction isolation, this isolation level is only supported by Microsoft SQL Server_)

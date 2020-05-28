@@ -1,0 +1,90 @@
+[[configure-a-connection-pool]]
+= Configure a connection pool
+
+Brief user guide with instructions on configuring and managing JDBC connection
+pools
+
+[[what-is-a-connection-pool]]
+== What is a connection pool?
+
+Database connections are expensive to create and maintain. A connection
+pool is a store of database connections that can be used and (more importantly)
+re-used to connect to a RDBMS database. They help to improve both the performance
+and scalability of the system.
+
+Rather than creating a new connection each time one is needed a pool of logical
+connections is created when Payara server is started. When a new connection is
+required the pool is searched for an available connection. If one is available
+it is returned to the requester. If none is available then the request is either
+queued or a new connection is established depending on how many connections
+are already in the pool and how the pool is configured.
+
+Once the connection is finished with, rather than closing it the connection is
+returned to the connection pool for use by the next requester.
+
+[[creating-the-connection-pool]]
+== Creating a connection pool
+
+It is possible to create a JDBC connection pool on the web administration console,
+or using administration commands.
+
+[[using-admin-console]]
+=== Using Admin Console
+
+In the left hand panel of the Admin console go to _Resources_ -> _JDBC_ -> _JDBC Connection Pools_
+
+Click the _New_ button and enter the following values:
+
+[cols=",",options="header",]
+|=======================================================================
+|Setting Name |Value
+|Pool Name |test-pool
+|Resource Type |javax.sql.DataSource
+|Driver Vendor |(value for the driver, e.g. Derby30 for a Derby DB, MySQL for a MySQL DB)
+|=======================================================================
+
+Click Next and then click Finish on the next screen, accepting the default values.
+
+image:connection-pools/connection_pools_1.png[New JDBC Connection Pool]
+
+Add the following properties to the connection pool by going to the _Additional Properties_
+tab of the connection pool:
+
+[cols=",,",options="header",]
+|=======================================================================
+|Setting name |Value |Description
+|PortNumber |3306 |Database port
+|Password |mypassword |Database password
+|User |root |Database user
+|serverName |localhost |Database address
+|DatabaseName |test |Name of the database
+|connectionAttributes | |Other connection attributes (supported by the JDBC driver)
+|=======================================================================
+
+image:connection-pools/connection_pools_2.png[Connection pool properties]
+
+To test the connection attributes, go back to the _General_ tab and click the
+_Ping_ button at the top of the screen. You should see a message stating that the
+ping succeeded.
+
+[[using-asadmin]]
+=== Using administration commands
+
+You can also create a JDBC connection pool using the `asadmin` command line tool
+with the following options:
+
+[source, shell]
+----
+asadmin> create-jdbc-connection-pool --datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlDataSource --restype javax.sql.DataSource --property user=root:password=test:DatabaseName=test:ServerName=localhost:port=3306 test-pool
+----
+
+With this command, you need to specify the full name of the driver's class
+instead of just selecting a value from a drop-down menu.
+
+You can test the connection to the database from the command line run the
+following command:
+
+[source, shell]
+----
+asadmin> ping-connection-pool test-pool
+----

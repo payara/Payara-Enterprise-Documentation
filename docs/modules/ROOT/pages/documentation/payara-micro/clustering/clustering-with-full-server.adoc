@@ -1,0 +1,11 @@
+[[clustering-with-payara-server]]
+= Clustering with Payara Server
+
+Payara Micro can cluster with Payara Server and share web session and JCache data.
+
+To cluster with Payara Server, just start a Payara Micro instance using `--clustermode domain:ip:port`.
+
+When Payara Server DAS is connected to the same Hazelcast cluster, the Admin
+console can display the details about Payara Micro instances in the cluster.
+See xref:/documentation/payara-server/hazelcast/viewing-members.adoc[Viewing Cluster Members]
+section for details.

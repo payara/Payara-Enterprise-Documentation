@@ -1,0 +1,27 @@
+= Enabling CDI Development Mode using Admin Console
+
+== Enabling for a single application
+
+The CDI Development Mode can be enabled for a single application during deployment. The *Deploy Applications* page provides a checkbox to enable the *CDI Development Mode* for the application. If the checkbox is checked, the CDI development mode is enabled:
+
+image::probe/console-enable-at-deploy.png[]
+
+After you deploy the application, you should be able to see a message with "Weld Development Mode: ENABLED" in the server's log file.
+
+NOTE: CDI Development Mode will be enabled only if the deployed application contains CDI beans or EJBs.
+
+In the *Edit Application* page, you can see that the *CDI Development Mode* checkbox is checked:
+
+image::probe/console-edit-application.png[]
+
+In this page, it's also possible to enable/disable the CDI Development Mode after an application is deployed. Changing the value of the *CDI Development Mode* checkbox will trigger redeployment of the application to take effect immediately.
+
+== Enabling for all applications
+
+The CDI Development Mode can be enabled also globally for all applications. This is configured by setting the system property `org.jboss.weld.development` to `true` in the server configuration or using JVM startup options.
+
+To set the system property for the server globally, click on *server (Admin Server)* in the sidebar on the left. Then click on the *Properties* tab. In the *System Properties* page, add property with variable name `org.jboss.weld.development` and *override value* set to `true`, and press *Save*:
+
+image::probe/console-enable-by-property.png[]
+
+All applications deployed after this setting is applied will have CDI Development Mode enabled (although the checkbox in the *Edit Application* page may not always reflect this).  To enable it for already deployed applications, it’s necessary to redeploy each application or disable then enable it.

@@ -1,0 +1,42 @@
+[[json-log-formatter]]
+= JSON Log Formatter
+
+_Since version 4.1.1.164_
+
+Besides ULF and ODL logging formats available also in _GlassFish 4_,
+Payara Server provides additional JSON format. With this format, every
+line in the log output is formatted as a JSON string. The log records
+can be then easily parsed by a JSON parser for further data processing.
+
+To enable the JSON formatter using the Admin Console, just select `JSON`
+from the list of Logging Formats, either for `Console` or `Log File`:
+
+image:logging/json_config.png[JSON format configuration in Web Console]
+
+The following administration command will enable the JSON formatter:
+
+[source, shell]
+----
+asadmin> set-log-attributes com.sun.enterprise.server.logging.GFFileHandler.formatter='fish.payara.enterprise.server.logging.JSONLogFormatter'
+----
+
+Once the JSON formatter is enabled, the log file may look similar to this sample:
+
+image:logging/json_example.png[Example log file with JSON format]
+
+[[add-an-underscore-prefix]]
+== Add an underscore prefix
+
+_Since Payara Server 5.182 and 4.1.2.182_
+
+The following administration command will add the underscore prefix to field names in JSON Formatter:
+
+[source, shell]
+----
+asadmin> set-log-attributes fish.payara.deprecated.jsonlogformatter.underscoreprefix=true
+----
+
+By default, `fish.payara.deprecated.jsonlogformatter.underscoreprefix` property value is false.
+Once underscore prefix enabled, all JSON fields should be prefixed with underscore, similar to this sample:
+
+image:logging/json_underscore_prefix_example.png[Example log file with the underscore prefix in JSON fields]

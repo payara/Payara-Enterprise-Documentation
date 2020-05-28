@@ -1,0 +1,57 @@
+[[realm-identity-stores]]
+= Realm Identity Stores
+
+_Since Payara Server 5.194_
+
+The Payara API provides a way to authenticate with the existing realms using the `@RealmIdentityStoreDefinition` annotation.
+
+[[usage]]
+== Usage
+
+The realm identity store is defined through the `@RealmIdentityStoreDefinition` annotation.
+Specifying this in a valid place as defined by the https://jakarta.ee/specifications/security/1.0/apidocs/[Jakarta EE Security API] will create the identity store.
+Often this may mean that any class is a valid position.
+
+[[usage-example]]
+=== Example
+
+The following code sample illustrates how to configure realm identity store:
+
+[source, java]
+----
+@ApplicationScoped
+@ApplicationPath("/rest")
+@DeclareRoles({ "a", "b"})
+@BasicAuthenticationMechanismDefinition(realmName = "file")
+@RealmIdentityStoreDefinition("file")
+public class MyRestApp extends Application {
+}
+----
+
+The `RealmIdentityStoreDefinition` is a repeatable annotation hence multiple realms can also be defined:
+[source, java]
+----
+@ApplicationScoped
+@ApplicationPath("/rest")
+@DeclareRoles({ "a", "b"})
+@BasicAuthenticationMechanismDefinition
+@RealmIdentityStoreDefinition("realm1")
+@RealmIdentityStoreDefinition("realm2")
+public class MyRestApp extends Application {
+}
+----
+
+
+[[configuration]]
+== Configuration
+
+The `@RealmIdentityStoreDefinition` annotation is configured with the options as shown below.
+
+|===
+| Option | Description | Default | Required
+
+| `value`
+| The name of the existing realm.
+| Default realm
+|
+|===

@@ -1,0 +1,14 @@
+[[jmx-monitoring-service]]
+= JMX Monitoring Service
+
+_Since Payara Server 4.1.1.163_
+
+Payara offers a custom JMX Monitoring Service. Once configured, Payara
+Server will monitor and log the values of attributes that have been listed
+for monitoring. The metrics are logged together in a single log message as
+a series of key-value pairs prefixed by the string `JMX-MONITORING:`.
+
+IMPORTANT: Payara uses the AMX API for working with _JMX MBeans_. AMX is not fully
+exposed by default and as such needs to be loaded to access most _JMX MBean_
+objects. The JMX Monitoring Service can be used without AMX but
+there is a limit to what can be monitored without it.

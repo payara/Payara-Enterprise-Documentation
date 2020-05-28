@@ -1,0 +1,79 @@
+[[configure-the-principal-name-on-certificate-realms]]
+= Configure the Principal Name on Certificate Realms
+
+_Since Payara Server 5.192_
+
+Payara Server includes a feature that supports using exclusively the use of the Common-Name (`CN`) from a client
+certificate for authentication on a secure web application as the subject of any authenticated request.
+
+A new property named `common-name-as-principal-name` can be used with any security realm of type `com.sun.enterprise.security.auth.realm.certificate.CertificateRealm` in order to control this feature.
+
+NOTE: The `common-name-as-principal-name` property is set to false by default if no configuration is provided.
+
+[[enabling-common-name-as-principal-name]]
+== Enabling Common Name As Principal Name
+
+You can set this property by using either the Web administration console or the command line.
+
+[[using-the-web-admin-console]]
+=== Using the Web Admin Console
+
+This feature can be configured on the default certificate realm as follows on the Web administration console:
+
+. Navigate to the applicable configuration page for your use (e.g. `server-config`) under the `Configurations` option
+  in the side menu
+. Head to `Security` -> `Realms` and select the `certificate` realm
+. Click the `Add Property` button
+. Set the property _Name_ to be `common-name-as-principal-name` and set the _Value_ to `true`
+
+image:security/common-name-as-principal-name.png[Common Name As Principal Name Setting]
+
+[[using-asadmin-utility]]
+=== Using an `asadmin` command
+
+You can also use the following asadmin command to set the value of the property through:
+
+[source, shell]
+----
+asadmin> set configs.config.${YOUR_INSTANCE_CONFIG}.security-service.auth-realm.certificate.property.common-name-as-principal-name=true
+----
+
+IMPORTANT: After setting the value of the property, make sure that you **restart the server instance** for the changes
+to take effect.
+
+[[using-cn-as-subject-in-applications]]
+== Using `CN` as Subject in Applications
+
+With the feature enabled, users can be correctly authenticated when a valid certificate uses the common name
+instead of the full domain name. It is also possible to map users to roles in this manner.
+
+For example, if user authorization roles were mapped like this in the `payara-web.xml` deployment descriptor:
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE payara-web-app PUBLIC "-//Payara.fish//DTD Payara Server 4 Servlet 3.0//EN" "https://docs.payara.fish/schemas/payara-web-app_4.dtd">
+<payara-web-app error-url="">
+  <context-root>/health-services</context-root>
+  <security-role-mapping>
+    <role-name>gl</role-name>
+    <principal-name>C=UK, S=lak, L=zak, O=kaz, CN=foo</principal-name>
+  </security-role-mapping>
+</payara-web-app>
+----
+
+Then the `principal-name` can be simplified by using only the CN part instead:
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE payara-web-app PUBLIC "-//Payara.fish//DTD Payara Server 4 Servlet 3.0//EN" "https://docs.payara.fish/schemas/payara-web-app_4.dtd">
+<payara-web-app error-url="">
+  <context-root>/health-services</context-root>
+  <security-role-mapping>
+    <role-name>gl</role-name>
+    <principal-name>foo</principal-name>
+  </security-role-mapping>
+</payara-web-app>
+----
+

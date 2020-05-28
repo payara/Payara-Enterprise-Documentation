@@ -1,0 +1,71 @@
+[[file-identity-store]]
+= File Identity Store
+
+_Since Payara Server 5.194_
+
+The Payara API provides a `@FileIdentityStoreDefinition` annotation that creates an identity store to authenticate the users using the file realm.
+
+[[usage]]
+== Usage
+
+The File realm identity store is defined through the `@FileIdentityStoreDefinition` annotation.
+Specifying this in a valid place as defined by the https://jakarta.ee/specifications/security/1.0/apidocs/[Jakarta EE Security API] will create the identity store.
+Often this may mean that any class is a valid position.
+If the file realm not found with the defined name then a new File realm is registered on the server using the `create-auth-realm` asadmin command,
+otherwise existing file realm instance is used to authenticate the users.
+
+[[usage-example]]
+=== Example
+
+The following code sample illustrates how to configure file realm identity store:
+
+[source, java]
+----
+@ApplicationScoped
+@ApplicationPath("/rest")
+@DeclareRoles({ "a", "b"})
+@BasicAuthenticationMechanismDefinition(realmName = "file-realm")
+@FileIdentityStoreDefinition("file-realm")
+public class MyRestApp extends Application {
+}
+----
+
+[[configuration]]
+== Configuration
+
+The file realm identity store can be configured with both `@FileIdentityStoreDefinition` annotation attributes and MicroProfile Config properties. The annotation and MicroProfile properties have several configuration options.
+
+They are detailed as shown below.
+
+
+|===
+| Option | MP Config property | Description | Default | Required
+
+| `value`
+|
+| The name of the realm.
+| `file`
+|
+
+| `file`
+| `payara.security.file`
+| The location of the file to store user credentials locally. If no file name is defined then the realm name is used as the file name.
+| Realm Name
+|
+
+| `assignGroups`
+| `payara.security.file.assignGroups`
+| The users are assigned membership to these groups for the purposes of authorization decisions.
+|
+|
+
+| `jaasContext`
+| `payara.security.file.jaasContext`
+| The JAAS Context of File realm.
+| `fileRealm`
+|
+
+|===
+
+*Note :* If both an annotation attribute and a MicroProfile Config property are defined for the same option 
+then the MicroProfile Config property value always takes precedence over the `@FileIdentityStoreDefinition` annotation value.

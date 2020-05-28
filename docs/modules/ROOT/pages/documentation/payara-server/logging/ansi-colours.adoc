@@ -1,0 +1,17 @@
+[[ansi-coloured-logs]]
+= ANSI Coloured Logging
+
+_Since version 4.1.2.174_
+
+Payara Server now supports using ANSI colours when running in verbose mode.
+
+To enable ANSI colours using the `asadamin` tool:
+
+[source, shell]
+----
+asadmin> set-log-attributes com.sun.enterprise.server.logging.UniformLogFormatter.ansiColor=true
+----
+
+NOTE: This is enabled by default on Linux and Mac from Payara 5.181.
+
+

@@ -1,0 +1,5 @@
+= Accessing CDI Probe REST API
+
+CDI Probe exposes REST API at the context root of the application suffixed by path `/weld-probe`, followed by path to the REST resource. 
+
+The REST interface is documented in the https://github.com/weld/core/blob/master/probe/README.md[Weld Probe documentation]

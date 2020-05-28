@@ -1,0 +1,67 @@
+[[payara-server-domain-backup]]
+= Payara Server Domain Backup
+
+Oracle GlassFish 3.1.x had a built-in automatic backup facility using the `asadmin`
+command `create-backup-config`. This allowed you to specify a schedule for when
+to backup, where to place the backed up file, and how many backups to keep.
+
+This is no longer present in GlassFish Server 4.1.x or Payara Server, since it was a
+commercial feature that was never open-sourced, but its effects can be reproduced
+without much effort using the `backup-domain` command and some scheduling
+software (_crontab_, for example)
+
+Since the domain directory is where all of the user configuration of Payara
+Server is kept, we can consider this to be separate to the installation files
+that Payara Server uses to run the app server itself. We can backup the domain
+using the `asadmin backup-domain` command as follows:
+
+[source, shell]
+----
+asadmin> backup-domain --backupDir /path/to/backup/directory myDomain
+----
+
+The effect of this command is to create a full backup of the domain directory.
+To complete the command, however, *the domain must be stopped first*.
+This will mean that any application deployed to the DAS is unavailable while
+the backup takes place.
+
+The resulting ZIP file will be saved in a destination with this structure:
+
+----
+<backupDir>/<domain-name>/<domain-name>_<yyyy_mm_dd>_v<backup_number>
+----
+
+Where the *backup number* is a consecutive integer representing how many backups
+of the domain have been made.
+
+The job of running this backup command on a given schedule and managing the
+resulting backed up files needs to be done by a script external to Payara
+Server.
+
+You can get more details of the backup operation by using the `--long` argument
+when running the command like this:
+
+[source, shell]
+----
+asadmin > backup-domain --backupDir /opt/backups/ --long domain1
+
+Backed up domain1 at Wed Sep 13 16:49:53 COT 2017.
+
+Description               : domain1 backup created on 2017_09_13 by user payara
+GlassFish Version         : Payara Server  4.1.2.173 #badassfish (build 24)
+Backup User               : payara
+Backup Date               : Wed Sep 13 16:49:53 COT 2017
+Domain Name               : domain1
+Backup Type               : full
+Backup Config Name        :
+Backup Filename (origin)  : /opt/backups/domain1/domain1_2017_09_13_v00002.zip
+Domain Directory          : /opt/payara/glassfish/domains/domain1
+
+Command backup-domain executed successfully.
+----
+
+[[see-also]]
+== See Also
+
+* xref:documentation/user-guides/restore-domain.adoc[Restore a Payara Server Domain]
+* xref:documentation/user-guides/upgrade-payara.adoc[Upgrade Payara Server]

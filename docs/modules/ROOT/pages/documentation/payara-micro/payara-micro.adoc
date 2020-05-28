@@ -1,0 +1,24 @@
+[[payara-micro-documentation]]
+= Payara Micro Documentation
+
+This section covers how to use Payara Micro.
+
+Payara Micro is an embedded release of Payara built from the Payara Embedded Web
+release. It allows you to deploy and run WAR files from the command line with
+a single command, and also features automatic, dynamic clustering with Hazelcast.
+
+[[documentation-conventions]]
+== Documentation Conventions
+
+. Any commands listed will be written assuming they are being run from the same
+directory as the Payara Micro JAR file.
+. Any commands listed will also be written assuming that the system environment
+variables have been set up to have Java on the system Path.
+. Any paths listed throughout the documentation will use the Unix/Linux file
+path structure (forward slashes).
+. The owning class of an API method will not be explicitly stated unless it is
+not clear if an instance has been started or not; methods that operate on Payara
+Micro instances before they have been bootstrapped (instances that have not
+yet been started) are contained in the `PayaraMicro` class, whereas methods
+that operate on bootstrapped instances (running instances) are contained
+within the `PayaraMicroRuntime` class.

@@ -1,0 +1,7 @@
+[[variables-in-the-configuration]]
+= Variables in the configuration
+
+Variable references in the configuration are useful for reusing the same
+configuration in several scenarios, e.g. for several instances in the
+same cluster, or to provide an environment-specific configuration from
+the environment later when Payara Server is started.

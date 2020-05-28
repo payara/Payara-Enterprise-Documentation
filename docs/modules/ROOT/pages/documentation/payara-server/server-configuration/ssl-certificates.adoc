@@ -1,0 +1,80 @@
+[[ssl-certificates]]
+= Configure SSL Certificates
+
+The Payara server uses a dedicated key and certificate store when using SSL/TLS connections. The files are located in the configuration directory of the domain `<payara-home>/glassfish/domains/<domain-name>/config` and referenced through JVM options so that they are used for the entire JVM.
+
+_cacerts.jks_: Java Keystore formatted file used as Trust Store file holding the X.509 certificates.
+_keystore.jks_: Java Keystore formatted file containing the Cryptographic keys, like the private keys associated with the certificates.
+
+These keystores are protected with the Master Password of your domain.
+
+[[add-certificate]]
+== Adding SSL Certificate
+
+To add your SSL Certificate to the Payara Server configuration files, you need:
+
+- The private key associated with your certificate.
+- The Certificate you received from the Certificate Authority based on your Certificate Signing Request (CSR).
+
+You can find the detailed steps of adding a self-signed certificate into Payara for testing purposes in the blog https://blog.payara.fish/securing-payara-server-with-custom-ssl-certificate[Securing Payara Server with Custom SSL Certificate].
+
+The private key can be stored in various formats. We assume that the key is in a format which can be read by the Java key tool program, such as PKCS#8 (file starts with `BEGIN ENCRYPTED PRIVATE KEY`)
+
+=== Combine the Private Key with the Certificate.
+
+In a first step, we combine the Private key and the Certificate we received into a file.  This file can then be used to merge our data into the files used by the Payara installation. 
+In this step, we also specify an alias name for our key/certificate. This alias name is important as we will use it later to refer to our specific SSL Certificate.
+
+The command to perform this combination is the following with OpenSSL:
+
+     openssl pkcs12 -export -in mycert.crt -inkey mycert.key -out mycert.p12 -name mydomain_certificate
+
+- _mycert.key_ contains the private key
+- _mycert.crt_ contains the X.509 certificate
+- _-name_ indicate the alias we assign to our certificate
+
+The resulting file, _mycert.p12_ is also encrypted with a password that is requested during the execution of the command.
+
+=== Import into keystore.jks
+
+The information needs to be imported into the _keystore.jks_ file of your Payara Domain which will use it.
+
+This is performed using the _keytool_ command of the JDK:
+
+    keytool -importkeystore -destkeystore keystore.jks -srckeystore mycert.p12 -srcstoretype PKCS12 -alias mydomain_certificate
+
+The parameters of the above command are self-explanatory. Important here is the correct alias value.
+
+=== Import into cacerts.jks
+
+A similar command is used to import the information into the Trust Store file so that our certificate is trusted by the JVM.
+
+     keytool -importcert -trustcacerts -destkeystore cacerts.jks -file mycert.crt -alias mydomain_certificate
+
+
+=== Update HTTP Listener
+
+The last step we need to perform is the indication which 'certificate' needs to be used when Payara receives an SSL/TLS request. This can be done by specifying the alias name we have used when we integrated the required information into the key store files of the domain.
+
+This information can be set either via the CLI, 
+
+    asadmin set configs.config.server-config.network-config.protocols.protocol.http-listener-2.ssl.cert-nickname=mydomain_certificate
+
+In a default installation, the _http-listener-2_ is responsible for handling the secure connections on port 8181. The above command sets the alias name so that the system knows which certificate needs to be used.
+
+The information can also be entered in the Web Administration console, by navigating to the page Configurations -> server-config -> HTTP Service -> HTTP Listeners > http-listener-2.
+
+[certificate-expiration]
+== Certificate expiration
+
+All the X.509 certificates have a validity period when they can be used. Once this validity period is passed, the users will see a warning or error message depending on the browser that the certificate is no longer valid.
+
+Within the server log file, the expired certificates are listed when the system encounters one. Besides your custom certificates which are added as described in a previous chapter, the Trust Store also contains certificates from the Certificate Authorities. Also, they can expire and thus can be listed in the log.
+
+_Since Payara Server 5.194_
+
+Since Payara Server 5.194 the log level of the expired certificates is of type WARNING. In previous versions, the entries showed as an ERROR. 
+
+Since the server continues to operate normally, it was decided to lower the level of the message.
+
+

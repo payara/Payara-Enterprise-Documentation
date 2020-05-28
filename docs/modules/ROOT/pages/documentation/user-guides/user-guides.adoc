@@ -1,0 +1,13 @@
+[[user-guides]]
+= User Guides Overview
+
+These pages are intended to answer common questions and provide more practical
+documentation on how to work with Payara Server and Payara Micro.
+
+For regular updates on Payara Server and Payara Micro, including announcements
+of new features, subscribe to the official http://blog.payara.fish/[Payara Blog].
+
+For additional user guides, datasheets, and tutorial videos, visit our 
+https://www.payara.fish/documentation/guides-and-how-tos/[Guides and Resources] page, 
+or to learn how to migrate to the Payara Platform from another application server, 
+follow along with our https://www.payara.fish/documentation/migration-guide/[Migration Guide].

@@ -1,0 +1,28 @@
+[[special-checkers-configuration]]
+= Special HealthCheck Service Checkers Configuration
+
+The *Hogging Threads* and the *Stuck Threads* checkers are special on their configuration.
+They do not have a threshold range configuration, instead opting for different attributes.
+
+Here's a configuration sample of the *Hogging Threads* checker:
+
+image:healthcheck/hogging-threads-checker-configuration.png[Hogging Threads Checker Configuration in the Admin Console]
+
+The following are the attributes used to configure this checker:
+
+_Threshold Percentage_:: Defines the minimum percentage needed to decide if the
+thread is hogged CPU-wise. The percentage is calculated with the ratio of elapsed
+CPU time to checker execution interval. Its default value is **95**.
+_Retry Count_:: Represents the count value that should be reached by the hogged
+thread in order for the service to send notifications. Its default value is **3**
+
+And here's a configuration sample for the *Stuck Threads* checker:
+
+image:healthcheck/stuck-threads-checker-configuration.png[Stuck Threads Checker Configuration in the Admin Console]
+
+The following are the attributes used to configure this checker:
+
+_Threshold Time_:: Defines the time value for which a thread can be non-responsive
+before it is considered stuck. It's default value is **5**.
+_Threshold Unit_:: Defines the time unit for the value of the **Threshold Time**
+field. It's default value is **Minutes**.

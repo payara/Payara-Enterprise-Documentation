@@ -1,0 +1,304 @@
+= Bill Of Material Artifact
+
+_Since 5.194_
+
+Payara Platform consists of many artifacts and it depends on lots of APIs as well as their implementations.
+Having matching versions of these dependencies prevents many classloading issues.
+Payara's Bill Of Material (BOM) artifact collects all of these versions for the following types of artifacts:
+
+* Payara Distribution artifacts
+* Payara Client libraries
+* Jakarta EE, Eclipse Microprofile and OSGi APIs
+* Arquillian Containers
+* Implementations and libraries shipped with the server (consult the list below)
+
+== Quick Start
+
+To make use of the BOM, you need to list the artifact in `dependencyManagement` section of your project in scope `import`.
+Some of the artifacts are Payara-specific patch versions which are available in our repository https://github.com/payara/Payara_PatchedProjects/[Payara_PatchedProjects].
+
+Add following snippet to your Maven project:
+
+[source,XML]
+----
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>fish.payara.api</groupId>
+            <artifactId>payara-bom</artifactId>
+            <version>5.194</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+
+<!-- Some of the referenced APIs in POM are Payara's patched versions.
+      These are published in following repo: -->
+<repositories>
+    <repository>
+        <id>payara-patched-externals</id>
+        <name>Payara Patched Externals</name>
+        <url>https://raw.github.com/payara/Payara_PatchedProjects/master</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+
+</repositories>
+----
+
+An example application utilizing the BOM can be seen in repository https://github.com/payara/Payara-Examples[Payara Examples] at path https://github.com/payara/Payara-Examples/tree/master/ecosystem/payara-bom/bom-import[ecosystem/payara-bom/bom-import/].
+
+== Contents of the BOM
+
+=== Payara Distribution
+
+Distribution artifacts do not define scope and are therefore imported in scope `compile`..
+
+[%header, cols="1,3l,2"]
+|===
+|Artifact | Example usage | Note
+
+| Payara Server
+|
+<dependency>
+  <groupId>fish.payara.distributions</groupId>
+  <artifactId>payara</artifactId>
+  <type>zip</type>
+</dependency>
+| Also available are `payara-ml`, `payara-web`, `payara-web-ml`
+
+| Payara Micro
+|
+<dependency>
+  <groupId>fish.payara.extras</groupId>
+  <artifactId>payara-micro</artifactId>
+</dependency>
+|
+
+| Payara Embedded
+|
+<dependency>
+  <groupId>fish.payara.extras</groupId>
+  <artifactId>payara-embedded-all</artifactId>
+</dependency>
+| Also available `payara-embedded-web`
+
+| EJB HTTP Client
+|
+<dependency>
+  <groupId>fish.payara.extras</groupId>
+  <artifactId>ejb-http-client</artifactId>
+</dependency>
+|
+
+| Appclient
+|
+<dependency>
+  <groupId>fish.payara.server.appclient</groupId>
+  <artifactId>payara-client</artifactId>
+</dependency>
+|
+
+| Payara API
+|
+<dependency>
+  <groupId>fish.payara.api</groupId>
+  <artifactId>payara-api</artifactId>
+</dependency>
+|
+
+|===
+
+=== APIs
+
+APIs are declared in scope provided, as they define classes present within the server runtime.
+
+[%header, cols="1,3l,2"]
+|===
+|Artifact | Example usage | Note
+
+| Jakarta EE
+|
+<dependency>
+  <groupId>jakarta.platform</groupId>
+  <artifactId>jakarta.jakartaee-api</artifactId>
+</dependency>
+|Also available `jakarta.jakartaee-web-api`, and all individual API artifacts.
+
+| Eclipse Microprofile
+|
+<dependency>
+  <groupId>org.eclipse.microprofile</groupId>
+  <artifactId>microprofile</artifactId>
+  <type>pom</type>
+</dependency>
+| Individual APIs are also declared.
+
+| OSGi
+|
+<dependency>
+    <groupId>org.osgi</groupId>
+    <artifactId>org.osgi.core</artifactId>
+</dependency>
+| Also available are `org.osgi.compendium` and `org.osgi.enterprise`
+
+|===
+
+=== Test tooling
+
+Arquillian is the recommended way for integration tests with the server.
+Payara Platform provides multiple connectors fitting the deployment scenarios.
+These artifacts are declared in scope `test`.
+
+Payara Server also ships with two embedded databases, matching versions of those are also declared, but in default scope.
+
+[%header, cols="1,3l,2"]
+|===
+|Artifact | Example usage | Note
+
+| Arquillian container - Remote
+2+| 
+<dependency>
+  <groupId>fish.payara.arquillian</groupId>
+  <artifactId>arquillian-payara-server-remote</artifactId>
+</dependency>
+
+
+| Arquillian container - Embedded
+2+|
+<dependency>
+  <groupId>fish.payara.arquillian</groupId>
+  <artifactId>arquillian-payara-server-embedded</artifactId>
+</dependency>
+ 
+
+| Arquillian container - Managed
+2+|
+<dependency>
+  <groupId>fish.payara.arquillian</groupId>
+  <artifactId>arquillian-payara-server-managed</artifactId>
+</dependency>
+
+
+| Arquillian container - Payara Micro
+2+|
+<dependency>
+  <groupId>fish.payara.arquillian</groupId>
+  <artifactId>arquillian-payara-micro-managed</artifactId>
+</dependency>
+
+
+| H2 Database
+|
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+  <scope>test</scope>
+</dependency>
+|
+
+| JavaDB / Derby
+|
+<dependency>
+  <groupId>org.apache.derby</groupId>
+  <artifactId>derby</artifactId>
+  <scope>test</scope>
+</dependency>
+| Also available `derbyclient` (Remote JDBC client), `derbynet` (Network server) and various locale packages.
+|===
+
+=== Libraries and API implementations
+
+This is non-exhaustive list of dependencies. By default all are declared in default scope, but it is more correct to use them with scope `provided` if they exist in directory `glassfish/modules`.
+
+[%header, cols="1,3l,2"]
+|===
+|Artifact | Example usage | Note
+
+| Jersey
+|
+<dependency>
+  <groupId>org.glassfish.jersey.core</groupId>
+  <artifactId>jersey-client</artifactId>
+  <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>org.glassfish.jersey.inject</groupId>
+  <artifactId>jersey-hk2</artifactId>
+  <scope>test</scope>
+</dependency>
+| Example - use JAXRS client in tests. All artifacts of Jersey BOM are imported.
+
+| Hibernate Validator
+|
+<dependency>
+  <groupId>org.hibernate.validator</groupId>
+  <artifactId>hibernate-validator</artifactId>
+  <scope>test</scope>
+</dependency>
+|
+
+| EclipseLink - JPA Metamodel generator
+| 
+<dependency>
+  <groupId>org.eclipse.persistence</groupId>
+  <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
+</dependency>
+| Only dependency already scoped `provided`, as it is an annotation processor.
+
+| EclipseLink
+|
+<dependency>
+  <groupId>org.eclipse.persistence</groupId>
+  <artifactId>org.eclipse.persistence.jpa</artifactId>
+  <scope>provided</scope>
+</dependency>
+|
+
+| Hazelcast
+|
+<dependency>
+  <groupId>com.hazelcast</groupId>
+  <artifactId>hazelcast</artifactId>
+  <scope>provided</scope>
+</dependency>
+| Also available `hazelcast-kubernetes`
+
+| Jackson
+| 
+<dependency>
+  <groupId>com.fasterxml.jackson.datatype</groupId>
+  <artifactId>jackson-datatype-jdk8</artifactId>
+</dependency>
+| All artifacts of Jackson BOM are imported.
+
+| Yasson
+|
+<dependency>
+  <groupId>org.eclipse</groupId>
+  <artifactId>yasson</artifactId>
+  <scope>test</scope>
+</dependency>
+| 
+
+| Tyrus
+| 
+<dependency>
+  <groupId>org.glassfish.tyrus</groupId>
+  <artifactId>tyrus-client</artifactId>
+  <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>org.glassfish.tyrus</groupId>
+  <artifactId>tyrus-container-grizzly-client</artifactId>
+  <scope>test</scope>
+</dependency>
+|
+
+|===
+

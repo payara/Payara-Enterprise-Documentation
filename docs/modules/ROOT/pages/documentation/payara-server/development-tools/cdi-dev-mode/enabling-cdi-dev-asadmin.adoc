@@ -1,0 +1,36 @@
+= Enabling CDI Development Mode using asadmin
+
+== Enabling for a single application
+
+The CDI Development Mode can be enabled for a single application with the `deploy` command. It's enough to specify an additional property `cdiDevModeEnabled=true` with the `--properties` argument of the `deploy` command.
+
+As an example, an application `application.war` will be deployed with CDI Development Mode using the following command:
+
+[source,bash]
+----
+asadmin> deploy --properties cdiDevModeEnabled=true myapplication.war
+----
+
+After you deploy the application, you should be able to see a message with "Weld Development Mode: ENABLED" in the server's log file.
+
+NOTE: CDI Development Mode will be enabled only if the deployed application contains CDI beans or EJBs.
+
+It's also possible to use the same `cdiDevModeEnabled` property with the `redeploy` command to enable/disable CDI Development Mode on redeployment. 
+
+== Enabling for all applications
+
+The CDI Development Mode can be enabled also globally for all applications. This is configured by setting the system property `org.jboss.weld.development` to `true` with the `create-system-properties` asadmin command:
+
+[source,bash]
+----
+asadmin> create-system-properties org.jboss.weld.development=true
+----
+
+All applications deployed after this setting is applied will have CDI Development Mode enabled. To enable it for already deployed applications, it's necessary to redeploy them or disable and then enable them. The latter can be done with the `disable` and `enable` asadmin commands, similar to the following:
+
+[source,bash]
+----
+asadmin> disable myapplication
+asadmin> enable myapplication
+----
+

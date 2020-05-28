@@ -1,0 +1,54 @@
+= Payara Server tools in VSCode
+
+[[adding-server]]
+== Adding Payara Server to VSCode
+
+1. Open the command pallet using *Ctrl + Shift + P*, type *Payara* and select the *Add Payara Server* option:
+
+image::vscode-extension/payara-server/add-payara-server-command.png[alt=Add Payara Server, width="60%"]
+
+Or In the explorer sidebar (or Payara activity bar), expand Payara Servers, Press the *+* sign to add Payara Server:
+
+image::vscode-extension/payara-server/add-payara-server.png[alt=Add Payara Server, width="60%"]
+
+3. Browse the Payara Server installation path (recently used servers location are listed by default):
+
+image::vscode-extension/payara-server/browse-payara-server.png[alt=Browse Server Runtime, width="60%"]
+4. Choose a name for the server.
+
+image::vscode-extension/payara-server/name-payara-server.png[alt=Fill server name, width="60%"]
+4. Then select a domain from the list or create a new domain by pressing the *+* button:
+
+image::vscode-extension/payara-server/select-payara-server-domain.png[alt=Select server domain, width="60%"]
+5. That’s how to add Payara Server to VSCode.
+
+[[managing-server]]
+== Managing Payara Server from VSCode
+
+Once Payara Server is added to VSCode it can be found 
+under the Payara Servers explorer panel with the configured name.
+Right-clicking on the server lets you do the following things:
+
+* Start, restart or stop the server
+* Start debugging the server
+* Rename or remove the server
+* Open admin console
+* Open server log
+* Open server domain.xml config
+* Update Admin credentials
+* Update JDK Path
+
+image::vscode-extension/payara-server/start-payara-server.png[alt=Start Payara Server, width="60%"]
+
+[[deploy-application]]
+== Deploying Applications to Payara Server
+
+An application can be deployed and undeployed easily from VSCode.
+
+Right-click on the application and select *Run on Payara Server* to deploy the application:
+
+image::vscode-extension/payara-server/deploy-application.png[alt=Deploy application, width="60%"]
+
+The deploy application can be opened in the browser, undeployed or disabled by right-clicking on the application:
+
+image::vscode-extension/payara-server/list-application.png[alt=Open application homepage, width="60%"]

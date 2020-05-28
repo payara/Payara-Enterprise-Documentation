@@ -1,0 +1,44 @@
+[[compression-of-log-files-on-rotation]]
+= Compression of log files on rotation
+
+_Since version 4.1.1.164_
+
+Both Payara Server and GlassFish 4.0 Open Source Edition provide an option
+to rotate logs files using a configurable interval (given either by the size of
+the log file or by time elapsed). On top of that, Payara Server can be
+configured to compress rotated files automatically. This is done
+transparently, so  it is still possible to view  log entries that are using the
+the log viewer in the Web Admin Console.
+
+[[using-web-admin-console]]
+== Using the Web Admin Console
+
+When log rotation is configured, you can turn on compression of rotated
+files in the `Logger Settings` section, by ticking the `Compress on Rotation`
+checkbox:
+
+image:logging/compress_on_rotation.png[Compress on Rotation enabled]
+
+[[using-asadmin-utility]]
+== Using an `asadmin` command
+
+Use the following command to enable or disabled the automatic compression
+of log files on rotation:
+
+[source, shell]
+----
+asadmin> set-log-attributes com.sun.enterprise.server.logging.GFFileHandler.compressOnRotation='true'
+----
+
+[[view-the-log-files-in-the-admin-console]]
+== View the log files in the Admin Console
+
+The log files can be viewed in Admin Console in the same way as if they
+were uncompressed. The only difference is that the filename name ends with
+the `.gz` extension and it takes much longer to open them and display their
+contents.
+
+This is an example how the *Log Viewer* may visualize 3 compressed
+log files:
+
+image:logging/zipped_logs.png[Log Viewer with compressed log files]

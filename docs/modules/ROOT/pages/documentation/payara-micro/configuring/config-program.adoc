@@ -1,0 +1,67 @@
+[[configuring-an-instance-programmatically]]
+= Configuring an Instance Programmatically
+
+There are various methods available for configuring a Payara Micro instance
+programmatically. You can only configure an instance before it is bootstrapped
+however.
+
+The configuration methods available to you should be detected by your IDE, allowing
+you to view them using the auto-complete feature common to most popular IDEs.
+Alternatively, you can consult the
+xref:/documentation/payara-micro/appendices/config-methods.adoc[Payara Micro Configuration Methods]
+section in the
+xref:/documentation/payara-micro/appendices/appendices.adoc[Appendices].
+
+As noted in the
+xref:/documentation/payara-micro/deploying/deploy-program-bootstrap.adoc[Deploying an Application Programmatically]
+section, you can either call the desired configuration commands on one line during
+instance initialization, or on separate lines after creating a `PayaraMicro` variable.
+
+As an example of configuring an instance to use a different HTTP and Cluster
+start port on one line, see here:
+
+[source, java]
+----
+import fish.payara.micro.BootstrapException;
+import fish.payara.micro.PayaraMicro;
+
+public class EmbeddedPayara{
+    public static void main(String[] args) throws BootstrapException{
+        PayaraMicro.getInstance().setHttpPort(2468).setClusterStartPort(5902).bootStrap();
+    }
+}
+----
+
+For the example of the same, but done across multiple lines, see here:
+
+[source, java]
+----
+import fish.payara.micro.BootstrapException;
+import fish.payara.micro.PayaraMicro;
+
+public class EmbeddedPayara{
+    public static void main(String[] args) throws BootstrapException{
+        PayaraMicro micro = PayaraMicro.getInstance();
+        micro.setHttpPort(2468);
+        micro.setClusterStartPort(5902);
+        micro.bootStrap();
+    }
+}
+----
+
+It is also possible to configure an instance programmatically by specifying a
+`domain.xml` file that is packaged within your application by passing a resource
+string to the `setApplicationDomainXML` method. The path in the string will be
+resolved using the `getResource` method of the thread context class loader:
+
+[source, java]
+----
+import fish.payara.micro.BootstrapException;
+import fish.payara.micro.PayaraMicro;
+
+public class EmbeddedPayara{
+    public static void main(String[] args) throws BootstrapException{
+        PayaraMicro.getInstance().setApplicationDomainXML("config/domain.xml").bootStrap();
+    }
+}
+----

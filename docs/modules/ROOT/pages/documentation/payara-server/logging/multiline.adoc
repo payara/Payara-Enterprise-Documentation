@@ -1,0 +1,24 @@
+[[multiline-mode-for-logging]]
+= Multiline Mode for Logging
+
+_Since version 4.1.1.164_
+
+When Multiline mode is enabled, the log message body is printed on a new
+line after the message header for each log record. This will lead to a
+more friendly format that allows an easier reading.
+
+It is possible to enable Multiline mode using the Web Console:
+
+image:logging/multiline.png[Multiline mode in the Web Console]
+
+To enable the Multiline mode using the `asadmin` tool:
+
+[source, shell]
+----
+asadmin> set-log-attributes com.sun.enterprise.server.logging.GFFileHandler.multiLineMode='true'
+----
+
+After the Multiline mode is enabled, the log messages will look similar
+to this sample:
+
+image:logging/multiline_example.png[Multiline mode in the Web Console]

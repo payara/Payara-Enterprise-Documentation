@@ -1,0 +1,6 @@
+[[access-logging-date-stamp-property]]
+= Access logging date stamp property
+
+__Since version 5.191__
+
+The date stamp for access logs can be configured. When the new property is set to true, only the files that are rotated at the end of the day will be date stamped, whereas when the property is false, the file being written has the date stamp appended.

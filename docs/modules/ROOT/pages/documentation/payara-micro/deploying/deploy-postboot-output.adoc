@@ -1,0 +1,47 @@
+[[payara-micro-post-boot-output]]
+= Payara Micro Post Boot Output
+
+Information about the output made by Payara Micro after its booting has completed.
+
+[[deployed-apps]]
+== Deployed Apps
+
+After Payara Micro has booted, the log output will list data about the
+Payara Micro instance and its deployed apps.
+
+This data includes:
+
+* The name of the host
+* The HTTP ports in use by the instance
+* The HTTPS ports in use by the instance
+* The generated instance name
+* The instance group name
+* The hazelcast member UUID
+* The deployed applications
+* The URLs of the deployed applications
+
+Here is an example of this output:
+
+[source, shell]
+----
+[DATE:TIME+TIMEZONE] [] [INFO] [] [PayaraMicro] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: EPOCHTIME] [levelValue: 800] [[[DATE:TIME+TIMEZONE] [] [INFO] [] [PayaraMicro] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: EPOCHTIME] [levelValue: 800] [[
+Instance Configuration
+Host: Example-Host
+HTTP Port(s): 8080
+HTTPS Port(s):
+Instance Name: Adjective-Fish
+Instance Group: MicroShoal
+Hazelcast Member UUID 000a0aa0-000a-0a00-000a-a00000a00aa0
+Deployed: ExampleApp01 ( exampleapp01 war /exampleappendpoint1 )
+Deployed: ExampleApp02 ( exampleapp02 war /exampleappendpoint2 )
+]]
+
+[DATE:TIME+TIMEZONE] [] [INFO] [] [PayaraMicro] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: EPOCHTIME] [levelValue: 800] [[[DATE:TIME+TIMEZONE] [] [INFO] [] [PayaraMicro] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: EPOCHTIME] [levelValue: 800] [[
+
+Payara Micro URLs
+http://example:port/exampleappendpoint1
+https://example:port/exampleappendpoint1
+http://example:port/exampleappendpoint2
+https://example:port/exampleappendpoint2
+]]
+----

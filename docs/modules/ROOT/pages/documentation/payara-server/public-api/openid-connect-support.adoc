@@ -1,0 +1,434 @@
+[[openid-connect-support]]
+= OpenID Connect Support
+
+_Since Payara Server 4.1.2.183 and 5.183_
+
+The Payara API provides a `@OpenIdAuthenticationDefinition` annotation that creates an authorization mechanism for OpenID Connect support. 
+This works in the same way as other authorization mechanisms in the Java EE Security API.
+
+[[usage]]
+== Usage
+
+The OpenID Connect authentication mechanism is defined through the `@OpenIdAuthenticationDefinition` annotation. 
+Specifying this in a valid place as defined by the Java EE Security API will create the mechanism. 
+Often this may mean that any class is a valid position.
+
+[[usage-example]]
+=== Example
+
+Here's an example that configures a OpenID Connect client:
+
+[source, java]
+----
+@OpenIdAuthenticationDefinition(
+       providerURI = "https://sample-openid-server.com",
+       clientId = "87068hgfg5675htfv6mrucov57bknst.apps.sample.com",
+       clientSecret = "{my-secret}",
+       redirectURI = "${baseURL}/callback",
+       extraParameters = {
+            "testKey=testValue",
+            "testKey2=testValue2"
+       }
+)
+public class SecurityBean {
+
+}
+----
+
+See xref:https://github.com/javaee-samples/vendoree-samples/tree/master/payara/openid[this sample project] for a more detailed example.
+
+When defining a OpenID Connect flow within an application deployed on Payara Server, 
+it is possible to retrieve the access token, identity token, user claims and the other authentication information within any bean in the scope of the callback/redirectURI resource used to configure the authentication:
+
+[source, java]
+----
+@WebServlet("/callback")
+public class CallbackServlet extends HttpServlet {
+    
+    @Inject
+    OpenIdContext context;
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+        //Here's the caller name
+        out.println(context.getCallerName());
+        //Here's the caller groups
+        out.println(context.getCallerGroups());
+        //Here's the unique subject identifier within the issuer
+        out.println(context.getSubject());
+        //Here's the access token
+        out.println(context.getAccessToken());
+        //Here's the identity token
+        out.println(context.getIdentityToken());
+        //Here's the user claims
+        out.println(context.getClaimsJson());
+    }
+}
+----
+
+[[configuration]]
+== Configuration
+
+OpenID Client can be configured with both `@OpenIdAuthenticationDefinition` annotation attributes and Microprofile Config properties.
+The annotation and MicroProfile properties has several configuration options.
+
+They are detailed below.
+
+.Configuration Options
+|===
+| Option | MP Config property | Required | Description | Default value | Requirements
+
+| `providerURI`
+| `payara.security.openid.providerURI`
+| true
+| The provider uri to discover the metadata of the OpenID Connect provider.
+|
+| The endpoint must be HTTPS.
+
+| `clientId`
+| `payara.security.openid.clientId`
+| true
+| The client identifier issued when the application was registered.
+|
+| N/A.
+
+| `clientSecret`
+| `payara.security.openid.clientSecret`
+| true
+| The client secret for the registered application.
+|
+| N/A.
+
+| `redirectURI`
+| `payara.security.openid.redirectURI`
+| true
+| The URL to redirect the user to upon successful authentication.
+| ${baseURL}/Callback
+| Must be equal to one set in the OpenID Connect provider.
+
+| `scope`
+| `payara.security.openid.scope`
+| false
+| The scopes requested from the OpenID Connect provider.
+| {openid, email, profile}
+| N/A.
+
+| `responseType`
+| `payara.security.openid.responseType`
+| false
+| Response Type value defines the processing flow to be used.
+| code
+| N/A.
+
+| `responseMode`
+| `payara.security.openid.responseMode`
+| false
+| Informs the Authorization Server of the mechanism to be used for returning parameters from the Authorization Endpoint.
+|
+| N/A.
+
+| `prompt`
+| `payara.security.openid.prompt`
+| false
+| The prompt value specifies whether the authorization server prompts the user for re-authentication and consent.
+|
+| N/A.
+
+| `display`
+| `payara.security.openid.display`
+| false
+| The display value specifying how the authorization server displays the authentication and consent user interface pages.
+| page
+| N/A.
+
+| `useNonce`
+| `payara.security.openid.useNonce`
+| false
+| Enables string value used to mitigate replay attacks.
+| true
+| N/A.
+
+| `useSession`
+| `payara.security.openid.useSession`
+| false
+| If enabled state & nonce value stored in session otherwise in cookies.
+| true
+| N/A.
+
+| `jwksConnectTimeout`
+| `payara.security.openid.jwks.connect.timeout`
+| false
+| Sets the connect timeout(in milliseconds) for Remote JWKS retrieval.
+| 500
+| Value must not be negative and if value is zero then infinite timeout.
+
+| `jwksReadTimeout`
+| `payara.security.openid.jwks.read.timeout`
+| false
+| Sets the read timeout(in milliseconds) for Remote JWKS retrieval.
+| 500
+| Value must not be negative and if value is zero then infinite timeout.
+
+| `tokenAutoRefresh`
+| `payara.security.openid.token.autoRefresh`
+| false
+| Enables or disables the automatically performed refresh of Access and Refresh Token.  _Since Payara Server 5.193_
+| false
+| N/A.
+
+| `tokenMinValidity`
+| `payara.security.openid.token.minValidity`
+| false
+| Sets the minimum validity time(in milliseconds) the Access Token must be valid before it is considered expired. _Since Payara Server 5.193_
+| 10000
+| Value must not be negative.
+
+| `claimsDefinition.callerNameClaim`
+| `payara.security.openid.callerNameClaim`
+| false
+| Defines the name of callerName claim and maps the claim's value to caller name value in IdentityStore#validate. _Since Payara Server 5.184_
+| preferred_username
+| N/A.
+
+| `claimsDefinition.callerGroupsClaim`
+| `payara.security.openid.callerGroupsClaim`
+| false
+| Defines the name of callerGroups claim and maps the claim's value to caller groups value in IdentityStore#validate. _Since Payara Server 5.184_
+| groups
+| N/A.
+
+| `extraParameters`
+|
+| false
+| An array of extra options to be sent to the OpenID Connect provider.
+|
+| Must be in the form `"key=value"`.
+|===
+
+*Note :* If both an annotation attribute and a MicroProfile Config property are defined for the same option 
+then the MicroProfile Config property value always takes precedence over the `@OpenIdAuthenticationDefinition` annotation value.
+
+[[el-support]]
+=== Expression Language Support
+
+Additionally, the `@OpenIdAuthenticationDefinition` supports the use of expression language (EL) notation for dynamic configuration scenarios. 
+This means that you can use any CDI bean properties to set the OpenID Connect configuration like this:
+
+[source, java]
+----
+@OpenIdAuthenticationDefinition(
+    providerURI="#{openidConfigBean.tokenEndpointURL}",
+    clientId="#{openidConfigBean.clientId}",
+    clientSecret="#{openidConfigBean.clientSecret}",
+    redirectURI="#{openidConfigBean.redirectURI}"
+)
+public class SecurityBean {
+}
+----
+
+[[secret-alias]]
+=== Client Secret Aliasing
+
+The client secret can be input directly, or for added security it can be aliased using any of the following features:
+
+- xref:/documentation/payara-server/password-aliases/README.adoc[Password Aliases]
+- xref:/documentation/payara-server/server-configuration/var-substitution/README.adoc[Environment Variables / System Properties]
+- xref:/documentation/microprofile/config.adoc[Config API]
+
+[[fetch-caller-data]]
+=== Fetch Caller Data
+As OpenId Connect Client is built on top of Jakarta EE Security API,
+therefore `javax.security.enterprise.SecurityContext` interface can provide 
+caller info which is available as a CDI bean and can be injected into any context-aware instance.
+
+The Payara API also provides a `fish.payara.security.openid.api.OpenIdContext` 
+interface which is also available as a CDI bean and consist of the following methods:
+
+- The `getCallerName()` method - Gets the caller name of the currently authenticated user.
+- The `getCallerGroups()` method - Gets the groups associated with the caller.
+- The `getSubject()` method - Subject Identifier. A locally unique and never 
+reassigned identifier within the Issuer for the End-User, which is intended to 
+be consumed by the Client.
+- The `getTokenType()` method - Gets the token type value. The value MUST be 
+Bearer or another token_type value that the Client has negotiated with the 
+Authorization Server. 
+- The `getAccessToken()` method - Gets the authorization token that was received from the OpenId Connect provider.
+- The `getIdentityToken()` method - Gets the identity token that was received from the OpenId Connect provider.
+- The `getRefreshToken()` method - Returns the refresh token that is used by OIDC client to get a new access token.
+- The `getExpiresIn()` method - Return the time that the access token is granted for, if it is set to expire.
+- The `getClaimsJson()` method - Gets the User Claims JSON that was received from the userinfo endpoint.
+- The `getClaims()` method - Gets the User Claims that were received from the userinfo endpoint.
+- The `getProviderMetadata()` method - The OpenId Connect Provider's metadata document fetched via provider URI.
+
+[[google-oidc-integration]]
+=== Google integration
+
+The Payara API provides the in-built support for Google OpenID Provider via the `@GoogleAuthenticationDefinition` annotation.
+
+==== Request Refresh Token
+To enable the refresh token feature, set the `tokenAutoRefresh` to true 
+and add the `access_type` parameter value to `offline`
+so that application can refresh access tokens when the user is not present at the browser. 
+
+If application requests `offline` access then the application can receive access and refresh token. 
+Once the application has a refresh token, it can obtain a new access token at any time or as older ones expire.
+Otherwise, If application requests `online` access, your application will only receive an access token
+
+[source, java]
+----
+@GoogleAuthenticationDefinition(
+    providerURI="#{openidConfigBean.tokenEndpointURL}",
+    clientId="#{openidConfigBean.clientId}",
+    clientSecret="#{openidConfigBean.clientSecret}",
+    ...
+    tokenAutoRefresh = true,
+    extraParameters = {"access_type=offline", "approval_prompt=force"}
+)
+public class SecurityBean {
+}
+----
+
+[[azure-ad-oidc-integration]]
+=== Azure AD integration
+
+The Payara API also provides the in-built support for Azure AD OpenID Provider via the `@AzureAuthenticationDefinition` annotation.
+
+==== Request Refresh Token
+To receive the refresh token, set the `tokenAutoRefresh` to true and explicitly add the `offline_access` scope to the definition.
+
+[source, java]
+----
+@AzureAuthenticationDefinition(
+    providerURI="#{openidConfigBean.tokenEndpointURL}",
+    clientId="#{openidConfigBean.clientId}",
+    clientSecret="#{openidConfigBean.clientSecret}",
+    ...
+    tokenAutoRefresh = true,
+    scope = {OPENID_SCOPE, EMAIL_SCOPE, PROFILE_SCOPE, OFFLINE_ACCESS_SCOPE}
+)
+public class SecurityBean {
+}
+----
+
+
+==== Groups mapping
+
+- To add the groups to the registered application, Sign in to the Azure portal > Azure Active Directory > Manage > App registrations > select your application:
+image::security-connector/oidc/azure/app_registrations.png[Select application]
+
+- You may also add the custom roles via **Roles and administrators** under the **Manage** section:
+image::security-connector/oidc/azure/custom_role.png[Add Custom Roles]
+
+- Now to map group claims, select **Token configuration** under the **Manage** section:
+image::security-connector/oidc/azure/token_configuration.png[Token configuration]
+
+- Press **Add groups claim** button to select group types and customize Id and/or Access token properties:
+image::security-connector/oidc/azure/add_groups_claim.png[Add Groups Claim]
+
+- Groups claim can also be defined via Azure **Manifest** under the **Manage** section which is a JSON configuration file.
+
+- To retrieve and map the caller name & groups from token claims, set the caller name & group claim definition to `preferred_username` & `groups`.
+[source, java]
+----
+@AzureAuthenticationDefinition(
+    providerURI="#{openidConfigBean.tokenEndpointURL}",
+    clientId="#{openidConfigBean.clientId}",
+    clientSecret="#{openidConfigBean.clientSecret}",
+    ...
+    claimsDefinition = @ClaimsDefinition(
+            callerGroupsClaim = "groups",
+            callerNameClaim = "preferred_username"
+    )
+)
+public class SecurityBean {
+}
+----
+
+
+[[keycloak-oidc-integration]]
+=== Keycloak integration
+
+Keycloak is Open Source Identity and Access Management Server, which is a OAuth2
+and OpenID Connect(OIDC) protocol complaint. In this section, the basic steps 
+are described to setup Keycloak OpenId provider.For more details about Keycloak 
+configuration options, please visit to the official documentation:
+https://www.keycloak.org/documentation.html
+
+- Refer Keycloak https://www.keycloak.org/docs/latest/getting_started/index.html[getting started documentation] to run and setup keycloak.
+
+- After Keycloak setup done, login to Keycloak admin console and add the new realm by pressing the **Add Realm** button:
+image::security-connector/oidc/keycloak/add_realm.png[Add Realm]
+
+- Copy the OpenId endpoint configuration URL from endpoint section:
+image::security-connector/oidc/keycloak/realm_endpoint.png[Realm Endpoint]
+
+- Now add the **Role** that will be used by the application to define which users will be authorized to access the application.
+image::security-connector/oidc/keycloak/add-role.png[Add role]
+
+- Create the **Groups**:
+image::security-connector/oidc/keycloak/create-group.png[Create Groups]
+
+- Add the **User**:
+image::security-connector/oidc/keycloak/add-user.png[Add User]
+
+- After the user is created, set a new **password** for the user:
+image::security-connector/oidc/keycloak/set-user-password.png[Set Password]
+
+- Now map the user to roles. Click on **Role Mappings** tab and assign the roles to the user from the available roles:
+image::security-connector/oidc/keycloak/user-role-mapping.png[User Role Mapping]
+
+- Assign the user to the groups. Click on **Groups** tab and join the groups from the available groups:
+image::security-connector/oidc/keycloak/join-group.png[Join Groups]
+
+- Create the OpenId Client by clicking the **Client** option from sidebar and press the **create** button:
+image::security-connector/oidc/keycloak/create-client.png[Create OpenID Client]
+Enter the Client ID and select the Client Protocol **openid-connect** and press **Save**.
+
+- After the openid client is created change its **Access Type** to **confidential** and enter the valid **Redirect URIs**:
+image::security-connector/oidc/keycloak/client-access-type-confidentail.png[Access Type]
+
+- Next copy the client **secret** from **Credentials** tab.
+image::security-connector/oidc/keycloak/client-secret.png[Client Secret]
+
+Here's an example that configures a OpenID Connect client for Keycloak provider.
+To test the KeyCloak OpenId provider, enter the copied Client Secret, Client ID (client name) and the endpoint configuration URL:
+
+[source, java]
+----
+@OpenIdAuthenticationDefinition(
+    providerURI = "http://${keycloak-host}:${keycloak-port}/auth/realms/test-realm",
+    clientId = "test-client",
+    clientSecret = "1f6744ae-d7e7-4876-bc44-78fb691316a1"
+    ...
+)
+public class SecurityBean {
+}
+----
+
+==== Groups mapping
+
+- To get the groups details in token claims, navigate to Keycloak admin console > OpenId **Client** > **Mappers** tab > press **create** button > Select **Group Membership** mapper type > enter the **Name** and **Token Claim Name** > press **Save**.
+image::security-connector/oidc/keycloak/groups-claim.png[Groups Claim]
+
+- To retrieve and map the caller name & groups from token claims, set the caller name & group claim definition to `preferred_username` & `groups`.
+[source, java]
+----
+@OpenIdAuthenticationDefinition(
+    providerURI = "http://${keycloak-host}:${keycloak-port}/auth/realms/test-realm",
+    clientId = "test-client",
+    clientSecret = "1f6744ae-d7e7-4876-bc44-78fb691316a1"
+    ...
+    claimsDefinition = @ClaimsDefinition(
+            callerGroupsClaim = "groups",
+            callerNameClaim = "preferred_username"
+    )
+)
+public class SecurityBean {
+}
+----
+
+[[extra-resources]]
+== Extra Resources
+
+To read more about OpenID Connect itself, visit http://openid.net/specs/openid-connect-core-1_0.html

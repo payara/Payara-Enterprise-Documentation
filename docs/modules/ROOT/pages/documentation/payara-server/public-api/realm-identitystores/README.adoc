@@ -1,0 +1,23 @@
+[[realm-identity-stores]]
+= Realm Identity Stores Support
+
+_Since Payara Server 5.194_
+
+A security realm contains a collection of users with a password and the optional
+roles that are used to authenticate the users. Payara Server comes with a set of
+preconfigured realms(file, certificate, and admin) which can be specified in the
+deployment descriptor of web application but the web deployment descriptor allows
+only a single realm-name definition per module.
+
+The Payara API provides a way to easily secure a web application with single or
+multiple realms in a portable way using the Jakarta EE Identity Stores which may
+register the non-existing realm in the server using the application defined 
+configuration and mapped to Payara realms to authenticate the users.
+The realm identity stores are initialized by specifying any of the following annotations
+in a valid place as defined by the https://jakarta.ee/specifications/security/1.0/apidocs/[Jakarta EE Security API].
+
+- xref:documentation/payara-server/public-api/realm-identitystores/realm-identity-store-definition.adoc[@RealmIdentityStoreDefinition]
+- xref:documentation/payara-server/public-api/realm-identitystores/file-identity-store-definition.adoc[@FileIdentityStoreDefinition]
+- xref:documentation/payara-server/public-api/realm-identitystores/certificate-identity-store-definition.adoc[@CertificateIdentityStoreDefinition]
+- xref:documentation/payara-server/public-api/realm-identitystores/pam-identity-store-definition.adoc[@PamIdentityStoreDefinition]
+- xref:documentation/payara-server/public-api/realm-identitystores/solaris-identity-store-definition.adoc[@SolarisIdentityStoreDefinition]

@@ -1,0 +1,120 @@
+[[packaging-a-configured-instance-as-an-uber-jar]]
+= Packaging a Configured Instance as an Uber Jar
+
+Sometimes it is preferable to package the application (or applications),
+configuration and dependencies into a single executable jar. To do this with
+Payara Micro use the `--outputUberJar` command line option as in this example:
+
+[source, shell]
+----
+java -jar payara-micro.jar --deploy test.war --outputUberJar test.jar
+----
+
+This will package up the `payara-micro.jar` and the WAR application into a
+single JAR. The resulting file can be execute like this:
+
+[source, shell]
+----
+java -jar test.jar
+----
+
+Any additional command line options you specify when creating an Uber JAR are
+recorded, so the Payara Micro instance is configured later when executing the
+packaged JAR:
+
+[source, shell]
+----
+java -jar payara-micro.jar --deploy test.war --port 9080 --lite --clusterName test-cluster --clusterPassword test-password --outputUberJar test2.jar
+----
+
+IMPORTANT: All specified command line option will be retained when the Uber JAR
+is executed.
+
+[[uber-jar-context-root]]
+== Uber JAR Context Root
+
+When creating an Uber JAR, the context root of the packaged application will
+*always* be the name of the application WAR that is deployed. For example,
+ the `test.war` that was packaged into the `test2.jar` on port *9080* would be
+ accessible on the following path:
+
+--------------------------
+http://localhost:9080/test
+--------------------------
+
+Currently, this is *always* the case; including when a context root is specified
+in a `glassfish-web.xml` deployment descriptor.
+
+If the WAR file is renamed to `ROOT.war` and packaged as an Uber JAR, it will
+be deployed to the root context:
+
+[source, shell]
+----
+java -jar payara-micro.jar --deploy ROOT.war --port 9080 --outputUberJar test3.jar
+java -jar test3.jar
+----
+
+The application will now be accessible on:
+
+----------------------
+http://localhost:9080/
+----------------------
+
+[[package-additional-files]]
+== Package Additional Files
+
+_Since Payara Server 4.1.1.171_
+
+It's also possible to package additional files into an Uber JAR, by using a custom
+root directory. You can run a Payara Micro instance first by generating the domain
+directory first using the `--rootDir` option first:
+
+[source, shell]
+----
+java -jar payara-micro.jar --rootDir /tmp/micro-dir/
+----
+
+You can then add files to the root directory like this:
+
+[source, shell]
+----
+> cd /tmp/micro-dir/
+> ls -lsarth
+
+total 784K
+   0 drwxr-xr-x 1 root 197609    0 Mar 24 18:16 docroot
+160K -rw-r--r-- 1 root 197609 158K Mar 24 18:16 __ds_jdbc_ra.rar
+   0 drwxr-xr-x 1 root 197609    0 Mar 24 18:16 META-INF
+160K -rw-r--r-- 1 root 197609 159K Mar 24 18:16 __cp_jdbc_ra.rar
+160K -rw-r--r-- 1 root 197609 159K Mar 24 18:16 __xa_jdbc_ra.rar
+160K -rw-r--r-- 1 root 197609 160K Mar 24 18:16 __dm_jdbc_ra.rar
+   0 drwxr-xr-x 1 root 197609    0 Mar 24 18:17 autodeploy
+   0 drwxr-xr-x 1 root 197609    0 Mar 24 18:20 lib
+4.0K drwxr-xr-x 1 root 197609    0 Mar 30 19:22 config
+128K drwxr-xr-x 1 root 197609    0 Mar 30 19:23 runtime
+
+> cp ~/test-properties /tmp/micro-dir/config/.
+----
+
+And then, generate the Uber JAR using the modified root directory:
+
+----
+java -jar payara-micro.jar --rootDir /tmp/micro-dir/ --outputUberJar custom-micro.jar
+----
+
+You can verify that the files are located in the MICRO-INF/ directory:
+
+[source, shell]
+----
+> unzip -d custom-micro custom-micro.jar
+> ls -lsarth custom-micro/** | grep
+
+MICRO-INF/domain:
+total 304K
+1.0K -rw-r--r-- 1 fabio 197609   24 Apr  3 20:26 test.properties
+----
+
+IMPORTANT: Additional JAR files that are placed in the `$\{PAYARA_INSTALL_DIR}/lib`
+directory will be ignored when being packaged to the Uber JAR. To package additional
+JAR files into an Uber JAR, check the
+xref:/documentation/payara-micro/adding-jars.adoc[Adding Third Party JARs section]

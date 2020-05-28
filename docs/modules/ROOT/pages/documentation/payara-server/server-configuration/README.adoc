@@ -1,0 +1,4 @@
+[[payara-server-configuration-files]]
+= Payara Server Configuration Files
+
+Documentation about Payara Server specific configuration properties.

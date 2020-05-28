@@ -1,0 +1,109 @@
+[[deploying-an-application-programmatically-during-bootstrap]]
+= Deploying an Application Programmatically during Bootstrap
+
+There are two methods you can use to deploy an application during the
+bootstrapping process:
+
+* `addDeployment(String pathToWar)`
+* `addDeploymentFile(File file)`
+
+The first, `addDeployment(String pathToWar)`, accepts a String that points to the
+path of the file to be deployed. For example:
+
+[source, java]
+----
+import fish.payara.micro.BootstrapException;
+import fish.payara.micro.PayaraMicro;
+
+public class EmbeddedPayara{
+    public static void main(String[] args) throws BootstrapException{
+        PayaraMicro.getInstance().addDeployment("/home/user/example.war").bootStrap();
+    }
+}
+----
+
+The second method, `addDeploymentFile(File file)`, functions in the same way as
+the `addDeployment(String pathToWar)` method, but takes a `File` object as its
+parameter instead:
+
+[source, java]
+----
+import fish.payara.micro.BootstrapException;
+import fish.payara.micro.PayaraMicro;
+import java.io.File;
+
+public class EmbeddedPayara{
+    public static void main(String[] args) throws BootstrapException{
+        File file = new File("/home/user/example.war");
+        PayaraMicro.getInstance().addDeploymentFile(file).bootStrap();
+    }
+}
+----
+
+Unlike when controlling Payara Micro from the command line, you can split the
+instance initialization and configuration across multiple lines methods. For
+example, to deploy an application on one line, and start the instance on another:
+
+[source, java]
+----
+import fish.payara.micro.BootstrapException;
+import fish.payara.micro.PayaraMicro;
+
+public class EmbeddedPayara{
+    public static void main(String[] args) throws BootstrapException{
+        PayaraMicro micro = PayaraMicro.getInstance();
+        micro.addDeployment("/home/user/example.war");
+        micro.bootStrap();
+    }
+}
+----
+
+[[deploying-multiple-applications-programmatically-during-bootstrap]]
+== Deploying Multiple Applications Programmatically during Bootstrap
+
+Similar to when deploying multiple applications from the command line, you must
+call the `addDeployment` or `addDeploymentFile` method for each application you
+wish to deploy.
+
+For example, to deploy three applications:
+
+[source, java]
+----
+import fish.payara.micro.BootstrapException;
+import fish.payara.micro.PayaraMicro;
+
+public class EmbeddedPayara{
+    public static void main(String[] args) throws BootstrapException{
+        PayaraMicro micro = PayaraMicro.getInstance();
+
+        micro.addDeployment("/home/user/example.war");
+        micro.addDeployment("/home/user/test.war");
+        micro.addDeployment("/home/user/three.war");
+
+        micro.bootStrap();
+    }
+}
+----
+
+Alternatively, you can use the programmatic equivalent of the `--deploymentDir`
+command line option (described in the section
+xref:deploy-cmd-line.adoc#deploying-multiple-applications[Deploying From the Command Line]),
+the `setDeploymentDir(File deploymentRoot)` method
+
+For example:
+
+[source, java]
+----
+import fish.payara.micro.BootstrapException;
+import fish.payara.micro.PayaraMicro;
+import java.io.File;
+
+public class EmbeddedPayara{
+    public static void main(String[] args) throws BootstrapException{
+        File deployments = new File("/home/user/deployments/");
+        PayaraMicro micro = PayaraMicro.getInstance();
+        micro.setDeploymentDir(deployments);
+        micro.bootStrap();
+    }
+}
+----

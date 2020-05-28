@@ -1,0 +1,48 @@
+[[password-aliases-overview]]
+= Password Aliases Overview
+
+By default, passwords within Payara Server are treated like any other property
+and are stored in plaintext. Passwords stored in plaintext are a security
+risk, as you can directly read them, unencrypted and unobstructed.
+
+A *password alias* allows you to have a plaintext reference to an encrypted
+password stored on the server, with the alias being used wherever the
+password is needed.
+
+[[using-password-alias-admin-console]]
+== Using a password alias within the Admin Console
+
+To use a password alias, navigate to any configuration view where you would
+have previously entered a password in plaintext format:
+
+image::password-aliases/password-aliases-unused.png[Password in plain text]
+
+In place of the password, you can enter an alias which corresponds to the password
+in the form: `${ALIAS=<password-alias-name>}`:
+
+image::password-aliases/password-aliases-using.png[Placeholder for Password Alias]
+
+To create a password alias from the admin console, read the instructions detailed
+xref:/documentation/payara-server/password-aliases/password-alias-admin-console-commands.adoc[here].
+
+[[using-password-alias-command-line]]
+== Using a password alias on the command line
+
+On the command line, when using `asadmin` commands where you would previously
+have entered a password, you can instead enter the password placeholder `${ALIAS=<example-alias-name>}`
+to avoid having passwords stored in the configuration in plain text.
+
+Here is an example of setting the user's password for a JDBC connection pool:
+
+[source, shell]
+----
+asadmin> create-jdbc-connection-pool [...] --property password=${ALIAS=<example-alias-name} [...]
+----
+
+To create a password alias from command line, read the instructions detailed
+xref:/documentation/payara-server/password-aliases/password-alias-asadmin-commands.adoc[here].
+
+[[using-password-alias-microprofile]]
+== MicroProfile Config support
+
+Password aliases can also be accessed using MicroProfile Config, as detailed xref:/documentation/microprofile/config.adoc[here].

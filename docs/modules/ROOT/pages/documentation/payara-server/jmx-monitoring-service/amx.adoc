@@ -1,0 +1,18 @@
+[[boot-amx]]
+= Boot AMX
+
+_Since Payara Server 5.182_
+
+To boot AMX at startup or independently from the JMX Monitoring service, run the 
+command below: 
+[source, shell]
+----
+asadmin>set-amx-enabled --enabled true --dynamic true --target server 
+----
+
+[[using-web-admin-console]]
+== Using the Admin Console
+
+To boot AMX using Admin Console:
+
+image:jmx-monitoring-service/enable_amx.png[Enable AMX]

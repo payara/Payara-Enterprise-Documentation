@@ -1,0 +1,87 @@
+= REST Monitoring asadmin commands
+This page documents the asadmin commands used to interact with the REST
+monitoring service.
+
+== `set-rest-monitoring-configuration`
+
+*Usage*::
+`asadmin> set-rest-monitoring-configuration --enabled true|false --target <config name> --contextRoot <contextRoot> --name <RESTMonitoringApplicationName> --securityEnabled true|false`
+
+*Aim*:: Sets the REST Monitoring application's configuration.
+
+=== Command Options
+
+Options which are not specified will not overwrite the existing configuration.
+
+[cols=",,,,",options="header",]
+|====
+|Option
+|Type
+|Description
+|Default Value
+|Required
+
+|`--target`
+|String
+|The config whose values will be set.
+|`server-config`
+|no
+
+|`--enabled`
+|Boolean
+|Whether or not the service is enabled for the selected config.
+|`false`
+|no
+
+|`--contextRoot`
+|String
+|The context root of the REST Monitoring application.
+|`/rest-monitoring`
+|no
+
+|`--name`
+|String
+|The name of the REST Monitoring application.
+|`__restmonitoring`
+|no
+
+|`--securityEnabled`
+|Boolean
+|Whether or not secure access to the REST Monitoring application is enabled.
+|`false`
+|no
+|====
+
+== `get-rest-monitoring-configuration`
+
+*Usage*::
+`asadmin> get-rest-monitoring-configuration --target <config name>`
+
+*Aim*:: Gets the specified config's REST Monitoring application configuration.
+
+=== Command Options
+
+[cols=",,,,",options="header",]
+|====
+|Option
+|Type
+|Description
+|Default
+|Mandatory
+
+|`--target`
+|String
+|The config whose REST Monitoring application's configuration will be retrieved.
+|`server-config`
+|no
+|====
+
+=== Example
+
+[source, shell]
+----
+asadmin> get-rest-monitoring-configuration --target server-config
+
+Enabled    Rest Monitoring Application Name    Context Root       Security Enabled
+true       __restmonitoring                    /rest-monitoring   false
+----

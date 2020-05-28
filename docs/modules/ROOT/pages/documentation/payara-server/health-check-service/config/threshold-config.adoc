@@ -1,0 +1,26 @@
+[[threshold-range-configuration]]
+= Threshold Range Configuration for HealthCheck Service Checkers
+
+The following attributes are available to the *CPU Usage*, *Connection Pool*,
+*Heap Memory Usage*, *Machine Memory Usage* and *Garbage Collector* checkers:
+
+_Threshold Good_:: The upper numeric boundary (valid `Integer`) of the metric used
+by the checker for the notification event to be classified as *GOOD*. It has **0**
+as default value.
+_Threshold Warning_:: The upper numeric boundary (valid `Integer`) of the metric used
+by the checker for the notification event to be classified as *WARNING*. It has **50**
+as default value.
+_Threshold Critical_:: The upper numeric boundary (valid `Integer`) of the metric used
+by the checker for the notification event to be classified as *CRITICAL*. It has **80**
+as default value.
+
+The threshold values range (GOOD - WARNING - CRITICAL) are used to correctly warn users of the health of an specific
+metric depending on their value when they are measured based on the checking frequency.
+For example, if the *CPU Usage* checker is configured with the default threshold values,
+and at measuring time, the CPU is performing at 76,8%. Then this notification event
+would be generated:
+[source, log]
+-----
+Health Check notification with severity level: WARNING - CPUC:Health Check Result:[[status=WARNING, message='CPU%: 76.8, Time CPU used: 171 milliseconds'']']
+-----
+

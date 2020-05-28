@@ -1,0 +1,30 @@
+[[payara-server-command-reference]]
+= Payara Server Asadmin Commands
+
+All Asadmin commands supported by _GlassFish Server 4 Open Source Edition_ are also supported by Payara Server. Some of the commands have been extended and new commands have been added which don't exist in GlassFish.
+
+Here's a list of Payara Server Asadmin commands that are not supported by GlassFish or have been modified to accept additional parameters:
+
+- xref:/documentation/payara-server/admin-console/asadmin-recorder.adoc[Asadmin Recorder Commands]
+- xref:/documentation/payara-server/hazelcast/asadmin.adoc[Hazelcast Commands]
+- xref:/documentation/payara-server/health-check-service/asadmin-commands.adoc[Healthcheck Commands]
+- xref:/documentation/payara-server/jbatch/asadmin.adoc[JBatch Commands]
+- xref:/documentation/payara-server/jmx-monitoring-service/asadmin-commands.adoc[JMX Monitoring Commands]
+- xref:/documentation/microprofile/config.adoc[Microprofile Config Commands]
+- xref:/documentation/payara-server/notification-service/asadmin-commands.adoc[Notification Service Commands]
+- xref:/documentation/payara-server/phone-home/phone-home-asadmin.adoc[Phone Home Commands]
+- xref:/documentation/payara-server/request-tracing-service/asadmin-commands.adoc[Request Tracing Commands]
+- xref:/documentation/payara-server/rest-monitoring/configuring-rest-monitoring.adoc[REST Monitoring Commands]
+- xref:/documentation/payara-server/deployment-groups/asadmin-commands.adoc[Deployment Groups Commands]
+- xref:/documentation/payara-server/asadmin-commands/disabling-jline.adoc[Disabling JLine Logging]
+- xref:/documentation/payara-server/asadmin-commands/server-management-commands.adoc[Server Management Commands]
+- xref:/documentation/payara-server/asadmin-commands/print-certificate.adoc[Print Certificate Command]
+- xref:/documentation/payara-server/asadmin-commands/misc-commands.adoc[Miscellaneous Commands]
+
+== Command Autocompletion
+
+_Since *5.184*&nbsp;_
+
+When running the `asadmin` utility, command autocompletion is supported similar to that found in the bash linux utility. To use this, run `asadmin` without any arguments. Any commands entered from this prompt can be autocompleted by tapping the `<Tab>` key.
+
+Alternatively, you can generate a bash autocompletion file to allow autocompletion without entering the `asadmin` prompt. To find out more, xref:/documentation/payara-server/asadmin-commands/misc-commands.adoc#generate-bash-autocomplete-command[read the documentation here].

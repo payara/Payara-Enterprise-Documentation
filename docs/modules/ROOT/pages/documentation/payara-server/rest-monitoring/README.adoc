@@ -1,0 +1,11 @@
+= REST monitoring
+
+:previewVersion: {currentVersion}
+include::partial$tech-preview.adoc[]
+
+This section covers how to use the REST monitoring functionality in
+Payara Server {currentVersion}.
+
+The REST monitoring implements a Jolokia type functionality in Payara Server.
+
+It exposes MBeans over HTTP with a REST API to stop JMX monitoring requiring RMI. The REST monitoring is hosted on the admin-listener (port 4848).

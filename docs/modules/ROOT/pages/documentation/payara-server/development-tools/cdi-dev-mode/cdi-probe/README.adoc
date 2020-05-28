@@ -1,0 +1,15 @@
+= CDI Probe
+
+_Since Payara Server 4.1.2.173_
+
+CDI Probe allows to inspect and monitor CDI beans of deployed applications at runtime. 
+
+With CDI Development Mode enabled, Payara Server administration console provides access to the CDI Probe tool. This tool allows inspecting and monitoring CDI beans of deployed applications at runtime.
+
+CDI Probe provides the following interfaces:
+
+ - HTML-based application accessible via browser
+ - REST API
+ - JMX beans
+
+The CDI Probe tool is powered by the Weld CDI engine. More information can be found in the Weld project documentation about http://docs.jboss.org/weld/reference/2.3.5.Final/en-US/html/devmode.html[Development Mode].

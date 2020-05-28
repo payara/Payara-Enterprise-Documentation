@@ -1,0 +1,172 @@
+[[jmx-notification-configuration]]
+= JMX Notification Configuration
+
+JMX Monitoring can be configured to send notifications using the
+xref:/documentation/payara-server/notification-service/notification-service.adoc[notification service].
+This allows you to forward data from exposed MBeans to your configured
+notifiers.
+
+[[configuration]]
+== Configuration
+
+The JMX Monitoring configuration page can be found under *Configurations* ->
+`<config-name>` -> *Monitoring*.
+
+image:jmx-monitoring-service/monitoring-page.png[Monitoring Page]
+
+From the `Monitoring` page, select the tab labelled `JMX`:
+
+image:jmx-monitoring-service/jmx-monitoring-page-full.png[Full JMX Monitoring Page]
+
+The JMX page allows you to specify the time between notifications, how
+notifications will be delivered, and the MBeans which will be included within
+the message.
+
+[[enabling-via-admin-console]]
+== Enabling JMX Monitoring via the Admin Console
+
+By default, both JMX and AMX start disabled.
+
+To enable JMX Monitoring for the JVM, select `Enabled`: 
+
+image:jmx-monitoring-service/jmx-monitoring-page-jmx-enabled.png[JMX Monitoring Page, with JMX enabled]
+
+To enable AMX (recommended), go to General monitoring page and select `AMX Enabled`:
+
+image:jmx-monitoring-service/jmx-monitoring-page-amx-enabled.png[JMX Monitoring Page, with JMX enabled]
+
+NOTE: In versions prior to _Payara Server 4.1.2.182 or 5.182_, the `AMX Enabled` option was available on the JMX Monitoring page.
+
+[[enabling-via-asadmin]]
+== Enabling JMX Monitoring via asadmin
+
+To enable JMX Monitoring for the JVM via asadmin, use the command:
+
+[source, shell]
+----
+asadmin> set-jmx-monitoring-configuration --enabled=true --amx true
+----
+
+[[configuring-time-via-admin-console]]
+== Configuring JMX Monitoring Time via the Admin Console
+
+To configure the frequency of logged data, enter both the intended frequency
+of logs and the unit of time.
+
+For example, to log every 10 milliseconds:
+
+image:jmx-monitoring-service/jmx-log-frequency.png[JMX Log Frequency]
+
+[[configuring-time-via-asadmin]]
+== Configuring JMX Monitoring Time via asadmin
+
+To configure the data logging frequency via asadmin, use the command:
+
+[source, shell]
+----
+asadmin> set-jmx-monitoring-configuration --logfrequency <frequency> --logfrequencyunit 
+NANOSECONDS|MICROSECONDS|MILLISECONDS|SECONDS|MINUTES|HOURS|DAYS
+----
+
+[[adding-notifiers-via-admin-console]]
+== Adding Notifiers via the Admin Console
+
+Before you receive notifications from your chosen notifier, please ensure
+that you have configured the
+xref:/documentation/payara-server/notification-service/notification-service.adoc[notification service].
+
+To select notifiers to use for JMX Monitoring, hold the `CTRL` or `SHIFT` key
+to select multiple notifiers, and then click `Add >`.
+
+image:jmx-monitoring-service/jmx-add-notifiers.png[Add JMX Notifiers]
+
+[[adding-notifiers-via-asadmin]]
+== Adding Notifiers via asadmin
+
+For each notifier you wish to enable use the command:
+
+[source, shell]
+----
+asadmin> monitoring-<notifier>-notifier-configure --enabled true
+----
+
+Available Notifiers can be viewed on the xref:/documentation/payara-server/notification-service/notifiers.adoc[notifiers page].
+
+[[adding-properties-via-admin-console]]
+== Adding Properties via the admin console
+
+By default, JMX will output an empty message as there are no MBeans configured.
+
+To add an MBean to the monitoring service, click `Add Attribute` on the
+`Monitored Attributes` table at the bottom of the page:
+
+image:jmx-monitoring-service/jmx-add-attribute.png[Add JMX Property]
+
+
+You can now add your monitoring attributes to the notification service using
+the following values:
+
+* _attributeName_: the MBean attribute name
+* _objectName_: the MBean object name
+* _description_: displayed in the `get-jmx-monitoring-configuration` asadmin
+command, _optional_
+
+MBean attribute names and domain names can be discovered using JConsole,
+JVisualVM, Java Mission Control or other programs. To browse available MBean
+attributes, after enabling JMX and AMX in the admin console, connect to your
+Payara Server instance from your chosen program:
+
+image:jmx-monitoring-service/jconsole-adding-payara.png[JConsole adding Payara]
+
+From here, to find an MBean, select the MBeans tab to view all MBeans on the
+server. If you have enabled "HIGH" monitoring for all components along with JMX
+monitoring you should be able to see the following files:
+
+image:jmx-monitoring-service/jconsole-full-folder-view.png[All JMX folders]
+
+From here you can search MBeans for attributes which you wish to monitor. Once
+you have located an MBean attributes you can add it to the DAS using the given
+object name (or, if not present, the type, name, and location of the MBean in
+the following format):
+
+image:jmx-monitoring-service/jconsole-view-mbean-attributes.png[JConsole view]
+
+For example, to monitor the `HeapMemoryUsage` of the MBean on the DAS with a
+domain (Object Name) of `java.lang:type=Memory`,
+you would enter:
+
+image:jmx-monitoring-service/jmx-add-MBean.png[Add MBean]
+
+Click the `Save` button at the top of the page to save and exit. If you have
+entered all values correctly, you should see a message via your chosen notifier
+ with the MBeans contents:
+
+Via the logs:
+
+[source, shell]
+----
+[#|2018-07-03T17:37:09.672+0100|INFO|Payara 5.183-SNAPSHOT|fish.payara.nucleus.notification.log.LogNotifierService|_ThreadID=369;_ThreadName=payara-monitoring-service(19);_TimeMillis=1530635829672;_LevelValue=800;|
+  JMX-MONITORING: - MBean Attributes: committedHeapMemoryUsage=2444230656 initHeapMemoryUsage=140509184 maxHeapMemoryUsage=5726797824 usedHeapMemoryUsage=2150820424 |#]
+----
+
+Via HipChat:
+
+image:jmx-monitoring-service/jmx-notifier-hipchat.png[JMX HipChat Notification]
+
+[[adding-attributes-via-asadmin]]
+== Adding Attributes via asadmin
+
+To add a attribute via asadmin, use the command:
+
+[source, shell]
+----
+asadmin> set-jmx-monitoring-configuration --addattribute <attribute>
+----
+
+So to replicate the above attributes, use the command:
+
+[source, shell]
+----
+asadmin> set-jmx-monitoring-configuration --addattribute 'attributeName=HeapMemoryUsage 
+objectName=java.lang:type=Memory'
+----

@@ -1,0 +1,37 @@
+[[disabling-phone-home]]
+= Disabling the Phone Home
+
+The phone home service is enabled by default when starting a Payara
+Server, Payara Micro, or Payara Microprofile instance. The phone home
+service can easily disabled in four different ways.
+
+[[removing-the-service-module]]
+== Removing service module
+
+. Navigate to the `${PAYARA_INSTALL_DIR}/glassfish/modules` directory
+. Delete the `phonehome-bootstrap.jar` module.
+
+[[using-asadmin-command]]
+== Using an `asadmin` command
+
+. Run the command: `asadmin disable-phome-home`.
+. Restart the server to apply the change.
+
+[[updating-domain.xml-file]]
+== Update the _domain.xml_ configuration file
+
+. Open `domain.xml` with a text editor
+. Find the tag `<config name="server-config">`
+. Within that tag, add the following tag:
+`<phone-home-runtime-configuration enabled="false"/>`
+
+[[disabling-micro-instance]]
+== Disable service for Payara Micro
+
+When starting Payara Micro and Payara MicroProfile, the Phone Home
+Service can be disabled with the command-line argument `--disablephonehome`:
+
+[source, shell]
+----
+java -jar payara-micro.jar --disablephonehome
+----

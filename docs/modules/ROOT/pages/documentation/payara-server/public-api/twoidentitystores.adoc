@@ -1,0 +1,93 @@
+[[two-identity-stores]]
+= Two Identity Stores Support
+
+_Since Payara Server 5.182_
+
+The Payara API provides a way to authenticate with two identity stores at the same time using the `@TwoIdentityStoreAuthenticationMechanismDefinition` annotation. By default a user is validated if they are authenticated by any identity store, this mechanism will only validate them if both stores authenticate it succesfully.
+
+[[usage]]
+== Usage
+
+The mechanism is defined through the `@TwoIdentityStoreAuthenticationMechanismDefinition` annotation. This annotation should be accompanied with a configuration of any two identity stores in the application. Specifying this in a valid place as defined by the Java EE Security API will create the mechanism. Often this may mean that any class is a valid position. 
+
+The mechanism works in a similar way to the form-based authentication mechanisms and requires calls to the `SecurityContext.authenticate()` when processing the form. If there are further calls to `SecurityContext.authenticate()` then an `IllegalStateException` will be thrown.
+
+[[usage-example]]
+=== Example
+
+The following code sample authenticates a user by using both single username/password credentials and a Yubikey code: 
+
+[source, java]
+----
+TwoIdentityStoreAuthenticationMechanismDefinition(loginToContinue
+        = @LoginToContinue(loginPage = "/Login", errorPage = "/Failure")
+)
+@WebServlet("/Login")
+public class LoginServlet extends HttpServlet {
+    
+    @Inject 
+    private SecurityContext securityContext;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PrintWriter out = resp.getWriter();
+        printHeaders(out);
+        out.println("<form action=\"Login\" method=\"post\">");
+        out.println("Username: ");
+        out.println("<input type=\"text\" name=\"username\"></br>");
+        out.println("Password: ");
+        out.println("<input type=\"password\" name=\"password\"></br>");
+        out.println("Yubikey Code: ");
+        out.println("<input type=\"password\" name=\"yubikey\"></br>");
+        out.println("<input type=\"submit\" value=\"submit\"></input>");
+        out.println("</form");
+        out.println("</body></html>");
+        out.flush();
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+        Credential firstCredential = new UsernamePasswordCredential(req.getParameter("username"), req.getParameter("password"));
+        Credential secondCredential = new YubikeyCredential(req.getParameter("yubikey"));
+        // First call to securityContext.authenticate()
+        securityContext.authenticate(req, resp, new AuthenticationParameters().credential(firstCredential));
+        // Second call to securityContext.authenticate()
+        AuthenticationStatus status = securityContext.authenticate(req, resp, new AuthenticationParameters().credential(secondCredential));
+        PrintWriter out = resp.getWriter();
+        printHeaders(out);
+        if (status.equals(AuthenticationStatus.SUCCESS)){
+            out.println("Successfully logged in");
+        }
+        else {
+            PrintWriter out = resp.getWriter();
+            printHeaders(out);
+            out.println("Failed to log in");    
+        }
+        out.flush();
+    }
+    
+    private void printHeaders(PrintWriter out){
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Two Idenity Stores Authentication</title>");
+        out.println("</head>");
+        out.println("<body>");
+    }
+    
+}
+----
+
+
+[[configuration]]
+== Configuration
+
+The `@TwoIdentityStoreAuthenticationMechanismDefinition` annotation is configured with the options as shown below.
+
+|===
+| Option | Required | Description
+
+| `loginToContinue`
+| true
+| A `@LoginToContinue` annotation defines the login page
+|===

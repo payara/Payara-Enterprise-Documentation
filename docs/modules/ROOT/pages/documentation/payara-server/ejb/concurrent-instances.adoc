@@ -1,0 +1,97 @@
+[[controlling-stateless-ejb-concurrent-instances]]
+= Controlling Stateless EJB Concurrent Instances
+
+_Since Payara Server 4.1.2.172_
+
+In prior releases, it was not possible to control the maximum number of *_concurrent_* Stateless EJB instances in Payara Server. It was, however, possible to control the number of *_pooled_* Stateless EJB instances, as well as *_concurrent_* MDB instances.
+
+NOTE: These features were available in Oracle GlassFish Server 3.1 and earlier but not in the GlassFish Open Source editions (3.1.2.x and 4.x).
+
+It is possible to limit concurrent Stateless EJB instances that are dispatched,
+allowing fine-grained control of resources, limiting surface area for DDOS attacks and making applications run more smoothly and efficiently.
+
+The key difference is that previously it was not possible to limit the number of
+concurrent threads dispatched for the same Stateless EJB, the only limit was the
+number of pooled beans.  When the pool ran out, new EJB instances were created,
+with no upper bound. In the current release, this upper bound can be established
+so the maximum number of threads is not exceeded beyond this value.
+
+[[deployment-descriptor-configuration]]
+== Deployment Descriptor Configuration
+
+These limits can be controlled on a per-EJB basis, using `bean-pool` elements in the `glassfish-ejb-jar.xml` deployment descriptor file with the use of these specific tags and elements only available for Payara Server:
+
+[cols="4,10a",options="header"]
+.`bean-pool` elements in `glassfish-ejb-jar.xml`
+|===
+|Element |Behaviour
+|`<max-pool-size>`
+|This element controls the maximum concurrent instances that are dispatched for
+this EJB (number of threads).  The default is configured in the domain; this has
+not changed from previous versions.
+|`<max-wait-time-in-millis>`
+|This element controls what to do when the number of requests exceeds the amount
+of beans available in the pool.
+Possible values of this element include:
+
+* `-1` (_default_)
++
+_Current behaviour is unchanged_: when the pooled number is exceeded, a new EJB
+instance is created, there is no upper bound
+
+* `0`
++
+_This is new behaviour_: when the pooled number is exceeded, the request will
+wait for a bean to free up in the pool. This effectively caps the number of threads
+that are concurrently created for a this particular EJB request.
+
+* Between `1` - `MAX_INTEGER`
++
+This is the new behaviour, when the pool number is exceeded, the request will wait
+for a bean to free up in the pool, up to the number of milliseconds specified here.
+After this time has expired, a new EJB instance is created and dispatched, thus
+the configured pool size acts as a soft upper bound, one that can be exceeded
+once the timer has expired.
+
+|`<steady-pool-size>`
+|This element controls the *minimum* number of beans in the bean pool. This will
+increase performance at the expense of memory footprint.
+|===
+
+Additionally, a new system property `fish.payara.ejb-container.max-wait-time-in-millis`
+can be set to change the default global value of `<max-wait-time-in-millis>`
+for *_all_* Stateless EJB bean pools.
+
+IMPORTANT: Unless overridden in the deployment descriptor file, this will become
+the new default value and can be used to cap the upper bound of all concurrent
+invocations of any Stateless EJB pools.
+
+[[example]]
+=== Example
+
+The following is a sample `glassfish-ejb-jar.xml` deployment descriptor that configures 2 EJBs with the settings mentioned beforehand.
+
+[source, xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glassfish-ejb-jar PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 EJB 3.1//EN" "http://glassfish.org/dtds/glassfish-ejb-jar_3_1-1.dtd">
+<glassfish-ejb-jar>
+  <enterprise-beans>
+    <ejb>
+      <ejb-name>PooledStatelessBean</ejb-name>
+      <bean-pool>
+          <max-pool-size>1</max-pool-size>
+          <max-wait-time-in-millis>0</max-wait-time-in-millis>
+          <steady-pool-size>1</steady-pool-size>
+      </bean-pool>
+    </ejb>
+    <ejb>
+      <ejb-name>PooledMDB</ejb-name>
+      <bean-pool>
+          <max-pool-size>1</max-pool-size>
+          <resize-quantity>1</resize-quantity>
+      </bean-pool>
+    </ejb>
+  </enterprise-beans>
+</glassfish-ejb-jar>
+----

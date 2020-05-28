@@ -1,0 +1,9 @@
+= Payara Enterprise Edition Documentation Repository
+
+Official technical documentation repository of the Payara Platform Enterprise Edition which is maintained by members of the Payara organization. All documentation material is written in Asciidoctor format.
+
+This documentation repository is structured in conformance to **Antora version 2.3.0** format: https://docs.antora.org/antora/2.3/. This repository is used to generate all the HTML pages that are published at https://docs.payara.fish/enterprise/ as configured in the https://github.com/payara/payara-documentation-playbook)[Payara Documentation's Antora Configuration Repository].
+
+== Branches
+
+All branches of this repository represent a different version of the Payara Platform's Enterprise releases.

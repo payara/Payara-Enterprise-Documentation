@@ -1,0 +1,25 @@
+== Supported APIs and Applications
+
+* Java EE 8 Applications
+* MicroProfile 3.?
+* Jakarta EE 8 Applications
+
+== Notes
+
+//TODO
+
+== New Feature
+
+//TODO
+
+== Bug Fixes
+
+//TODO
+
+== Improvement
+
+//TODO
+
+== Component Upgrade
+
+//TODO

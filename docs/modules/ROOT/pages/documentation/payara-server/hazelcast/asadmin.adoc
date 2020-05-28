@@ -1,0 +1,323 @@
+[[asadmin-commands]]
+= Asadmin Commands
+
+The following is a list of the administration commands used to configure Hazelcast.
+
+[[set-hazelcast-configuration]]
+== `set-hazelcast-configuration`
+
+_Since Payara Server 4.1.151_
+
+*Usage*::
+`asadmin> set-hazelcast-configuration --disabled=true`
+
+*Aim*::
+Configures the underlying Hazelcast instance. See xref:documentation/payara-server/hazelcast/configuration.adoc[Data Grid Configuration] for
+all the command line options for this command.
+
+
+[[get-hazelcast-configuration]]
+== `get-hazelcast-configuration`
+
+_Since Payara Server 4.1.151_
+
+*Aim*::
+Return the current Hazelcast configuration.
+
+*Usage*::
+`asadmin> get-hazelcast-configuration`
+
+[[command-options-2]]
+=== Command Options
+
+[cols=(,,,,),options="header"]
+|====
+|Option|Type|Description|Default|Mandatory
+|`--target`|Instance or Cluster Name|Specifies a particular config|
+`server`|No
+|`--help`
+`-?`||Displays the help menu|_fal
+|====
+
+[[example-2]]
+=== Example
+
+[source, shell]
+----
+asadmin> get-hazelcast-configuration
+Configuration File    Enabled  Start Port  MulticastGroup  MulticastPort  JNDIName            Lite Member  Cluster Name  Cluster Password  License Key          Host Aware Partitioning
+hazelcast-config.xml  true     5900        224.2.2.3       54327          payara/Hazelcast    false        clustername   password          XXXX-XXXX-XXXX-XXXX  false
+----
+
+[[list-hazelcast-cluster-members]]
+== `list-hazelcast-cluster-members`
+
+_Since Payara Server 4.1.1.164_
+
+*Aim*::
+List the current members of the DAS' Hazelcast cluster in a formatted table, with
+extra properties.
+
+*Usage*::
+`asadmin> list-hazelcast-cluster-members`
+
+[[command-options-3]]
+=== Command Options
+
+[cols=(,,,,),options="header"]
+|====
+|Option|Type|Description|Default|Mandatory
+|`--type`|`server` or `micro`|Specifies the type of cluster to locate|_Both_|No
+|`--help`
+`-?`||Displays the help menu|_false_
+|====
+
+[[example-3]]
+=== Example
+
+[source, shell]
+----
+asadmin> list-hazelcast-cluster-members --type server
+Instance Name  Instance Group  Instance Type  Host Name  HTTP Ports  HTTPS Ports  Admin Port  Hazelcast Port  Lite Member  Deployed Applications
+server         server-config   DAS            127.0.1.1  8080        8181         4848        5901            false        __admingui
+----
+
+[[list-hazelcast-members]]
+== `list-hazelcast-members`
+
+_Since Payara Server 4.1.151_
+
+*Aim*::
+List the hazelcast members as a targetable array.
+
+*Usage*::
+`asadmin> list-hazelcast-members`
+
+[[command-options-4]]
+=== Command Options
+
+[cols=(,,,,),options="header"]
+|====
+|Option|Type|Description|Default|Mandatory
+|`--target`|Instance or cluster name|Specifies the targeted instance or
+cluster.|`server`|No
+|`--help`
+`-?`||Displays the help menu|_false_
+|====
+
+[[example-4]]
+=== Example
+
+[source, shell]
+----
+asadmin> list-hazelcast-members
+\{ server-/127.0.1.1:5901-this \}
+----
+
+[[restart-hazelcast]]
+== `restart-hazelcast`
+
+_Since Payara Server 4.1.151_
+
+*Aim*::
+Restarts Hazelcast for the target.
+
+*Usage*::
+`asadmin> restart-hazelcast --target <instance-name>`
+
+[[command-options-5]]
+=== Command Options
+
+[cols=(,,,,),options="header"]
+|====
+|Option|Type|Description|Default|Mandatory
+|`--target`|Instance or cluster name|Specifies the targeted instance or
+cluster.|`server`|No
+|`--help`
+`-?`||Displays the help menu|_false_
+|====
+
+[[example-5]]
+=== Example
+
+[source, shell]
+----
+asadmin> restart-hazelcast --target instance-name
+instance-name:
+Hazelcast Restarted
+----
+
+WARNING: If multiple Payara Server instances are targeted for restart of the underlying
+ Hazelcast instance then data loss can occur in the Data Grid
+
+[[list-cache-keys]]
+== `list-cache-keys`
+
+_Since Payara Server 4.1.1.154_
+
+*Aim*::
+Lists all keys in a cache. If no cache is specified, keys from all caches will
+be returned.
+
+*Usage*::
+`asadmin> list-cache-keys`
+
+[[command-options-6]]
+=== Command Options
+
+[cols=(,,,,),options="header"]
+|====
+|Option|Type|Description|Default|Mandatory
+| name
+| String
+| Name of the cache to query
+|
+| No
+|====
+
+[[list-caches]]
+== `list-caches`
+
+_Since Payara Server 4.1.1.154_
+
+*Aim*::
+Lists the Hazelcast distributed caches in the cluster
+
+*Usage*::
+`asadmin list-caches`
+
+[[clear-cache]]
+== `clear-cache`
+
+_Since Payara Server 4.1.1.154_
+
+*Aim*::
+Clears a Hazelcast or JCache IMap
+
+*Usage*::
+`asadmin> clear-cache <cacheName>`
+
+WARNING: Use of this commands removes all data from a cache and therefore can
+result in unexpected behaviour if a system cache is cleared. Clearing a cache
+containing web session data will result in all users losing their sessions.
+
+[[create-hazelcast-instance]]
+== `create-hazelcast-instance`
+
+_Since Payara Server 4.1.2.172_
+
+NOTE: This is deprecated in 5.181 onwards as by default all instances are
+created as part of the Domain Data Grid
+
+*Usage*::
+`asadmin> create-hazelcast-instance new-instance`
+
+*Aim*::
+Creates a new Payara Server instance with Hazelcast and the persistence types.
+
+[[command-options-1]]
+=== Command Options
+
+[cols=(,,,,),options="header"]
+|====
+|Option|Type|Description|Default|Mandatory
+
+|`--node`|Node Name|Specifies the node to create the instance on.||Yes
+
+|`--config`|Config Name|Specifies the config to use for the instance|
+`server-config`|No
+
+|`--lbenabled`|Boolean|Specifies whether the instance is enabled for load
+balancing, meaning that the load balancer directs requests to the instance.
+|_true_|No
+
+|`--checkports`|Boolean|Specifies whether the check that the administration,
+HTTP, JMS, JMX, and IIOP ports are free.|_true_|No
+
+|`--terse`|Boolean|Specifies whether output data should be returned in a
+concise format, suited for scripts, with descriptive text omitted.|_false_|No
+
+|`--portbase`|Port Number|Specifies the port to start assigning ports from.
+This will always output the assigned ports, even when omitted.||No
+
+|`--systemproperties`|Options|Specifies additional system properties which
+will override other settings, such as the assigned port. Examples include
+`ASADMIN_LISTENER_PORT` and `OSGI_SHELL_TELNET_PORT`.||No
+
+|`--target`|Config Name|Specifies the instance or cluster to configure.|
+`server-config`|No
+
+|`--enabled`|Boolean|Enables Hazelcast. If no target is specified, this will
+enable Hazelcast on the domain configuration (_server-config_).
+
+If no arguments are specified, defaults to true.|_true_|No
+
+|`--dynamic`|Boolean|Enable or disable dynamic stopping and starting of the
+embedded Hazelcast member.|_false_|No
+
+|`--hazelcastconfigurationfile`/
+
+`-f`|File Path|The Hazelcast configuration file to use. This path is relative to the
+domain config directory,
+<Payara Installation Directory>/glassfish/domains/<Domain Name>/config/.
+
+Using this option to point to a valid Hazelcast configuration file will cause
+all other options set to be ignored. Any options unset within the Hazelcast
+configuration file will be set to the Hazelcast defaults|`hazelcast-config.xml`
+|No
+
+|`--startport`|Port Number|The port to run Hazelcast on. If this port is busy,
+the port specified will be incremented until a valid port is found.|5900|No
+
+|`--multicastgroup`
+
+`-g`|Multicast Address|The multicast group for communications in the Hazelcast
+instance.|224.2.2.3|No
+
+|`--multicastport`|Port Number|The multicast port for communications in the
+instance.||No
+
+|`--clustername`|Group Name|Specifies the Hazelcase group name, to be
+optionally used to help divide clusters into logical, segregated groups (i.e.
+  _dev-group_, _prod_grop_).||No
+
+|`--clusterpassword`|Password|Specifies the password used to access the
+Hazelcast group.||No
+
+|`--jndiname`
+
+`-j`|JNDI Name|Specifies the JNDI name to bind the Hazelcast instance to.||
+
+|`--licensekey`
+
+`-lk`|Hazelcast License|Enables https://hazelcast.com/products/enterprise/[Hazelcast Enterprise]
+features.||No
+
+|`--lite`|Boolean|Sets the cluster to lite mode, where it will cluster but
+*not* store any data.|_false_|No
+
+|`--hostawarepartitioning`|Boolean|Whether or not to enable
+http://docs.hazelcast.org/docs/latest/manual/html-single/index.html#grouping-types[host-aware partitioning]
+for the cluster. Host aware partitioning *must be* enabled
+on all members of the cluster (including Payara Micro instances) for this
+feature to work correctly.|_false_|No
+
+|`--webpersistence`|Boolean|Specifies whether Hazelcast will be used for web
+persistence.|_True_|No
+
+|`--ejbpersistence`|Boolean|Specifies whether Hazelcast will be used for web
+persistence.|_True_|No
+
+|`--help`
+
+`-?`||Displays the help menu|_false_|No
+
+|====
+
+[[example-1]]
+=== Example
+
+[source, shell]
+----
+asadmin> create-hazelcast-instance --webpersistence=false --lite instance2
+----

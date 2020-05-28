@@ -1,0 +1,19 @@
+= Enabling CDI Development Mode using web.xml application descriptor
+
+To enable CDI Development Mode in a WAR application archive, add the following context parameter to the `web.xml` descriptor in the `WEB-INF` directory inside the application package:
+
+[source,xml]
+----
+<web-app>
+...
+    <context-param>
+        <param-name>org.jboss.weld.development</param-name>
+        <param-value>true</param-value>
+    </context-param>
+...
+</web-app>
+----
+
+This configuration will automatically enable CDI Development Mode for the application once deployed.
+
+NOTE: Currently, it's not possible to override this option and disable CDI Development Mode in application server configuration without providing alternative web.xml deployment descriptor during deployment. This can be done by only using asadmin `deploy` command with the `--altdd` argument.

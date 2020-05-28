@@ -1,0 +1,48 @@
+[[sending-asadmin-commands-to-payara-micro-from-a-domain-administration-server]]
+= Sending Asadmin Commands to Payara Micro from a Domain Administration Server
+
+Asadmin commands can be sent from the Domain Administration Server (DAS) to
+Payara Micro instances that are running within the same data grid as the DAS.
+
+Since *5.184*, `stop-domain` can also be issued to a Payara Micro instance.
+
+This can be achieved either using the admin console or from the command line.
+
+[[sending-asadmin-commands-using-the-admin-console]]
+== Sending Asadmin Commands using the Admin Console
+
+To send asadmin commands using the Domain Administration Server you must first
+ensure that the DAS itself is within the same Hazelcast cluster as the micro
+instances. Hazelcast can be enabled for the DAS on the Domain tab, under the
+_Hazelcast_ section:
+
+image:payara-micro/enable-hazelcast-on-das.png[Enable Hazelcast]
+
+From here, selecting the _Cluster Members_ tab brings up the instances within
+the cluster. At the bottom of the page, you will find a table filled with the
+Payara Micro instances:
+
+image:payara-micro/micro-instances-on-das.png[Micro Instances on DAS]
+
+To send an administration command:
+
+. Select the recipient nodes
+. Enter the asadmin command in the textbox
+. Press *Send Asadmin Command*
+
+image:payara-micro/sending-asadmin-command-from-the-das-to-micro.png[Send commands from DAS]
+
+[[sending-asadmin-commands-from-the-command-line]]
+== Sending Asadmin Commands from the Command Line
+
+To send administration commands using the command line there is a new `asadmin`
+command for the Domain Administration Server - `send-asadmin-command`.
+The asadmin command is entered using the `--command` option, which only accepts
+a single command as an input (including said commands own arguments).
+
+As an example of sending a command from the command line:
+
+[source, shell]
+----
+asadmin send-asadmin-command --command deploy /home/user/application --contextRoot=/example
+----

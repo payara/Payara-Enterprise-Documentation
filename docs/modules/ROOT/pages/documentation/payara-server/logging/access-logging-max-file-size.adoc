@@ -1,0 +1,30 @@
+[[access-logging-max-file-size]]
+= Access Logging Max File Size
+
+_Since version 5.183_
+
+Both Payara Server and GlassFish Open Source Edition provides different ways 
+to rotate access log files. On top of that, Payara server allows access log file 
+rotation based on file size. 
+
+`Max File Size` option provides a way to change the file size at which the Payara 
+Server rotates the access log file. This option accepts an integer value specifying 
+the maximum size of the log file, after which a file rotation will occur. 
+If the value for this option is set to 0 rotation is disabled.
+
+[[using-web-admin-console]]
+== Using the Admin Console
+
+To configure `Max File Size` option using Admin Console:
+
+image:logging/max_file_size.png[Max File Size]
+
+[[using-asadmin-utility]]
+== Using an `asadmin` command
+
+Use the following command to set maximum size for access log files:
+
+[source, shell]
+----
+asadmin> set configs.config.server-config.http-service.access-log.maximum-file-size=5000000
+----

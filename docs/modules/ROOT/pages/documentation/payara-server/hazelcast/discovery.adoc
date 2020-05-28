@@ -1,0 +1,142 @@
+[[domain-datagrid-discovery]]
+= Domain Data Grid Discovery Modes
+
+_Since Payara Server 5.181_
+
+== Discovery
+The Domain Data Grid has the concept of discovery. When a Payara Server or Payara Micro
+instance starts it must discover other Data Grid nodes so that it can join the grid.
+Once an instance has connected to a Payara Instance that is already a member of the grid then
+it can become a member of the grid.
+
+The Data Grid has 3 discovery modes domain, tcpip and multicast each of which is
+described here.
+
+=== Domain Discovery Mode
+Domain Discovery mode is the default mode for Payara Server. In this mode when a
+Payara Server instance starts it uses information encoded into the `domain.xml` describing
+the node IP Address and ports of the other servers in the domain and the DAS to connect
+to an existing member of the Data Grid. For a Payara Server instance the first server
+it will try to connect to is the DAS if that fails it will then try each of the other
+instances in turn. When the DAS starts it tries to connect to each instance in turn.
+
+As the `domain.xml` is used to discover other members of the Data Grid no further user
+configuration is usually necessary.
+
+=== TCPIP Discovery Mode
+TCPIP discovery mode is an alternative discovery mode. In this mode the user specifies
+a comma separated list of IP addresses and ports that a Payara Server instance should try to
+ find members of the data grid at upon boot.
+
+TIP: This discovery mode can be used to build a topology based on single instances of the
+DAS joining together to create the Data Grid. This is common in container based
+topologies with no central domain administration server.
+
+=== Multicast Discovery Mode
+Multicast discovery mode is an alternative discovery mode. In this mode the user specifies
+the multicast group and multicast port used to find other members of the Data Grid. When
+a Payara Server instance configured with multicast discovery starts it broadcasts a message
+on the multicast group and port to discover other members of the data grid.
+
+TIP: This discovery mode can be used to also build a topology based on single instances
+of the DAS joining together to create the data grid. In this mode multicast must be supported on
+the network.
+
+NOTE: This mode is the default mode for Payara Micro and for Payara Server version 4.x
+
+CAUTION: Also change the Data Grid group name and password to prevent other instances
+on the same LAN inadvertently joining your data grid.
+
+=== DNS Discovery Mode
+
+_Since Payara Server 5.184_
+
+DNS discovery mode is an alternative discovery mode, closely related to the TCPIP discovery mode.
+In this mode the user specifies a comma separated list of DNS names and ports that a Payara Server
+should try to find members of the data grid at upon boot.
+
+=== Kubernetes Discovery Mode
+
+_Since Payara Server 5.184_
+
+Kubernetes discovery mode is an alternative discovery mode intended for use when running in a Kubernetes
+environment. In this mode, the user specifies the Kubernetes service name and namespace that Payara Server
+should look to find other data grid members in - Payara Server will then contact the Kubernetes master
+upon boot to obtain the list of IP addresses of any other running instances under the specified namespace
+and service name.
+
+NOTE: This clustering is done using the Hazelcast Kubernetes plugin, and so you will need to grant Hazelcast
+permission to query the kubernetes master. As per the plugin documentation, you will need to apply the
+ permissions outlined below using `kubectl apply`. The original documentation on configuring these
+ permissions can be found https://github.com/hazelcast/hazelcast-kubernetes#grating-permissions-to-use-kubernetes-api[here],
+ as well as extra documentation on how to restrict these permissions further https://github.com/helm/charts/tree/master/stable/hazelcast#configuration[here].
+
+[source, shell]
+----
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: default-cluster
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: view
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: default
+----
+
+== Configuration in the Administration Console
+The domain discovery mode can be configured in the admnistration console under the Data Grid node.
+The discovery mode set applies domain wide.
+
+image:domain-datagrid/discovery-mode.png[Domain Discovery Mode]
+
+== Configuration via Asadmin
+
+Discovery Mode can be set via Asadmin
+
+=== Set TCPIP Mode
+When setting TCPIP mode the list of IP addresses and ports of datagrid members must be specified.
+[source, shell]
+----
+asadmin> set-hazelcast-configuration --clustermode tcpip --tcpipmembers 192.168.0.104:4900,192.168.0.105:5900
+----
+
+=== Set Domain Mode
+[source, shell]
+----
+asadmin> set-hazelcast-configuration --clustermode domain
+----
+
+=== Set Multicast Mode
+When setting multicast mode the multicast group and multicast port must be also
+specified. If not specified they will default to 224.2.2.3 and 54327
+[source, shell]
+----
+asadmin> set-hazelcast-configuration --clustermode multicast --multicastgroup 224.2.2.4 --multicastport 55000
+----
+
+=== Set DNS Mode
+
+_Since Payara Server 5.184_
+
+When setting DNS mode the list of DNS names and ports of datagrid members must be specified.
+[source, shell]
+----
+asadmin> set-hazelcast-configuration --clustermode dns --dnsmembers localhost:4900,www.example.com:5900
+----
+
+=== Set Kubernetes Mode
+
+_Since Payara Server 5.184_
+
+When setting Kubernetes mode the service name and namespace must be specified using the
+`--kubernetesservicename` and `--kubernetesnamespace` options respectively. If a namespace is not specified,
+Payara Server will use the "default" namespace.
+
+[source, shell]
+----
+asadmin> set-hazelcast-configuration --clustermode kubernetes --kubernetesServiceName payara --kubernetesNamespace default
+----

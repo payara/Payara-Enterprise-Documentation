@@ -1,0 +1,31 @@
+[[monitoring-payara]]
+= Monitoring Payara Server
+
+Monitoring is critically important for successfully running any online presence
+for many reasons. There are a large number of solutions for monitoring which
+can address these needs, from Application Performance Monitoring (APM) tools,
+which can help diagnose the health of an application to more traditional
+infrastructure monitoring tools.
+
+For Java applications, Java Management Extensions (JMX) has been an accepted
+standard for publishing metrics for a very long time. Since JMX has been around
+for so long, there is very wide support in tooling. Despite being widely
+available, however, JMX has not always been very widely used. Because of this,
+it is not always obvious or straightforward to consume JMX metrics with a given
+tool.
+
+These guides aim to give an overview of monitoring Payara Server with JMX. As 
+new guides get added, this section will include:
+
+xref:documentation/user-guides/monitoring/enable-jmx-monitoring.adoc[How do I enable JMX monitoring in Payara Server?]::
+Before anything else, we need to know how to enable JMX monitoring and get
+familiarised with the concepts involved.
+xref:documentation/user-guides/monitoring/mbeans.adoc[What MBean metrics should I monitor?]::
+Once monitoring data is enabled through JMX in Payara Server, the next important
+step is to understand which MBeans are most important, and which metrics from
+each MBean can give the most useful information.
+How can I consume JMX monitoring data from Payara Server?::
+After a selection of relevant metrics have been chosen, they will need to be
+imported to a monitoring tool for graphing purposes.
+
+Additional monitoring guides can be found on our website, https://www.payara.fish/documentation/guides-and-how-tos/#maintenance_monitoring[Maintenance and Monitoring Guides].

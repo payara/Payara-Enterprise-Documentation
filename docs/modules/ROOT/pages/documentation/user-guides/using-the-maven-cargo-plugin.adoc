@@ -1,0 +1,169 @@
+[[using-the-maven-cargo-plugin]]
+= Using the Maven Cargo Plugin
+
+When creating a Java EE application, it is important that development and
+testing take place on a server that's as close to your target production
+environment as possible.
+
+By using the xref:https://codehaus-cargo.github.io/cargo/Maven2+plugin.html[Maven Cargo
+plugin] within your Maven project, it is possible to deploy your application to
+local and remote instances of Payara Server. The plugin makes use of the REST
+management API in Payara Server.
+
+== Adding the Cargo Plugin
+
+The cargo plugin can be added to any Maven project by adding the following
+to the `<build>` section of your pom:
+
+[source,xml]
+----
+<build>
+    <plugins>
+        ...
+        <plugin>
+            <groupId>org.codehaus.cargo</groupId>
+            <artifactId>cargo-maven2-plugin</artifactId>
+            <version>1.6.7</version>
+        </plugin>
+        ...
+    </plugins>
+</build>
+----
+
+== Execution Goals
+
+The Maven Cargo plugin comes with support for containers, where a container
+represents a Java EE server. As Payara Server is derived from GlassFish,
+Payara Server is able to use the GlassFish container with the Maven Cargo
+Plugin.
+
+There are a number of common goals:
+
+ - `start`:
+ ** Runs the `start` goal, starting a _local_ server in the background and
+ deploying any applications before proceeding to the next step. If a container
+ is already started, by default `start` will only stop the pre-existing
+ container.
+
+ - `run`:
+ ** Runs the `run` goal, starting a _local_ server in the foreground until
+ cancelled.
+
+ - `redeploy`:
+ ** Runs the `redeploy` goal, deploying the built application. This will
+ automatically undeploy the application and redeploy if needed.
+
+ - `undeploy`:
+ ** Runs the `undeploy` goal, undeploying the application.
+
+ - `stop`:
+ ** Runs the `stop` goal, stopping the _local_ server. This does not work for
+ remote servers.
+
+=== Deploying via the Cargo Plugin
+
+To deploy your application to Payara Server using the Maven Cargo Plugin, the
+plugin needs to be configured. Since there is a good chance that both local and
+remote Payara Servers may need to be used, the best way to manage these multiple
+configurations is to add a _profile_. From a general perspective, a Maven profile
+serves to collate specific configuration under a single command line flag.
+
+Within a Maven profile you can specify configuration for Payara Server within
+the Cargo plugin: the host, port, username, password, and importantly whether
+to use an existing or new local or remote server.
+
+The example snippet below is taken from a profile which defines deployment to a
+local Payara Server instance.
+
+[source, xml]
+----
+<plugin>
+  <groupId>org.codehaus.cargo</groupId>
+  <artifactId>cargo-maven2-plugin</artifactId>
+  <configuration>
+    <container>
+      <containerId>glassfish4x</containerId>
+      <type>installed</type>
+      <home>${payara.home}</home>
+    </container>
+    <configuration>
+      <type>existing</type>
+      <home>${payara.domainDir}</home>
+      <properties>
+        <cargo.glassfish.domain.name>${payara.domainName}</cargo.glassfish.domain.name>
+      </properties>
+    </configuration>
+  </configuration>
+  <!-- provides JSR88 client API to deploy on Payara -->
+  <dependencies>
+    <dependency>
+      <groupId>org.glassfish.main.deployment</groupId>
+      <artifactId>deployment-client</artifactId>
+      <version>4.1.1</version>
+    </dependency>
+  </dependencies>
+</plugin>
+----
+
+Note that the above example uses properties to reference the Payara Server
+configuration.  To achieve the same thing, you will need to specify properties
+that refer to your own environment similar to the following example:
+
+[source, xml]
+----
+    <properties>
+        ...
+ 
+        <payara.adminPort>4848</payara.adminPort>
+        <payara.username>admin</payara.username>
+        <payara.password></payara.password>
+        <payara.hostname>localhost</payara.hostname>
+        <payara.domainName>domain1</payara.domainName>
+        <payara.home></payara.home>
+        <payara.domainDir>${payara.home}/glassfish/domains</payara.domainDir>
+ 
+    </properties>
+----
+
+To deploy to a remote instrance of Payara Server, we need to make sure to add
+a username and password for the remote instance, as well as an admin port and
+hostname. Remote hosts cannot `start` or `stop`; the server must already be
+running.
+
+To create a profile for a remote Payara Server instance, add the following
+to a Maven profile in your pom:
+
+[source, xml]
+----
+<plugin>
+  <groupId>org.codehaus.cargo</groupId>
+  <artifactId>cargo-maven2-plugin</artifactId>
+  <configuration>
+    <container>
+      <containerId>glassfish4x</containerId>
+      <type>remote</type>
+    </container>
+    <configuration>
+      <type>runtime</type>
+      <properties>
+        <cargo.remote.username>${payara.username}</cargo.remote.username>
+        <cargo.remote.password>${payara.password}</cargo.remote.password>
+        <cargo.glassfish.admin.port>${payara.adminPort}</cargo.glassfish.admin.port>
+        <cargo.hostname>${payara.hostname}</cargo.hostname>
+      </properties>
+    </configuration>
+  </configuration>
+  <!-- provides JSR88 client API to deploy on Payara Server -->
+  <dependencies>
+    <dependency>
+      <groupId>org.glassfish.main.deployment</groupId>
+      <artifactId>deployment-client</artifactId>
+      <version>4.1.1</version>
+    </dependency>
+  </dependencies>
+</plugin>
+----
+
+A complete example can be found in xref:https://github.com/payara/Payara-Examples/blob/master/ecosystem/payara-maven/pom.xml[
+the Payara Examples repository.] The example demonstrates the same remote and 
+local deployment methods in two separate profiles.

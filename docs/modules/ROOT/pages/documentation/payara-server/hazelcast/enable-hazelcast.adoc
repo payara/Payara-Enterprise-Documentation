@@ -1,0 +1,65 @@
+[[enabling-hazelcast]]
+= Enabling and Disabling the Data Grid
+
+In the default domain configuration of Payara the Domain Data Grid is enabled by default.
+
+It can be enabled/disabled either through the Admin Console, or by using a command line
+_asadmin_ command.
+
+[[enabling-hazelcast-admin-console]]
+== Disabling Data Grid for an instance through the Admin Console
+
+From the Admin Console home:
+
+. Select Data Grid under the instance's configuration from the page tree:
++
+image::hazelcast/hazelcast-admin-console-select-instance-config.png[Payara Server 5.181 Page Tree]
+
+. Unheck "Enabled" (and optionally "Dynamic" to apply the configuration without a
+restart) and save.
++
+image::hazelcast/hazelcast-admin-console-enable-hazelcast.png[Payara Server 5.181 Disabling DataGrid]
+
+CAUTION: Disabling the Data Grid for a configuration will disable the Data Grid for
+all instances using the configuration. If this is combined with Dynamic and multiple
+instances restart their underlying Hazelcast instance immediately on clicking save data loss could occur in the grid.
+If this is a problem ensure Dynamic is unchecked and restart each affected instance manually in turn.
+
+
+[[enabling-hazelcast-asadmin]]
+== Disabling DataGrid using Asadmin
+
+The `set-hazelcast-configuration` asadmin command can be used to enable or disable
+Hazelcast and therefore the Data Grid. This
+command is also used to configure other aspects of Hazelcast, which is covered
+xref:/documentation/payara-server/hazelcast/configuration.adoc#configuring-hazelcast-using-asadmin[in the configuration section].
+The command requires the Admin Server to be running, and will expect it to be listening
+on port **4848** unless specified differently with the asadmin utility `--port` option.
+
+[source, shell]
+----
+asadmin> set-hazelcast-configuration --enabled=false
+----
+
+If no target is specified, the command will disable Hazelcast on the
+domain configuration _(server-config)_ which equates to the DAS. To disable Hazelcast on another
+instance, configuration or cluster, use the `--target` option like so:
+
+[source, shell]
+----
+asadmin> set-hazelcast-configuration --enabled=false --target=${Target}
+----
+
+The `dynamic` option of the asadmin command defaults to true, so to
+enable Hazelcast and require a restart of the target instance/cluster, use
+`--dynamic=false`:
+
+CAUTION: Using `--dynamic=true` will cause a restart of the underlying Hazelcast instance
+in each affected instance. If multiple instances restart simultaneously this can result in
+data loss in the Data Grid. If this is a problem use `--dynamic=false` and restart each
+instance manually in turn.
+
+[source, shell]
+----
+asadmin> set-hazelcast-configuration --enabled=false --dynamic=false
+----

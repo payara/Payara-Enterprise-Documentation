@@ -1,0 +1,19 @@
+[[micro-instance-names]]
+= Payara Micro Instance Names
+
+Payara Micro instances are automatically assigned a name on boot. These names
+are generated from a dictionary of adjectives and fish names as `adjective-fish`.
+For example: `Magnanimous-Payara`, `Disgruntled-Goldfish`, and `Bamboozled-Tetra`.
+
+[[setting-a-custom-instance-name]]
+== Setting a Custom Instance Name
+
+Instance names can be overridden with the `--name` command-line argument on start-up.
+Manually entered instances names are non-unique.
+
+As an example, see below:
+
+[source, shell]
+----
+java -jar payara-micro.jar --name MicroInstance1
+----

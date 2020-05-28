@@ -1,0 +1,129 @@
+[[print-certificate]]
+= Printing Certificate Data
+
+_Since Payara Server 5.193_
+
+The `print-certificate` is an offline command that prints data of the selected certificate.
+
+The main reason for this command is that keytool output and especially distinguished names are
+not standardized - usually they use RFC 1779.
+
+This command prints the certificate's distinguished name in RFC 2253 format, which is used in Payara,
+so it can be directly used for role mapping when using client certificate authentication,
+for example:
+
+    <principal-name>CN=My Client,OU=Payara,O=Payara Foundation,L=Great Malvern,ST=Worcestershire,C=UK</principal-name>
+
+Beside this the command prints other useful data about the certificate:
+- validity dates
+- serial number
+- version
+- issuer's distinguished name
+- public key algorithm and size
+- signature algorithm including OID
+
+The command supports only X.509 certificates in files with the following extensions:
+- keystores: p12, pkcs12, pfx, jks, jceks
+- PEM or DER encoded certificates: cer, cert, crt, der, pem
+
+The further requirement is also the JVM support of the file type.
+
+If the file contains more certificates, the command prints only the first one.
+
+[[usage]]
+== Usage
+
+=== Options
+
+|===
+|  | Type | Description | Default | Mandatory
+
+| _file_
+| File
+| File containing the certificate
+|
+| Yes
+
+| certificatealias
+| String
+| If the file is a keystore, this is an alias used to access the certificate
+|
+| Only for keystore files
+
+| providerclass
+| Class
+| Custom java.security.Provider class to be preferred in this command execution.
+|
+| No
+|===
+
+[[errors]]
+=== Errors
+
+The command prints an error if
+- the file could not be read
+- the file extension is not supported by the command
+- the file type is not supported by the the JDK
+- the keystore password was not correct
+- the keystore does not contain certificate under the given alias
+- the certificate type is not supported
+
+[[examples]]
+== Examples
+
+=== DER/PEM Encoded Certificate
+
+This command prints the certificate:
+
+----
+asadmin print-certificate ./certificate.der
+Found Certificate:
+Subject:    UID=LDAP-Test,EMAILADDRESS=nobody@nowhere.space,CN=PrintCertificateCommandTest,OU=Test Test\, Test,O=Payara Foundation,L=Pilsen,C=CZ
+Validity:   Thu Aug 01 02:00:00 CEST 2019 - Fri Aug 02 02:00:00 CEST 2019
+S/N:        1
+Version:    3
+Issuer:     UID=LDAP-Test,EMAILADDRESS=nobody@nowhere.space,CN=PrintCertificateCommandTest,OU=Test Test\, Test,O=Payara Foundation,L=Pilsen,C=CZ
+Public Key: RSA, 2048 bits
+Sign. Alg.: SHA256withRSA (OID: 1.2.840.113549.1.1.11)
+Command print-certificate executed successfully.
+----
+
+=== Keystore
+
+The following command asks for the password and prints the certificate:
+
+----
+asadmin print-certificate --certificatealias s1as ./keystore.p12
+Keystore Password>
+Found Certificate:
+Subject:    CN=localhost,OU=Payara,O=Payara Foundation,L=Great Malvern,ST=Worcestershire,C=UK
+Validity:   Tue Aug 06 14:06:14 CEST 2019 - Fri Aug 03 14:06:14 CEST 2029
+S/N:        886895448
+Version:    3
+Issuer:     CN=localhost,OU=Payara,O=Payara Foundation,L=Great Malvern,ST=Worcestershire,C=UK
+Public Key: RSA, 2048 bits
+Sign. Alg.: SHA256withRSA (OID: 1.2.840.113549.1.1.11)
+Command print-certificate executed successfully.
+----
+
+=== Alternative Provider
+
+Different providers can provide alternative certificate management, which can lead to differing outputs.
+In this example, we use the BouncyCastle library, which leads to one difference: uppercased signature algorithm name.
+
+The asadmin command has it's own classpath, so first you need to add the provider here.
+
+----
+cp .../bcprov-jdk15on-1.62.jar .../payara5/glassfish/lib/asadmin/
+asadmin print-certificate --providerclass org.bouncycastle.jce.provider.BouncyCastleProvider ./certificate.der
+Found Certificate:
+Subject:    UID=LDAP-Test,EMAILADDRESS=nobody@nowhere.space,CN=PrintCertificateCommandTest,OU=Test Test\, Test,O=Payara Foundation,L=Pilsen,C=CZ
+Validity:   Thu Aug 01 02:00:00 CEST 2019 - Fri Aug 02 02:00:00 CEST 2019
+S/N:        1
+Version:    3
+Issuer:     UID=LDAP-Test,EMAILADDRESS=nobody@nowhere.space,CN=PrintCertificateCommandTest,OU=Test Test\, Test,O=Payara Foundation,L=Pilsen,C=CZ
+Public Key: RSA, 2048 bits
+Sign. Alg.: SHA256WITHRSA (OID: 1.2.840.113549.1.1.11)
+Command print-certificate executed successfully.
+----
+

@@ -1,0 +1,125 @@
+[[configuring-the-jmx-monitoring-service]]
+= Configuring the JMX Monitoring Service
+
+There are two ways to configure the JMX Monitoring Service:
+
+. Using the `set-jmx-monitoring-configuration` asadmin command
+. Editing the `domain.xml` file directly.
+
+NOTE: In versions prior to _Payara Server 4.1.2.183 or 5.183_, the `set-monitoring-configuration` 
+command was used instead. This command is now deprecated.
+
+Examples on how to use the service to monitor the `HeapMemoryUsage`
+attribute using both methods are shown below, but it is first worth
+noting the default configuration values for the service:
+
+* _enabled_: `false`, valid type: `Boolean`
+* _amx_: `false`, valid type: `Boolean`, _optional_
+* _logfrequency_: `15`, valid type: `Long`, _optional_
+* _logfrequencyunit_: `SECONDS`, valid type: `TimeUnit`, _optional_
+
+TIP: You can also boot AMX at startup or independently from the JMX Monitoring 
+service. For more information go xref:documentation/payara-server/jmx-monitoring-service/amx.adoc[here].
+
+Monitoring attributes are added to the service as properties of the
+configuration and contain the following values:
+
+* _attributeName_: the MBean attribute name
+* _objectName_: the MBean object name
+* _description_: displayed in the `get-jmx-monitoring-configuration` asadmin
+command, _optional_
+
+NOTE: In versions prior to _Payara Server 4.1.2.183 or 5.183_, the `get-monitoring-configuration` 
+command was used instead. This command is now deprecated.
+
+[[using-the-asadmin-command]]
+== Using the asadmin command
+
+[[adding-the-monitoring-attribute]]
+=== Adding the monitoring attribute
+
+To add the `HeapMemoryUsage` attribute to the list of MBean attributes to monitor 
+using the service the following command can be used:
+
+[source, shell]
+-----
+asadmin> set-jmx-monitoring-configuration --addattribute 'attributeName=HeapMemoryUsage 
+objectName=java.lang:type=Memory' --enabled false
+-----
+
+Breaking this command down, two arguments have been used:
+
+* `--addattribute`
+* `--enabled`
+
+Passing `--addattribute` to `set-jmx-monitoring-configuration` provides a way to 
+add a new **MBean** attribute to monitor using the service. This argument takes 
+in a string of space-delimited key-value pairs corresponding to the values listed 
+earlier. The `attributeName` and `objectName` fields are required, but `description` 
+is not. Providing `attributeName=HeapMemoryUsage` denotes that the name of the 
+**MBean** attribute to log is `HeapMemoryUsage`, while `objectName=java.lang:type=Memory` 
+denotes the `ObjectName` of the **MBean** to look for the attribute on is `java.lang:type=Memory`.
+
+The second argument, `--enabled`, is the only required option for the `asadmin` 
+command. The only valid values to give this option are `true` or `false`. Passing 
+`false` to the option will disable the logging service on next startup if it is 
+currently enabled, but will otherwise do nothing. Under this scenario the monitoring 
+service has not been configured yet so `false` was passed.
+
+[[dealing-with-composite-mbean-attributes]]
+=== Dealing with composite MBean attributes
+
+The **MBean** attribute added, `HeapMemoryUsage`, is a composite attribute.
+
+It has metrics for the `commited`, `init`, `max` and `used` attributes. The 
+monitoring service will by default monitor each metric and log it as 
+`{$metric}{$attribute_name}:{$attribute_value}`.
+
+If this is not the desired result, it is possible to monitor a single metric for
+ a composite **MBean** attribute. To monitor a single metric for the attribute 
+the value of `attributeName` passed to the `--addattribute` option should be modified like so:
+
+----
+attributeName=HeapMemoryUsage.metric
+----
+
+So to log only the used heap memory the asadmin command would be:
+
+[source, shell]
+----
+asadmin> set-jmx-monitoring-configuration --addattribute 'attributeName=HeapMemoryUsage.used 
+objectName=java.lang:type=Memory' --enabled false
+----
+
+[[setting-logging-frequency]]
+=== Setting logging frequency
+
+There are two configuration attributes related to the frequency at which log 
+messages are written: `logfrequency` and `logfrequencyunit`. The first is a 
+numerical value used for the rate, while the second is the unit for the rate. 
+The default configuration is set to have a message logged every _15 seconds_.
+
+If the value of `logfrequencyunit` is the default of `SECONDS` then to
+have the monitoring service log messages every one minute execute the following command:
+
+[source, shell]
+----
+asadmin> set-jmx-monitoring-configuration --logfrequency 60 --enabled false
+----
+
+[[enabling-the-monitoring-service]]
+=== Enabling the monitoring service
+
+After configuring the monitoring service, it can either be enabled for next startup or the service can be dynamically 
+enabled on a running instance of Payara (provided a non-empty configuration exists 
+at server startup). To enable the service dynamically on the default running 
+instance of Payara the command to run is:
+
+[source, shell]
+----
+asadmin> set-jmx-monitoring-configuration --dynamic true --enabled true
+----
+
+To enable the service for next startup the `--dynamic` option would need
+to be dropped from the command.
+

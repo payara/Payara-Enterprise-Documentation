@@ -1,0 +1,323 @@
+[[monitoring-service-asadmin-command-reference]]
+= Monitoring Service Asadmin Command Reference
+
+The following is a detailed list of the administration commands that can be used
+to correctly configure the Monitoring Service.
+
+_Since Payara Server 5.183_
+
+[[set-monitoring-service-configuration]]
+== `set-monitoring-service-configuration`
+
+*Usage*::
+`asadmin> set-monitoring-service-configuration --enabled=true|false --mbeansenabled=true|false --amxenabled=true|false`
+
+*Aim*::
+This command can be used to set all configuration of the Monitoring Service at once.
+
+[[command-options]]
+=== Command Options
+
+[cols="3,1,5,1,1",options="header"]
+|===
+|Option
+|Type
+|Description
+|Default
+|Mandatory
+
+|`--enabled`
+|Boolean
+|Whether to enable or disable the service.
+|N/A
+|no
+
+|`--mbeansenabled`
+|Boolean
+|Whether to enable or disable Mbean monitoring.
+|N/A
+|no
+
+|`--amxenabled`
+|Boolean
+|Whether to enable or disable AMX on boot.
+|N/A
+|no
+
+|`--target`
+|String
+|The name of the configuration to set the monitoring service configuration on.
+|server
+|no
+
+|===
+
+[[example]]
+=== Example
+
+[source, shell]
+----
+asadmin > set-monitoring-service-configuration
+    --enabled=true
+    --mbeansenabled=true
+    --amxenabled=true
+    --target=server
+----
+
+_Since Payara Server 5.183_
+
+[[get-monitoring-service-configuration]]
+== `get-monitoring-service-configuration`
+
+*Usage*::
+`asadmin> get-monitoring-service-configuration`
+
+*Aim*::
+This command can be used to list the configuration settings of the Monitoring Service.
+
+[[command-options-2]]
+=== Command Options
+
+[cols="3,1,5,1,1",options="header"]
+|===
+|Option
+|Type
+|Description
+|Default
+|Mandatory
+
+|`--target`
+|String
+|The name of the configuration to get the monitoring service configuration from.
+|server
+|no
+
+|===
+
+[[example-2]]
+=== Example
+
+[source, shell]
+----
+asadmin > get-monitoring-service-configuration
+     --target=server
+----
+
+_Since Payara Server 5.183_
+
+[[set-monitoring-level]]
+== `set-monitoring-level`
+
+*Usage*::
+`asadmin> set-monitoring-level`
+
+*Aim*::
+This command can be used set monitoring level of a module.
+
+[[command-options-3]]
+=== Command Options
+
+[cols="3,1,5,1,1",options="header"]
+|===
+|Option
+|Type
+|Description
+|Default
+|Mandatory
+
+|`--module`
+|String
+|The name of the module.
+|N/A
+|yes
+
+|`--level`
+|String
+|Allows you to change monitoring level for a module to OFF, LOW or HIGH.
+|N/A
+|yes
+
+|`--target`
+|String
+|The name of the configuration to get the monitoring service configuration from.
+|server
+|no
+
+|===
+
+[[example-3]]
+=== Example
+
+[source, shell]
+----
+asadmin > set-monitoring-level
+     --module=jvm
+     --level=HIGH
+     --target=server
+----
+
+You can also set monitoring level for multiple modules using example below:
+
+[source, shell]
+----
+asadmin > set-monitoring-level
+     --module=jvm,http-service
+     --level=HIGH,LOW
+     --target=server
+----
+
+_Since Payara Server 5.183_
+
+[[get-monitoring-level]]
+== `get-monitoring-level`
+
+*Usage*::
+`asadmin> get-monitoring-level`
+
+*Aim*::
+This command can be used to get monitoring level of a module.
+
+[[command-options-4]]
+=== Command Options
+
+[cols="3,1,5,1,1",options="header"]
+|===
+|Option
+|Type
+|Description
+|Default
+|Mandatory
+
+|`--module`
+|String
+|The name of the module.
+|N/A
+|no
+
+|`--target`
+|String
+|The name of the configuration to get the monitoring service configuration from.
+|server
+|no
+
+|===
+
+[[example-4]]
+=== Example
+
+[source, shell]
+----
+asadmin > get-monitoring-level
+     --module=jvm
+     --target=server
+----
+
+You can also get monitoring level for all available modules using example below:
+
+[source, shell]
+----
+asadmin > get-monitoring-level
+     --target=server
+----
+
+Will give an output similar to the following:
+
+[source, shell]
+----
+Module                       Monitoring Level
+cloud                        OFF
+cloud-elasticity             OFF
+cloud-orchestrator           OFF
+cloud-tenant-manager         OFF
+cloud-virt-assembly-service  OFF
+connector-connection-pool    OFF
+connector-service            OFF
+deployment                   OFF
+ejb-container                OFF
+http-service                 LOW
+jdbc-connection-pool         OFF
+jersey                       OFF
+jms-service                  OFF
+jpa                          OFF
+jvm                          HIGH
+orb                          OFF
+security                     OFF
+thread-pool                  OFF
+transaction-service          OFF
+web-container                OFF
+web-services-container       OFF
+----
+
+_Since Payara Server 5.193_
+
+[[restart-monitoring]]
+== `restart-monitoring`
+
+*Usage*::
+`asadmin> restart-monitoring`
+
+*Aim*::
+This command can be used to restart monitoring levels. 
+
+It will set all modules to 'OFF' before setting them to their previous level.
+
+This command is useful when AMX metrics 'breaks' as some users have reported setting monitoring levels to 'OFF' and back again fixes it, however doing so manually can be slow and prone to error.
+
+[[command-options-5]]
+=== Command Options
+
+[cols="3,1,5,1,1",options="header"]
+|===
+|Option
+|Type
+|Description
+|Default
+|Mandatory
+
+|`--target`
+|String
+|The name of the configuration to get the monitoring service configuration from.
+|server-config
+|no
+
+|`--verbose`
+|String
+|Enable verbose output for the current command.
+|false
+|no
+
+|===
+
+[[example-5]]
+=== Example
+
+[source, shell]
+----
+asadmin > restart-monitoring
+     --target=server-config
+----
+
+Will give an output similar to the following:
+[source, shell]
+----
+Restarted 3 modules
+----
+
+You can use the verbose mode to see which modules were affected and what monitoring level they are currently set to:
+
+[source, shell]
+----
+asadmin > restart-monitoring
+     --target=server
+     --verbose
+----
+
+Will give an output similar to the following:
+
+[source, shell]
+----
+Module                       Monitoring Level
+cloud                        HIGH
+cloud-elasticity             LOW
+cloud-orchestrator           HIGH
+----

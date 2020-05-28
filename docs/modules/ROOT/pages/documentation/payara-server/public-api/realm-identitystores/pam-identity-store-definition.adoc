@@ -1,0 +1,65 @@
+[[pam-identity-store]]
+= PAM Identity Store
+
+_Since Payara Server 5.194_
+
+The Payara API provides a `@PamIdentityStoreDefinition` annotation that creates an identity store to authenticate the users using the pam realm.
+
+[[usage]]
+== Usage
+
+The PAM realm identity store is defined through the `@PamIdentityStoreDefinition` annotation.
+Specifying this in a valid place as defined by the https://jakarta.ee/specifications/security/1.0/apidocs/[Jakarta EE Security API] will create the identity store.
+Often this may mean that any class is a valid position.
+If a PAM realm is not found with the defined name then a new PAM realm is registered on the server using the `create-auth-realm` asadmin command,
+otherwise the existing PAM realm instance is used to authenticate the users.
+
+[[usage-example]]
+=== Example
+
+The following code sample illustrates how to configure PAM realm identity store:
+
+[source, java]
+----
+@ApplicationScoped
+@ApplicationPath("/rest")
+@DeclareRoles({ "a", "b"})
+@BasicAuthenticationMechanismDefinition(realmName = "pam-realm")
+@PamIdentityStoreDefinition("pam-realm")
+public class MyRestApp extends Application {
+}
+----
+
+[[configuration]]
+== Configuration
+
+The PAM realm identity store can be configured with both `@PamIdentityStoreDefinition` annotation attributes and MicroProfile Config properties. The annotation and MicroProfile properties have several configuration options.
+
+They are detailed as shown below.
+
+
+|===
+| Option | MP Config property | Description | Default | Required
+
+| `value`
+|
+| The name of PAM realm.
+|
+| true
+
+| `assignGroups`
+| `payara.security.pam.assignGroups`
+| The users are assigned membership to these groups for the purposes of authorization decisions.
+|
+|
+
+| `jaasContext`
+| `payara.security.pam.jaasContext`
+| The JAAS Context of Pam realm.
+| `pamRealm`
+|
+
+|===
+
+*Note :* If both an annotation attribute and a MicroProfile Config property are defined for the same option 
+then the MicroProfile Config property value always takes precedence over the `@PamIdentityStoreDefinition` annotation value.

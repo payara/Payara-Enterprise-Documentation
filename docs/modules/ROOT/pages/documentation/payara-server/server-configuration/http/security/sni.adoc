@@ -1,0 +1,15 @@
+[[sni]]
+= Server Name Indication - SNI
+
+_Since Payara Server 4.1.2.182 and 5.182_
+
+Server Name Indication, SNI for short, allows you to use multiple SSL certificates with the same IP address. When enabled, the server will look for a certificate in the configured keystore using a nickname that matches the host name requested.  
+
+[[configuration]]
+== Configuration
+
+SNI can be enabled by configuring a network listener. Existing network listeners can be configured from the admin console or with asadmin commands. The network listener configurations can be found in the admin console under *Configurations -> <your-config> -> Network Config -> Network Listeners*.
+
+From here, click on the *SSL* tab, and make sure that the *SNI Support* checkbox is ticked.
+
+IMPORTANT: For SNI to take effect, the network listener must have security enabled by providing a default keypair and certificate, and by checking the *Security* box on the *HTTP* tab.

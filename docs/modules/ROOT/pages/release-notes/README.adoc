@@ -1,0 +1,11 @@
+[[release-notes]]
+= Release notes
+
+Detailed information about features and fixes in every release.
+
+[[all-release-notes]]
+== All Release Notes
+
+*2020*
+
+* 2020 Q2 - xref:release-notes/release-notes-20-0.adoc[Payara Server 5.20.0]

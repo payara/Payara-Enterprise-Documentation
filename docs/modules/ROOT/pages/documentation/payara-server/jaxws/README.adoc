@@ -1,0 +1,7 @@
+[[contents]]
+= JAX-WS Enhancements
+
+_Since Payara Server 5.191_
+
+This section covers the extra functionality relating to
+JAX-WS provided in Payara Server.

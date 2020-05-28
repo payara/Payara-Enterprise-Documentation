@@ -1,0 +1,28 @@
+= Disabling JLine Logging
+
+The asadmin multimode autocompletion feature introduced in release 5.184 has some issues when running on certain environments, 
+causing the following messages when starting the `asadmin` utility in multimode:
+
+[%hardbreaks]
+`*[INFO] Unable to bind key for unsupported operation: up-myhistory*`
+`*[INFO] Unable to bind key for unsupported operation: down-myhistory*`
+`*[INFO] Unable to bind key for unsupported operation: backward-delete-myword*`
+`*[INFO] Unable to bind key for unsupported operation: up-myhistory*`
+`*[INFO] Unable to bind key for unsupported operation: down-myhistory*`
+`*[INFO] Unable to bind key for unsupported operation: backward-delete-myword*`
+`*[INFO] Unable to bind key for unsupported operation: up-myhistory*`
+`*[INFO] Unable to bind key for unsupported operation: down-myhistory*`
+`*[INFO] Unable to bind key for unsupported operation: backward-delete-myword*`
+
+This issue is a known Jline v2.x issue which is the version included in Payara Server, and is an unfavourable filling of space in the logs.
+
+As a fix for this issue, a new asadmin property has been implemented to disable JLine logging. The following steps show how this can be done:
+
+== Disabling JLine in the asadmin file directly
+. Navigate to '_{Payara Install Directory}/bin/_'
+. Open the asadmin file (if you are on a Windows PC, open the asadmin.bat file instead)
+. Alter the last line of the file as follows:
+** *Change From:* exec "$JAVA" -XX:+IgnoreUnrecognizedVMOptions -jar "$AS_INSTALL_LIB/client/appserver-cli.jar" "$@"
+** *To:* exec "$JAVA" -Dfish.payara.admin.command.jline.log.disable=true -jar "$AS_INSTALL_LIB/client/appserver-cli.jar" "$@"
+
+After this, save the asadmin file - The JLine logging will be disabled

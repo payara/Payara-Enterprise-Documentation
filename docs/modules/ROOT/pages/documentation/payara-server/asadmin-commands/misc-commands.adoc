@@ -1,0 +1,220 @@
+[[miscellaneous-commands-reference]]
+= Miscellaneous Commands
+
+This is a non-exhaustive list of asadmin commands for Payara Server.
+
+[[add-library-command]]
+== `add-library`
+
+_Since Payara Server 4.1.2.173_
+
+*Usage*::
+`asadmin> add-library <options> file`
+
+*Aim*::
+This command adds a jar library to Payara Server and loads it
+
+|===
+|Options | Type | Description | Default | Mandatory
+
+| type
+| String
+| Specifies the type of library. The supported values are `common`, `ext`, `app`. If it's of type `app` the server must be restarted to take effect.
+| common
+| No
+|===
+
+[[create-iiop-listener-command]]
+== `create-iiop-listener`
+
+*Usage*::
+`asadmin > create-iiop-listener <options> listener_id`
+
+*Aim*::
+Creates a listener for IIOP network traffic
+
+=== Command Options
+
+|===
+|Option | Type | Description | Default | Mandatory
+
+| listeneraddress
+| address
+|
+|
+| Yes
+
+| iiopport
+| Integer
+|
+| 1072
+| No
+
+| enabled
+| Boolean
+|
+| true
+| No
+
+| securityenabled
+| Boolean
+|
+| false
+| No
+
+| lazyInit
+| Boolean
+|
+| false
+| No
+
+| property
+| List
+| Colon seperated list of properties
+|
+| No
+|===
+
+
+[[generate-bash-autocomplete-command]]
+== `generate-bash-autocomplete`
+
+_Since 5.183_
+
+*Usage*::
+`asadmin >generate-bash-autocomplete output_file`
+
+*Aim*::
+Creates an asadmin autocompletion script for bash.
+
+The created file will be on the server and not the client.
+If they are on different hosts, then the file will be needed
+to copied from the server to the client.
+Add the resulting file to your bash path by adding
+`source path/to/outputfile` to your .bashrc
+or copy the file into the `/etc/bash_completion.d` folder.
+
+This means that you can run asadmin commands by typing 
+`asadmin` in a terminal and you can use double-tab to autocomplete a command,
+similar to other bash commands.
+
+=== Command Options
+
+|===
+|Option | Type | Description | Default | Mandatory
+
+| force
+| boolean
+| whether to write over a file if one already exists
+| false
+| No
+
+| file
+| File path
+| The path for the resulting file
+| ${payara.home}/glassfish/bin/bash_autocomplete
+| No
+|===
+
+[[get-domain-xml-command]]
+== `get-domain-xml`
+
+*Usage*::
+`asadmin > get-domain-xml`
+
+*Aim*::
+Gets the text of the domain.xml file. This command will only run against a local instance.
+
+
+[[list-rest-endpoints-command]]
+== `list-rest-endpoints`
+
+_Since Payara Server 4.1.2.172_
+
+*Aim*::
+Lists all the rest endpoints of an application
+
+*Usage*::
+`asadmin > list-rest-endpoints applicationName`
+
+
+[[restart-cluster-command]]
+== `restart-cluster`
+
+_Since Payara Server 4.1.1.163_
+
+*Aim*::
+Restarts all instances in a cluster. Must be run from the DAS.
+
+*Usage*::
+`asadmin > restart-cluster clusterName`
+
+
+[[set-network-listener-configuration-command]]
+== `set-network-listener-configuration`
+
+_Since Payara Server 5.182_
+
+*Usage*::
+`asadmin> set-network-listener-configuration <options> network_listener_name`
+
+*Aim*::
+This command helps to modify existing network listener
+
+|===
+|Options | Type | Description | Default | Mandatory
+
+| enabled
+| Boolean 
+| Enables or disables the network listener.
+| true
+| No
+
+| dynamic
+| Boolean 
+| When set to true, applies the changes without a restart. Otherwise a restart is required.
+| false
+| No
+
+| address
+| String
+| The IP address on which the network listener is going to be listening. 
+| 
+| No
+
+| Port
+| Integer
+| The port on which the network listener is going to be listening. 
+| 
+| Yes
+
+| listenerPortRange
+| String
+| Port range which the network listener can bind to.  
+| 
+| No
+
+| threadPool
+| String
+| The thread pool which will be associated with the network listener.
+| 
+| No
+
+| transport
+| String
+| The transport layer that is going to be used by the network listener
+| 
+| No
+
+| jkenabled
+| Boolean 
+| If enabled, the network listener will become an Apache mod-jk listener  
+| false
+| No
+
+| target
+| String
+| The config whose values will be set.
+| server-config
+| No
+|===

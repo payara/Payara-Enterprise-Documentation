@@ -1,0 +1,50 @@
+[[overwriting-archive-names]]
+= Overwriting EJB JAR Archive Names
+
+This section showcases how to overwrite the name of an EJB-JAR module when it is deployed either as a standalone module or as part of an EAR application.
+
+[[overwriting-module-name]]
+== Overwriting the Module Name
+
+_Since Payara Server 4.1.2.174_
+
+When deploying an EJB-JAR module on Payara Server, the portable JNDI names for all scanned EJBs will be generated using the name of the module as specified on the _ejb-jar.xml_ deployment descriptor:
+
+[source, xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns = "http://java.sun.com/xml/ns/javaee"
+         version = "3.1"
+         xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation = "http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd">
+    <module-name>MODULE_NAME</module-name>
+</ejb-jar>
+----
+
+NOTE: If the name's not specified in the deployment descriptor, the specification states that the module name will be the same as the JAR artifact used to deploy it.
+
+However, When deploying a JAR from an IDE (like **NetBeans** or **IntelliJ**), the IDE deploys to Payara Server using the asadmin `deploy` command, with the `--name` option specified. This will force the module to have the specified name over the name
+defined in _ejb-jar.xml_. This is undesired because the IDE usually infers the module name from the name of the project or the JAR file and doesn't take the correct name of the module into account.
+
+In Payara Server, the module name defined in the deployment descriptor will be used even if it tries to be overridden using the `--name` option. This behaviour will *always* takes precedence.
+
+IMPORTANT: In the case you need to overwrite the name of the module when deploying the module, use the `--forceName` command option.
+
+[[overwriting--the-application-name]]
+=== Overwriting the Application Name
+
+_Since Payara Server 4.1.2.182 and 5.182_
+
+In the case of EAR artifacts, the portable JNDI names for all scanned EJBs will use the application name defined in the _application.xml_ deployment descriptor:
+
+[source, xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_7.xsd" version="7">
+    <display-name>My Application</display-name>
+    <application-name>APPLICATION_NAME</application-name>
+    ...
+</application>
+----
+
+NOTE: You can use the `--name` and `--forcename` deployment options to override the application name in a similar manner with what happens with EJB-JAR modules.

@@ -1,0 +1,26 @@
+[[notifiers]]
+= Notifiers
+
+The notification service comes with an integrated set of notifiers that
+can be used to send notification events to a distinct variety of
+channels apart from the standard server log mechanism:
+
+*Email*:: Taking advantage of preconfigured Java Mail sessions in the
+server, you can route notifications to an email account
+*JMS*:: Taking advantage of preconfigured JMS connection resources, you
+can route notifications to a Java Message Queue so it can be consumed by
+other applications or services
+*CDI Event Bus*:: For sending notification events using xref:/documentation/payara-server/public-api/cdi-events.adoc[Payara's CDI Event Bus]
+ and observing them in instances in the cluster.
+*Hipchat*:: You can configure the notification service to send events
+to an specific Hipchat chat room.
+*Slack*:: Same as with the Hipchat notifier, you can sends
+notifications directly to an specific Slack channel.
+*SNMP*:: Allows monitoring servers to scout for notification events
+using SNMP traps.
+*XMPP*:: Allows sending notification events to XMPP servers.
+*NewRelic*:: Allows sending notification events to a *NewRelic* service account.
+*Datadog*:: Allows sending notification events to the *Datadog* monitoring service
+
+Appropriate instructions on how to configure and use all of these
+notification mechanisms are included in this section.

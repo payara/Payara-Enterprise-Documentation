@@ -1,0 +1,171 @@
+[[using-rest-monitoring]]
+= Using REST monitoring
+
+REST monitoring uses a similar API to Jolokia, but with a subset of the features. The REST API is hosted on the following URL:
+
+====
+http://<HOSTNAME>:<ADMIN_PORT>/<REST_MONITORING_CONTEXT>/rest
+====
+
+Which by default is `http://localhost:4848/rest-monitoring/rest`.
+
+[[operations]]
+== Operations
+
+REST monitoring supports a subset of operations defined in the Jolokia API.
+
+NOTE: Currently, this feature only supports the `read` operation since the feature is still in tech preview. More operations will become available in future releases
+
+[[read]]
+=== `Read`
+
+The `read` operation reads the details of the requested MBean.
+The `read` operation accepts `GET` requests on URLs in the following format:
+
+====
+<REST_API_URL>/read/${mbean-name}/${attribute-name}
+====
+
+For example, if you want to read the MBean `java.lang:type=Memory` using the default configuration, you would make a GET request to:
+`http://localhost:4848/rest-monitoring/rest/read/java.lang:type=Memory`.
+
+A sample output of this request is shown below:
+
+[source, json]
+----
+{
+  "request": {
+    "mbean": "java.lang:type=Memory",
+    "type": "read"
+  },
+  "value": {
+    "HeapMemoryUsage": {
+      "committed": 450363392,
+      "init": 264241152,
+      "max": 477626368,
+      "used": 97480984
+    },
+    "ObjectPendingFinalizationCount": 0,
+    "NonHeapMemoryUsage": {
+      "committed": 139460608,
+      "init": 2555904,
+      "max": -1,
+      "used": 122389432
+    },
+    "Verbose": false,
+    "ObjectName": "java.lang:type=Memory"
+  },
+  "timestamp": 1502799650273,
+  "status": 200
+}
+----
+
+A couple of quick notes:
+
+* The attribute name can be empty
+* A list of attribute names can be found in the request of an empty attribute name under `value`. So in the example MBean above, `HeapMemoryUsage` and `NonHeapMemoryUsage` are both attribute names.
+
+[[search]]
+=== `Search`
+
+_Not supported in the current technical preview included with Payara Server {currentVersion}_.
+
+[[list]]
+=== `List`
+
+_Not supported in the current technical preview included with Payara Server {currentVersion}_.
+
+=== `Write`
+
+_Not supported in the current technical preview included with Payara Server {currentVersion}_.
+
+[[version]]
+=== `Version`
+
+The `version` operation is not fully supported in Payara Server
+{currentVersion}, but a GET request on the default operation produces similar results.
+
+[[bulk-operations]]
+=== Bulk Operations
+
+_Since Payara Server 5.182_
+
+It is possible to execute bulk operations using the REST monitoring API too. To do this, just issue a `POST` request to the REST API URL with the following JSON structure as the body payload:
+
+[source, json]
+----
+[
+  {
+    "type" : "<OPERATION_TYPE>",
+    "mbean" : "<MBEAN_NAME>",
+    "attribute" : "<ATTRIBUTE_NAME>"
+  },
+  {
+    "type" : "<OPERATION_TYPE>",
+    "mbean" : "<MBEAN_NAME>",
+    "attribute" : "<ATTRIBUTE_NAME>"
+  },
+  ...
+]
+----
+
+The payload is a JSON array consisting of objects with the following structure:
+
+`type`:: The type of the operation to execute (`read`, `search`, etc.)
+`mbean`:: The MBean name upon which the operation will be executed.
+`attribute`:: The MBean attribute upon which the operation will be executed. If ommited, all attributes of the MBean will be involved in the operation.
+
+NOTE: You can send only one operation request instead of an array if needed.
+
+IMPORTANT: Since the feature is on tech preview, currently the only supported operation type is `read`.
+
+Here's an example of executing a bulk read operation:
+
+[source, shell]
+----
+curl -X POST \
+  http://localhost:4848/rest-monitoring/rest/ \
+  -H 'Content-Type: application/json' \
+  -d '[
+	{
+		"mbean": "java.lang:type=Compilation",
+		"type": "read"
+	},{
+		"mbean": "java.lang:type=Runtime",
+		"attribute" : "Uptime",
+		"type": "read"
+	}
+]'
+----
+
+Which will yield an output similar to the following:
+
+[source, json]
+----
+[
+    {
+        "request": {
+            "mbean": "java.lang:type=Compilation",
+            "type": "read"
+        },
+        "value": {
+            "Name": "HotSpot 64-Bit Tiered Compilers",
+            "CompilationTimeMonitoringSupported": true,
+            "TotalCompilationTime": 106363,
+            "ObjectName": "java.lang:type=Compilation"
+        },
+        "timestamp": 1529353755633,
+        "status": 200
+    },
+    {
+        "request": {
+            "mbean": "java.lang:type=Runtime",
+            "attribute": "Uptime",
+            "type": "read"
+        },
+        "value": 8541422,
+        "timestamp": 1529353755636,
+        "status": 200
+    }
+]
+----

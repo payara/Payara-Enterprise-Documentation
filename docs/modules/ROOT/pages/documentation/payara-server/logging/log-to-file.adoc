@@ -1,0 +1,29 @@
+[[log-to-file]]
+= Log To File
+
+_Since version 4.1.2.181_
+
+Similar to `Log to Console` option available in both GlassFish 4.0 Open Source 
+Edition and Payara Server. `Log to File` option will provide a way to enable 
+and disable logging to a file in Payara Server. When disabled this should help 
+to minimize disk usage. This option will be more accommodating if Payara server 
+is running in cloud environment where disk space is scarce. 
+
+[[using-web-admin-console]]
+== Using the Admin Console
+
+To configure `Log to File` option using Admin Console:
+
+image:logging/log_to_file.png[Log to File enabled]
+
+[[using-asadmin-utility]]
+== Using an `asadmin` command
+
+Use the following command to enable or disabled logging to a file:
+
+[source, shell]
+----
+asadmin> set-log-attributes com.sun.enterprise.server.logging.GFFileHandler.logtoFile=false
+----
+
+

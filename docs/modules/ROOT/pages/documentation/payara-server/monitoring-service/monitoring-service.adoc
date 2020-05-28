@@ -1,0 +1,7 @@
+[[monitoring-service]]
+= Monitoring Service
+
+Payara Server provides capabilities for monitoring its runtime environment.
+Monitoring service can be used to collect statistics of a running Payara Server.
+This information is critical for discovering possible issues, troubleshooting,
+improving performance and making sure everything is running as excepted.

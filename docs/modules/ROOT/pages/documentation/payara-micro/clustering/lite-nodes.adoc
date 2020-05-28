@@ -1,0 +1,21 @@
+[[lite-cluster-members]]
+= Lite Cluster Members
+
+_Since Payara Micro 4.1.1.162_
+
+You may specify on the command line using `--lite` option, or through the API,
+that a Payara Micro instance is a lite instance. Then the Payara Micro instance
+will join the cluster but will not store any clustered data; for example web
+session data or JCache data. This is very useful for a number of scenarios.
+
+You can create a cluster topology whereby a web application is hosted in a number
+of Payara Micro instances and the garbage collection ergonomics for these instances
+are tuned for throughput. In addition, a number of Payara Micro instances can be
+in the cluster with no applications deployed and these instances can be tuned for
+long-lived web session data. In this case, the web application instances could be
+designated as lite cluster members to make sure no web session data is stored
+within their JVMs.
+
+IMPORTANT: Lite members can also be used purely if you want a clustered Payara
+Micro instance to join the same cluster and receive CDI events or clustered events,
+but without storing any data.

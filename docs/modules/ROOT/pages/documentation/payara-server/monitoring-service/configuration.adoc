@@ -1,0 +1,28 @@
+[[monitoring-service-configuration]]
+= Monitoring Service Configuration
+
+As with any other services available in Payara Server, the Monitoring service
+can be configured by using the web console or administration commands.
+
+[[using-the-web-console]]
+== Using the Web Administration Console
+
+To configure the Monitoring Service in the Administration Console, go to
+_Configuration -> [instance-configuration (like server-config)] -> Monitoring_:
+
+image:monitoring-service/monitoring-service-admin-console.png[Monitoring Service Configuration in the Admin Console]
+
+Check the *Monitoring Service* box to enable the Monitoring Service.
+
+You can configure the monitoring service settings using the following
+attributes:
+
+**Monitoring MBeans**:: When checked, Mbean monitoring will be enabled.
+**AMX Enabled**:: When checked, AMX will startup at boot.
+
+
+[[from-the-command-line]]
+=== From the Command Line
+
+You can configure the monitoring Service by using the administrations commands
+documented on the xref:documentation/payara-server/monitoring-service/asadmin-commands.adoc[corresponding section]

@@ -1,0 +1,29 @@
+[[phone-home-service-command-reference]]
+= Phone Home Service Command Reference
+
+[[enable-phone-home]]
+== `enable-phone-home`
+
+*Usage*::
+`asadmin> enable-phone-home`
+
+*Aim*::
+Enables the Phone Home service.
+
+[[disable-phone-home]]
+== `disable-phone-home`
+
+*Usage*::
+`asadmin> disable-phone-home`
+
+*Aim*::
+Disables the Phone Home service.
+
+[[list-phone-home]]
+== `list-phone-home`
+
+*Usage*::
+`asadmin> list-phone-home`
+
+*Aim*::
+Lists the current status of the Phone Home service.

@@ -1,0 +1,21 @@
+[[docker-integration]]
+= Docker Integration
+
+:previewVersion: {currentVersion}
+include::partial$tech-preview.adoc[]
+
+Introduced in Payara Server 5.192 is the concept of a Docker node and instance.
+These function in a similar manner to instances hosted on a SSH, DCOM,
+or CONFIG node type, though as the name suggests are targetted towards creating
+and using instances housed within Docker containers.
+
+xref:documentation/payara-server/docker/docker-nodes.adoc[Docker Nodes]:: How to create and use a Docker node.
+xref:documentation/payara-server/docker/docker-instances.adoc[Docker Instances]:: How to create and use an instance within a Docker container.
+
+== Payara Platform and Docker User Guides
+
+* https://info.payara.fish/using-payara-server-with-docker-guide[Using Payara Server with Docker] 
+
+* https://info.payara.fish/using-payara-micro-with-docker-guide[Using Payara Micro with Docker] 
+
+* https://www.payara.fish/page/clustering-payara-server-in-docker/[Clustering Payara Server with Docker]

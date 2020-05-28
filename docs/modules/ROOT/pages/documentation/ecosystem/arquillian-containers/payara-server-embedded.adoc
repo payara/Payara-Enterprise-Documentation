@@ -1,0 +1,82 @@
+= Payara Server Embedded Arquillian Container
+
+The Payara Server Embedded container lifecycle is managed by Arquillian and
+ resides in the same JVM where tests are executed using a local protocol.
+
+== Usage
+
+The Payara Server Embedded Arquillian container can be found on Maven Central,
+and can be included in your project using the following Maven coordinates:
+
+[source,XML]
+----
+<dependency>
+  <groupId>fish.payara.arquillian</groupId>
+  <artifactId>arquillian-payara-server-embedded</artifactId>
+  <version>${version}</version>
+</dependency>
+----
+
+You can find the latest artifact version https://mvnrepository.com/artifact/fish.payara.arquillian/arquillian-payara-server-embedded[from here].
+
+== Configuring the Container
+
+The following configuration options are available, each of which can be provided
+through the specified system properties in the arquillian JVM:
+
+[cols="10,80,10"]
+.Configuration Options
+|===
+| Name | Description | Default
+
+| `bindHttpPort`
+| The port number of the http-listener for the embedded Payara server.
+| `8181`
+
+| `bindHttpsPort`
+| The port number of the https-listener for the embedded Payara server.
+| `8182`
+
+| `instanceRoot`
+| The instance root directory is the domain directory and embedded Payara Server
+ uses the server instance directory for domain configuration files.
+| `N/A`
+
+| `installRoot`
+| The install root directory is the parent directory of a Payara server instance
+ directory and corresponds to the base directory for an installation of Payara Server.
+| `N/A`
+
+| `configurationReadOnly`
+| Specifies whether Payara should write back any changes to specified 
+configuration file or config/domain.xml at the specified instance root.
+| `true`
+
+| `configurationXml`
+| Set the location of configuration file i.e. domain.xml using which the Payara server should run.
+| `N/A`
+
+| `resourcesXml`
+| A comma-separated list of Payara resources.xml files containing resources 
+that will be added to the Payara instance using the `add-resources` command.
+| `N/A`
+
+| `cleanup`
+| Specifies whether Arquillian should cleanup on shutdown. This recursively deletes files in the `instanceRoot` directory.
+| `true`
+|===
+
+The easiest way to provide these system properties to the extension runtime is through the surefire plugin.
+
+[source,XML]
+.Example
+----
+<plugin>
+  <artifactId>maven-surefire-plugin</artifactId>
+  <configuration>
+    <systemPropertyVariables>
+      <bindHttpPort>true</bindHttpPort>
+    </systemPropertyVariables>
+  </configuration>
+</plugin>
+----

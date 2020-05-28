@@ -1,0 +1,134 @@
+[[production-ready-domain]]
+= Production Ready Domain
+
+_Since Payara Server 5.181_
+
+Payara Server comes with a default domain, `domain1`, which has been
+inherited from GlassFish. This domain (and its accompanying template)
+has not been significantly modified for Payara Server since its inheritance from GlassFish.
+The default domain is not however designed to be run in production, but instead to be
+a usable example for development and testing purposes.
+
+Since the creation of `domain1` in GlassFish, there have been changes in
+how the server is used, along with the changes implemented by the Payara
+development team. To better highlight these changes and new features,
+the `production` domain was created.
+
+[[usage]]
+== Usage
+
+`production` domain is located in the default directory for domains
+`${PAYARA_HOME}/glassfish/domains/`, alongside `domain1`. This means it
+can be used as-is by simply naming the domain after running the
+`start-domain` subcommand and without specifying the domain directory
+location:
+
+[source, shell]
+----
+asadmin> start-domain production
+----
+
+Alternatively, many Payara Server users completely delete existing
+domains and recreate their own domains with custom settings.
+`production` domain can be used here too, since the domain is also provided
+as a template in the `${PAYARA_HOME}/glassfish/common/templates/gf`
+directory. You will need to specify the full path to the location of the
+template jar as follows:
+
+[source, shell]
+----
+asadmin> create-domain --template ${PAYARA_HOME}/glassfish/common/templates/gf/production-domain.jar myNewPayaraDomain
+----
+
+[[differences-to-domain1]]
+== Differences to `domain1`
+
+The configuration of `production` domain has been made with production in
+mind, so there are a number of differences when compared to `domain1`
+which are listed below. Not all of these will be wanted for development
+environments, but all are good practice for production domains.
+
+=== Differences in Server Configuration
+
+1.  Autodeployment has been disabled.
+* Payara Server comes with a deployment scanner. This is a security risk
+for production, so it is disabled by default in the domain.xml.
+2.  Dynamic application reloading is disabled.
+* For the same reason as above, this is disabled by default in the
+domain.xml
+3.  Dynamic reloading of JSP pages in `default-web.xml` is disabled.
+* The `<init-param>` setting `reload-interval` in the default-web.xml has
+been set to a value of `-1` so that it is disabled.
+4.  The EJB container `max-pool-size` has been set to `128`
+5.  The `max-thread-pool-size` setting for `thread-pool-1` has been
+increased to `250`.
+6.  File caching has been enabled for both default HTTP listeners
+(`http-listener-1` and `http-listener-2`).
+7.  Isolated classloading has been enabled by default at the server
+level.
+* The property `fish.payara.classloading.delegate` has been set to `false`.
+8.  A default transaction timeout of 300 seconds has been added for xa
+and non-xa transactions.
+9.  Default group-to-role mapping is enabled.
+10. The maximum size for the thread pool `http-thread-pool` has been
+increased from `5` to `50`.
+
+=== Differences in JVM Options
+
+With the aim of `production` domain being to target production, the `production` domain has
+JVM options specifically configured for usage on JDK 8. Since JDK 7 has
+reached its end-of-life, it is therefore a security risk to run a JVM lower
+than version 8 in production. However, `production` domain can be configured to
+run on JDK 7 if necessary by editing the JVM options.
+
+The following JVM options only appear in `production` domain:
+
+* `-Xmx2g`
+* `-Xms2g`
+* `-XX:+UseG1GC`
+* `-XX:+UseStringDeduplication`
+* `-XX:MaxGCPauseMillis=500`
+* `-XX:MetaspaceSize=256m`
+* `-XX:MaxMetaspaceSize=2g`
+* `-XX:+IgnoreUnrecognizedVMOptions`
+
+The following JVM options only appear in `domain1`:
+
+* `-client`
+* `-Djavax.management.builder.initial=com.sun.enterprise.v3.admin.AppServerMBeanServerBuilder`
+* `-Xmx512m`
+* `-XX:NewRatio=2`
+* `-Dcom.sun.enterprise.security.httpsOutboundKeyAlias=s1as`
+* `-Dorg.glassfish.additionalOSGiBundlesToStart=org.apache.felix.shell,org.apache.felix.gogo.runtime,org.apache.felix.gogo.shell,org.apache.felix.gogo.command,org.apache.felix.shell.remote,org.apache.felix.fileinstall`
+* `-Dosgi.shell.telnet.port=6666`
+* `-Dosgi.shell.telnet.maxconn=1`
+* `-Dosgi.shell.telnet.ip=127.0.0.1`
+* `-Dgosh.args=--nointeractive`
+* `-Dfelix.fileinstall.dir=${com.sun.aas.installRoot}/modules/autostart/`
+* `-Dfelix.fileinstall.poll=5000`
+* `-Dfelix.fileinstall.log.level=2`
+* `-Dfelix.fileinstall.bundles.new.start=true`
+* `-Dfelix.fileinstall.bundles.startTransient=true`
+* `-Dfelix.fileinstall.disableConfigSave=false`
+* `-Dcom.ctc.wstx.returnNullForDefaultNamespace=true`
+
+The following JVM options appear in both `domain` and `production` domain:
+
+* `-Xbootclasspath/p:${com.sun.aas.installRoot}/lib/grizzly-npn-bootstrap.jar`
+* `-Djava.awt.headless=true`
+* `-Djdk.corba.allowOutputStreamSubclass=true`
+* `-Djavax.xml.accessExternalSchema=all`
+* `-XX:+UnlockDiagnosticVMOptions`
+* `-Djava.security.policy=${com.sun.aas.instanceRoot}/config/server.policy`
+* `-Djava.security.auth.login.config=${com.sun.aas.instanceRoot}/config/login.conf`
+* `-Djavax.net.ssl.keyStore=${com.sun.aas.instanceRoot}/config/keystore.jks`
+* `-Djavax.net.ssl.trustStore=${com.sun.aas.instanceRoot}/config/cacerts.jks`
+* `-Djdbc.drivers=org.apache.derby.jdbc.ClientDriver`
+* `-DANTLR_USE_DIRECT_CLASS_LOADING=true`
+* `-Dcom.sun.enterprise.config.config_environment_factory_class=com.sun.enterprise.config.serverbeans.AppserverConfigEnvironmentFactory`
+* `-Djdk.tls.rejectClientInitiatedRenegotiation=true`
+* `-Dorg.jboss.weld.serialization.beanIdentifierIndexOptimization=false`
+* `-Dorg.glassfish.grizzly.DEFAULT_MEMORY_MANAGER=org.glassfish.grizzly.memory.HeapMemoryManager`
+
+Support for the `java.endorsed.dirs` and `java.ext.dirs` options are removed from version 5.192 onwards (these were deprecated since 5.191).
+The concept of endorsed and ext directories are no longer supported with Java 9+.

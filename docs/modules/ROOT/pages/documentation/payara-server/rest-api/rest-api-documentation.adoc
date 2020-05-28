@@ -1,0 +1,12 @@
+[[payara-server-rest-api-documentation]]
+= Payara Server REST API Documentation
+
+This section contains a detailed description of the REST API available
+for administration and monitoring Payara Server domains. This
+documentation is based on the
+https://github.com/OAI/OpenAPI-Specification[OpenAPI specification]
+(formerly known as Swagger v2.0).
+
+The documentation presented here has been automatically generated using
+the https://github.com/Swagger2Markup/swagger2markup[Swagger2Markup] (ASCIIDoc support included)
+extension.
