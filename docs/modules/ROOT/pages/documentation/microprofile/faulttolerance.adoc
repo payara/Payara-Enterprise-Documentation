@@ -16,7 +16,7 @@ README for the source code repository.]
 == Additions to the Fault Tolerance Spec
 In addition to the functionality
 https://github.com/eclipse/microprofile-fault-tolerance/blob/master/spec/src/main/asciidoc/microprofile-fault-tolerance-spec.asciidoc[
-detailed in the spec], the following is also implemented in Payara Server and Payara Micro:
+detailed in the spec], the following is also implemented in Payara Server Enterprise and Payara Micro Enterprise:
 
 === Configurable Executor Services
 The managed and scheduled managed executor pool can be configured via the _set-fault-tolerance-configuration_ asadmin command.

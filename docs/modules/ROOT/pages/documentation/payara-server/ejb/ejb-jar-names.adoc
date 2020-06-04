@@ -8,7 +8,7 @@ This section showcases how to overwrite the name of an EJB-JAR module when it is
 
 _Since Payara Server 4.1.2.174_
 
-When deploying an EJB-JAR module on Payara Server, the portable JNDI names for all scanned EJBs will be generated using the name of the module as specified on the _ejb-jar.xml_ deployment descriptor:
+When deploying an EJB-JAR module on Payara Server Enterprise, the portable JNDI names for all scanned EJBs will be generated using the name of the module as specified on the _ejb-jar.xml_ deployment descriptor:
 
 [source, xml]
 ----

@@ -7,7 +7,7 @@ The MicroProfile project was launched in June 2016 as a collaborative effort bet
 
 MicroProfile is a specification which provides a set of APIs focused on microservices. The complete MicroProfile API is provided as a Bill Of Materials(BOM) which can be used by developers as a generic dependency provided by a vendor of their choice.
 
-Payara has been part of the MicroProfile project from its inception and, therefore, supports all specifications of MicroProfile.
+Payara has been part of the MicroProfile project from its inception and, therefore, supports all specifications of the MicroProfile Umbrella project.
 
 == Payara Support for MicroProfile
 

@@ -4,7 +4,7 @@
 _Since Payara Server 5.181_
 
 == Discovery
-The Domain Data Grid has the concept of discovery. When a Payara Server or Payara Micro
+The Domain Data Grid has the concept of discovery. When a Payara Server Enterprise or Payara Micro Enterprise
 instance starts it must discover other Data Grid nodes so that it can join the grid.
 Once an instance has connected to a Payara Instance that is already a member of the grid then
 it can become a member of the grid.
@@ -14,7 +14,7 @@ described here.
 
 === Domain Discovery Mode
 Domain Discovery mode is the default mode for Payara Server. In this mode when a
-Payara Server instance starts it uses information encoded into the `domain.xml` describing
+Payara Server Enterprise instance starts it uses information encoded into the `domain.xml` describing
 the node IP Address and ports of the other servers in the domain and the DAS to connect
 to an existing member of the Data Grid. For a Payara Server instance the first server
 it will try to connect to is the DAS if that fails it will then try each of the other
@@ -35,7 +35,7 @@ topologies with no central domain administration server.
 === Multicast Discovery Mode
 Multicast discovery mode is an alternative discovery mode. In this mode the user specifies
 the multicast group and multicast port used to find other members of the Data Grid. When
-a Payara Server instance configured with multicast discovery starts it broadcasts a message
+a Payara Server Enterprise instance configured with multicast discovery starts it broadcasts a message
 on the multicast group and port to discover other members of the data grid.
 
 TIP: This discovery mode can be used to also build a topology based on single instances

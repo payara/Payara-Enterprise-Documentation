@@ -1,9 +1,9 @@
 = Payara Server Remote Arquillian Container
 
 The Payara Server Remote Arquillian container connects to a running remote Payara 
-Server instance for integration testing using a remote protocol. You can use 
+Server Enterprise instance for integration testing using a remote protocol. You can use 
 your normal Payara deployment to perform your test. The integration connects 
-Arquillian to the DAS via the REST Interfaces to Administer Payara Server over 
+Arquillian to the DAS via the REST Interfaces to Administer Payara Server Enterprise over 
 http or https protocol. This gives you the flexibility to use any possible 
 deployment scenarios having your servers either on many different physical or 
 virtual nodes, or on the same one.
@@ -27,7 +27,7 @@ You can find the latest artifact version https://mvnrepository.com/artifact/fish
 == Configuring the Container
 
 The following configuration options are available, each of which can be provided
-through the specified system properties in the arquillian JVM:
+through the specified system properties in the Arquillian JVM:
 
 [cols="10,80,10"]
 .Configuration Options

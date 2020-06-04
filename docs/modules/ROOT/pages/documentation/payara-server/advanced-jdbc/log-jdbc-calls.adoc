@@ -1,7 +1,7 @@
 [[jdbc-call-logging-sql-tracing]]
 = JDBC Call Logging (SQL Tracing)
 
-Payara Server can trace all SQL calls made through a JDBC connection pool,
+Payara Server Enterprise can trace all SQL calls made through a JDBC connection pool,
 with the time taken to execute the call also recorded. SQL Tracing is ideal
 for debugging those hard to pin down performance issues during the development
 phase and as all SQL is visible SQL tracing is also a great way to see the SQL
@@ -41,7 +41,7 @@ of trace that is produced.
 [[administration-console]]
 === Using the Administration Console
 
-SQL Tracing can be enabled through the Payara Server administration
+SQL Tracing can be enabled through the Payara Server Web administration
 console. First, navigate to the advanced table of your JDBC connection pool,
 then select the JDBC -> JDBC Connection pools -> *<Your Connection pool>*.
 Then select the *Advanced Tab* in the main window of the administration
@@ -103,7 +103,7 @@ an application, for example in the _web.xml_ standard deployment descriptor:
 [[payara-micro-support]]
 == Payara Micro Support
 
-Payara Micro also supports SQL Tracing which brings powerful operational
+Payara Micro Enterprise also supports SQL Tracing which brings powerful operational
 diagnostics to your micro-services platform. To enable SQL Tracing of
 JDBC on applications deployed on Payara Micro, use the annotation or deployment
 descriptor methods described in the previous section.

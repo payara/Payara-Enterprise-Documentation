@@ -47,7 +47,7 @@ These two use cases differ a bit in their lifecycles.
 ==== From Domain Administration Server
 
 Creating a Docker instance is done in exactly the same way as when creating a normal one.
-You will create a Docker node and then you can create one or more Payara instances on it.
+You will create a Docker node and then you can create one or more Payara Server instances on it.
 The Payara DAS will use the same version of the Docker container as the DAS by default.
 
 [source, shell]
@@ -84,7 +84,7 @@ be deleted also the Docker container including it's logs.
 
 ==== From Docker
 
-Payara Server supports creating instances from Docker itself, making use of the
+Payara Server Enterprise supports creating instances from Docker itself, making use of the
 xref:documentation/payara-server/asadmin-commands/auto-naming.adoc[auto-naming] feature to resolve any conflicts.
 The `docker container create` command creates a Payara Docker container without any contact with the DAS.
 This is also the reason why Docker container has different name than the Payara instance - they
@@ -103,7 +103,7 @@ This type of node is also not listed in the DAS or offered in inputs and cannot 
 
 If the instance running on a temporary Docker node is stopped from the DAS, it is immediately
 unregistered from the DAS.
-The next start of the same Docker container creates new a Payara Instance and a new temporary
+The next start of the same Docker container creates new a Payara Server Instance and a new temporary
 Docker node again despite the fact that it uses the same Docker container.
 
 If the Docker containers are stopped externally to Payara (ie. by the `docker` command), the node
@@ -196,7 +196,7 @@ https://docs.docker.com/engine/api/v1.39/#operation/ContainerCreate
 IMPORTANT: The image name is not configurable - Payara Server expects the image name to
 match the value from the node config
 
-The configuration within Payara Server of the settings denoted in the above link takes the form of dotted names. These
+The configuration within Payara Server Enterprise of the settings denoted in the above link takes the form of dotted names. These
 names adhere to the following syntax:
 
 * Each property is prepended with "Docker"

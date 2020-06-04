@@ -39,7 +39,7 @@ Disabling the registered Derby server will speed up server start time.
 [[managing]]
 == Managing Payara Server from NetBeans
 
-All of the management of Payara Server from NetBeans is done through the
+All of the management of Payara Server Enterprise from NetBeans is done through the
 *Services* tab which can be found next to the *Projects* and *Files* tabs.
 
 image::netbeans-plugin/payara-server/netbeans-services.png[NetBeans Services]
@@ -74,7 +74,7 @@ Select the Payara Server you have configured. You can also select a context path
 for the application to be deployed to, as well as NetBeans behaviour when
 deploying.
 
-Deploying to Payara Server now only requires running the application like any
+Deploying to Payara Server Enterprise now only requires running the application like any
 other NetBeans project. Once it's deployed, the *Services* view will then
 display the application under *Payara Server*, where you can *undeploy*,
 *enable*, *disable* and view the application in the browser.
@@ -82,7 +82,7 @@ display the application under *Payara Server*, where you can *undeploy*,
 [[hot-deploy]]
 == Hot Deploy Applications
 
-_Since *5.201*&nbsp;_ Payara Server provides the Hot Deployment capability by boosting the performance 
+_Since *5.201*&nbsp;_ Payara Server Enterprise provides the Hot Deployment capability by boosting the performance 
 of the application redeployment operation and dynamically replaces the classloader of the application on each redeployment in the hot deploy mode.
 
 The Hot Deploy mode can be enabled in the Apache NetBeans IDE from the *Properties* panel of the Payara Server.
@@ -96,7 +96,7 @@ image::netbeans-plugin/payara-server/netbeans-project-deploy-on-save.png[Deploy 
 
 NOTE: The Hot Deploy feature is in technical preview and only supported by Maven Web Applications from the Apache NetBeans IDE v11.3.
 
-After enabling the Hot Deploy settings as mentioned above, Simply deploy the Maven Web Applications to Payara Server
+After enabling the Hot Deploy settings as mentioned above, Simply deploy the Maven Web Applications to Payara Server Enterprise
 and modify any Java class of the application to perform the auto redeploy of application on save 
 and observer the fast redeployment of the application in Payara Server console log in compare to vanilla redeployment.
 

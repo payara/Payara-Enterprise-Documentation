@@ -7,7 +7,7 @@ _Since Payara Server 5.181_
 
 == Concept
 The Domain Data Grid provides an in-memory data structure that is distributed amongst all the
-Payara Server instances within a Payara Domain. The Data Grid is highly available
+Payara Server Enterprise instances within a Payara Domain. The Data Grid is highly available
 and highly scalable and enables in-memory data storage and sharing between all Payara Server instances
 in a domain. The Domain Data Grid is used as the backing store for web session data,
 Stateful Session Bean state, xref:/documentation/payara-server/jcache/jcache.adoc[JCache] caches, Clustered Singletons, and Single Sign On state as well as internal
@@ -44,7 +44,7 @@ large numbers of Payara Server instances.
 === Elasticity
 
 The Domain Data Grid does require configuring with a specific number of Payara Server instances.
-Payara Server and Payara Micro instances can be added and removed and the Data Grid
+Payara Server Enterprise and Payara Micro Enterprise instances can be added and removed and the Data Grid
 will shrink and grow as required. This meets the needs of cloud and container based architectures
 which can scale up or scale down the number of Payara instances handling requests.
 
@@ -56,12 +56,12 @@ which can be enabled to join a Domain Data Grid.
 
 === Data Grid Discovery
 
-The Domain Data Grid has the concept of discovery. When a Payara Server or Payara Micro
+The Domain Data Grid has the concept of discovery. When a Payara Server Enterprise or Payara Micro Enterprise
 instance starts it must discover other Data Grid nodes so that it can join the grid.
 Once an instance has connected to a Payara Instance that is already a member of the grid then
 it can become a member of the grid.
 
-Payara provides a number of configurable xref:discovery.adoc[Discovery] Modes
+Payara provides a number of configurable xref:discovery.adoc[Discovery Modes]
 
 === Hazelcast
 

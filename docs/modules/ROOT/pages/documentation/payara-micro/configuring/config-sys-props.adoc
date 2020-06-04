@@ -1,11 +1,11 @@
 [[configuring-payara-micro-via-system-properties]]
 = Configuring Payara Micro via System Properties and Environment Variables
 
-Payara Micro can also be configured via system properties. These can either be
+Payara Micro Enterprise can also be configured via system properties. These can either be
 set on the command line or passed into Payara Micro using the `--systemProperties`
 command line option which will load the properties from the specified file.
 
-NOTE: Payara Micro can also be configured using Environment variables. The environment
+NOTE: Payara Micro Enterprise can also be configured using Environment variables. The environment
 variables supported are the same as the system properties below just replace the `.` with `_`
  for example `payaramicro.port` should be `payaramicro_port` when used as a system property.
 

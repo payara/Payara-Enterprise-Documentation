@@ -114,7 +114,7 @@ command, _optional_
 MBean attribute names and domain names can be discovered using JConsole,
 JVisualVM, Java Mission Control or other programs. To browse available MBean
 attributes, after enabling JMX and AMX in the admin console, connect to your
-Payara Server instance from your chosen program:
+Payara Server Enterprise instance from your chosen program:
 
 image:jmx-monitoring-service/jconsole-adding-payara.png[JConsole adding Payara]
 

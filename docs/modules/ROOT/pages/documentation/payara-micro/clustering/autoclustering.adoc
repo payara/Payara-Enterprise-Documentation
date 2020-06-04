@@ -6,7 +6,7 @@ This section details the auto-clustering feature of Payara Micro.
 [[the-multicast-discovery]]
 == The Multicast Discovery
 
-The integration of Hazelcast into Payara Micro allows instances to automatically,
+The integration of Hazelcast into Payara Micro Enterprise allows instances to automatically,
 and dynamically, cluster together. When two instances are pointed at the same
 multicast address and port, they will automatically cluster together.
 
@@ -43,14 +43,14 @@ TIP: You can also use `--clusterName` and `--clusterPassword` to segregate clust
 [[preventing-cluster-cross-talk]]
 === Preventing Multicast Cluster Cross Talk
 
-By default Payara Micro clusters automatically discover other cluster members
+By default Payara Micro Enterprise clusters automatically discover other cluster members
 via multicast. This can lead to the situation whereby different development environments
 being used by different teams cluster together as they are using the same multicast
 address and multicast port.
 
 This can lead to confusing errors. To prevent cluster cross-talk make sure that
 the multicast-address and multicast-port are set to different values on each unique
-cluster. In the case where this is not possible Payara Micro provides the ability
+cluster. In the case where this is not possible, Payara Micro Enterprise provides the ability
 to set a cluster name and a cluster password both through the command line or
 through the API.
 
@@ -67,7 +67,7 @@ Payara Micro now includes a number of alternative discovery modes configurable o
 using the `--clustermode` command line option. The default cluster mode is multicast as described above.
 
 === Domain Discovery Mode
-Domain Discovery Mode enables a Payara Micro instance join a Domain Data Grid managed
+Domain Discovery Mode enables a Payara Micro Enterprise instance to join a Domain Data Grid managed
 by a Payara Server DAS containing Payara Server Instances. To join a Domain Data Grid
 start Payara Micro with the domain cluster mode:
 [source, shell]
@@ -103,7 +103,7 @@ NOTE: If you accidentally choose the DAS admin port (by default 4848) as the clu
 ----
 
 === TCPIP Discovery Mode
-The TCPIP Discovery Mode can be used to cluster Payara Micro instances when Multicast
+The TCPIP Discovery Mode can be used to cluster Payara Micro Enterprise instances when Multicast
 is not available on the network. This is especially useful in Cloud environments or
 in containerized deployments like Docker and Kubernetes. For the TCPIP discovery mode
 you specify a comma separated list of `ip:port` adddresses where you believe other Payara Micros will be listening.
@@ -117,11 +117,11 @@ java -jar payara-micro.jar --autobindhttp --clustermode tcpip:192.168.0.104:6900
 ----
 
 A range of IP addresses can be specified in the list of members for example: `192.168.1.0-7:6900`.
-This is especially useful if you have a cloud VPC and you have a nummber of Payara Micro instances
+This is especially useful if you have a cloud VPC and you have a number of Payara Micro instances
 running across a number of Cloud VMs. Using a range is also useful in Docker environments where the
 range of IP Addresses is known but dynamic for example `172.17.0.2-8:6900`.
 
-During discovery Payara Micro will test each IP:Port combination until it finds another
+During discovery Payara Micro Enterprise will test each IP:Port combination until it finds another
 Payara Micro instance. As long as one instance exists then it will join the existing cluster.
 If no Payra Micro instances are contactable the instance will create a new cluster with itself
 as the single member.
@@ -136,7 +136,7 @@ by specifying the ip:port of the DAS Hazelcast instance.
 
 _Since Payara Server 5.184_
 
-The DNS Discovery mode can be used to cluster Payara Micro instances by specifying a DNS name. Similar to the
+The DNS Discovery mode can be used to cluster Payara Micro Enterprise instances by specifying a DNS name. Similar to the
 TCPIP discovery mode, this discovery mode takes a comma separated list of DNS A/AAAA record names and ports to
 determine  where to look for instances to cluster with.
 
@@ -151,7 +151,7 @@ with all of them.
 
 _Since Payara Micro 5.184_
 
-The Kubernetes Disocvery mode can be used to cluster Payara Micro instances running in a kubernetes cluster,
+The Kubernetes Disocvery mode can be used to cluster Payara Micro Enterprise instances running in a kubernetes cluster,
 which can be useful due to the variable networking inherent to kubernetes. When using this discovery mode, the default
 settings will make Payara Micro attempt to cluster with instances present on pods within the default namespace.
 
@@ -206,5 +206,5 @@ java -jar payara-micro.jar --autobindhttp --clustermode tcpip:192.168.0.104:6900
 
 === Advanced Discovery Modes
 Further Discovery Modes can be configured directly in a hazelcast configuration file
-passed to Payara Micro using the `--hzconfigfile` command line option. Review the
+passed to Payara Micro Enterprise using the `--hzconfigfile` command line option. Review the
 Hazelcast documentation to configure Hazelcast using this file.

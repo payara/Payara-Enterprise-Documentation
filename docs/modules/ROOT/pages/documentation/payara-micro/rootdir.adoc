@@ -1,6 +1,6 @@
 = Root Configuration Directory
 
-Payara Micro is distributed as a single `.jar` file.
+Payara Micro Enterprise is distributed as a single `.jar` file.
 However, at runtime, it creates and depends on a folder structure that is referred to as Root Configuration Directory or `rootdir`.
 
 This directory stores all of the instance configuration, deployed applications, as well as implementation `.jar` files needed for running the instance.
@@ -8,7 +8,7 @@ This directory stores all of the instance configuration, deployed applications, 
 [[temp-rootdir]]
 == Temporary Root Configuration Directory
 
-By default, Payara Micro will create a folder in the system's temporary directory and prepares a root configuration directory there.
+By default, Payara Micro Enterprise will create a folder in the system's temporary directory and prepares a root configuration directory there.
 This makes instances' configuration stateless, but also has two potentially undesirable effects:
 
 * Temporary directory may be deleted by system cleanup procedure. 

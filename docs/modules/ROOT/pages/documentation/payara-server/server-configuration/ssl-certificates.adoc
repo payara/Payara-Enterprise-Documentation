@@ -1,7 +1,7 @@
 [[ssl-certificates]]
 = Configure SSL Certificates
 
-The Payara server uses a dedicated key and certificate store when using SSL/TLS connections. The files are located in the configuration directory of the domain `<payara-home>/glassfish/domains/<domain-name>/config` and referenced through JVM options so that they are used for the entire JVM.
+The Payara Server Enterprise uses a dedicated key and certificate store when using SSL/TLS connections. The files are located in the configuration directory of the domain `<payara-home>/glassfish/domains/<domain-name>/config` and referenced through JVM options so that they are used for the entire JVM.
 
 _cacerts.jks_: Java Keystore formatted file used as Trust Store file holding the X.509 certificates.
 _keystore.jks_: Java Keystore formatted file containing the Cryptographic keys, like the private keys associated with the certificates.

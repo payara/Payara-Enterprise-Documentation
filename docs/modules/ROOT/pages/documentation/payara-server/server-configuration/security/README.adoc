@@ -1,7 +1,7 @@
 [security]
 = Security Extensions
 
-This section documents several extensions made to the security mechanisms and APIs that are provided by Payara Server.
+This section documents several extensions made to the security mechanisms and APIs that are provided by Payara Server Enterprise.
 
 * xref:documentation/payara-server/server-configuration/security/certificate-realm-principal-name.adoc[Certificate Realm: Principal Name]
 * xref:documentation/payara-server/server-configuration/security/certificate-realm-groups.adoc[Certificate Realm: Group Names]

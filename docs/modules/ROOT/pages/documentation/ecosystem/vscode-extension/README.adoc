@@ -1,7 +1,7 @@
 = Payara VSCode Extension
 
 
-Payara Platform provides the Payara VSCode extension to integrate Payara Server and Payara Micro into the Visual Studio Code.
+Payara Platform provides the Payara VSCode extension to integrate Payara Server Enterprise and Payara Micro Enterprise into Visual Studio Code.
 The extension is available in the xref:https://marketplace.visualstudio.com/items?itemName=Payara.payara-vscode[Visual Studio Marketplace].
 
 * <<prerequisite-extension,Prerequisite VSCode Extensions>>

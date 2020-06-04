@@ -3,7 +3,7 @@
 
 _Since Payara Server 5.182_
 
-The Payara API provides a way to authenticate with two identity stores at the same time using the `@TwoIdentityStoreAuthenticationMechanismDefinition` annotation. By default a user is validated if they are authenticated by any identity store, this mechanism will only validate them if both stores authenticate it succesfully.
+The Payara API provides a way to authenticate with two identity stores at the same time using the `@TwoIdentityStoreAuthenticationMechanismDefinition` annotation. By default a user is validated if they are authenticated by any identity store, this mechanism will only validate them if both stores authenticate it succesfull.
 
 [[usage]]
 == Usage

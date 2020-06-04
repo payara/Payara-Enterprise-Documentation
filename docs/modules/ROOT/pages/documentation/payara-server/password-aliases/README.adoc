@@ -1,7 +1,7 @@
 [[password-aliases-overview]]
 = Password Aliases Overview
 
-By default, passwords within Payara Server are treated like any other property
+By default, passwords within Payara Server Enterprise are treated like any other property
 and are stored in plaintext. Passwords stored in plaintext are a security
 risk, as you can directly read them, unencrypted and unobstructed.
 

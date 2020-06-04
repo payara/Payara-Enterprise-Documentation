@@ -4,7 +4,7 @@
 _Since Payara Micro 4.1.2.173_
 
 There are multiple scenarios when it's needed to add a third-party library to the
-class path of a Payara Micro instance:
+class path of a Payara Micro Enterprise instance:
 
 * Deploying applications that use JDBC resources, which have a need to access the
 respective JDBC driver JAR.
@@ -12,14 +12,14 @@ respective JDBC driver JAR.
 * Avoiding the creation of fat application WARs with lots of bundled libraries
 to simplify a build-integration pipeline.
 
-Such scenarios are easily solved on Payara Server by adding these JAR files at
-the domain or modules of the application server library directories. On Payara Micro,
+Such scenarios are easily solved on Payara Server Enterprise by adding these JAR files at
+the domain or modules of the application server library directories. On Payara Micro Enterprise,
 this can be done on multiple ways.
 
 [[from-the-command-line]]
 == From the command line
 
-In order to add a third-party jar to a new Payara Micro instance, use the `--addLibs` argument when starting the instance like this:
+In order to add a third-party jar to a new Payara Micro Enterprise instance, use the `--addLibs` argument when starting the instance like this:
 
 [source, shell]
 ----
@@ -61,7 +61,7 @@ It is however accepted when creating a launcher via `--outputlauncher` and provi
 [[programmatically-using-api]]
 == Programmatically using the API
 
-In order to add third-party libraries to a new Payara Micro instance programmatically,
+In order to add third-party libraries to a new Payara Micro Enterprise instance programmatically,
 use the `PayaraMicro.addLibrary` method to properly add either JAR files or a directory
 of JAR files. You can call the method multiple times to each multiple sources.
 

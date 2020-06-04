@@ -1,6 +1,6 @@
 = Payara Micro Maven Archetype
 
-Payara Micro has a Maven archetype which can create sample Payara Micro application quickly.
+Payara Micro has a Maven archetype which can create a sample Payara Micro application quickly.
 
 
 [[create-project]]

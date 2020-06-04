@@ -39,7 +39,7 @@ encryption key and enabled encryption of the data grid.
 [[generating-an-encryption-key]]
 === Generating an Encryption Key
 
-The key to be used by Payara Server to perform the actual encryption and decryption of data can be generated using the
+The key to be used by Payara Server Enterprise to perform the actual encryption and decryption of data can be generated using the
 following command:
 
 `generate-encryption-key`

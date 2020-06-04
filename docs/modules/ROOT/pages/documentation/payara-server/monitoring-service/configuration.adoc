@@ -1,7 +1,7 @@
 [[monitoring-service-configuration]]
 = Monitoring Service Configuration
 
-As with any other services available in Payara Server, the Monitoring service
+As with any other services available in Payara Server Enterprise, the Monitoring service
 can be configured by using the web console or administration commands.
 
 [[using-the-web-console]]

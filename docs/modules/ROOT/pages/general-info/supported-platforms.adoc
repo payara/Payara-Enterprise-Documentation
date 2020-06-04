@@ -1,7 +1,7 @@
 = Supported Platforms
 
 Though it is always possible for new versions to be supported, this page
-details the JVMs currently supported with Payara Server.
+details the JVMs currently supported with Payara Server Enterprise.
 
 While not all environments are tested, if it is on a supported JVM we will
 provide support for customers and address issues reported by the community.
@@ -9,7 +9,7 @@ Similarly, other platforms can always be requested for support.
 
 == Supported Java Virtual Machines
 
-Payara Server currently supports the following Java Virtual Machines:
+Payara Server Enterprise currently supports the following Java Virtual Machines:
 
 * Oracle JDK8 (u162+), Oracle JDK 11 (11.0.5+)
 * Azul Zulu JDK8 (u162+), Azul Zulu JDK 11 (11.0.5u10+)

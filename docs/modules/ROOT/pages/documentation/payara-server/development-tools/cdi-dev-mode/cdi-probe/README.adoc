@@ -4,7 +4,7 @@ _Since Payara Server 4.1.2.173_
 
 CDI Probe allows to inspect and monitor CDI beans of deployed applications at runtime. 
 
-With CDI Development Mode enabled, Payara Server administration console provides access to the CDI Probe tool. This tool allows inspecting and monitoring CDI beans of deployed applications at runtime.
+With CDI Development Mode enabled, Payara Server Web Administration console provides access to the CDI Probe tool. This tool allows inspecting and monitoring CDI beans of deployed applications at runtime.
 
 CDI Probe provides the following interfaces:
 

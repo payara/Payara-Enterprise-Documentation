@@ -4,7 +4,7 @@
 include::partial$tech-preview.adoc[]
 
 This section covers how to use the REST monitoring functionality in
-Payara Server {currentVersion}.
+Payara Server Enterprise {currentVersion}.
 
 The REST monitoring implements a Jolokia type functionality in Payara Server.
 

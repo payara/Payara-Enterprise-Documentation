@@ -155,7 +155,7 @@ Arquillian is the recommended way for integration tests with the server.
 Payara Platform provides multiple connectors fitting the deployment scenarios.
 These artifacts are declared in scope `test`.
 
-Payara Server also ships with two embedded databases, matching versions of those are also declared, but in default scope.
+Payara Server Enterprise also ships with two embedded databases, matching versions of those are also declared, but in default scope.
 
 [%header, cols="1,3l,2"]
 |===

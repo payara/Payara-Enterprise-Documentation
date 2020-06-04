@@ -23,7 +23,7 @@ To automatically generate a name for your instances or resources, simply enable 
 providing a name (example below).
 
 Specifically for the `create-instance` and `create-local-instance` commands, the _autoname_ option can also be used to
-automatically resolve any name conflicts. When resolving a name conflict, Payara Server will simply
+automatically resolve any name conflicts. When resolving a name conflict, Payara Server Enterprise will simply
 append a new name to the existing name, like so: `instance1-BamboozledBarracuda`.
 
 When creating an instance from the admin console, there is a new Auto Name checkbox present, which performs the same

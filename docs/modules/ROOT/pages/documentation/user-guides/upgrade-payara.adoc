@@ -2,7 +2,7 @@
 = Upgrading Payara Server
 
 There are two valid methods of fully upgrading to a new release of Payara
-Server. Either of the following two methods would work in most circumstances:
+Server Enterprise. Either of the following two methods would work in most circumstances:
 
 . Backing up and restoring the existing configuration to a new installation.
 . Maintaining completely separate domain and node directories and pointing
@@ -19,10 +19,10 @@ WARNING: The asadmin `backup-domain` subcommand will only work if the domain is
 not running so, if this method is chosen for a production system, there would
 need to be an arranged period of downtime.
 
-. Run `asadmin backup-domain` from the existing Payara Server installation
+. Run `asadmin backup-domain` from the existing Payara Server Enterprise installation
 . Once the domain has been backed up, restore the domain to the newly
-downloaded Payara Server installation by running `asadmin restore-domain`
-from the bin directory of the new Payara Server installation
+downloaded Payara Server Enterprise installation by running `asadmin restore-domain`
+from the bin directory of the new Payara Server Enterprise installation
 
 After following these steps, you should be left with a similar directory
 structure to the following:
@@ -78,7 +78,7 @@ You can do the same thing with nodes too:
 In this way, the user configuration is always kept separate to the installation,
 and rollback is as simple as using the previous installation directory.
 
-If you are using Payara Server on Linux, you could take advantage of _"symbolic links"_
+If you are using Payara Server Enterprise on Linux, you could take advantage of _"symbolic links"_
 to make life easier. When your domain directory is in a non-standard
 location, it means that you need to specify its location with each
 `start`/`stop`/`restart` command. If you were to create a symbolic link to

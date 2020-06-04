@@ -5,7 +5,7 @@ _Since Payara Server 4.1.1.162_
 
 This feature allows you to record the actions you take in the admin
 console as asadmin commands, aiding with automating or reproducing your
-setup across multiple Payara Server installations.
+setup across multiple Payara Server Enterprise installations.
 
 [[starting-and-stopping-the-asadmin-recorder]]
 == Starting and Stopping the Asadmin Recorder

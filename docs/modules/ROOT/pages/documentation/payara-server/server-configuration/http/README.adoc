@@ -1,6 +1,6 @@
 = HTTP Service
 
-HTTP in Payara Server is composed of several configuration layers:
+HTTP in Payara Server Enterprise is composed of several configuration layers:
 
 * A transport. The default transport is `tcp`.
 * An HTTP protocol. One of the default protocols is `http-listener-1`

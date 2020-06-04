@@ -1,17 +1,17 @@
 [[persistent-ejb-timers]]
 = Persistent EJB timers
 
-Payara Micro supports persistent EJB timers which are stored across Payara Micro
+Payara Micro Enterprise supports persistent EJB timers which are stored across Payara Micro Enterprise
 instances within the cluster, backed by distributed Hazelcast cache.
 
 The timers are persisted as long as the cluster is running, even when the member
 that created the timer goes down.
 
-In order to make use of a persistent timer in Payara Micro, an application must
+In order to make use of a persistent timer in Payara Micro Enterprise, an application must
 declare a timer to be persistent, as defined by the EJB specification.
 This is actually the default behavior, unless timers are specified as *non-persistent*.
 
-The second requirement is to specify a name for every Payara Micro instance which
+The second requirement is to specify a name for every Payara Micro Enterprise instance which
 runs an application with persistent timers. Each such instance has to have its
 own unique name.
 

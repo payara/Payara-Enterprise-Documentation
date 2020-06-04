@@ -19,7 +19,7 @@ Datadog support gathering metrics from the following sources:
 * SQL and NoSQL Databases (MySQL, PostgreSQL, MongoDB, CouchBase)
 * Monitoring Solutions (New Relic, Nagios, Splunk, Amazon Cloud Trail)
 
-Payara Server includes a special notifier to send notifications from the
+Payara Server Enterprise includes a special notifier to send notifications from the
 xref:/documentation/payara-server/notification-service/notification-service.adoc[Notification service]
 to a Datadog account by means of an API key.
 
@@ -49,7 +49,7 @@ Server installation.
 
 . Assign a name to the default API key or a newly created key, so you can identify
 which services or platform stacks are integrating with Datadog other than your Payara
-Server installation:
+Server Enterprise installation:
 +
 image:notification-service/datadog/apikey-name-dialog.png[Datadog API Key Name]
 
@@ -58,7 +58,7 @@ image:notification-service/datadog/apikey-name-dialog.png[Datadog API Key Name]
 == Payara Server Configuration
 
 Having retrieved the API key from Datadog's administration panel, it's necessary
-to configure this key to the notification service on Payara Server. It's possible
+to configure this key to the notification service on Payara Server Enterprise. It's possible
 to do this either by using the administration web console, from the command line
 using administration commands or by modifying the _domain.xml_ configuration file
 directly.
@@ -125,7 +125,7 @@ method, so be careful when considering this option.
 == Troubleshooting
 
 When you have correctly configured the Datadog notifier, Datadog can gather relevant
-monitoring events from your Payara Server installation. If you do not see any
+monitoring events from your Payara Server Enterprise installation. If you do not see any
 notification event messages on your Datadog account, check the following:
 
 * Is the Datadog notifier enabled?

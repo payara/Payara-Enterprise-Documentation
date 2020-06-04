@@ -3,15 +3,15 @@
 
 _Since Payara Server 4.1.2.173_
 
-*Payara Server comes with Zendesk integration for paid support customers. Not yet a support customer? Learn more about our available support options:*
+*Payara Server Enterprise comes with Zendesk integration for paid support customers. Not yet a support customer? Learn more about our available support options:*
 
 * https://www.payara.fish/support/migration-project/[Migration and Project Support]
 * https://www.payara.fish/support/payara-enterprise/[Payara Enterprise]
 
 
-Payara Server comes with Zendesk integration for paid support customers. This
+Payara Server Enterprise comes with Zendesk integration for Enterprise customers. This
 means that customers can raise and manage tickets through Zendesk from the
-Payara administration console. The support page is accessible from the panel
+Payara Web Administration console. The support page is accessible from the panel
 on the left of the admin console, just below the configurations.
 
 image::support-integration/support-integration-button.png[Support Integration Link in Admin Console]

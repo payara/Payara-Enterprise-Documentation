@@ -1,7 +1,7 @@
 [[deploying-an-application-programmatically-from-a-maven-repository]]
 = Deploying an Application Programmatically from a Maven Repository
 
-Payara Micro supports deployment of application directly from a Maven repository.
+Payara Micro Enterprise supports deployment of application directly from a Maven repository.
 
 [[deploying-an-artefact-using-maven-coordinates]]
 == Deploying an Artefact Using Maven Coordinates
@@ -26,7 +26,7 @@ public class EmbeddedPayara{
 [[specifying-additional-maven-repositories]]
 == Specifying Additional Maven Repositories
 
-By default, Payara Micro will only search for artefacts in the Maven Central
+By default, Payara Micro Enterprise will only search for artefacts in the Maven Central
 repository. If you wish to search additional repositories, you can add them to
 the list of repositories to search with the `addRepoUrl()` method:
 

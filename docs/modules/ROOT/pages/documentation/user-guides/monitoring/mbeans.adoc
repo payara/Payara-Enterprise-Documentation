@@ -2,7 +2,7 @@
 = MBeans in Payara Server
 
 Below is a non-exhaustive list of MBeans which are useful to monitor in Payara
-Server. Other MBeans not listed show static information or are JDK-specific.
+Server Enterprise. Other MBeans not listed show static information or are JDK-specific.
 
 [[jvm-beans]]
 == JVM MBeans

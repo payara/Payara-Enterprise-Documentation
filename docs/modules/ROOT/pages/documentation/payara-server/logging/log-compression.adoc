@@ -5,7 +5,7 @@ _Since version 4.1.1.164_
 
 Both Payara Server and GlassFish 4.0 Open Source Edition provide an option
 to rotate logs files using a configurable interval (given either by the size of
-the log file or by time elapsed). On top of that, Payara Server can be
+the log file or by time elapsed). On top of that, Payara Server Enterprise can be
 configured to compress rotated files automatically. This is done
 transparently, so  it is still possible to view  log entries that are using the
 the log viewer in the Web Admin Console.

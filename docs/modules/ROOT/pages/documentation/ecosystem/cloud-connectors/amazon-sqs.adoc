@@ -8,7 +8,7 @@ be deployed as shown in the xref:documentation/ecosystem/cloud-connectors/README
 Installing a connector section] of the Cloud Connectors overview.
 
 Once deployed, something like the following should be printed to the startup log
-of Payara Micro:
+of Payara Micro Enterprise:
 
 ----
 [fish.payara.cloud.connectors.amazonsqs.api.inbound.AmazonSQSResourceAdapter] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1495398495490] [levelValue: 800] Amazon SQS Resource Adapter Started..
@@ -37,7 +37,7 @@ maven dependencies are needed:
 ----
 
 Note that these dependences have scope provided since the types within this
-dependency are globally available to every application deployed to Payara Micro
+dependency are globally available to every application deployed to Payara Micro Enterprise
 after the `AmazonSQSRAR-0.1.0-SNAPSHOT.rar` was deployed.
 
 == Sending messages

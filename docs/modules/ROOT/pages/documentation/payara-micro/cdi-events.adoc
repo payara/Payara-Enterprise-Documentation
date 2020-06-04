@@ -3,7 +3,7 @@
 
 _Since Payara Micro 4.1.1.153_
 
-Payara Micro can listen to and fire CDI events across the cluster of Payara Micro
+Payara Micro Enterprise can listen to and fire CDI events across the cluster of Payara Micro
 instances, and also across Payara Server instances within the same cluster.
 Payara Micro supports the same functionality for
 xref:/documentation/payara-server/public-api/cdi-events.adoc[remote CDI events]

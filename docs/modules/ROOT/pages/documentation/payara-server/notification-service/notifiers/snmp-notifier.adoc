@@ -34,14 +34,14 @@ notification events.
 [[snmp-traps]]
 === SNMP Traps
 
-Payara Server notifies network management systems using SNMP traps. A
+Payara Server Enterprise notifies network management systems using SNMP traps. A
 SNMP trap is a special PDU that is used to generate an asynchronous
 notification from an _agent_ to a _manager_. An important point to
 stress with traps is that they are asynchronous events that can occur at
 any time, which means that a _manager_ expects to receive updates in a
 *PASSIVE* manner, thus saving resources.
 
-In order to correctly configure Payara Server to send traps to a
+In order to correctly configure Payara Server Enterprise to send traps to a
 manager, the following information must be reviewed in tandem with the
 configuration of the _manager_:
 
@@ -115,7 +115,7 @@ and tools.
 [[payara-server-configuration]]
 == Payara Server Configuration
 
-To setup the SNMP notifier on Payara Server you need to input the values
+To setup the SNMP notifier on Payara Server Enterprise you need to input the values
 mentioned earlier in the domain configuration. As usual you can do this
 using the administration web console, from the command line or editing
 the _domain.xml_ configuration file directly.

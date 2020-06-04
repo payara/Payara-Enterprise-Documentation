@@ -4,7 +4,7 @@
 
 [[glassfish]]
 == Support of GlassFish deployment descriptors
-Payara Server supports specifying deployment configuration using GlassFish deployment descriptor files. 
+Payara Server Enterprise supports specifying deployment configuration using GlassFish deployment descriptor files. 
 
 [[payara-web-info]]
 == Payara deployment descriptors

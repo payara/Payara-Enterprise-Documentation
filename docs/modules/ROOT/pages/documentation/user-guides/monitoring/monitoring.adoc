@@ -14,14 +14,14 @@ available, however, JMX has not always been very widely used. Because of this,
 it is not always obvious or straightforward to consume JMX metrics with a given
 tool.
 
-These guides aim to give an overview of monitoring Payara Server with JMX. As 
+These guides aim to give an overview of monitoring Payara Server Enterprise with JMX. As 
 new guides get added, this section will include:
 
 xref:documentation/user-guides/monitoring/enable-jmx-monitoring.adoc[How do I enable JMX monitoring in Payara Server?]::
 Before anything else, we need to know how to enable JMX monitoring and get
 familiarised with the concepts involved.
 xref:documentation/user-guides/monitoring/mbeans.adoc[What MBean metrics should I monitor?]::
-Once monitoring data is enabled through JMX in Payara Server, the next important
+Once monitoring data is enabled through JMX in Payara Server Enterprise, the next important
 step is to understand which MBeans are most important, and which metrics from
 each MBean can give the most useful information.
 How can I consume JMX monitoring data from Payara Server?::

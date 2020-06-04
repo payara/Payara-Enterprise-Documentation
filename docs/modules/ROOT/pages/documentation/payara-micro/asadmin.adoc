@@ -1,14 +1,14 @@
 [[running-asadmin-commands]]
 = Running Asadmin Commands
 
-There are scenarios that require customizing the configuration of a Payara Micro
+There are scenarios that require customizing the configuration of a Payara Micro Enterprise
 instance beyond what the available options can do.
 
 On these cases, it's possible to execute administration commands on a running
-Payara Micro instance directly to alter its configuration.
+Payara Micro Enterprise instance directly to alter its configuration.
 
 There are multiple ways that can be used to execute administration commands on
-a Payara Micro instance:
+a Payara Micro Enterprise instance:
 
 . Send the administration commands from a Payara Server's DAS.
 . Using the Payara Micro API on bootstrapped instances.

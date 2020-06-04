@@ -6,11 +6,11 @@ This section describes Apache Maven support for Payara Micro.
 [[artifacts-in-maven-central]]
 == Artifacts in Maven Central
 
-Payara Micro has been uploaded to Maven Central, allowing you to include
+Payara Micro Enterprise has been uploaded to Maven Central, allowing you to include
 it as a dependency in your POM.
 
 This allows you to easily add the required Payara Micro classes and
-methods to your application to use Payara Micro programmatically.
+methods to your application to use Payara Micro Enterprise programmatically.
 
 In your project's POM, include the following dependency:
 

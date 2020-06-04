@@ -1,7 +1,7 @@
 [[sql-statement-overview]]
 = SQL Statement Overview
 
-Payara Server keeps track of the recently executed SQL statements for monitoring purposes.
+Payara Server Enterprise keeps track of the recently executed SQL statements for monitoring purposes.
 This way, one can review which SQL statements are executed, how many times the same statement
 is executed and how long it took.
 

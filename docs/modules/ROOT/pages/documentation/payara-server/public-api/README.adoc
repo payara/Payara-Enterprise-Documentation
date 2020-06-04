@@ -4,7 +4,7 @@
 _Since Payara Server 4.1.1.171_
 
 This page contains information on using the Public API integrated within
-Payara Server and Payara Micro.
+Payara Server Enterprise and Payara Micro Enterprise.
 
 TIP: Open http://javadoc.io/doc/fish.payara.api/payara-api[Payara API Javadoc] for complete public Payara API reference. 
 

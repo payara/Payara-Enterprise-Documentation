@@ -1,11 +1,11 @@
 = Payara Server Embedded Arquillian Container
 
-The Payara Server Embedded container lifecycle is managed by Arquillian and
+The Payara Server Enterprise Embedded container lifecycle is managed by Arquillian and
  resides in the same JVM where tests are executed using a local protocol.
 
 == Usage
 
-The Payara Server Embedded Arquillian container can be found on Maven Central,
+The Payara Server Enterprise Embedded Arquillian container can be found on Maven Central,
 and can be included in your project using the following Maven coordinates:
 
 [source,XML]
@@ -30,20 +30,20 @@ through the specified system properties in the arquillian JVM:
 | Name | Description | Default
 
 | `bindHttpPort`
-| The port number of the http-listener for the embedded Payara server.
+| The port number of the http-listener for the embedded Payara Server Enterprise.
 | `8181`
 
 | `bindHttpsPort`
-| The port number of the https-listener for the embedded Payara server.
+| The port number of the https-listener for the embedded Payara Server Enterprise.
 | `8182`
 
 | `instanceRoot`
-| The instance root directory is the domain directory and embedded Payara Server
+| The instance root directory is the domain directory and embedded Payara Server Enterprise
  uses the server instance directory for domain configuration files.
 | `N/A`
 
 | `installRoot`
-| The install root directory is the parent directory of a Payara server instance
+| The install root directory is the parent directory of a Payara Server Enterprise instance
  directory and corresponds to the base directory for an installation of Payara Server.
 | `N/A`
 
@@ -53,7 +53,7 @@ configuration file or config/domain.xml at the specified instance root.
 | `true`
 
 | `configurationXml`
-| Set the location of configuration file i.e. domain.xml using which the Payara server should run.
+| Set the location of configuration file i.e. domain.xml using which the Payara Server Enterprise should run.
 | `N/A`
 
 | `resourcesXml`

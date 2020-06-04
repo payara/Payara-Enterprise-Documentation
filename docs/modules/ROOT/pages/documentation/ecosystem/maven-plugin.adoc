@@ -85,7 +85,7 @@ with the provided class.
 
 |`payaraVersion`
 |{currentVersion}
-|By default bundle mojo fetches payara-micro with version {currentVersion}.
+|By default bundle mojo fetches Payara Micro with version {currentVersion}.
 
 |`deployArtifacts`
 |_None_
@@ -212,11 +212,11 @@ be available in local maven repository.
 
 |`daemon`
 |false
-|Starts payara-micro in separate JVM process and continues with the maven build.
+|Starts Payara Micro in separate JVM process and continues with the maven build.
 
 |`immediateExit`
 |false
-|If payara-micro is executed in daemon mode, the executor thread will wait for
+|If Payara Micro is executed in daemon mode, the executor thread will wait for
 the ready message before shutting down its process. By setting `immediateExit`
 to `true` you can skip this and instantly interrupt the executor thread.
 
@@ -313,7 +313,7 @@ the process id of the running Payara Micro instance.
 
 |`maxStopTimeoutMillis`
 |5000
-|Defines the maximum timeout in milliseconds to wait for the process of Payara Micro instance to stop.
+|Defines the maximum timeout in milliseconds to wait for the process of Payara Micro Enterprise instance to stop.
 
 |===
 

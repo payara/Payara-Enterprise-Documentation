@@ -3,7 +3,7 @@
 
 _Since Payara Server 4.1.1.161 and Payara Server Micro 4.1.1.161_
 
-Payara Server and Payara Micro 161 comes integrated with new
+Payara Server Enterprise and Payara Micro Enterprise comes integrated with new
 capabilities for advanced JDBC connection pool configuration and
 diagnostics.
 

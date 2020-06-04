@@ -100,7 +100,7 @@ proxy configuration).
 | `false`
 
 | `allowConnectingToRunningServer`
-| Allow arquillian to use an already running Payara instance and skips `start-domain` command invocation.
+| Allow Arquillian to use an already running Payara instance and skips `start-domain` command invocation.
 | `false`
 
 | `enableH2`

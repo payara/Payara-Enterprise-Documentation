@@ -1,7 +1,7 @@
 [[payara-server-command-reference]]
 = Payara Server Asadmin Commands
 
-All Asadmin commands supported by _GlassFish Server 4 Open Source Edition_ are also supported by Payara Server. Some of the commands have been extended and new commands have been added which don't exist in GlassFish.
+All Asadmin commands supported by _GlassFish Server 4 Open Source Edition_ are also supported by Payara Server Enterprise. Some of the commands have been extended and new commands have been added which don't exist in GlassFish.
 
 Here's a list of Payara Server Asadmin commands that are not supported by GlassFish or have been modified to accept additional parameters:
 

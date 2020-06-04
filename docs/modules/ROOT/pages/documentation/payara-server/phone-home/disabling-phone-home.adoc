@@ -2,7 +2,7 @@
 = Disabling the Phone Home
 
 The phone home service is enabled by default when starting a Payara
-Server, Payara Micro, or Payara Microprofile instance. The phone home
+Server or Payara Micro. The phone home
 service can easily disabled in four different ways.
 
 [[removing-the-service-module]]
@@ -28,7 +28,7 @@ service can easily disabled in four different ways.
 [[disabling-micro-instance]]
 == Disable service for Payara Micro
 
-When starting Payara Micro and Payara MicroProfile, the Phone Home
+When starting Payara Micro the Phone Home
 Service can be disabled with the command-line argument `--disablephonehome`:
 
 [source, shell]

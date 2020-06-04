@@ -18,7 +18,7 @@ IMPORTANT: Version 1.0 of the MicroProfile JWT Authentication specification does
 
 == Java EE Security and JWT
 
-Payara Server and Payara Micro implement the JWT authentication mechanism as a normal Java EE Security (JSR 375) authentication mechanism. This specifically means that when MP JWT authentication is used on Payara Server or Payara Micro, there's an `HttpAuthenticationMechanism` CDI bean enabled that can be intercepted or decorated using the standard CDI APIs. Likewise, there's an `IdentityStore` CDI bean enabled, which can be intercepted or decorated too. By providing additional `IdentityStore` beans, an application can, if needed, augment the JWT identity store, for instance by providing extra roles.
+Payara Server Enterprise and Payara Micro Enterprise implement the JWT authentication mechanism as a normal Java EE Security (JSR 375) authentication mechanism. This specifically means that when MP JWT authentication is used on Payara Server or Payara Micro, there's an `HttpAuthenticationMechanism` CDI bean enabled that can be intercepted or decorated using the standard CDI APIs. Likewise, there's an `IdentityStore` CDI bean enabled, which can be intercepted or decorated too. By providing additional `IdentityStore` beans, an application can, if needed, augment the JWT identity store, for instance by providing extra roles.
 
 == Vending tokens
 

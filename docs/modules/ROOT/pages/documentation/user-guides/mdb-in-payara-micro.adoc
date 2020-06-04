@@ -2,7 +2,7 @@
 
 _Since Payara 4.1.172_
 
-Payara Micro can use JCA connectors and MDBs to connect to external systems. For
+Payara Micro Enterprise can use JCA connectors and MDBs to connect to external systems. For
 instance, as client for an Apache ActiveMQ server. ActiveMQ is an open source
 messaging server (also known as message broker) and supports the JMS 1.1 API. As
 a client Payara Micro supports both sending messages to ActiveMQ as well as
@@ -29,7 +29,7 @@ bin/activemq console
 ----
 
 === Download the driver / connector
-In order for Payara Micro to be able to connect to ActiveMQ a driver (connector)
+In order for Payara Micro Enterprise to be able to connect to ActiveMQ a driver (connector)
 is needed, which comes in the form of a JCA (Java Connecter Architecture) rar
 (resource archive). Note that the version of the driver should match the version
  of the ActiveMQ installation as much as possible. Following the above example,
@@ -54,7 +54,7 @@ java -jar payara-micro.jar --deploy activemq-rar-5.14.5.rar --deploy myapp.war
 
 === Sending messages
 Sending messages to ActiveMQ can be done via the JMS API. At the moment, 
-ActiveMQ 5.x only supports the _JMS 1.1_ API, so even though Payara Micro supports
+ActiveMQ 5.x only supports the _JMS 1.1_ API, so even though Payara Micro Enterprise supports
 JMS 2.0, this can not be used in this example. Attempting to use JMS 2.0 anyway
 would result in exceptions like shown below:
 

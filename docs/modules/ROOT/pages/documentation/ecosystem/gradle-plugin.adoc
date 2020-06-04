@@ -1,9 +1,9 @@
 = Payara Micro Gradle Plugin
 
-Payara Micro has a Gradle plugin which can start and stop Payara Micro and create
-an Uber JAR bundle of the application and Payara Micro.
+Payara Micro has a Gradle plugin which can start and stop Payara Micro Enterprise and create
+an Uber JAR bundle of the application and Payara Micro Enterprise.
 
-The plugin requires JDK 8 or higher and the latest version is currently `1.0.3`
+The plugin requires JDK 8 or higher and the latest plugin version is currently `1.0.3`
 
 
 == Installation
@@ -80,15 +80,15 @@ ID and version. This configuration element has the higher precedence compared to
 
 |`payaraVersion`
 |{currentVersion}
-|By default `microStart` task fetches payara-micro with version {currentVersion}.
+|By default `microStart` task fetches Payara Micro with version {currentVersion}.
 
 |`daemon`
 |false
-|Starts payara-micro in separate JVM process and continues with the gradle build.
+|Starts Payara Micro in separate JVM process and continues with the gradle build.
 
 |`immediateExit`
 |false
-|If payara-micro is executed in daemon mode, the executor thread will wait for
+|If Payara Mmicro is executed in daemon mode, the executor thread will wait for
 the ready message before shutting down its process. By setting `immediateExit`
 to `true` you can skip this and instantly interrupt the executor thread.
 
@@ -99,7 +99,7 @@ to `true` you can skip this and instantly interrupt the executor thread.
 |`deployWar`
 |false
 |If the attached project is of type WAR, it will automatically be deployed to
-payara-micro if `deployWar` is set to `true`.
+Payara Micro if `deployWar` is set to `true`.
 
 |`javaCommandLineOptions`
 |_none_
@@ -109,14 +109,14 @@ values. key-value pairs will be formatted as `key=value`.
 
 |`commandLineOptions`
 |_none_
-|Defines a list of command line options that will be passed onto payara-micro.
+|Defines a list of command line options that will be passed onto Payara Micro.
 
 
 |===
 
 === `microStop`
 *Aim*: This task stops Payara Micro with the specified configuration. 
-By default this goal tries to find out currently executing payara-micro instance based on project GAV.
+By default this goal tries to find out currently executing Payara Micro instance based on project GAV.
 If `processId` is defined, it will take precedence and the given `processId` will
 immediately kill the executing Payara Micro instance.
 
@@ -132,7 +132,7 @@ immediately kill the executing Payara Micro instance.
 
 |`processId`
 |_none_
-|Process id of the running payara-micro instance.
+|Process id of the running Payara Micro instance.
 
 |`useUberJar`
 | false

@@ -1,7 +1,7 @@
 [[micro-instance-names]]
 = Payara Micro Instance Names
 
-Payara Micro instances are automatically assigned a name on boot. These names
+Payara Micro Enterprise instances are automatically assigned a name on boot. These names
 are generated from a dictionary of adjectives and fish names as `adjective-fish`.
 For example: `Magnanimous-Payara`, `Disgruntled-Goldfish`, and `Bamboozled-Tetra`.
 

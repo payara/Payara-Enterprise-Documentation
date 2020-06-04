@@ -3,14 +3,14 @@
 
 _Since Payara Micro 4.1.1.164_
 
-The Request Tracing service works the same on Payara Micro and will trace the
+The Request Tracing service works the same on Payara Micro Enterprise and will trace the
 same events described in its xref:/documentation/payara-server/request-tracing-service/request-tracing-service.adoc[documentation].
 
 [[usage]]
 == Usage
 
-Payara Micro exposes a number of command line options to configure request tracing. These options cover the most frequent
-use cases for Payara Micro, but you can also configure the Request Tracing Service using a *post*-boot command file,
+Payara Micro Enterprise exposes a number of command line options to configure request tracing. These options cover the most frequent
+use cases for Payara Micro Enterprise, but you can also configure the Request Tracing Service using a *post*-boot command file,
 giving you access to the asadmin commands and the full range of options they provide.
 
 [[configuration-options]]

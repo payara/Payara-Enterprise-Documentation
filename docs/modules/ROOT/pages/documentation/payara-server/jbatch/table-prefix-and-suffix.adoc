@@ -1,7 +1,7 @@
 [[setting-a-table-prefix-andor-suffix]]
 = Setting a Table Prefix and/or Suffix
 
-Payara Server allows you to set the prefix and/or the suffix of
+Payara Server Enterprise allows you to set the prefix and/or the suffix of
 the batch table name. This can be set via the Admin Console, in the
 _domain.xml_ file, or using administration commands.
 

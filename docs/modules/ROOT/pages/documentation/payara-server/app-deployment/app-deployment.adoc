@@ -2,7 +2,7 @@
 = Application Deployment
 
 Applications can be deployed to Payara Server in the same way as 
-_GlassFish Server 4.1 Open Source Edition_. Payara Server does not modify
+_GlassFish Server 4.1 Open Source Edition_. Payara Server Enterprise does not modify
 this process but does add some new features.
 
 == Deploying on Server Start
@@ -59,7 +59,7 @@ All of the glassfish deploy options apply.
 
 
 == Deploying from a URL
-GlassFish and Payara embedded have had the ability to deploy applications from a URL for a while, and this feature has now been brought into Payara Server. To faciliate this new feature, a new asadmin command was created: `deploy-remote-archive`. This command takes all of the same parameters as the standard deploy command, and is used in exactly the same way - the only difference is in the command name, and the fact you specify a URL instead of a file.
+Payara Embedded has the ability to deploy applications from a URL for a while, and this feature has now been brought into Payara Server. To facilitate this new feature, a new asadmin command was created: `deploy-remote-archive`. This command takes all of the same parameters as the standard deploy command, and is used in exactly the same way - the only difference is in the command name, and the fact you specify a URL instead of a file.
 
 *Usage*: `asadmin> deploy-remote-archive _url_`
 
@@ -71,7 +71,7 @@ At this point in time, the command will only accept HTTP and HTTPS URLs.
 ====
 
 == Deploying from a Maven Repository.
-The feature of Payara Micro to deploy applications from a Maven Repository using their Group, Artefact, Version (GAV) coordinates has also been brought into Payara Server. This functionality uses the same command as when deploying from a URL: `deploy-remote-archive`. This command takes all of the same parameters as the standard deploy command, but has an extra parameter:
+The feature of Payara Micro to deploy applications from a Maven Repository using their Group, Artefact, Version (GAV) coordinates has also been brought into Payara Server Enterprise. This functionality uses the same command as when deploying from a URL: `deploy-remote-archive`. This command takes all of the same parameters as the standard deploy command, but has an extra parameter:
 
 * `additionalRepositories` - This parameter accepts a comma separated list of repository URLs, that will be probed when searching for an artefact. By default, the command will only look in Maven Central.
 
@@ -96,7 +96,7 @@ Although the command accepts Maven GAV coordinates, it does not actually make us
 
 _Since Payara Server 4.1.2.182 and 5.182_
 
-When deploying an application or a module on Payara Server from an IDE (like 
+When deploying an application or a module on Payara Server Enterprise from an IDE (like 
 **NetBeans** or **IntelliJ**), the IDE deploys to Payara Server using the asadmin 
 deploy command, with the --name option specified. This will force the application 
 or module to have the specified name over the name defined in deployment 

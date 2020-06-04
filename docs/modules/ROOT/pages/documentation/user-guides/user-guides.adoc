@@ -2,7 +2,7 @@
 = User Guides Overview
 
 These pages are intended to answer common questions and provide more practical
-documentation on how to work with Payara Server and Payara Micro.
+documentation on how to work with Payara Server Enterprise and Payara Micro Enterprise.
 
 For regular updates on Payara Server and Payara Micro, including announcements
 of new features, subscribe to the official http://blog.payara.fish/[Payara Blog].
