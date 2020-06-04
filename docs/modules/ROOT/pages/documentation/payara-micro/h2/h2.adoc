@@ -1,9 +1,10 @@
 [[h2-database]]
 = H2 Database
 
-In Payara Micro 5, Derby will be removed as default database and replaced with 
-H2. Similar to Derby, H2 is a Java based Database. More info can be found 
-http://www.h2database.com/html/main.html[here]
+H2 is a Java-based Database which replaced Derby as the default database in Payara 5. More info about H2 can be found 
+http://www.h2database.com/html/main.html[here].
+Derby itself as a database is removed in version 5.201.
+
 
 [[why-was-derby-removed]]
 == Why was Derby Removed?
