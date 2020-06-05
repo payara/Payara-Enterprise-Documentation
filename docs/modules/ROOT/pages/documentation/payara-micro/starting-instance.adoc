@@ -27,7 +27,7 @@ java -jar payara-micro.jar --outputlauncher --rootdir $rootDirectory
 ----
 
 This will create file `$rootDirectory/launch-micro.jar` and exit immediately.
-After that, it is possible to launch Payara with plain
+After that, it is possible to launch Payara Micro with plain
 
 [source,shell]
 ----

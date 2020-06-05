@@ -88,7 +88,7 @@ ID and version. This configuration element has the higher precedence compared to
 
 |`immediateExit`
 |false
-|If Payara Mmicro is executed in daemon mode, the executor thread will wait for
+|If Payara Micro is executed in daemon mode, the executor thread will wait for
 the ready message before shutting down its process. By setting `immediateExit`
 to `true` you can skip this and instantly interrupt the executor thread.
 
