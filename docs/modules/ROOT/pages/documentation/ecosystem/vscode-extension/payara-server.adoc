@@ -14,13 +14,16 @@ image::vscode-extension/payara-server/add-payara-server.png[alt=Add Payara Serve
 2. Browse the Payara Server installation path (recently used servers location are listed by default):
 +
 image::vscode-extension/payara-server/browse-payara-server.png[alt=Browse Server Runtime, width="60%"]
+
 3. Choose a name for the server.
 +
 image::vscode-extension/payara-server/name-payara-server.png[alt=Fill server name, width="60%"]
+
 4. Then select a domain from the list or create a new domain by pressing the *+* button:
 +
 image::vscode-extension/payara-server/select-payara-server-domain.png[alt=Select server domain, width="60%"]
-5. That’s how to add Payara Server to VSCode.
+
+That’s how to add Payara Server to VSCode.
 
 [[managing-server]]
 == Managing Payara Server from VSCode
