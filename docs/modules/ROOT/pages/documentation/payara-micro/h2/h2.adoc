@@ -3,7 +3,7 @@
 
 H2 is a Java-based Database which replaced Derby as the default database in Payara 5. More info about H2 can be found 
 http://www.h2database.com/html/main.html[here].
-Derby itself as a database is removed in version 5.201.
+Derby as a database service that can be started and managed by Payara Micro Enterprise, has been removed starting from version 5.201
 
 
 [[why-was-derby-removed]]
