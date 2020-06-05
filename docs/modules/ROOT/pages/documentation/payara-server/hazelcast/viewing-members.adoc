@@ -2,7 +2,7 @@
 = Viewing Data Grid Members
 
 This section details how to visualize the members of the Domain Data Grid on
-Payara Server.
+Payara Server Enterprise.
 
 [[viewing-cluster-members-admin-console]]
 == Viewing Data Grid Members from the Admin Console
@@ -33,5 +33,5 @@ server         server-config   DAS            127.0.1.1  8080        8181       
 ----
 
 Since 5.191, a "Last Heartbeat" field will also be shown (pictured above), displaying the date and time that the DAS
-last received a hearbeat pulse from a Payara Server or Payara Micro instance. This heartbeat should refresh every 5
+last received a heartbeat pulse from a Payara Server or Payara Micro instance. This heartbeat should refresh every 5
 seconds.

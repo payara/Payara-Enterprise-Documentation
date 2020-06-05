@@ -7,7 +7,7 @@ environment as possible.
 
 By using the xref:https://codehaus-cargo.github.io/cargo/Maven2+plugin.html[Maven Cargo
 plugin] within your Maven project, it is possible to deploy your application to
-local and remote instances of Payara Server. The plugin makes use of the REST
+local and remote instances of Payara Server Enterprise. The plugin makes use of the REST
 management API in Payara Server.
 
 == Adding the Cargo Plugin
@@ -33,7 +33,7 @@ to the `<build>` section of your pom:
 == Execution Goals
 
 The Maven Cargo plugin comes with support for containers, where a container
-represents a Java EE server. As Payara Server is derived from GlassFish,
+represents a Java EE server. As Payara Server Enterprise is derived from GlassFish,
 Payara Server is able to use the GlassFish container with the Maven Cargo
 Plugin.
 
@@ -62,7 +62,7 @@ There are a number of common goals:
 
 === Deploying via the Cargo Plugin
 
-To deploy your application to Payara Server using the Maven Cargo Plugin, the
+To deploy your application to Payara Server Enterprise using the Maven Cargo Plugin, the
 plugin needs to be configured. Since there is a good chance that both local and
 remote Payara Servers may need to be used, the best way to manage these multiple
 configurations is to add a _profile_. From a general perspective, a Maven profile
@@ -125,7 +125,7 @@ that refer to your own environment similar to the following example:
     </properties>
 ----
 
-To deploy to a remote instrance of Payara Server, we need to make sure to add
+To deploy to a remote instance of Payara Server Enterprise, we need to make sure to add
 a username and password for the remote instance, as well as an admin port and
 hostname. Remote hosts cannot `start` or `stop`; the server must already be
 running.

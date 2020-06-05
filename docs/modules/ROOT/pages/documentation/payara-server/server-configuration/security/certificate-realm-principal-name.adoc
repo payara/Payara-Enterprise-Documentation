@@ -3,7 +3,7 @@
 
 _Since Payara Server 5.192_
 
-Payara Server includes a feature that supports using exclusively the use of the Common-Name (`CN`) from a client
+Payara Server Enterprise includes a feature that supports using exclusively the use of the Common-Name (`CN`) from a client
 certificate for authentication on a secure web application as the subject of any authenticated request.
 
 A new property named `common-name-as-principal-name` can be used with any security realm of type `com.sun.enterprise.security.auth.realm.certificate.CertificateRealm` in order to control this feature.

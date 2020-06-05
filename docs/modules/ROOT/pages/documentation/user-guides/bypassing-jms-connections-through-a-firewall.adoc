@@ -1,7 +1,7 @@
 [[bypassing-jms-connections-through-a-firewall]]
 = Bypassing JMS Connections through a Firewall
 
-A common scenario when using the JMS service with Payara Server is to have the
+A common scenario when using the JMS service with Payara Server Enterprise is to have the
 Message broker and a remote client separated by a firewall. To solve this
 impediment, there are 2 options to establish a successful connection between them:
 
@@ -72,8 +72,8 @@ Where `10234` is the static port set up in the firewall.
 === How to set the property in REMOTE mode
 
 In `REMOTE` mode, the OpenMQ broker is completely independent from the Payara
-Server installation. Since it's the responsability of a third party to
-configure and manage the lifecyle of the broker, the property must be
+Server Enterprise installation. Since it's the responsability of a third party to
+configure and manage the life-cyle of the broker, the property must be
 configured directly on it instead of the server/domain.
 
 The recommended way to do this is to pass the property as a start argument

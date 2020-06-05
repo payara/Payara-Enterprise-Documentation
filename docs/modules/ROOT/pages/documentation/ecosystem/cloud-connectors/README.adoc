@@ -2,7 +2,7 @@
 
 The Payara Cloud Connectors are a collection of JCA adapters for use with
 various popular cloud messaging providers. These connectors can be deployed to
-Payara Server or Payara Micro version 172 or higher.
+Payara Server Enterprise or Payara Micro Enterprise version 172 or higher.
 
 In version {currentVersion}, the available connectors are:
 

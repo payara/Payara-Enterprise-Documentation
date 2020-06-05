@@ -30,7 +30,7 @@ https://en.wikipedia.org/wiki/Camel_case[camelCase notation]
 |`--autobindssl`
 |Enables auto-binding for the HTTPS port.|_false_
 |`--clustermode`
-|Modifies the cluster discovery mode of  Payara Micro when finding members of the cluster. Options are multicast:group:port, tcpip:host:port, domain:dashost:port|multicast
+|Modifies the cluster discovery mode of  Payara Micro Enterprise when finding members of the cluster. Options are multicast:group:port, tcpip:host:port, domain:dashost:port|multicast
 |`--clustername <cluster-name>`
 |Sets the cluster group name.|
 |`--clusterpassword <cluster-password>`|Sets the cluster group password.|

@@ -13,7 +13,7 @@ xref:http://visualvm.github.io/download.html[download from visualvm.github.io].
 To view MBeans, the xref:http://visualvm.github.io/plugins.html[_MBeans Browser_ plugin]
 will need to be installed.
 
-With Payara Server started, VisualVM will detect the running Payara Server as an
+With Payara Server Enterprise started, VisualVM will detect the running Payara Server as an
 instance of GlassFish (provided both Payara Server and VisualVM are started as
 the same user):
 
@@ -29,7 +29,7 @@ JMX MBeans in Payara Server are exposed under `amx` to differentiate them from
 other JVM MBeans, such as those under `java.lang` which expose things like
 garbage collection information.
 
-To view the MBeans from Payara Server as well as the JVM, we must execute a JMX
+To view the MBeans from Payara Server Enterprise as well as the JVM, we must execute a JMX
 _operation_ to start the AMX subsystem.
 
 image:guides/monitoring/visual-vm2.png[Booting AMX]
@@ -50,7 +50,7 @@ are being gathered. This is our next step.
 
 [[enable-monitoring-payara-server]]
 == Enable Monitoring in Payara Server
-To make sure that we get all the monitoring data that Payara Server provides,
+To make sure that we get all the monitoring data that Payara Server Enterprise provides,
 we will turn each module's monitoring level to `HIGH`, giving us the highest
 possible amount of data.
 
@@ -121,7 +121,7 @@ be clicked to update the value.
 
 [[remotely-viewing-jmx-monitoring-data-visualvm]]
 === Remotely Viewing JMX Monitoring Data with VisualVM
-To remotely get the data from secured Payara Server into VisualVM, you have 
+To remotely get the data from secured Payara Server Enterprise into VisualVM, you have 
 to use the SSL connection (which is the default). For an SSL connection to 
 work, you need to use the same SSL certificate as used in a remote Payara Server. 
 This certificate is not available in standard JDK, so you'll need to add the 

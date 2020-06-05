@@ -4,7 +4,7 @@
 _Since version 5.183_
 
 Both Payara Server and GlassFish Open Source Edition provides different ways 
-to rotate access log files. On top of that, Payara server allows access log file 
+to rotate access log files. On top of that, Payara Server allows access log file 
 rotation based on file size. 
 
 `Max File Size` option provides a way to change the file size at which the Payara 

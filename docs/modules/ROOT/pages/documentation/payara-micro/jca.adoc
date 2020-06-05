@@ -2,9 +2,9 @@
 
 _Since Payara 4.1.2.172_
 
-Payara Micro supports the deployment of Java EE Connector Architecture (JCA)
+Payara Micro Enterprise supports the deployment of Java EE Connector Architecture (JCA)
 adapters which can enable communication with external services not natively
-supported by Payara Micro.
+supported by Payara Micro Enterprise.
 
 These can include JMS brokers, cloud messaging providers like Amazon SQS or
 existing legacy systems. In the case of JMS, for example, Payara Micro can be
@@ -31,7 +31,7 @@ java -jar payara-micro.jar --deploy activemq-rar-5.14.5.rar --deploy myapp.war
 ----
 
 NOTE: When deploying multiple files to Payara Micro, the order of `--deploy`
-options is respected so, in the above example, the ActiveMQ RAR wil be deployed
+options is respected so, in the above example, the ActiveMQ RAR will be deployed
 before the `myapp.war` application.
 
 ---

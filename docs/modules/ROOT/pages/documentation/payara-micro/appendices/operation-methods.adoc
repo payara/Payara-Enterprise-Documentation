@@ -2,7 +2,7 @@
 = Operation Methods
 
 This section details the other methods of the Payara Micro API that operate Payara
-Micro instances. `PayaraMicro.class` methods are used during the bootstrap
+Micro Enterprise instances. `PayaraMicro.class` methods are used during the bootstrap
 process, whereas `PayaraMicroRuntime.class` methods are used on running instances.
 
 The list of methods in the API:
@@ -17,7 +17,7 @@ The list of methods in the API:
 [[deployment-methods]]
 == Deployment Methods
 
-Deployment methods are used for the deployment of applications to Payara Micro
+Deployment methods are used for the deployment of applications to Payara Micro Enterprise
 instances.
 
 [[payaramicro.class-methods]]
@@ -58,7 +58,7 @@ context root.
 [[setup-and-shutdown-methods]]
 == Setup and Shutdown Methods
 
-These methods are required for setting up and cleaning Payara Micro instances.
+These methods are required for setting up and cleaning Payara Micro Enterprise instances.
 
 [[payaramicro.class-methods-1]]
 === `PayaraMicro.class` Methods
@@ -131,7 +131,7 @@ objects on bootstrapped instances.
 [[get-methods]]
 == Get Methods
 
-These methods are used for getting information on running Payara Micro instances.
+These methods are used for getting information on running Payara Micro Enterprise instances.
 For information on the `Get` methods of an non-bootstrapped instance, see the
 xref:/documentation/payara-micro/appendices/config-methods.adoc[Configuration Methods section].
 

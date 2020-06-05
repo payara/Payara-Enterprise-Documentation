@@ -1,7 +1,7 @@
 [[advance-connection-pool-properties-in-deployment-descriptors]]
 = Advanced Connection Pool Properties in Deployment Descriptors
 
-Payara Server now supports setting advanced JDBC connection pool
+Payara Server Enterprise supports setting advanced JDBC connection pool
 properties directly on data source definitions made with the
 `@DataSourceDefinition` annotation or directly on deployment descriptors.
 

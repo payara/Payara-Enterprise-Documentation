@@ -3,7 +3,7 @@
 
 Sometimes it is preferable to package the application (or applications),
 configuration and dependencies into a single executable jar. To do this with
-Payara Micro use the `--outputUberJar` command line option as in this example:
+Payara Micro Enterprise use the `--outputUberJar` command line option as in this example:
 
 [source, shell]
 ----

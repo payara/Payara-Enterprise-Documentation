@@ -1,7 +1,7 @@
 [[starting-an-instance]]
 = Starting an Instance
 
-This section details the very basics of starting a Payara Micro instance.
+This section details the very basics of starting a Payara Micro Enterprise instance.
 
 [[starting-an-instance-from-the-command-line]]
 == Starting an Instance from the Command Line
@@ -13,7 +13,7 @@ To start an instance of Payara Micro from the command line, you simply run the J
 java -jar payara-micro.jar
 ----
 
-This single command is all you need to run Payara Micro instances; additional
+This single command is all you need to run Payara Micro Enterprise instances; additional
 configuration options are all part of this command.
 
 [[starting-an-instance-from-rootdir-launcher]]
@@ -27,7 +27,7 @@ java -jar payara-micro.jar --outputlauncher --rootdir $rootDirectory
 ----
 
 This will create file `$rootDirectory/launch-micro.jar` and exit immediately.
-After that, it is possible to launch payara with plain
+After that, it is possible to launch Payara Micro with plain
 
 [source,shell]
 ----

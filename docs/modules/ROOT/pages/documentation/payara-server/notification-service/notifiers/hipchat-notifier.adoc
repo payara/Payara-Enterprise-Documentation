@@ -7,7 +7,7 @@ HipChat is a team chat application created by **Atlassian**. It can be used
 for teams to discuss topics in separate "rooms", but also supports
 integrations from services to notify users of events.
 
-Payara Server has now included functionality to send notifications from
+Payara Server Enterprise has now included functionality to send notifications from
 the
 xref:/documentation/payara-server/notification-service/notification-service.adoc[Notification Service]
 to a HipChat room
@@ -58,7 +58,7 @@ image:notification-service/hipchat/hipchat-create-token.png[Create Hipchat room 
 == Payara Server Configuration
 
 Once you have a token, the configuration of the notifier within Payara
-Server involves just one step. In the Admin Console, simply add the room
+Server Enterprise involves just one step. In the Admin Console, simply add the room
 name and token to the appropriate fields, as shown below:
 
 image:notification-service/hipchat/admin-console-configuration.png[Configuring Hipchat Notifier on Admin Console]

@@ -5,8 +5,8 @@ _Since version 4.1.2.181_
 
 Similar to `Log to Console` option available in both GlassFish 4.0 Open Source 
 Edition and Payara Server. `Log to File` option will provide a way to enable 
-and disable logging to a file in Payara Server. When disabled this should help 
-to minimize disk usage. This option will be more accommodating if Payara server 
+and disable logging to a file in Payara Server Enterprise. When disabled this should help 
+to minimize disk usage. This option will be more accommodating if Payara Server 
 is running in cloud environment where disk space is scarce. 
 
 [[using-web-admin-console]]

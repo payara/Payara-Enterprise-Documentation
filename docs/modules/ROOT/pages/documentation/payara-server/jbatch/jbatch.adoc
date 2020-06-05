@@ -4,4 +4,4 @@
 _Since Payara Server 4.1.1.162_
 
 This section covers how to use the enhanced JBatch functionality included
-in Payara Server.
+in Payara Server Enterprise.

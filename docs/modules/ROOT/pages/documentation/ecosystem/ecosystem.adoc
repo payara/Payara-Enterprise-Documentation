@@ -1,7 +1,7 @@
 = Ecosystem
 
 The Payara Foundation not only provides application servers in the form of Payara
-Server, Payara Micro, and Payara MicroProfile; there are also satellite projects
+Server and Payara Micro; there are also satellite projects
 which complement and enhance the developer experience.
 
 These include:

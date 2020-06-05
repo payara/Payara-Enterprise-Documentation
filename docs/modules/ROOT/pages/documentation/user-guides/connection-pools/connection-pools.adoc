@@ -13,7 +13,7 @@ re-used to connect to a RDBMS database. They help to improve both the performanc
 and scalability of the system.
 
 Rather than creating a new connection each time one is needed a pool of logical
-connections is created when Payara server is started. When a new connection is
+connections is created when Payara Server is started. When a new connection is
 required the pool is searched for an available connection. If one is available
 it is returned to the requester. If none is available then the request is either
 queued or a new connection is established depending on how many connections

@@ -1,6 +1,6 @@
 = Security Connectors
 
-Security Connectors are a collection of Jakarta EE Security adaptor that implements
+Security Connectors are a collection of Jakarta EE Security adapters that implements
 industry-standard security protocols, specifications and integrates with third-party
 security artifacts & components.
 

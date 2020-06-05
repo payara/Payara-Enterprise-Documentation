@@ -4,4 +4,4 @@
 Variable references in the configuration are useful for reusing the same
 configuration in several scenarios, e.g. for several instances in the
 same cluster, or to provide an environment-specific configuration from
-the environment later when Payara Server is started.
+the environment later when Payara Server Enterprise is started.

@@ -3,7 +3,7 @@
 
 _Since Payara Server 5.182_
 
-It is possible to allow specific JVM options configured for a Payara Server instance to be applied only on specific JDK versions. The configuration is flexible since it allows the user to define minimum and maximum versions of all JDKs upon which each JVM option should be applied.
+It is possible to allow specific JVM options configured for a Payara Server Enterprise instance to be applied only on specific JDK versions. The configuration is flexible since it allows the user to define minimum and maximum versions of all JDKs upon which each JVM option should be applied.
 
 NOTE: If no minimum and/or maximum JDK versions are set for a particular JVM option, it shall be applied no matter which JDK is being used to run the server's instance (which is the default behaviour).
 

@@ -1,6 +1,6 @@
 = Payara Eclipse Plugin
 
-Payara Platform provides the Payara Tools plugin to integrate Payara Server and Payara Micro into Eclipse IDE.
+Payara Platform provides the Payara Tools plugin to integrate Payara Server Enterprise and Payara Micro Enterprise into Eclipse IDE.
 The plugins are installable from the Eclipse Marketplace.
 
 * <<installing,Installing Payara Tools Plugin>>
@@ -24,7 +24,7 @@ image::eclipse-plugin/install-security-warning.png[Security Warning]
 
 
 [[adding-server]]
-== Adding Payara Server to Eclipse
+== Adding Payara Server Enterprise to Eclipse
 
 1. Open the *Servers* view (if not visible, it should be under menu *Window -> Show View -> Servers*).
 +

@@ -4,7 +4,7 @@
 _Since Payara Server 5.194_
 
 A security realm contains a collection of users with a password and the optional
-roles that are used to authenticate the users. Payara Server comes with a set of
+roles that are used to authenticate the users. Payara Server Enterprise comes with a set of
 preconfigured realms(file, certificate, and admin) which can be specified in the
 deployment descriptor of web application but the web deployment descriptor allows
 only a single realm-name definition per module.

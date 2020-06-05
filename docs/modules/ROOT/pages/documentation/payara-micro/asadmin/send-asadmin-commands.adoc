@@ -2,9 +2,9 @@
 = Sending Asadmin Commands to Payara Micro from a Domain Administration Server
 
 Asadmin commands can be sent from the Domain Administration Server (DAS) to
-Payara Micro instances that are running within the same data grid as the DAS.
+Payara Micro Enterprise instances that are running within the same data grid as the DAS.
 
-Since *5.184*, `stop-domain` can also be issued to a Payara Micro instance.
+Since *5.184*, `stop-domain` can also be issued to a Payara Micro Enterprise instance.
 
 This can be achieved either using the admin console or from the command line.
 

@@ -11,7 +11,7 @@ without much effort using the `backup-domain` command and some scheduling
 software (_crontab_, for example)
 
 Since the domain directory is where all of the user configuration of Payara
-Server is kept, we can consider this to be separate to the installation files
+Server Enterprise is kept, we can consider this to be separate to the installation files
 that Payara Server uses to run the app server itself. We can backup the domain
 using the `asadmin backup-domain` command as follows:
 
@@ -36,7 +36,7 @@ of the domain have been made.
 
 The job of running this backup command on a given schedule and managing the
 resulting backed up files needs to be done by a script external to Payara
-Server.
+Server Enterprise.
 
 You can get more details of the backup operation by using the `--long` argument
 when running the command like this:

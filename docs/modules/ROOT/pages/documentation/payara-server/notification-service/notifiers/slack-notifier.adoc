@@ -6,7 +6,7 @@ collaboration tool inspired by IRC. It allows an organization to create
 specific *domains* and discuss work topics or subjects in separate
 *channels* that can either be public or private.
 
-Payara Server includes a special notifier to send notifications from the
+Payara Server Enterprise includes a special notifier to send notifications from the
 xref:/documentation/payara-server/notification-service/notification-service.adoc[Notification service]
 to an organization's domain channel using Slack API integrations.
 

@@ -1,13 +1,12 @@
 [[payara-micro-post-boot-output]]
 = Payara Micro Post Boot Output
 
-Information about the output made by Payara Micro after its booting has completed.
+Information about the output made by Payara Micro Enterprise after its booting has completed.
 
 [[deployed-apps]]
 == Deployed Apps
 
-After Payara Micro has booted, the log output will list data about the
-Payara Micro instance and its deployed apps.
+After Payara Micro Enterprise has booted, the log output will list data about the instance and its deployed apps.
 
 This data includes:
 

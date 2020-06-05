@@ -2,7 +2,7 @@
 Logging
 -------
 
-Payara Server captures information about events that occur and records this
+Payara Server Enterprise captures information about events that occur and records this
 information using its logging mechanism into log files.
 
 In a Payara Server domain, the information is logged into the following files

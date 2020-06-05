@@ -12,7 +12,7 @@ _Since Payara Server 4.1.2.173_
 `asadmin> add-library <options> file`
 
 *Aim*::
-This command adds a jar library to Payara Server and loads it
+This command adds a jar library to Payara Server Enterprise and loads it
 
 |===
 |Options | Type | Description | Default | Mandatory

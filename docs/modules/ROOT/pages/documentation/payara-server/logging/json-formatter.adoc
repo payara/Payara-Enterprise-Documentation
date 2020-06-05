@@ -4,7 +4,7 @@
 _Since version 4.1.1.164_
 
 Besides ULF and ODL logging formats available also in _GlassFish 4_,
-Payara Server provides additional JSON format. With this format, every
+Payara Server Enterprise provides additional JSON format. With this format, every
 line in the log output is formatted as a JSON string. The log records
 can be then easily parsed by a JSON parser for further data processing.
 

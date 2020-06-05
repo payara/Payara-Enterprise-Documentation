@@ -3,7 +3,7 @@
 
 _Since Payara Server 5.184_
 
-Payara Server supports using the JCE framework to configure custom security providers. Custom providers can be installed statically in the JDK, via the service loader mechanism, or via the programmatic API.
+Payara Server Enterprise supports using the JCE framework to configure custom security providers. Custom providers can be installed statically in the JDK, via the service loader mechanism, or via the programmatic API.
 
 NOTE: Although the provider can be changed while the server is running, this can influence other processes that already use the previous preferred provider.
 

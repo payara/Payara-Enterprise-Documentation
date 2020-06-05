@@ -6,14 +6,14 @@ This section details several improvements and enhancements done to the EJB featu
 [[concurrent-instance-configuration]]
 == Concurrent Instance Configuration
 
-Payara Server can control the number of maximum *concurrent* instances per EJB that can be served to clients. 
+Payara Server Enterprise can control the number of maximum *concurrent* instances per EJB that can be served to clients. 
 
 See xref:documentation/payara-server/ejb/concurrent-instances.adoc[Controlling Stateless EJB Concurrent Instances] for detailed information.
 
 [[custom-ejb-jar-names]]
 == Customized EJB-JAR Archive Names
 
-It is possible to instruct Payara Server to override the default behaviour of using the archive's filename as the name of the module at deployment time, even if the archive lives inside an EAR application.
+It is possible to instruct Payara Server Enterprise to override the default behaviour of using the archive's filename as the name of the module at deployment time, even if the archive lives inside an EAR application.
 
 See xref:documentation/payara-server/ejb/ejb-jar-names.adoc[Overwriting EJB JAR Archive Names] for detailed information.
 

@@ -19,8 +19,8 @@ image::vscode-extension/payara-micro/create-new-project-set-group-id.png[Enter G
 image::vscode-extension/payara-micro/create-new-project-set-version.png[Select Payara Micro version]
 
 * When you fill the required project details, the IDE creates the following
- projects from the Payara Micro maven archetype. You may add the generated
- project to the current workspace or open in the new window:
+projects from the Payara Micro maven archetype. You may add the generated
+project to the current workspace or open in the new window:
 
 image::vscode-extension/payara-micro/add-to-current-workspace.png[Application created]
 image::vscode-extension/payara-micro/new-project-created.png[Application created]

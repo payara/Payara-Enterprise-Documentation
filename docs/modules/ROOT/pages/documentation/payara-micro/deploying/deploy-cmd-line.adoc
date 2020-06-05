@@ -1,7 +1,7 @@
 [[deploying-applications-from-the-command-line]]
 = Deploying Applications From the Command Line
 
-Payara Micro supports deploying applications directly from the command line.
+Payara Micro Enterprise supports deploying applications directly from the command line.
 
 [[deploying-an-application]]
 == Deploying an Application
@@ -53,7 +53,7 @@ java -jar micro-root/launch-micro.jar
 
 To deploy a WAR file to an instance, you need to use the `--deploy` option, followed
 by the path to the application to deploy. See below for an example of starting a
-Payara Micro instance and deploying a WAR file:
+Payara Micro Enterprise instance and deploying a WAR file:
 
 [source, shell]
 ----
@@ -70,7 +70,7 @@ java -jar payara-micro.jar /home/user/example.war
 [[deploying-an-exploded-war]]
 == Deploying an Exploded War
 
-An exploded war can be deployed to a Payara Micro instance just be specifying
+An exploded war can be deployed to a Payara Micro Enterprise instance just be specifying
 the path to the exploded war root directory on the `--deploy` command line or
 via the API. The exploded war can be redeployed by creating a file _.reload_
 in the root directory of the exploded war and updating its timestamp for example

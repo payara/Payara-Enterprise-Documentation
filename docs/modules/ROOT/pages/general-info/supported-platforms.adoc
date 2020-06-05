@@ -1,7 +1,7 @@
 = Supported Platforms
 
 Though it is always possible for new versions to be supported, this page
-details the JVMs currently supported by the Payara Platform (both Payara Server and Payara Micro).
+details the JVMs currently supported by the Payara Platform Enterprise (both Payara Server Enterprise and Payara Micro Enterprise).
 
 While not all environments are tested, if it is on a supported JVM we will
 provide support for customers and address issues reported by the community.

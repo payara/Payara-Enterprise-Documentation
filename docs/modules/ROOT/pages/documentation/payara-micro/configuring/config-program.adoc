@@ -1,7 +1,7 @@
 [[configuring-an-instance-programmatically]]
 = Configuring an Instance Programmatically
 
-There are various methods available for configuring a Payara Micro instance
+There are various methods available for configuring a Payara Micro Enterprise instance
 programmatically. You can only configure an instance before it is bootstrapped
 however.
 

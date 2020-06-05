@@ -46,7 +46,7 @@ This section will go through following topics:
 * xref:documentation/payara-server/logging/notification-logging.adoc#to-change-the-name-and-location-of-the-log-file[To Change the Name and Location of the Log File]
 * xref:documentation/payara-server/logging/notification-logging.adoc#to-set-compress-on-rotation[To Set Compress on Rotation]
 
-NOTE: Payara server most be restarted after changes are made to logging options 
+NOTE: Payara Server most be restarted after changes are made to logging options 
 for it to apply. 
 
 [[enabling-or-disabling-logging-to-a-file]]
@@ -54,7 +54,7 @@ for it to apply.
 
 `Log to File` option will provide a way to enable and disable logging to a file 
 of Payara Server Notifications. When disabled this should help to minimize disk 
-usage. This option will be more accommodating if Payara server is running in 
+usage. This option will be more accommodating if Payara Server is running in 
 cloud environment where disk space is scarce. 
 
 [[using-web-admin-console]]
@@ -116,7 +116,7 @@ asadmin> set-log-attributes fish.payara.enterprise.server.logging.PayaraNotifica
 ==== *Rotation on File Size*
 
 `File Rotation Limit` option provides a way to change the file size at which 
-the Payara Server rotates the log file. This option accepts an integer value 
+the Payara Server Enterprise rotates the log file. This option accepts an integer value 
 specifying the maximum size of the log file, after which a file rotation will 
 occur. The minimum size it can be set to is 500000 Bytes. If the value for this 
 option is set to 0 rotation is disabled. 

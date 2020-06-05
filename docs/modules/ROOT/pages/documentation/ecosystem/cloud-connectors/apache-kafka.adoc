@@ -9,13 +9,13 @@ deployed as shown in the xref:documentation/ecosystem/cloud-connectors/README.ad
 Installing a connector section] of the Cloud Connectors overview.
 
 Once deployed, something like the following should be printed to the startup
-log of Payara Micro:
+log of Payara Micro Enterprise:
 
 ----
 [fish.payara.cloud.connectors.kafka.inbound.KafkaResourceAdapter] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1495395212347] [levelValue: 800] Kafka Resource Adapter Started..
 ----
 
-In order to make use of this connector in an application, the following maven
+In order to make use of this connector in an application, the following Maven
 dependency is needed:
 
 [source,XML]
@@ -30,7 +30,7 @@ dependency is needed:
 ----
 
 Note that this dependency has scope `provided` since the types within this
-dependency are globally available to every application deployed to Payara Micro
+dependency are globally available to every application deployed to Payara Micro Enterprise
 after the `KafkaRAR-0.1.0-SNAPSHOT.rar` was deployed.
 
 == Sending messages

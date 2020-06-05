@@ -30,20 +30,20 @@ through the specified system properties or environment variables:
 | Option | Description | System Property | Environment Variable | Default
 
 | `microJar`
-| Provides the location of the Payara Micro Jar.
+| Provides the location of the Payara Micro Enterprise Jar.
 | `payara.microJar`
 | `MICRO_JAR`
 | `null`
 
 | `startupTimeoutInSeconds`
 | Specifies the amount of time in seconds that the
-container will wait for Payara Micro to start.
+container will wait for Payara Micro Enterprise to start.
 | `payara.startupTimeoutInSeconds`
 | `MICRO_STARTUP_TIMEOUT_IN_SECONDS`
 | `180`
 
 | `randomHttpPort`
-| Randomises the initial HTTP port of Payara Micro.
+| Randomises the initial HTTP port of Payara Micro Enterprise.
 This saves time by avoiding collisions with the default port.
 | `payara.randomHttpPort`
 | `MICRO_RANDOM_HTTP_PORT`
@@ -68,7 +68,7 @@ This saves time by avoiding collisions with the default port.
 | `true`
 
 | `debug`
-| Enables debugging on the Micro instance. By default Payara Micro will
+| Enables debugging on the Micro instance. By default Payara Micro Enterprise will
 wait for the debugger on port `5005` before starting.
 Disables the startup timeout.
 To change this, provide java debug options to `cmdOptions`.

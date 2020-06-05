@@ -1,6 +1,6 @@
 = MQTT Cloud Connector
 
-MQTT (Message Queue Telemetry Transport)  is a lightweight publish-subscribe
+MQTT (Message Queue Telemetry Transport) is a lightweight publish-subscribe
 messaging protocol.
 
 In order to connect to a MQTT broker, the `MQTTRAR-0.1.0-SNAPSHOT.rar` has to
@@ -22,8 +22,8 @@ dependency is needed:
 ----
 
 Note that this dependency have scope provided since the types within this
-dependency are globally available to every application deployed to Payara Micro
-after the `MQTTRAR-0.1.0-SNAPSHOT.rar`  was deployed.
+dependency are globally available to every application deployed to Payara Micro Enterprise
+after the `MQTTRAR-0.1.0-SNAPSHOT.rar` was deployed.
 
 == Sending messages
 Sending messages to a MQTT broker can be done via the JCA and an MQTT specific

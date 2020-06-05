@@ -3,7 +3,7 @@
 
 _Since Payara Server 4.1.1.171 (Full Edition), 4.1.2.172 (Web Edition) & Payara Micro 4.1.153_
 
-Payara Server is able to listen to and fire CDI events across the
+Payara Server Enterprise is able to listen to and fire CDI events across the
 Hazelcast cluster. The CDI events can be fired and listened to by
 applications on Payara Server instances as well as Payara Micro
 instances provided that they are connected to the same cluster.

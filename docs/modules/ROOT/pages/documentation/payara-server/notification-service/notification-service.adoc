@@ -3,7 +3,7 @@
 
 _Since Payara Server 4.1.1.163_
 
-Payara Server comes with a general Notification
+Payara Server Enterprise comes with a general Notification
 service in order to log events which come from other services, such as
 the
 xref:/documentation/payara-server/jmx-monitoring-service/jmx-monitoring-service.adoc[JMX Monitoring Service], the xref:/documentation/payara-server/health-check-service/README.adoc[HealthCheck service] or the

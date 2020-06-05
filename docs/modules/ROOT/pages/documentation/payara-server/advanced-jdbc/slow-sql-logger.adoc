@@ -2,7 +2,7 @@
 = Slow SQL Logger
 
 Many performance problems in Enterprise Applications can be traced to
-slow database access. Payara Server includes capabilities to detect
+slow database access. Payara Server Enterprise includes capabilities to detect
 and log slow SQL queries executed via a JDBC Connection pool. The Slow
 SQL logger monitors all queries executed on the connection pool and if t
 hey exceed a configurable execution time in seconds a warning message is
@@ -134,7 +134,7 @@ java.lang.Exception: Stack Trace shows code path to SQL
 [[payara-micro-support]]
 == Payara Micro Support
 
-Payara Micro also supports slow logging of SQL queries which brings powerful operational
+Payara Micro Enterprise also supports slow logging of SQL queries which brings powerful operational
 diagnostics to your micro-services platform. To enable it on applications deployed on
 Payara Micro, use the annotation or deployment descriptor methods described in
 the previous section.

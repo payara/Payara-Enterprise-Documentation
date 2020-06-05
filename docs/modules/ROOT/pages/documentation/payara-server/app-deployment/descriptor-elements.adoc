@@ -14,7 +14,7 @@ This allows deployed application to use libraries included on them,
 overriding the versions included on the server.
 
 For more information about how class delegation can be configured on
-Payara Server, see the
+Payara Server Enterprise, see the
 xref:/documentation/payara-server/classloading.adoc[Enhanced Class loading] section.
 
 [[clustered-attach-postconstruct]]
@@ -67,7 +67,7 @@ Whitelisted packages are taken into account by the server when scanning
 libraries.
 
 For more information about how extreme class loading isolation works on
-Payara Server, see the
+Payara Server Enterprise, see the
 xref:/documentation/payara-server/classloading.adoc[Enhanced Classloading] section.
 
 [[enable-implicit-cdi]]

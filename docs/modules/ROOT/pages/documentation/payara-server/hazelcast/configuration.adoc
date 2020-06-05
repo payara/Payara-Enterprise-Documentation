@@ -3,13 +3,13 @@
 :toc:
 :toclevels: 3
 
-Payara Server supports configuring Hazelcast through the Admin Console and
+Payara Server Enterprise supports configuring Hazelcast through the Admin Console and
 asadmin commands. The Hazelcast configuration file can also be directly edited,
 but will not be covered in depth in this section.
 
 Configuration of Hazelcast is divided into four sections. The first section 
 applies to the whole domain, the second section applies to specific configurations 
-and therefore to Payara Server instances that use that configuration, the 
+and therefore to Payara Server Enterprise instances that use that configuration, the 
 third section covers how certain settings can be specified when a domain is created
 and the final section covers how to configure config specific Data Grid Start Port 
 during or after the creation of an instance.

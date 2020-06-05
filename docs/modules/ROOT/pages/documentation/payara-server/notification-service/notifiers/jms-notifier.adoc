@@ -21,7 +21,7 @@ IMPORTANT: Payara Server Web Profile does not come with native
 JMS capabilities, so this notifier isn't supported in it.
 
 NOTE: The easiest way to configure the JMS notifier is to use the
-embedded OpenMQ broker, since Payara Server ships with embedded OpenMQ by default.
+embedded OpenMQ broker, since Payara Server Enterprise ships with embedded OpenMQ by default.
 
 [[configuration]]
 == Configuration

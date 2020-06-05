@@ -1,8 +1,8 @@
 [[http-and-https-auto-binding]]
 = HTTP and HTTPS Auto-Binding
 
-Payara Micro supports an auto-binding feature for its HTTP and HTTPS port,
-allowing Payara Micro to dynamically find a free HTTP or HTTPS port as required
+Payara Micro Enterprise supports an auto-binding feature for its HTTP and HTTPS port,
+allowing Payara Micro Enterprise to dynamically find a free HTTP or HTTPS port as required
 during startup.
 
 This feature is controlled through these three options:
@@ -18,7 +18,7 @@ it will instead try to bind on the next port up, repeating this process until
 it finds a free port, or the `--autoBindRange` limiter is reached.
 
 For example, if ports *8080* and *8081* were busy, and ports *8082* and *8182*
-were free, then starting Payara Micro with the following command would have the
+were free, then starting Payara Micro Enterprise with the following command would have the
 HTTP port bind to *8082* and the HTTPS port bind to *8182*:
 
 [source, shell]
