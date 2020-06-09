@@ -48,7 +48,7 @@ Then select the *Advanced Tab* in the main window of the administration
 console. Then select the checkbox next to *Log JDBC Calls* to enable
 logging of all SQL calls:
 
-image:advanced-jdbc/slowsqllogging.png[Enabling SQL Tracing in the administration console]
+image:advanced-jdbc/logjdbccall.png[Enabling SQL Tracing in the administration console]
 
 [[asadmin-command-line-interface]]
 === Using Asadmin commands

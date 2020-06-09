@@ -117,7 +117,7 @@ Connection Pools -> *<Your Connection pool>*.
 Proceed to add the fully qualified class name of your SQL Trace Listener
 implementation class in the *SQL Trace Listeners* field:
 
-image:advanced-jdbc/slowsqllogging.png[Enabling SQL Tracing in the administration console]
+image:advanced-jdbc/sqltracelistener.png[Enabling SQL Tracing in the administration console]
 
 IMPORTANT: The implementation class must be on the server's _classpath_ for
 it to work correctly

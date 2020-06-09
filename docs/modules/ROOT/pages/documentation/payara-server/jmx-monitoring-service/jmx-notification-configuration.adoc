@@ -53,7 +53,7 @@ asadmin> set-jmx-monitoring-configuration --enabled=true --amx true
 To configure the frequency of logged data, enter both the intended frequency
 of logs and the unit of time.
 
-For example, to log every 10 milliseconds:
+For example, to log every 30 milliseconds:
 
 image:jmx-monitoring-service/jmx-log-frequency.png[JMX Log Frequency]
 
