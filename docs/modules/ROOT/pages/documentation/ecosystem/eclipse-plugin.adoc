@@ -65,7 +65,8 @@ image::eclipse-plugin/add-resource-browser.png[Request and Response in Browser]
 6. You can also access the administration console directly from the Eclipse Browser.
   Just right click the target server in the *Servers* view and click *Payara -> View Admin Console*
 +
-image::eclipse-plugin/add-resource-admin.png[Admin Console]
+image::eclipse-plugin/add-resource-admin-1.png[Admin Console]
+image::eclipse-plugin/add-resource-admin-2.png[Admin Console]
 
 [[reconfig]]
 == Runtime Reconfiguration
