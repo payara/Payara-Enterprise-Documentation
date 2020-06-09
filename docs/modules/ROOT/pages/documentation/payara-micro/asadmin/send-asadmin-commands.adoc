@@ -11,15 +11,14 @@ This can be achieved either using the admin console or from the command line.
 [[sending-asadmin-commands-using-the-admin-console]]
 == Sending Asadmin Commands using the Admin Console
 
-To send asadmin commands using the Domain Administration Server you must first
-ensure that the DAS itself is within the same Hazelcast cluster as the micro
-instances. Hazelcast can be enabled for the DAS on the Domain tab, under the
-_Hazelcast_ section:
+Sending an Asadmin command is performed through the Domain Data Grid. This
+Data Grid is powered by Hazelcast and is enabled by default. You can verify if it
+active by looking under the _server-config_ configuration under the _Data Grid_ item.
 
 image:payara-micro/enable-hazelcast-on-das.png[Enable Hazelcast]
 
-From here, selecting the _Cluster Members_ tab brings up the instances within
-the cluster. At the bottom of the page, you will find a table filled with the
+All the members can be seen under the _Data Grid_ entry of the Domain item on the left menu.
+At the bottom of the page, you will find a table filled with the
 Payara Micro instances:
 
 image:payara-micro/micro-instances-on-das.png[Micro Instances on DAS]
