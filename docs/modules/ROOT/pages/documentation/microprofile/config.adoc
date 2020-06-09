@@ -83,8 +83,6 @@ available to all server instances in a domain.
 
 |===
 
-:previewVersion: 4.1.2.181
-include::partial$tech-preview.adoc[]
 
 == Converters
 In addition to the standard converters specified by the API, Payara's implementation
@@ -499,9 +497,6 @@ image:microprofile/config-property.png[Set Config Property]
 
 ==== `set-config-dir`
 
-:previewVersion: 4.1.2.181
-include::partial$tech-preview.adoc[]
-
 *Usage*::
 `asadmin> set-config-dir --directory=<full.path.to.dir> --target=<target[default:server]>`
 *Aim*::
@@ -540,9 +535,6 @@ asadmin> set-config-secrets-dir
 ----
 
 ==== `get-config-secrets-dir`
-
-:previewVersion: 4.1.2.181
-include::partial$tech-preview.adoc[]
 
 *Usage*::
 `asadmin> get-config-secrets-dir --target=<target[default:server]>`

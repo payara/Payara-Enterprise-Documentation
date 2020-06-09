@@ -6,10 +6,7 @@
 ** xref:security/security.adoc[Security]
 *** xref:security/security-fix-list.adoc[Security Fixes Summary]
 ** xref:general-info/supported-platforms.adoc[Supported Platforms]
-** xref:general-info/technical-preview.adoc[Technical Preview]
 * xref:getting-started/getting-started.adoc[Getting Started]
-** xref:build-instructions/build-instructions.adoc[Build Instructions]
-** xref:general-info/contributing-to-payara.adoc[Contributing to Payara]
 
 .Technical Documentation
 * xref:documentation/payara-server/README.adoc[Payara Server Documentation]

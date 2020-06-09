@@ -2,17 +2,14 @@
 = Overview
 
 This section describes how to deal with known or unknown security issues and
-common vulnerabilities and exploits (CVEs) related to Payara Server and
-Payara Micro.
+common vulnerabilities and exploits (CVEs) related to Payara Server Enterprise and
+Payara Micro Enterprise.
 
 [[download-security-fixes]]
 == Download Security Fixes
 
 Reported security vulnerabilities by the community or Payara Services Limited's
- costumers are patched and released either in specific patch releases
- (for paid support customers exclusively) or quarterly releases. In some
- cases, we might release special hotfixes to the community to patch serious
- vulnerabilities that cannot wait for a quarterly release to be fixed.
+ costumers are released in the next monthly release. The vulnerabilities which are fixed are reported in the release notes of the specific version.
 
 To get the specific fix for a reported vulnerability, please download the
 specific release that fixed that vulnerability.
