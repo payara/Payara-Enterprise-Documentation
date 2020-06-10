@@ -6,7 +6,7 @@ This page provides some general information about the Payara Platform Enterprise
 [[release-strategy]]
 == Release Strategy
 
-The Payara Platform Community Edition project is released each month. Each release incorporates fixes and enhancements from the Payara team, GlassFish upstream, and Enterprise only features.
+The Payara Platform Enterprise Edition project is released each month. Each release incorporates fixes and enhancements from the Payara team and Enterprise-only features.
 
 [[new-naming-strategy]]
 == New Naming Strategy (June 2020)
@@ -30,7 +30,7 @@ The Minor Version number will reset to 0 on a Major Version release.
 
 Customers should not expect to change their applications and configuration scripts to move to a minor version unless by choice to take advantage of newly introduced features.
 
-**Patch Version** numbers will start from 0 and as a minimum increment monthly.  These version change will introduce bug fixes and patches.  The Patch Version number will reset to 0 on a Minor Version release.
+**Patch Version** numbers will start from 0 and increment monthly after each release. This version change will introduce bug fixes and patches.  The Patch Version number will reset to 0 on a Minor Version release.
 
 Customer specific versions will add an additional 4th level number where the number can reflect something meaningful to the customer e.g. the number of the hotfix. For example  5.20.5.1234
 

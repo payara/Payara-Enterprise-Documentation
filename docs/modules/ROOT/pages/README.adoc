@@ -8,7 +8,7 @@ Payara Platform Enterprise which has a monthly release cadence, is designed for 
 
 == Download
 
-The Enterprise Edition downloads can be found in the _Payara Enterprise_ repository of our https://nexus.payara.fish[Nexus Server]. More information can be found in the https://support.payara.fish/hc/en-gb/articles/203619992-Payara-Patch-Releases-Download-Guide?utm_campaign=Payara%20patch%20Notes[Payara Enterprise Download guide] (only accessible for Enterprise Customers).
+The Enterprise Edition downloads can be found in the _Payara Enterprise_ repository of our https://nexus.payara.fish[Nexus Server]. More information can be found in the https://support.payara.fish/hc/en-gb/articles/203619992-Payara-Enterprise-Download-Guide[Payara Enterprise Download guide] (only accessible for Enterprise Customers).
 
 == History
 

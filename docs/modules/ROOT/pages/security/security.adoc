@@ -9,7 +9,7 @@ Payara Micro Enterprise.
 == Download Security Fixes
 
 Reported security vulnerabilities by the community or Payara Services Limited's
- costumers are released in the next monthly release. The vulnerabilities which are fixed are reported in the release notes of the specific version.
+ costumers are released in the next monthly release. The vulnerabilities which are fixed are reported in the release notes of each specific version.
 
 To get the specific fix for a reported vulnerability, please download the
 specific release that fixed that vulnerability.
