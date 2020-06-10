@@ -34,7 +34,7 @@ Add following snippet to your Maven project:
 </dependencyManagement>
 ----
 
-The Payara BOM artifact for the Enterprise Edition can be found in the Payara Nexus Server. The steps required to access this server and add the Payara Nexus repository to your Maven build is described in https://support.payara.fish/hc/en-gb/articles/115002023334-Using-Payara-Enteprise-Builds-in-a-Maven-Project[this Knowledgebase article] (only accessible for Enterprise Customers)
+The Payara BOM artifact for the Enterprise Edition can be found in the Payara Nexus Server. The steps required to access this server and add the Payara Nexus repository to your Maven build are described in https://support.payara.fish/hc/en-gb/articles/115002023334-Using-Payara-Enteprise-Builds-in-a-Maven-Project[this Knowledgebase article] (only accessible for Enterprise Customers)
 
 An example application utilizing the BOM can be seen in repository https://github.com/payara/Payara-Examples[Payara Examples] at path https://github.com/payara/Payara-Examples/tree/master/ecosystem/payara-bom/bom-import[ecosystem/payara-bom/bom-import/].
 
@@ -277,4 +277,3 @@ This is non-exhaustive list of dependencies. By default all are declared in defa
 |
 
 |===
-
