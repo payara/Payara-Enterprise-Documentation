@@ -16,13 +16,18 @@ To add your SSL Certificate to the Payara Server configuration files, you need:
 - The private key associated with your certificate.
 - The Certificate you received from the Certificate Authority based on your Certificate Signing Request (CSR).
 
-You can find the detailed steps of adding a self-signed certificate into Payara for testing purposes in the blog https://blog.payara.fish/securing-payara-server-with-custom-ssl-certificate[Securing Payara Server with Custom SSL Certificate].
+You can generate a self-signed certificate using the command detailed
+xref:documentation/payara-server/server-configuration/certificate-management.adoc#generate-self-signed-certificate[here]
 
+    asadmin generate-self-signed-certificate --dn "CN=test.payara.fish,IP=127.0.0.1" mydomain_certificate
+
+*Alternatively*::
+You can find the detailed steps of adding a self-signed certificate into Payara for testing purposes using keytool and openssl in the blog https://blog.payara.fish/securing-payara-server-with-custom-ssl-certificate[Securing Payara Server with Custom SSL Certificate].
 The private key can be stored in various formats. We assume that the key is in a format which can be read by the Java key tool program, such as PKCS#8 (file starts with `BEGIN ENCRYPTED PRIVATE KEY`)
 
-=== Combine the Private Key with the Certificate.
+===== Combine the Private Key with the Certificate.
 
-In a first step, we combine the Private key and the Certificate we received into a file.  This file can then be used to merge our data into the files used by the Payara installation. 
+In a first step (if following the blog), we combine the Private key and the Certificate we received into a file.  This file can then be used to merge our data into the files used by the Payara installation.
 In this step, we also specify an alias name for our key/certificate. This alias name is important as we will use it later to refer to our specific SSL Certificate.
 
 The command to perform this combination is the following with OpenSSL:
@@ -39,7 +44,13 @@ The resulting file, _mycert.p12_ is also encrypted with a password that is reque
 
 The information needs to be imported into the _keystore.jks_ file of your Payara Domain which will use it.
 
-This is performed using the _keytool_ command of the JDK:
+This is performed using the `add-to-keystore` asadmin command, detailed
+xref:documentation/payara-server/server-configuration/certificate-management.adoc#add-to-keystore[here].
+
+    asadmin add-to-keystore --file mycert.p12 --alias mydomain_certificate
+
+*Alternatively*::
+You can also use the _keytool_ command of the JDK:
 
     keytool -importkeystore -destkeystore keystore.jks -srckeystore mycert.p12 -srcstoretype PKCS12 -alias mydomain_certificate
 
@@ -48,6 +59,14 @@ The parameters of the above command are self-explanatory. Important here is the 
 === Import into cacerts.jks
 
 A similar command is used to import the information into the Trust Store file so that our certificate is trusted by the JVM.
+
+This is performed using the `add-to-truststore` asadmin command, detailed
+xref:documentation/payara-server/server-configuration/certificate-management.adoc#add-to-truststore[here].
+
+    asadmin add-to-truststore --file mycert.crt --alias mydomain_certificate
+
+*Alternatively*::
+You can also use the _keytool_ command of the JDK:
 
      keytool -importcert -trustcacerts -destkeystore cacerts.jks -file mycert.crt -alias mydomain_certificate
 
@@ -70,6 +89,18 @@ The information can also be entered in the Web Administration console, by naviga
 All the X.509 certificates have a validity period when they can be used. Once this validity period is passed, the users will see a warning or error message depending on the browser that the certificate is no longer valid.
 
 Within the server log file, the expired certificates are listed when the system encounters one. Besides your custom certificates which are added as described in a previous chapter, the Trust Store also contains certificates from the Certificate Authorities. Also, they can expire and thus can be listed in the log.
+
+_Since Payara Server 5.20.0_
+
+If you wish to remove all expired certificates, you can use the `remove-expired-certificates`, `remove-from-keystore`,
+or `remove-from-truststore` commands detailed
+xref:documentation/payara-server/server-configuration/certificate-management.adoc#remove-expired-certificates[here],
+xref:documentation/payara-server/server-configuration/certificate-management.adoc#remove-from-keystore[here], and
+xref:documentation/payara-server/server-configuration/certificate-management.adoc#remove-from-truststore[here] respectively.
+
+    asadmin remove-expired-certificates
+    asadmin remove-from-keystore mydomain_certificate
+    asadmin remove-from-truststore mydomain_certificate
 
 _Since Payara Server 5.194_
 
