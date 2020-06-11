@@ -1,21 +1,9 @@
 [[certificate-management]]
 = Integrated SSL/TLS Certificate Management
 
-_Since Payara Server 5.2020.2_
+_Since Payara Server 5.20.0_
 
 A set of commands to provide integrated management of SSL & TLS certificates in Payara Server.
-
-[[building-and-bundling]]
-== Building and Bundling
-The module can be found in the main Payara/payara repository, under appserver/extras/certificate-management.
-The module is included in the build if you specify the BuildExtras profile, so can be built by running the following
-command at the top-level of Payara:
-
-`mvn clean install -PBuildExtras`
-
-To bundle the commands into the Server so that they can be used, move the built JAR file from
-`appserver/extras/certificate-management/target/certificate-management.jar` to your Payara installation
-`payara5/glassfish/lib/asadmin`
 
 [[generate-self-signed-certificate]]
 == `generate-self-signed-certificate`
