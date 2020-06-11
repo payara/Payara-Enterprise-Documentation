@@ -575,3 +575,62 @@ asadmin> get-config-secrets-dir
     --target=myAppCluster
 ----
 
+[[config-cache-duration-configuration]]
+== Config Cache Duration
+
+_Since *5.20.0*&nbsp;_
+
+Config cache duration can be configured by using Asadmin commands.
+By default properties have a TTL (time to live) of 60 seconds.
+That means each individual property does not change for 60 seconds since it has been resolved before.
+Therefore it can take up to 60 seconds for changes made visiable by a config source to become effective.
+If properties were not resolved recently, the change can become visible faster than the cache duration or even immediately because some time already passed since they had been last resolved and cached.
+
+=== Using Asadmin Commands
+
+==== `set-config-cache`
+
+*Usage*::
+`asadmin> set-config-cache --duration=<duration.in.second> --target=<target[default:server]>`
+*Aim*::
+Sets the cache duration for the target instance(s). Any duration equal to or below zero disables the caching of MP config properties.
+
+===== Command Options
+
+[cols="1,10,1,1", options="header"]
+|===
+|Option
+|Description
+|Default
+|Mandatory
+
+|`duration`
+|Duration in seconds properties are cached
+|60
+|yes
+
+|`target`
+|The target configuration where the command should be run
+|server (the DAS)
+|no
+
+|===
+
+
+===== Example
+
+Disable caching:
+[source,Shell]
+----
+asadmin> set-config-cache
+    --duration=0
+    --target=myAppCluster
+----
+
+Set cache TTL (time to live) for properties to 30 seconds.
+[source,Shell]
+----
+asadmin> set-config-cache
+    --duration=30
+    --target=myAppCluster
+----
