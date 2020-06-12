@@ -8,10 +8,10 @@ A set of commands to provide integrated management of SSL & TLS certificates in 
 [[generate-self-signed-certificate]]
 == `generate-self-signed-certificate`
 
-*Usage*::
+Usage::
 `asadmin> generate-self-signed-certificate --target=instancename --listener=listenername --dn="DN1" --alternativenames="ALT1;ALT2;ALT3" alias`
 
-*Aim*::
+Aim::
 This command can generate a self-signed certificate for an instance, placing the resultant key pair in the target
 instance or listener's key and trust stores.
 
@@ -19,8 +19,7 @@ If the instance or listener is configured to use the default key and trust store
 the instance with the DAS (under the assumption the certificate has been added to the default key and trust store of
 the DAS), since any certificates added to the instance stores would be lost upon next synchronisation.
 
-*Note*::
-This command will not overwrite an entry already present in the key store with the same alias. In this scenario no certificate is generated and the command exits. In the case however where there is not an entry with the same alias in the key store but there is in the trust store, a certificate will be generated and the entry in the trust store will be overwritten.
+NOTE: This command will not overwrite an entry already present in the key store with the same alias. In this scenario no certificate is generated and the command exits. In the case however where there is not an entry with the same alias in the key store but there is in the trust store, a certificate will be generated and the entry in the trust store will be overwritten.
 
 [[command-options]]
 === Command Options
@@ -99,7 +98,7 @@ test_cert
 This command can generate a certificate signing request (CSR) for an instance or listener's self-signed certificate,
 placing the resultant CSR file in ${installDir}/glassfish/tls, using the alias name as the file name.
 
-*Note::
+*Note*::
 This will overwrite a CSR with the same name already present in the ${installDir}/glassfish/tls directory.
 
 [[command-options]]
@@ -207,13 +206,13 @@ This will overwrite an entry already present with the same alias.
 
 |`--file`
 |File
-|The certificate or bundle file to add to the target key store
+|The bundle file to add to the target key store
 |N/A
 |yes
 
 |`--alias` (primary)
 |String
-|The alias name to store the certificate or bundle the key store under.
+|The alias name to store the certificate bundle in the key store under.
 |N/A
 |yes
 
@@ -234,7 +233,7 @@ asadmin> add-to-keystore --file /home/anon/Downloads/mycert.p12 mycert
 `asadmin> add-to-truststore --target=instancename --listener=listenername --file /path/to/file alias`
 
 *Aim*::
-This command adds a certificate bundle (e.g. .p12 or .jks file) or certificate (e.g. .cert file) to the target instance
+This command adds a certificate (e.g. .cert file) to the target instance or listener's trust store.
 or listener's trust store using the provided alias.
 
 If the instance or listener is configured to use the default trust store, the command will instead synchronise
@@ -281,13 +280,13 @@ This will overwrite an entry already present with the same alias.
 
 |`--file`
 |File
-|The certificate or bundle file to add to the target trust store
+|The certificate file to add to the target trust store
 |N/A
 |yes
 
 |`--alias` (primary)
 |String
-|The alias name to store the certificate or bundle the trust store under.
+|The alias name to store the certificate in the trust store under.
 |N/A
 |yes
 
@@ -487,4 +486,3 @@ the DAS), since any certificates removed from the instance stores would be lost 
 ----
 asadmin> remove-expired-certificates --domain_name production --target Instance1 --listener http-listener-2
 ----
-
