@@ -224,7 +224,7 @@ This command helps to modify existing network listener
 [[restart-http-listeners-command]]
 == `restart-http-listeners`
 
-_Since Payara Server 5.2020.2_
+_Since Payara Server 5.20.2_
 
 *Usage*::
 `asadmin> restart-http-listeners <options>`
