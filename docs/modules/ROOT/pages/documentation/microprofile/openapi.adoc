@@ -33,6 +33,7 @@ MicroProfile OpenAPI specifies several ways of configuring the data in the produ
     <groupId>org.eclipse.microprofile.openapi</groupId>
     <artifactId>microprofile-openapi-api</artifactId>
     <version>1.0</version>
+    <scope>provided</scope>
 </dependency>
 ----
 

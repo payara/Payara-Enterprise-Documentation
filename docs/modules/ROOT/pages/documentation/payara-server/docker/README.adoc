@@ -14,8 +14,9 @@ xref:documentation/payara-server/docker/docker-instances.adoc[Docker Instances]:
 
 == Payara Platform and Docker User Guides
 
-* https://info.payara.fish/using-payara-server-with-docker-guide[Using Payara Server with Docker] 
+(Accessible only for Enterprise Customers)
 
-* https://info.payara.fish/using-payara-micro-with-docker-guide[Using Payara Micro with Docker] 
+* https://support.payara.fish/hc/en-gb/articles/360025544874-Payara-Server-Deployment-Group-on-Docker[Using Payara Server Deployment Group with Docker] and https://support.payara.fish/hc/en-gb/articles/360022599274-Clustering-Payara-Server-on-Docker-Using-Data-Grid[Clustering Payara Server on Docker Using Data Grid]
 
-* https://www.payara.fish/page/clustering-payara-server-in-docker/[Clustering Payara Server with Docker]
+* https://support.payara.fish/hc/en-gb/articles/360026117814-Clustering-Payara-Micro-on-Docker[Using Payara Micro with Docker] 
+
