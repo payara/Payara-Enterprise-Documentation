@@ -20,9 +20,7 @@ the instance with the DAS (under the assumption the certificate has been added t
 the DAS), since any certificates added to the instance stores would be lost upon next synchronisation.
 
 *Note*::
-While the command will not generate a certificate if one already exists in the target key store under the same alias,
-it will simply overwrite an entry using the same alias in the trust store.
-
+This command will not overwrite an entry already present in the key store with the same alias. In this scenario no certificate is generated and the command exits. In the case however where there is not an entry with the same alias in the key store but there is in the trust store, a certificate will be generated and the entry in the trust store will be overwritten.
 
 [[command-options]]
 === Command Options
