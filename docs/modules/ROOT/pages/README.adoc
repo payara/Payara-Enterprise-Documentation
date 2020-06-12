@@ -1,6 +1,20 @@
 image:payara-logo-blue.png[Payara Logo]
 
+== Introduction
+
+This is the documentation for the Payara Platform Enterprise Edition, designed to increase stability and security in production environments and provide customers with access to production-oriented features, tools, and capabilities.
+
+Payara Platform Enterprise which has a monthly release cadence, is designed for production environments and new features are added to Payara Platform Enterprise after they have been thoroughly tested for stability.
+
+== Download
+
+The Enterprise Edition downloads can be found in the _Payara Enterprise_ repository of our https://nexus.payara.fish[Nexus Server]. More information can be found in the https://support.payara.fish/hc/en-gb/articles/203619992-Payara-Enterprise-Download-Guide[Payara Enterprise Download guide] (only accessible for Enterprise Customers).
+
+== History
+
 Payara Server began life in 2014, derived from GlassFish 4.1. Since then, Payara Server has been refined with bug fixes, enhanced with new features, and has grown a strong community following. The documentation here will be updated with all the significant changes made with each new release. 
+
+== Documentation
 
 xref:documentation/payara-server/README.adoc[Payara Server Documentation]::
 The documentation of Payara Server distribution. Provides information about configuring and administering Payara Server, as well as how to deploy applications and how to use provided resources in deployed applications.

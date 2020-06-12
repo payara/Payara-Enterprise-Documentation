@@ -3,9 +3,6 @@
 
 _Since Payara Server 5.191_
 
-:previewVersion: {currentVersion}
-include::partial$tech-preview.adoc[]
-
 Payara Server has support for classic remote EJB since its inception. Classic remote EJB uses the **IIOP-RMI** (Internet Inter-ORB Protocol Remote Method Invocation) protocol for transport communication and the https://omg.org/spec/SEC[CSIv2] (Common Secure Interoperability Protocol Version 2) protocol for security.
 
 While feature rich, these protocols were not designed with firewalls, NAT, (private) clouds, Docker and generally the Internet in mind. For these environments the requirements of the protocol, such as establishing independent connections back from the server to the client, are too troublesome.
