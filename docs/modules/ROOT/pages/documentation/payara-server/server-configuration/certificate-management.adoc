@@ -160,7 +160,7 @@ asadmin> generate-csr --listener http-listener-2 --target Instance1 test_cert
 `asadmin> add-to-keystore --target=instancename --listener=listenername --file /path/to/file alias`
 
 *Aim*::
-This command adds a certificate bundle (e.g. .p12 or .jks file) or certificate (e.g. .cert file) to the target instance
+This command adds a certificate bundle (e.g. .p12 or .jks file) to the target instance
 or listener's key store using the provided alias.
 
 If the instance or listener is configured to use the default key store, the command will instead synchronise
