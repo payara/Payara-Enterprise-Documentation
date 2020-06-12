@@ -1,9 +1,6 @@
 [[docker-integration]]
 = Docker Integration
 
-:previewVersion: {currentVersion}
-include::partial$tech-preview.adoc[]
-
 Introduced in Payara Server 5.192 is the concept of a Docker node and instance.
 These function in a similar manner to instances hosted on a SSH, DCOM,
 or CONFIG node type, though as the name suggests are targetted towards creating

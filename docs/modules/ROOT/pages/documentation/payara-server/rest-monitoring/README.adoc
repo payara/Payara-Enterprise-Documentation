@@ -1,8 +1,5 @@
 = REST monitoring
 
-:previewVersion: {currentVersion}
-include::partial$tech-preview.adoc[]
-
 This section covers how to use the REST monitoring functionality in
 Payara Server Enterprise {currentVersion}.
 
