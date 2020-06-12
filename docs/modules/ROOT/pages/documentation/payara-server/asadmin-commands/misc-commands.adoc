@@ -94,7 +94,7 @@ Add the resulting file to your bash path by adding
 `source path/to/outputfile` to your .bashrc
 or copy the file into the `/etc/bash_completion.d` folder.
 
-This means that you can run asadmin commands by typing 
+This means that you can run asadmin commands by typing
 `asadmin` in a terminal and you can use double-tab to autocomplete a command,
 similar to other bash commands.
 
@@ -165,50 +165,50 @@ This command helps to modify existing network listener
 |Options | Type | Description | Default | Mandatory
 
 | enabled
-| Boolean 
+| Boolean
 | Enables or disables the network listener.
 | true
 | No
 
 | dynamic
-| Boolean 
+| Boolean
 | When set to true, applies the changes without a restart. Otherwise a restart is required.
 | false
 | No
 
 | address
 | String
-| The IP address on which the network listener is going to be listening. 
-| 
+| The IP address on which the network listener is going to be listening.
+|
 | No
 
 | Port
 | Integer
-| The port on which the network listener is going to be listening. 
-| 
+| The port on which the network listener is going to be listening.
+|
 | Yes
 
 | listenerPortRange
 | String
-| Port range which the network listener can bind to.  
-| 
+| Port range which the network listener can bind to.
+|
 | No
 
 | threadPool
 | String
 | The thread pool which will be associated with the network listener.
-| 
+|
 | No
 
 | transport
 | String
 | The transport layer that is going to be used by the network listener
-| 
+|
 | No
 
 | jkenabled
-| Boolean 
-| If enabled, the network listener will become an Apache mod-jk listener  
+| Boolean
+| If enabled, the network listener will become an Apache mod-jk listener
 | false
 | No
 
@@ -218,3 +218,46 @@ This command helps to modify existing network listener
 | server-config
 | No
 |===
+
+
+
+[[restart-http-listeners-command]]
+== `restart-http-listeners`
+
+_Since Payara Server 5.2020.2_
+
+*Usage*::
+`asadmin> restart-http-listeners <options>`
+
+*Aim*::
+This command restarts all http listeners of the targeted instance(s).
+Usually used to make network configuration changes take effect without restarting the server.
+
+|===
+|Options | Type | Description | Default | Mandatory
+
+| all
+| Boolean
+| Apply command to all instances
+| false
+| No
+
+| target
+| String
+| Name of the target instance, deployment group or cluster
+| server
+| No
+|===
+
+*Examples*::
+Restart all HTTP listeners of all instances:
+
+`asadmin> restart-http-listeners --all`
+
+Restart all HTTP listeners of a particular instance named `FlyingFish`:
+
+`asadmin> restart-http-listeners FlyingFish`
+
+The `--target` can be omitted as `target` is the primary parameter.
+
+NOTE: This command only restarts all HTTP listeners except the `admin-listener`. IIOP listeners are not affected and may require a server restart to make changes take effect.

@@ -142,3 +142,27 @@ asadmin> create-network-listener [--help]
            [--target target]
            listener-name
 ----
+
+
+=== restart-http-listeners
+
+
+The `restart-http-listeners` commands restarts all HTTP listeners but the `admin-listener` of the targeted instance(s).
+It is either used with the `--all` flag to target all instances or with a particular target instance, deployment group or cluster following the `--target` parameter.
+When `target` and `all` parameters are both omitted the default target is the DAS.
+When `--all` is used together with a target the target is ignored and the command affects all instances.
+NOTE: This command only restarts all HTTP listeners except the `admin-listener`. IIOP listeners are not affected and may require a server restart to make changes take effect.
+
+==== Format
+----
+asadmin> restart-http-listeners [--all] [--target target]
+----
+
+==== Examples
+----
+asadmin> restart-http-listeners --all
+asadmin> restart-http-listeners --target FlyingFish
+asadmin> restart-http-listeners FlyingFish
+asadmin> restart-http-listeners
+----
+First line affects all instances, second line affects only instance named `FlyingFish`, third is a short hand for the second, last is a short hand for `restart-http-listeners server` or `restart-http-listeners --target=server`.
