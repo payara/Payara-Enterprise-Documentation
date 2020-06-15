@@ -1,6 +1,6 @@
 name: docs
 title: Payara Server Documentation
-version: master
+version: 5.20.0
 start_page: ROOT:README.adoc
 nav:
 - modules/ROOT/nav.adoc
