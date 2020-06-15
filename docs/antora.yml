@@ -1,5 +1,5 @@
 name: docs
-title: Payara Server Documentation
+title: Payara Platform Documentation
 version: 5.20.0
 start_page: ROOT:README.adoc
 nav:
