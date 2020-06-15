@@ -59,7 +59,7 @@ NOTE: This command will not overwrite an entry already present in the key store 
 |`--node`
 |String
 |The name of the node where the target instance exists.
-|N/A
+|localhost-$domainname
 |no
 
 |`--nodedir`
@@ -151,7 +151,7 @@ This will overwrite a CSR with the same name already present in the ${installDir
 |`--node`
 |String
 |The name of the node where the target instance exists.
-|N/A
+|localhost-$domainname
 |no
 
 |`--nodedir`
@@ -231,7 +231,7 @@ This will overwrite an entry already present with the same alias.
 |`--node`
 |String
 |The name of the node where the target instance exists.
-|N/A
+|localhost-$domainname
 |no
 
 |`--nodedir`
@@ -317,7 +317,7 @@ This will overwrite an entry already present with the same alias.
 |`--node`
 |String
 |The name of the node where the target instance exists.
-|N/A
+|localhost-$domainname
 |no
 
 |`--nodedir`
@@ -399,7 +399,7 @@ the DAS), since any certificates removed from the instance stores would be lost 
 |`--node`
 |String
 |The name of the node where the target instance exists.
-|N/A
+|localhost-$domainname
 |no
 
 |`--nodedir`
@@ -475,7 +475,7 @@ the DAS), since any certificates removed from the instance stores would be lost 
 |`--node`
 |String
 |The name of the node where the target instance exists.
-|N/A
+|localhost-$domainname
 |no
 
 |`--nodedir`
@@ -552,7 +552,7 @@ the DAS), since any certificates removed from the instance stores would be lost 
 |`--node`
 |String
 |The name of the node where the target instance exists.
-|N/A
+|localhost-$domainname
 |no
 
 |`--nodedir`
