@@ -3,5 +3,5 @@
 
 Schemas for the Payara Platform.
 
-** xref:{payaraWebDtd}[DTD for payara-web.xml]
-** xref:{payaraResourcesDtd}[DTD for payara-resources.xml]
+** link:{payaraWebDtd}[DTD for payara-web.xml]
+** link:{payaraResourcesDtd}[DTD for payara-resources.xml]
