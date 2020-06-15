@@ -26,6 +26,7 @@
 *** xref:documentation/payara-server/server-configuration/jvm-options.adoc[JVM Options]
 *** xref:documentation/payara-server/server-configuration/jsf-options.adoc[JSF Options]
 *** xref:documentation/payara-server/server-configuration/ssl-certificates.adoc[SSL Certificates]
+*** xref:documentation/payara-server/server-configuration/certificate-management.adoc[Integrated Certificate Management]
 ** xref:documentation/payara-server/deployment-groups/README.adoc[Deployment Groups]
 *** xref:documentation/payara-server/deployment-groups/asadmin-commands.adoc[Deployment Groups ASAdmin commands]
 *** xref:documentation/payara-server/deployment-groups/timers.adoc[Timers in Deployment Groups]
