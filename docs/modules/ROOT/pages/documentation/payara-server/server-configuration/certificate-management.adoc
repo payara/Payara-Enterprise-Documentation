@@ -56,6 +56,18 @@ NOTE: This command will not overwrite an entry already present in the key store 
 |${installDir}/glassfish/domains
 |no
 
+|`--node`
+|String
+|The name of the node where the target instance exists.
+|N/A
+|no
+
+|`--nodedir`
+|String
+|The path to the directory containing the target node.
+|${installDir}/glassfish/nodes
+|no
+
 |`--distinguishedname`, `--dn`
 |String
 |The distinguished name to use when generating the certificate.
@@ -136,6 +148,18 @@ This will overwrite a CSR with the same name already present in the ${installDir
 |${installDir}/glassfish/domains
 |no
 
+|`--node`
+|String
+|The name of the node where the target instance exists.
+|N/A
+|no
+
+|`--nodedir`
+|String
+|The path to the directory containing the target node.
+|${installDir}/glassfish/nodes
+|no
+
 |`--alias` (primary)
 |String
 |The alias name of the certificate to generate a CSR for.
@@ -202,6 +226,18 @@ This will overwrite an entry already present with the same alias.
 |String
 |The path to the directory containing the target domain.
 |${installDir}/glassfish/domains
+|no
+
+|`--node`
+|String
+|The name of the node where the target instance exists.
+|N/A
+|no
+
+|`--nodedir`
+|String
+|The path to the directory containing the target node.
+|${installDir}/glassfish/nodes
 |no
 
 |`--file`
@@ -278,6 +314,18 @@ This will overwrite an entry already present with the same alias.
 |${installDir}/glassfish/domains
 |no
 
+|`--node`
+|String
+|The name of the node where the target instance exists.
+|N/A
+|no
+
+|`--nodedir`
+|String
+|The path to the directory containing the target node.
+|${installDir}/glassfish/nodes
+|no
+
 |`--file`
 |File
 |The certificate file to add to the target trust store
@@ -348,6 +396,18 @@ the DAS), since any certificates removed from the instance stores would be lost 
 |${installDir}/glassfish/domains
 |no
 
+|`--node`
+|String
+|The name of the node where the target instance exists.
+|N/A
+|no
+
+|`--nodedir`
+|String
+|The path to the directory containing the target node.
+|${installDir}/glassfish/nodes
+|no
+
 |`--alias` (primary)
 |String
 |The alias name of the certificate to remove.
@@ -410,6 +470,18 @@ the DAS), since any certificates removed from the instance stores would be lost 
 |String
 |The path to the directory containing the target domain.
 |${installDir}/glassfish/domains
+|no
+
+|`--node`
+|String
+|The name of the node where the target instance exists.
+|N/A
+|no
+
+|`--nodedir`
+|String
+|The path to the directory containing the target node.
+|${installDir}/glassfish/nodes
 |no
 
 |`--alias` (primary)
@@ -475,6 +547,18 @@ the DAS), since any certificates removed from the instance stores would be lost 
 |String
 |The path to the directory containing the target domain.
 |${installDir}/glassfish/domains
+|no
+
+|`--node`
+|String
+|The name of the node where the target instance exists.
+|N/A
+|no
+
+|`--nodedir`
+|String
+|The path to the directory containing the target node.
+|${installDir}/glassfish/nodes
 |no
 
 |===
