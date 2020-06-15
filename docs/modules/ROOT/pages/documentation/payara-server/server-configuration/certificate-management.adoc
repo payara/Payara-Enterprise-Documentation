@@ -233,7 +233,7 @@ asadmin> add-to-keystore --file /home/anon/Downloads/mycert.p12 mycert
 `asadmin> add-to-truststore --target=instancename --listener=listenername --file /path/to/file alias`
 
 *Aim*::
-This command adds a certificate (e.g. .cert file) to the target instance or listener's trust store.
+This command adds a certificate (e.g. `.cert` file) to the target instance or listener's trust store.
 or listener's trust store using the provided alias.
 
 If the instance or listener is configured to use the default trust store, the command will instead synchronise
