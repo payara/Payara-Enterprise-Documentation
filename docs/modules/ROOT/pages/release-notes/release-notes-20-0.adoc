@@ -14,6 +14,13 @@ stores
 command to reload the network listeners across the domain
 * [https://github.com/payara/Payara/pull/4711[APPSERV-153]] - Asadmin
 command to remove all expired certificates from the trust store.
+* [https://github.com/payara/Payara/pull/4604[CLOUD-59]] - Allow preboot
+and postboot commands over API bootstrap
+* [https://github.com/payara/Payara/pull/4700[FISH-203]] - Asadmin
+Commands to Generate a CSR
+* [https://github.com/payara/Payara/pull/4694[FISH-202]] - Asadmin
+Command to Create Self-Signed Certificate
+
 
 == Improvements
 
@@ -49,6 +56,15 @@ BOM as it is wrong
 * [https://github.com/payara/Payara/pull/4633[CUSTCOM-264]] - Client mode debugging (server=no) doesn't work with JDK>=9
 * [https://github.com/payara/Payara/pull/4658[CUSTCOM-271]] - Metric endpoint fails to parse Accept header from Telegraf
 * [https://github.com/payara/Payara/pull/4671[CUSTCOM-273]] - Support for all AjaxBehaviourEvent classes, extension to CUSTCOM-179
+* [https://github.com/payara/Payara/pull/4598[CUSTCOM-234]] - JVM option -Xbootclasspath/a:$\{com.sun.aas.installRoot}/lib/grizzly-npn-api.jar
+already exists in the configuration
+* [https://github.com/payara/Payara/pull/4667[CUSTCOM-262]] -
+HZ_LISTENER_PORT property error when setting system properties via the
+admin console
+* [https://github.com/payara/Payara/pull/4659[ECOSYS-157]] - OpenID
+Connect Caller's name and groups are null
+* [https://github.com/payara/Payara/pull/4684[ECOSYS-161]] - [Community - https://github.com/NikitaZ[NikitaZ]] OAuth2AccessToken empty instance
+injected
 
 == Component Upgrades
 
