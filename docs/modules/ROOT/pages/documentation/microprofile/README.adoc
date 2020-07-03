@@ -13,7 +13,7 @@ Payara has been part of the MicroProfile project from its inception and, therefo
 
 Version 3.3::
 Version 3.3 of MicroProfile updates Config, Health Check, Fault Tolerance, Metrics, and Rest Client.
-This is supported by both Payara Server and Payara Micro from release *5.202*.
+This is supported by both Payara Server and Payara Micro from release *5.20.0*.
 
 Version 3.2::
 Version 3.2 of MicroProfile is a minor release that updates Metrics to maintain backwards compatibility.
