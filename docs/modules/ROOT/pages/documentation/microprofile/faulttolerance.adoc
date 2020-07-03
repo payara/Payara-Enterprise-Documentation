@@ -79,7 +79,7 @@ image:microprofile/fault-tolerance.png[Set Fault Tolerance Configuration]
 [[using-asadmin-commands]]
 === Using Asadmin Commands
 
-NOTE: Since Payara 5.202, the configuration no longer allows configuring user defined executor to run the fault tolerance execution. Instead, Fault Tolerance uses two dedicated executors that are well suited for the usage pattern typically experienced when executing Fault Tolerance semantics. It's possible to configure the maximum size of these pools to scale them up or down.
+NOTE: Since Payara Platform Enterprise 5.20.0, the configuration no longer allows configuring user defined executor to run the fault tolerance execution. Instead, Fault Tolerance uses two dedicated executors that are well suited for the usage pattern typically experienced when executing Fault Tolerance semantics. It's possible to configure the maximum size of these pools to scale them up or down.
 
 ==== `set-fault-tolerance-configuration`
 
