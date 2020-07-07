@@ -44,7 +44,7 @@ NOTE: This command will not overwrite an entry already present in the key store 
 |N/A
 |no
 
-|`--domain_name`
+|`--domainname`
 |String
 |The name of the domain where the target instance exists.
 |domain1
@@ -124,7 +124,7 @@ This will overwrite a CSR with the same name already present in the ${installDir
 |N/A
 |no
 
-|`--domain_name`
+|`--domainname`
 |String
 |The name of the domain where the target instance exists.
 |domain1
@@ -192,7 +192,7 @@ This will overwrite an entry already present with the same alias.
 |N/A
 |no
 
-|`--domain_name`
+|`--domainname`
 |String
 |The name of the domain where the target instance exists.
 |domain1
@@ -266,7 +266,7 @@ This will overwrite an entry already present with the same alias.
 |N/A
 |no
 
-|`--domain_name`
+|`--domainname`
 |String
 |The name of the domain where the target instance exists.
 |domain1
@@ -336,7 +336,7 @@ the DAS), since any certificates removed from the instance stores would be lost 
 |N/A
 |no
 
-|`--domain_name`
+|`--domainname`
 |String
 |The name of the domain where the target instance exists.
 |domain1
@@ -400,7 +400,7 @@ the DAS), since any certificates removed from the instance stores would be lost 
 |N/A
 |no
 
-|`--domain_name`
+|`--domainname`
 |String
 |The name of the domain where the target instance exists.
 |domain1
@@ -465,7 +465,7 @@ the DAS), since any certificates removed from the instance stores would be lost 
 |N/A
 |no
 
-|`--domain_name`
+|`--domainname`
 |String
 |The name of the domain where the target instance exists.
 |domain1
