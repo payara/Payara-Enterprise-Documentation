@@ -4,7 +4,7 @@
 _@Since **Payara Server 5.193**_
 
 The auto-naming feature is an _asadmin_ feature added to help with the naming of instances,
-deployment groups, and other resources by resolving name conflicts and auto-generating names.
+deployment groups, and other resources by resolving name conflicts and auto-generating names for dynamic resources.
 
 [[usage]]
 == Usage
