@@ -52,6 +52,16 @@ xref:documentation/payara-server/server-configuration/certificate-management.ado
 asadmin add-to-keystore --file mycert.p12 --alias mydomain_certificate
 ----
 
+This can also be done from the admin console. From the admin console, open the instance details page
+(e.g. on the navigation bar select _Instances > $instanceName_) and navigate to the _Certificate Management_ tab.
+From here, Click on the _Add_ button of the keystore table (highlighted).
+
+image:certificate-management/CertificateManagementAddButton.png[Certificate Management Add Button]
+
+You can then enter the alias name and the path to the certificate bundle:
+
+image:certificate-management/CertificateManagementAddKeystoreEntry.png[Add Keystore Entry]
+
 *Alternatively*::
 You can also use the _keytool_ command of the JDK:
 
@@ -73,6 +83,15 @@ xref:documentation/payara-server/server-configuration/certificate-management.ado
 ----
 asadmin add-to-truststore --file mycert.crt --alias mydomain_certificate
 ----
+
+You can also follow the same steps as done for adding the bundle to the keystore via the admin console, though selecting
+the Add button of the truststore table...
+
+image:certificate-management/CertificateManagementAddButton2.png[Certificate Management Add Button]
+
+\... and specifying the mycert.crt file.
+
+image:certificate-management/CertificateManagementAddTruststoreEntry.png[Add Truststore Entry]
 
 *Alternatively*::
 You can also use the _keytool_ command of the JDK:
@@ -118,6 +137,12 @@ asadmin remove-expired-certificates
 asadmin remove-from-keystore mydomain_certificate
 asadmin remove-from-truststore mydomain_certificate
 ----
+
+You can also remove individual or groups of certificates using the admin console Certificate Management tab
+(_Instances > $instanceName > Certificate Management_). Select the desired certificates from the key *or*
+trust store entries table (not both), and click on the _Delete_ button.
+
+image:certificate-management/CertificateManagementDeleteButton.png[Certificate Management Delete Button]
 
 _Since Payara Server 5.194_
 
