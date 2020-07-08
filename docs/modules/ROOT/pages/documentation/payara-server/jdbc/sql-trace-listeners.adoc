@@ -1,5 +1,6 @@
 [[sql-trace-listeners]]
 = SQL Trace Listeners
+:page-aliases: documentation/payara-server/advanced-jdbc/sql-trace-listeners.adoc
 
 Payara Server Enterprise provides support for custom SQL Trace Listeners.
 A *SQL Trace Listener* is registered against a data source

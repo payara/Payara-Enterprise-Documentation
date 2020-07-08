@@ -1,5 +1,6 @@
 [[sql-statement-overview]]
 = SQL Statement Overview
+:page-aliases: documentation/payara-server/advanced-jdbc/sql-statement-overview.adoc
 
 Payara Server Enterprise keeps track of the recently executed SQL statements for monitoring purposes.
 This way, one can review which SQL statements are executed, how many times the same statement

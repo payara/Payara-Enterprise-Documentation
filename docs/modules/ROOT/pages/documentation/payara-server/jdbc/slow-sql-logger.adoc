@@ -1,5 +1,6 @@
 [[slow-sql-logger]]
 = Slow SQL Logger
+:page-aliases: documentation/payara-server/advanced-jdbc/slow-sql-logger.adoc
 
 Many performance problems in Enterprise Applications can be traced to
 slow database access. Payara Server Enterprise includes capabilities to detect
