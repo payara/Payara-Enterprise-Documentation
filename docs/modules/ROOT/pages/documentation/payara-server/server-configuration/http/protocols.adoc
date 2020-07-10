@@ -648,37 +648,37 @@ This command  sets various options for the security of a HTTP protocol.
 
 |`--enabled`
 |Boolean
-|If security should be enabled for the listener
+|If security should be enabled for the listener.
 |
 |no
 
 |`--dynamic`
 |Boolean
-|If HTTP listeners on the server should be restarted
+|If HTTP listeners on the server should be restarted.
 |
 |no
 
 |`--tls1-enabled`
 |Boolean
-|If TLS version 1.0 should be enabled
+|If TLS version 1.0 should be enabled.
 |
 |no
 
 |`--tls11-enabled`
 |Boolean
-|If TLS version 1.1 should be enabled
+|If TLS version 1.1 should be enabled.
 |
 |no
 
 |`--tls12-enabled`
 |Boolean
-|If TLS version 1.2 should be enabled
+|If TLS version 1.2 should be enabled.
 |
 |no
 
 |`--tls13-enabled`
 |Boolean
-|If TLS version 1.3 should be enabled
+|If TLS version 1.3 should be enabled.
 |
 |no
 
@@ -690,25 +690,25 @@ This command  sets various options for the security of a HTTP protocol.
 
 |`--keystore-password`
 |String
-|Password for the keystore file
+|Password for the keystore file.
 |
 |no
 
 |`--truststore`
 |String
-|Name of the truststore file i.e cacerts.jks
+|Name of the truststore file i.e cacerts.jks.
 |
 |no
 
 |`--truststore-password`
 |String
-|Password for the truststore file
+|Password for the truststore file.
 |
 |no
 
 |`--turst-algorithm`
 |Boolean
-|Name of the trust management algorithm (for example, PKIX) to use for certification path validation
+|Name of the trust management algorithm (for example, PKIX) to use for certification path validation.
 |
 |no
 
@@ -720,7 +720,7 @@ This command  sets various options for the security of a HTTP protocol.
 
 |`--session-cache-size`
 |Integer
-|How large the TLS session cache can get
+|How large the TLS session cache can get.
 |
 |no
 
@@ -732,7 +732,7 @@ This command  sets various options for the security of a HTTP protocol.
 
 |`--client-auth`
 |want,need,
-| Determines if if the engine will request (want) or require (need) client authentication
+| Determines if if the engine will request (want) or require (need) client authentication.
 |
 |no
 
