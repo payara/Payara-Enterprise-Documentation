@@ -21,7 +21,7 @@ the DAS), since any certificates added to the instance stores would be lost upon
 
 NOTE: This command will not overwrite an entry already present in the key store with the same alias. In this scenario no certificate is generated and the command exits. In the case however where there is not an entry with the same alias in the key store but there is in the trust store, a certificate will be generated and the entry in the trust store will be overwritten.
 
-[[command-options]]
+[[command-options-self]]
 === Command Options
 
 [cols="3,1,5,1,1",options="header"]
@@ -88,7 +88,7 @@ NOTE: This command will not overwrite an entry already present in the key store 
 
 |===
 
-[[example]]
+[[example-self]]
 === Example
 
 [source, shell]
@@ -113,7 +113,7 @@ placing the resultant CSR file in ${installDir}/glassfish/tls, using the alias n
 *Note*::
 This will overwrite a CSR with the same name already present in the ${installDir}/glassfish/tls directory.
 
-[[command-options]]
+[[command-options-csr]]
 === Command Options
 
 [cols="3,1,5,1,1",options="header"]
@@ -168,7 +168,7 @@ This will overwrite a CSR with the same name already present in the ${installDir
 
 |===
 
-[[example]]
+[[example-csr]]
 === Example
 
 [source, shell]
@@ -193,7 +193,7 @@ the DAS), since any certificates added to the instance stores would be lost upon
 *Note*::
 This will overwrite an entry already present with the same alias.
 
-[[command-options]]
+[[command-options-keystore]]
 === Command Options
 
 [cols="3,1,5,1,1",options="header"]
@@ -254,7 +254,7 @@ This will overwrite an entry already present with the same alias.
 
 |===
 
-[[example]]
+[[example-keystore]]
 === Example
 
 [source, shell]
@@ -279,7 +279,7 @@ the DAS), since any certificates added to the instance stores would be lost upon
 *Note*::
 This will overwrite an entry already present with the same alias.
 
-[[command-options]]
+[[command-options-truststore]]
 === Command Options
 
 [cols="3,1,5,1,1",options="header"]
@@ -340,7 +340,7 @@ This will overwrite an entry already present with the same alias.
 
 |===
 
-[[example]]
+[[example-truststore]]
 === Example
 
 [source, shell]
@@ -361,7 +361,7 @@ If the instance or listener is configured to use the default key store, the comm
 the instance with the DAS (under the assumption the certificate has been removed from the default key store of
 the DAS), since any certificates removed from the instance stores would be lost upon next synchronisation.
 
-[[command-options]]
+[[command-options-remove]]
 === Command Options
 
 [cols="3,1,5,1,1",options="header"]
@@ -416,7 +416,7 @@ the DAS), since any certificates removed from the instance stores would be lost 
 
 |===
 
-[[example]]
+[[example-remove]]
 === Example
 
 [source, shell]
@@ -437,7 +437,7 @@ If the instance or listener is configured to use the default trust store, the co
 the instance with the DAS (under the assumption the certificate has been removed from the default trust store of
 the DAS), since any certificates removed from the instance stores would be lost upon next synchronisation.
 
-[[command-options]]
+[[command-options-removetrust]]
 === Command Options
 
 [cols="3,1,5,1,1",options="header"]
@@ -492,7 +492,7 @@ the DAS), since any certificates removed from the instance stores would be lost 
 
 |===
 
-[[example]]
+[[example-removetrust]]
 === Example
 
 [source, shell]
@@ -514,7 +514,7 @@ If the instance or listener is configured to use the default trust store, the co
 the instance with the DAS (under the assumption the certificate has been removed from the default trust store of
 the DAS), since any certificates removed from the instance stores would be lost upon next synchronisation.
 
-[[command-options]]
+[[command-options-expired]]
 === Command Options
 
 [cols="3,1,5,1,1",options="header"]
@@ -563,7 +563,7 @@ the DAS), since any certificates removed from the instance stores would be lost 
 
 |===
 
-[[example]]
+[[example-expired]]
 === Example
 
 [source, shell]
