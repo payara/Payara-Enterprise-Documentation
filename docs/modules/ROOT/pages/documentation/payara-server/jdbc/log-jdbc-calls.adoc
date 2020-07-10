@@ -1,5 +1,6 @@
 [[jdbc-call-logging-sql-tracing]]
 = JDBC Call Logging (SQL Tracing)
+:page-aliases: documentation/payara-server/advanced-jdbc/log-jdbc-calls.adoc
 
 Payara Server Enterprise can trace all SQL calls made through a JDBC connection pool,
 with the time taken to execute the call also recorded. SQL Tracing is ideal
