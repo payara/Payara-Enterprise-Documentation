@@ -55,6 +55,8 @@ service is active.
 |`--domainconfig <file-path>`
 |Overrides the server configuration with an alternative _domain.xml_ file.
 |If not set, the domain.xml contained in the Payara Micro JAR is used.
+|`--enableDynamicLogging`
+|Watch the logging properties file for changes, and apply them dynamically |
 |`--enablehealthcheck <boolean>`
 |enables/disables the HealthCheck Service.|_false_
 |`--enablerequesttracing`
