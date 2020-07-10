@@ -38,6 +38,12 @@ NOTE: This command will not overwrite an entry already present in the key store 
 |server
 |no
 
+|`--reload`
+|Boolean
+|If the http listeners should be reloaded
+|false
+|no
+
 |`--listener`
 |String
 |The name of the HTTP or IIOP listener to add the certificate to.
@@ -211,6 +217,12 @@ used by a HTTP listener and will return a warning.
 |server
 |no
 
+|`--reload`
+|Boolean
+|If the http listeners should be reloaded
+|false
+|no
+
 |`--listener`
 |String
 |The name of the HTTP or IIOP listener to add the certificate to.
@@ -297,6 +309,12 @@ This will overwrite an entry already present with the same alias.
 |server
 |no
 
+|`--reload`
+|Boolean
+|If the http listeners should be reloaded
+|false
+|no
+
 |`--listener`
 |String
 |The name of the HTTP or IIOP listener to add the certificate to.
@@ -379,6 +397,12 @@ the DAS), since any certificates removed from the instance stores would be lost 
 |server
 |no
 
+|`--reload`
+|Boolean
+|If the http listeners should be reloaded
+|false
+|no
+
 |`--listener`
 |String
 |The name of the HTTP or IIOP listener to remove the certificate from.
@@ -453,6 +477,12 @@ the DAS), since any certificates removed from the instance stores would be lost 
 |String
 |The name of the instance to remove the certificate from.
 |server
+|no
+
+|`--reload`
+|Boolean
+|If the http listeners should be reloaded
+|false
 |no
 
 |`--listener`
@@ -530,6 +560,12 @@ the DAS), since any certificates removed from the instance stores would be lost 
 |String
 |The name of the instance to remove expired certificates from.
 |server
+|no
+
+|`--reload`
+|Boolean
+|If the http listeners should be reloaded
+|false
 |no
 
 |`--listener`
