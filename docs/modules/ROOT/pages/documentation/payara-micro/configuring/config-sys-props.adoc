@@ -24,6 +24,7 @@ Payara Micro supports the following system properties:
 |*payaramicro.logToFile*|`--logToFile`
 |*payaramicro.enableAccessLog*|`--accessLog`
 |*payaramicro.logPropertiesFile*|`--logProperties`
+|*payaramicro.enableDynamicLogging*|`--enableDynamicLogging`
 |*payaramicro.enableHealthCheck*|`--enableHealthCheck`
 |*payaramicro.port*|`--port`
 |*payaramicro.sslPort*|`--sslport`
