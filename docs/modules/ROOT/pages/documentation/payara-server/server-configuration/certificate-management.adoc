@@ -486,3 +486,163 @@ the DAS), since any certificates removed from the instance stores would be lost 
 ----
 asadmin> remove-expired-certificates --domain_name production --target Instance1 --listener http-listener-2
 ----
+
+[[list-keystore-entries]]
+== `list-keystore-entries`
+
+_Since Payara Server 5.21.0_
+
+*Usage*::
+`asadmin> list-keystore-entries --target=instancename --listener=listenername`
+
+*Aim*::
+This command displays either all or a specific store entry from the target instance or listener's key store.
+
+[[command-options]]
+=== Command Options
+
+[cols="3,1,5,1,1",options="header"]
+|===
+|Option
+|Type
+|Description
+|Default
+|Mandatory
+
+|`--target`
+|String
+|The name of the instance to list certificates from.
+|server
+|no
+
+|`--listener`
+|String
+|The name of the HTTP or IIOP listener to list certificates from.
+|N/A
+|no
+
+|`--domainname`
+|String
+|The name of the domain where the target instance exists.
+|domain1
+|no
+
+|`--domaindir`
+|String
+|The path to the directory containing the target domain.
+|${installDir}/glassfish/domains
+|no
+
+|`--node`
+|String
+|The name of the node where the target instance exists.
+|localhost-$domainname
+|no
+
+|`--nodedir`
+|String
+|The path to the directory containing the target node.
+|${installDir}/glassfish/nodes
+|no
+
+|`--verbose`
+|Boolean
+|Whether or not to print the full entry details.
+|false
+|no
+
+|`--alias` (primary)
+|String
+|The alias name of the entry to list. If not provided then all entries are listed.
+|N/A
+|false
+
+|===
+
+[[example]]
+=== Example
+
+[source, shell]
+----
+asadmin> list-keystore-entries --domain_name production --target Instance1 --listener http-listener-2 mycert
+----
+
+[[list-truststore-entries]]
+== `list-truststore-entries`
+
+_Since Payara Server 5.21.0_
+
+*Usage*::
+`asadmin> list-truststore-entries --target=instancename --listener=listenername`
+
+*Aim*::
+This command displays either all or a specific store entry from the target instance or listener's trust store.
+
+[[command-options]]
+=== Command Options
+
+[cols="3,1,5,1,1",options="header"]
+|===
+|Option
+|Type
+|Description
+|Default
+|Mandatory
+
+|`--target`
+|String
+|The name of the instance to list certificates from.
+|server
+|no
+
+|`--listener`
+|String
+|The name of the HTTP or IIOP listener to list certificates from.
+|N/A
+|no
+
+|`--domainname`
+|String
+|The name of the domain where the target instance exists.
+|domain1
+|no
+
+|`--domaindir`
+|String
+|The path to the directory containing the target domain.
+|${installDir}/glassfish/domains
+|no
+
+|`--node`
+|String
+|The name of the node where the target instance exists.
+|localhost-$domainname
+|no
+
+|`--nodedir`
+|String
+|The path to the directory containing the target node.
+|${installDir}/glassfish/nodes
+|no
+
+|`--verbose`
+|Boolean
+|Whether or not to print the full entry details.
+|false
+|no
+
+|`--alias` (primary)
+|String
+|The alias name of the entry to list. If not provided then all entries are listed.
+|N/A
+|false
+
+|===
+
+[[example]]
+=== Example
+
+[source, shell]
+----
+asadmin> list-truststore-entries --domain_name production --target Instance1 --listener http-listener-2 mycert
+----

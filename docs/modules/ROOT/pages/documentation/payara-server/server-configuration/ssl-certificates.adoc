@@ -44,7 +44,10 @@ The resulting p12 bundle can then be add to the keystore and trutstore in Payara
 
 The information needs to be imported into the _keystore.jks_ file of your Payara Server Domain which will use it.
 
-This is performed using the `add-to-keystore` asadmin command, detailed
+[discrete]
+==== Using _asadmin_
+
+You can use the `add-to-keystore` asadmin command, detailed
 xref:documentation/payara-server/server-configuration/certificate-management.adoc#add-to-keystore[here].
 
 [source,shell]
@@ -52,7 +55,22 @@ xref:documentation/payara-server/server-configuration/certificate-management.ado
 asadmin add-to-keystore --file mycert.p12 --alias mydomain_certificate
 ----
 
-*Alternatively*::
+[discrete]
+==== Using the Admin Console
+
+From the Admin Console, open the instance details page
+(e.g. on the navigation bar select _Instances > $instanceName_) and navigate to the _Certificate Management_ tab.
+From here, Click on the _Add_ button of the keystore table (highlighted).
+
+image:certificate-management/CertificateManagementAddButton.png[Certificate Management Add Button]
+
+You can then enter the alias name and the path to the certificate bundle:
+
+image:certificate-management/CertificateManagementAddKeystoreEntry.png[Add Keystore Entry]
+
+[discrete]
+==== Using the _keytool_ command
+
 You can also use the _keytool_ command of the JDK:
 
 [source,shell]
@@ -66,7 +84,10 @@ The parameters of the above command are self-explanatory. Important here is the 
 
 A similar command is used to import the information into the Trust Store file so that our certificate is trusted by the JVM.
 
-This is performed using the `add-to-truststore` asadmin command, detailed
+[discrete]
+==== Using _asadmin_
+
+You can use the `add-to-truststore` asadmin command, detailed
 xref:documentation/payara-server/server-configuration/certificate-management.adoc#add-to-truststore[here].
 
 [source,shell]
@@ -74,7 +95,21 @@ xref:documentation/payara-server/server-configuration/certificate-management.ado
 asadmin add-to-truststore --file mycert.crt --alias mydomain_certificate
 ----
 
-*Alternatively*::
+[discrete]
+==== Using the Admin Console
+
+You can also follow the same steps as done for adding the bundle to the keystore via the admin console, though selecting
+the Add button of the truststore table...
+
+image:certificate-management/CertificateManagementAddButton2.png[Certificate Management Add Button]
+
+\... and specifying the `mycert.crt` file.
+
+image:certificate-management/CertificateManagementAddTruststoreEntry.png[Add Truststore Entry]
+
+[discrete]
+==== Using the _keytool_ command
+
 You can also use the _keytool_ command of the JDK:
 
 [source,shell]
@@ -86,7 +121,11 @@ keytool -importcert -trustcacerts -destkeystore cacerts.jks -file mycert.crt -al
 
 The last step we need to perform is the indication which 'certificate' needs to be used when Payara receives an SSL/TLS request. This can be done by specifying the alias name we have used when we integrated the required information into the key store files of the domain.
 
-This information can be set either via the CLI,
+
+[discrete]
+==== Using _asadmin_
+
+This information can be set via the CLI:
 
 [source,shell]
 ----
@@ -95,14 +134,27 @@ asadmin set configs.config.server-config.network-config.protocols.protocol.http-
 
 In a default installation, the _http-listener-2_ is responsible for handling the secure connections on port 8181. The above command sets the alias name so that the system knows which certificate needs to be used.
 
+[discrete]
+==== Using the Admin Console
+
 The information can also be entered in the Web Administration console, by navigating to the page Configurations -> server-config -> HTTP Service -> HTTP Listeners > http-listener-2.
 
-[certificate-expiration]
+[[cetificate-expiration]]
 == Certificate expiration
 
 All the X.509 certificates have a validity period when they can be used. Once this validity period is passed, the users will see a warning or error message depending on the browser that the certificate is no longer valid.
 
 Within the server log file, the expired certificates are listed when the system encounters one. Besides your custom certificates which are added as described in a previous chapter, the Trust Store also contains certificates from the Certificate Authorities. Also, they can expire and thus can be listed in the log.
+
+Since _Payara Server 5.194_ the log level of the expired certificates is of type WARNING. In previous versions, the entries showed as an ERROR. 
+
+Since the server continues to operate normally, it was decided to lower the level of the message.
+
+[[removing-expired]]
+=== Removing expired certificates
+
+[discrete]
+==== Using _asadmin_
 
 _Since Payara Server 5.20.0_
 
@@ -119,10 +171,12 @@ asadmin remove-from-keystore mydomain_certificate
 asadmin remove-from-truststore mydomain_certificate
 ----
 
-_Since Payara Server 5.194_
+[discrete]
+==== Using the Admin Console
+_Since Payara Server 5.20.1_
 
-Since Payara Server 5.194 the log level of the expired certificates is of type WARNING. In previous versions, the entries showed as an ERROR. 
+You can also remove individual or groups of certificates using the admin console Certificate Management tab
+(_Instances > $instanceName > Certificate Management_). Select the desired certificates from the key *or*
+trust store entries table (not both), and click on the _Delete_ button.
 
-Since the server continues to operate normally, it was decided to lower the level of the message.
-
-
+image:certificate-management/CertificateManagementDeleteButton.png[Certificate Management Delete Button]
