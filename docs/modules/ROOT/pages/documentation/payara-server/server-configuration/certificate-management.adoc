@@ -191,7 +191,8 @@ the instance with the DAS (under the assumption the certificate has been added t
 the DAS), since any certificates added to the instance stores would be lost upon next synchronisation.
 
 *Note*::
-This will overwrite an entry already present with the same alias.
+This will overwrite an entry already present with the same alias. A certificate without a private key cannot be
+used by a HTTP listener and will return a warning.
 
 [[command-options-keystore]]
 === Command Options
