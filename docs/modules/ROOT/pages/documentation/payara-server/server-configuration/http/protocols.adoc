@@ -1,6 +1,5 @@
 = Protocols
-:toc:
-:toclevels: 3
+:page-toclevels: 3
 
 A protocol is used by a network listener to determine the nature of the communication
 expected by the listener. For example, a protocol determines the timeout of a request,
