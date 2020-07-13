@@ -1,0 +1,40 @@
+[[multiple-httpauthenticationmechanism-ear]]
+= Multiple HttpAuthenticationMechanism in EAR
+
+_Since Payara Server 5.20.0_
+
+Within the Security API specification, an `HttpAuthenticationMechanism` can be defined to retrieve the user credentials from the HTTP Request. These credentials are then used by the IdentityStore to validate the user. For an introduction, have a look at xref:https://blog.payara.fish/ee-security-jaspic-jacc-loginmodules-realms[this article]
+
+A restriction of the current Security API specification is that only 1 `HttpAuthenticationMechanism` can be defined within an application. This restriction also applies to an EAR file where you can have multiple Web application bundled.
+
+There is already an issue to address this restriction at the Security API project, but as an intermediate solution, we have introduced a new `web.xml` parameter within Payara so that you can define an `HttpAuthenticationMechanism` for each Web applications in an EAR artifact.
+
+[[configure]]
+== Configure
+
+In order to configure a specific `HttpAuthenticationMechanism` for a Web application, define the parameter `fish.payara.security.mechanism` within the _web.xml_ file.
+
+[source, xml]
+----
+<context-param>
+    <param-name>fish.payara.security.mechanism</param-name>
+    <param-value>JWT</param-value>
+</context-param>
+----
+
+The supported values are
+
+|===
+|Value |Description
+|Basic |Use _BasicAuthenticationMechanism_ as mechanism.
+|Form |Use _FormAuthenticationMechanism_ as mechanism.
+|CustomForm | Use _CustomFormAuthenticationMechanism_ as mechanism.
+|JWT | Use the custom Payara _JWTAuthenticationMechanism_ as mechanism.
+|Certificate | Use the custom Payara _CertificateAuthenticationMechanism_ as mechanism.
+|Azure | Use the custom Payara _AzureOpenIdAuthenticationMechanism_ as mechanism.
+|Google | Use the custom Payara _GoogleOpenIdAuthenticationMechanism_ as mechanism.
+|OAuth2 |Use the custom Payara _OAuth2AuthenticationMechanism_ as mechanism.
+|<any Fully Qualified Class Name> |Use the `HttpAuthenticationMechanism` indicated by the classname.
+|===
+
+When no parameter is specified, the standard rules of the Security API are active (only 1 allowed per artifact).
