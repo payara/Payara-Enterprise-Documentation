@@ -1,0 +1,144 @@
+= SSL/TLS Options
+
+The following SSL/TLS fields can be configured for protocols:
+
+
+[[configuration-ssl-ssl3]]
+== SSLv3 Enabled
+
+Whether to enable SSLv3 or not.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.ssl3-enabled=[true/false]`
+
+[[configuration-ssl-tls]]
+== TLS Enabled
+
+Whether to enable TLS or not.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.tls-enabled=[true/false]`
+
+[[configuration-ssl-tls11]]
+== TLS V1.1 Enabled
+
+Whether to enable TLS V1.1 or not. Will be ignored if TLS is disabled.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.tls11-enabled=[true/false]`
+
+[[configuration-ssl-tls12]]
+== TLS V1.2 Enabled
+
+Whether to enable TLS V1.2 or not. Will be ignored if TLS is disabled.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.tls12-enabled=[true/false]`
+
+[[configuration-ssl-tls13]]
+== TLS V1.3 Enabled
+
+Whether to enable TLS V1.3 or not. Will be ignored if TLS is disabled.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.tls13-enabled=[true/false]`
+
+NOTE: Support for TLS 1.3 is available with JDK 8 since 5.194, 5.191.10 and 4.1.2.191.10 releases of Payara Platform but only when you are using 
+**Zulu JDK 1.8.0u222 or higher**. If you using a lower version than 1.8.0u222, checkbox to enable TLS 1.3 will not be visible on the 
+web administration console. 
+
+IMPORTANT: You will need to add the following Java Option:  **-Dfish.payara.clientHttpsProtocol=TLSv1.3** to the asadmin script for 
+TLS 1.3 to work with asadmin CLI. This sets the TLS version to 1.3 which will be used by the asadmin client. If you are using JDK 8, 
+you will also need to add the following Java Option: **-XX:+UseOpenJSSE**, this option makes OpenJSSE default TLS provider. OpenJSEE 
+is a JSEE provider created by Azul to support TLS 1.3 on JDK 8. See https://docs.azul.com/openjsse/index.htm[TLS 1.3 Support in Zulu 8 with OpenJSSE] 
+for more information.
+
+[[configuration-ssl-client-auth]]
+== Client Authentication
+
+When enabled, clients will be required to authenticate themselves to the server.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.client-auth-enabled=[true/false]`
+
+[[configuration-ssl-cert-nickname]]
+== Certificate Nickname
+
+The alias of the certificate to be supplied on secure requests. The certificate should be present in the server keystore.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.cert-nickname=value`
+
+[[configuration-ssl-keystore]]
+== Key Store
+
+The name of the keystore file. A keystore stores the certificate to be sent by the server with responses.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.key-store=value`
+
+[[configuration-ssl-truststore]]
+== Trust Store
+
+The name of the trust store file. The trust store stores trusted certificates.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.trust-store=value`
+
+[[configuration-ssl-trust-algorithm]]
+== Trust Algorithm
+
+The name of the trust management algorithm (e.g. `PKIX`) to use for certification path validation.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.trust-algorithm=value`
+
+[[configuration-ssl-max-cert-length]]
+== Max Certificate Length
+
+Maximum number of non self-issued intermediate certificates that can exist in a certification path.
+This is only valid if the trust algorithm is `PKIX`.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.trust-max-cert-length=value`
+
+[[configuration-ssl-enabled-ciphers]]
+== Enabled Ciphers
+
+A list of the server enabled ciphers. This string is stores as a comma separated list of the enabled ciphers
+with a `+` or a `-` at the start of each, depending on whether the cipher is enabled or disabled.
+E.g. `+TLS_RSA_WITH_AES_256_CBC_SHA,+SSL_RSA_WITH_3DES_EDE_CBC_SHA`.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.ssl3-tls-ciphers=value`
+
+[[configuration-ssl-handshake-timeout]]
+== Handshake Timeout
+
+The timeout, in millis, for a handshake. After this timeout the handshake will be aborted.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.handshake-timeout-millis=value`
+
+[[configuration-ssl-tls-rollback]]
+== TLS Rollback
+
+Whether TLS rollback is enabled or not.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.ssl.tls-rollback-enabled=[true/false]`
+

@@ -1,0 +1,94 @@
+= HTTP/2 Options
+
+The following HTTP/2 fields can be configured for protocols:
+
+[[configuration-http-http2]]
+== HTTP/2 Enabled
+
+Whether to enable HTTP/2 support for the protocol. Note that HTTP/2 can only be used on a secure listener.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.http.http2-enabled=[true/false]`
+
+[[configuration-http-http2-disable-cipher-check]]
+== Disable HTTP/2 Cipher Check
+
+Whether TLS connections can be established using insecure cipher suites.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.http.http2-disable-cipher-check=[true/false]`
+
+[[configuration-http-http2-max-concurrent-streams]]
+== HTTP/2 Max Concurrent Streams
+
+The number of concurrent streams allowed per HTTP/2 connection.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.http.http2-max-concurrent-streams=value`
+
+[[configuration-http-http2-initial-window-size]]
+== HTTP/2 Initial Window Size
+
+The initial window size in bytes.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.http.http2-initial-window-size-in-bytes=value`
+
+[[configuration-http-http2-max-frame-payload-size]]
+== HTTP/2 Max Frame Payload Size
+
+The maximum size of the HTTP/2 frame payload to be accepted.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.http.http2-max-frame-payload-size-in-bytes=value`
+
+[[configuration-http-http2-max-header-list-size]]
+== HTTP/2 Max Header List Size
+
+The maximum size, in bytes, of the header list.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.http.http2-max-header-list-size-in-bytes=value`
+
+[[steams-high-water]]
+== Streams High Water Mark
+
+Streams are periodically cleaned when the stream count exceeds this value, as a proportion of the max concurrent streams
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.http.http2-streams-high-water-mark=value`
+
+[[steams-clean-percent]]
+== Streams Clean Percentage
+
+The number of streams to process when the high water mark is exceeded. Only closed streams will be removed.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.http.http2-clean-percentage=value`
+
+[[streams-clean-frequency]]
+== Streams Clean Frequency Check
+
+The number of streams that must be closed before checking if the number of streams exceeds the high water mark.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.http.http2-clean-frequency-check=value`
+
+[[http2-push]]
+== HTTP/2 Push
+
+Enables server push. This is enabled by default.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.http.http2-push-enabled=[true|false]`
+

@@ -1,0 +1,14 @@
+= Standard Options
+
+The following standard fields can be configured for protocols:
+
+
+[[configuration-security]]
+== Security
+
+Whether security is enabled for the protocol. When disabled, all the SSL/TLS options are ignored.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.security-enabled=[true/false]`
+
