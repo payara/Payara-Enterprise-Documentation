@@ -1,7 +1,7 @@
 [[multiple-httpauthenticationmechanism-ear]]
 = Multiple HttpAuthenticationMechanism in EAR
 
-_Since Payara Server 5.20.0_
+_Since Payara Server 5.21.0_
 
 Within the Security API specification, an `HttpAuthenticationMechanism` can be defined to retrieve the user credentials from the HTTP Request. These credentials are then used by the IdentityStore to validate the user. For an introduction, have a look at xref:https://blog.payara.fish/ee-security-jaspic-jacc-loginmodules-realms[this article]
 
