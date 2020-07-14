@@ -619,7 +619,7 @@ _Since Payara Server 5.21.0_
 *Aim*::
 This command displays either all or a specific store entry from the target instance or listener's key store.
 
-[[command-options]]
+[[command-options-list]]
 === Command Options
 
 [cols="3,1,5,1,1",options="header"]
@@ -680,7 +680,7 @@ This command displays either all or a specific store entry from the target insta
 
 |===
 
-[[example]]
+[[example-list]]
 === Example
 
 [source, shell]
