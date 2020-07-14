@@ -1,6 +1,5 @@
 = Protocols: Asadmin Commands
-:toc:
-:toclevels: 1
+:page-toclevels: 1
 
 The following asadmin commands are available for administering HTTP protocols instead of using the admin console.
 The parameters are all explained in the configuration options above.
@@ -50,4 +49,134 @@ asadmin> create-ssl [--help]
         [--clientauthenabled={false|true}]
         [--target target]
         listener-id
+----
+
+[[set-network-protocol-security-configuration]]
+== set-network-protocol-security-configuration
+
+_Since Payara Server 5.21.0_
+
+This command  sets various options for the security of a HTTP protocol. Many options for configuring security can be done with this single asadmin command.
+
+
+=== Usage
+
+`asadmin> set-network-protocol-security-configuration --enabled true --tls11-enabled false --tls13enabled true http-listener-2`
+
+[[command-options-protocol-config]]
+=== Command Options
+
+[cols="3,1,5,1,1",options="header"]
+|===
+|Option
+|Type
+|Description
+|Default
+|Mandatory
+
+|`--target`
+|String
+|The name of the instance to get the certificate from.
+|server
+|no
+
+|`--enabled`
+|Boolean
+|If security should be enabled for the listener.
+|
+|no
+
+|`--dynamic`
+|Boolean
+|If HTTP listeners on the server should be restarted.
+|
+|no
+
+|`--tls1-enabled`
+|Boolean
+|If TLS version 1.0 should be enabled.
+|
+|no
+
+|`--tls11-enabled`
+|Boolean
+|If TLS version 1.1 should be enabled.
+|
+|no
+
+|`--tls12-enabled`
+|Boolean
+|If TLS version 1.2 should be enabled.
+|
+|no
+
+|`--tls13-enabled`
+|Boolean
+|If TLS version 1.3 should be enabled.
+|
+|no
+
+|`--keystore`
+|String
+|Name of the keystore file i.e. keystore.jks
+|
+|no
+
+|`--keystore-password`
+|String
+|Password for the keystore file.
+|
+|no
+
+|`--truststore`
+|String
+|Name of the truststore file i.e cacerts.jks.
+|
+|no
+
+|`--truststore-password`
+|String
+|Password for the truststore file.
+|
+|no
+
+|`--turst-algorithm`
+|Boolean
+|Name of the trust management algorithm (for example, PKIX) to use for certification path validation.
+|
+|no
+
+|`--session-timeout`
+|Integer
+|How long before TLS session expire from the cache.
+|
+|no
+
+|`--session-cache-size`
+|Integer
+|How large the TLS session cache can get.
+|
+|no
+
+|`--certificate-nickname`
+|String
+| Takes a single value, identifies the server's default keypair and certificate.
+|
+|no
+
+|`--client-auth`
+|want,need,
+| Determines if if the engine will request (want) or require (need) client authentication.
+|
+|no
+
+|===
+
+[[example-snpsc]]
+=== Example
+
+[source, shell]
+----
+asadmin> set-network-protocol-security-configuration --enabled=true --tls1-enabled=false
+                --tls11-enabled false --tls12-enabled false --tls13-enabled true http-listener-2
 ----
