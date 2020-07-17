@@ -2,6 +2,3 @@
 = Appendix: History of release notes
 
 Detailed information about features and fixes in every release.
-
-
-* 2020 June - xref:release-notes/release-notes-20-0.adoc[Payara Server 5.20.0]
