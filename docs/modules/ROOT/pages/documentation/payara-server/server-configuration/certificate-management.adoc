@@ -106,6 +106,79 @@ asadmin> generate-self-signed-certificate --dn "CN=test.payara.fish,IP=192.168.1
 test_cert
 ----
 
+[[renew-self-signed-certificates]]
+== `renew-self-signed-certificates`
+
+Usage::
+`asadmin> renew-self-signed-certificates
+
+Aim::
+The renew-self-signed-certificates subcommand renews a self-certificate using the old distinguished name and alias.
+This certificate is then placed in the key and trust store of target instance or listener replacing the old one.
+
+[[command-options-self]]
+=== Command Options
+
+[cols="3,1,5,1,1",options="header"]
+|===
+|Option
+|Type
+|Description
+|Default
+|Mandatory
+
+|`--target`
+|String
+|The name of the instance to renew the certificate of.
+|server
+|no
+
+|`--reload`
+|Boolean
+|If the http listeners should be reloaded.
+|false
+|no
+
+|`--listener`
+|String
+|The name of the HTTP or IIOP listener to renew the certificate of.
+|N/A
+|no
+
+|`--domainname`
+|String
+|The name of the domain where the target instance exists.
+|domain1
+|no
+
+|`--domaindir`
+|String
+|The path to the directory containing the target domain.
+|${installDir}/glassfish/domains
+|no
+
+|`--node`
+|String
+|The name of the node where the target instance exists.
+|localhost-$domainname
+|no
+
+|`--nodedir`
+|String
+|The path to the directory containing the target node.
+|${installDir}/glassfish/nodes
+|no
+
+|===
+
+[[example-renew]]
+=== Example
+
+[source, shell]
+----
+asadmin> renew-self-signed-certificates
+----
+
 [[generate-csr]]
 == `generate-csr`
 
