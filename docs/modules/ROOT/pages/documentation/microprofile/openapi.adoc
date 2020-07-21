@@ -56,6 +56,7 @@ The OpenAPI can be configured through the xref:documentation/microprofile/config
 `mp.openapi.scan.exclude.packages=com.xyz.PackageC,com.xyz.PackageD`
 | `mp.openapi.scan.exclude.classes`  |  Configuration property to specify the list of classes to exclude from scans. For example,
 `mp.openapi.scan.exclude.classes=com.xyz.MyClassC,com.xyz.MyClassD`
+| `mp.openapi.scan.lib`  |  Configuration property to scan the packaged jar files inside the WAR (WEB-INF\lib). Default value is `false`.
 | `mp.openapi.servers`  |  Configuration property to specify the list of global servers that provide connectivity information. For example,
 `mp.openapi.servers=https://xyz.com/v1,https://abc.com/v1`
 | `mp.openapi.servers.path.`   |  Prefix of the configuration property to specify an alternative list of servers to service all operations in a path. For example,
