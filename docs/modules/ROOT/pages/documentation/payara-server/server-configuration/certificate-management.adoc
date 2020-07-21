@@ -110,11 +110,11 @@ test_cert
 == `renew-self-signed-certificates`
 
 Usage::
-`asadmin> renew-self-signed-certificates
+`asadmin> renew-self-signed-certificates`
 
 Aim::
-The renew-self-signed-certificates subcommand renews a self-certificate using the old distinguished name and alias.
-This certificate is then placed in the key and trust store of target instance or listener replacing the old one.
+The renew-self-signed-certificates subcommand renews all self-certificates in a keystore using the old distinguished name and alias.
+This certificates are then placed in the key and trust store of target instance or listener replacing the old one.
 
 [[command-options-self]]
 === Command Options
@@ -129,7 +129,7 @@ This certificate is then placed in the key and trust store of target instance or
 
 |`--target`
 |String
-|The name of the instance to renew the certificate of.
+|The name of the instance to renew the certificates of.
 |server
 |no
 
@@ -141,7 +141,7 @@ This certificate is then placed in the key and trust store of target instance or
 
 |`--listener`
 |String
-|The name of the HTTP or IIOP listener to renew the certificate of.
+|The name of the HTTP or IIOP listener to renew the certificates of.
 |N/A
 |no
 
