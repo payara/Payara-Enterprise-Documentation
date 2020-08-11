@@ -24,6 +24,7 @@ The following types of requests are traced if the service is enabled:
 * Inbound JMS messages received by an MDB
 * JBatch jobs creation
 * Tasks executed by injected Managed Executors.
+* Remote Invocations of EJBs
 
 In Payara Server and Payara Micro 5.181, the Request Tracing Service was given an overhaul - traces are now in an OpenTracing-style format using Spans, instead of the original event stream format. Practically, this means that instead of having an ordered sequence of time stamped events constituting a trace (with separate entered and exited events), you now have a set of related traces (now called spans) with individual durations and attributes.
 

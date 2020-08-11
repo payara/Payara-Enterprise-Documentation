@@ -89,6 +89,12 @@ To access the tracer in your applications, you can inject it like so:
 Tracer tracer;
 ----
 
+NOTE: You can only inject a Tracer when your application is running inside a Payara Platform runtime
+- you cannot do so from a Java SE client. From a Java SE client you must use the OpenTracing.io
+`GlobalTracer`, see
+xref:/documentation/payara-server/request-tracing-service/tracing-remote-ejbs.adoc#getting-a-tracer[here]
+for more details.
+
 Starting a Span, marking it as the active Span (the one from which any children will spawn), and ending
 it is done like so with a _try-with-resources_ block:
 
