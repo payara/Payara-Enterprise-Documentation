@@ -1,6 +1,8 @@
 [[tracing-remote-ejbs]]
 = Tracing Remote EJBs
 
+`_Since Payara Server 5.2020.4_`
+
 Introduced in Payara Server 5.2020.4, RMI calls to an EJB from a Java SE client will now have the active Span Context
 automatically propagated to the server, with the server-side span being created as a child of this client call.
 
@@ -72,7 +74,7 @@ try {
 ----
 
 Extra information on creating a Tracer instance and registering it to the `GlobalTracer` can be found
-link:https://opentracing.io/guides/java/tracers/[here], but in short it can be done like so (replacing _CustomerTracer_
+link:https://opentracing.io/guides/java/tracers/[here], but in short it can be done like so (replacing _CustomTracer_
 with your desired implementation):
 [source, java]
 ----
@@ -146,4 +148,4 @@ public class Ejb implements EjbRemote {
 
 ----
 NOTE: Baggage items are attached to the Span you invoke `setBaggageItem` on, as well as any child spans, so you are not
-prevented from starting child additional spans on your EJB methods manually or via the `@Traced` annotation.
+prevented from starting additional child spans on your EJB methods manually or via the `@Traced` annotation.
