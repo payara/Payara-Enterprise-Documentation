@@ -109,6 +109,8 @@ test_cert
 [[renew-self-signed-certificates]]
 == `renew-self-signed-certificates`
 
+_Since Payara Server 5.21.1_
+
 Usage::
 `asadmin> renew-self-signed-certificates`
 
