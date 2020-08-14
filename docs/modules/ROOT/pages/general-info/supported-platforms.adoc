@@ -16,7 +16,7 @@ The Payara Platform currently supports the following Java Virtual Machines:
 * OpenJDK JDK8 (u162+), OpenJDK 11 (11.0.5+)
 * All other JVMs based on OpenJDK 8u162+ or 11.0.5+ (for example Corretto JDK, Liberica JDK, AdoptOpenJDK)
 
-TLS 1.3 is supported on JDK 8 with Azul Zulu 1.8.222+ only and all JDK 11 versions.
+TLS 1.3 is supported on JDK 8 with Azul Zulu 1.8.222+, Open JDK 8u262+ based builds, and all JDK 11 versions.
 
 NOTE: A separate Payara Server Blue distribution is no longer required for IBM Java SDK.
 
