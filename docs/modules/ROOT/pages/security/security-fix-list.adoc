@@ -8,6 +8,8 @@ can or have impacted Payara Server across releases:
 [cols="<,<,<,<,<,<,<",options="header",]
 |=======================================================================
 |ID |CVSS v3.0 Base Score |Status |Summary |Release |Pull Requests |Observations
+|https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-6950[CVE-2020-6950] | 7.5 | FIXED | Eclipse Mojarra vulnerable to path trasversal flaw via either loc/con parameters | 5.201 | https://github.com/payara/Payara/pull/4492[#4492] | Fixed by upgrading Mojarra to 2.3.14
+
 |https://nvd.nist.gov/vuln/detail/CVE-2019-12086[CVE-2019-12086] | 7.5 | FIXED | A Polymorphic Typing issue was discovered in FasterXML jackson-databind 2.x before 2.9.9 | 5.193, 5.192.1, 5.191.4 | https://github.com/payara/Payara/pull/4004[#4004] | 
 
 |https://nvd.nist.gov/vuln/detail/CVE-2018-14721[CVE-2018-14721] | 10.0 | FIXED | FasterXML jackson-databind 2.x before 2.9.7 might allow remote attackers to conduct server-side request forgery (SSRF) attacks | 5.191, 5.184.1, 5.181.10, 4.1.2.191, 4.1.2.184.1, 4.1.2.181.10 | https://github.com/payara/Payara/pull/3461[#3461], https://github.com/payara/Payara/pull/3513[#3513] | Fixed in *FasterXML Jackson 2.9.7*, component updated
