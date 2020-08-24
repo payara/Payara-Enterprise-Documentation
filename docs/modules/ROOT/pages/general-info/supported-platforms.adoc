@@ -21,7 +21,7 @@ TLS 1.3 is supported on JDK 8 with Zulu Enterprise 1.8.222+, Open JDK 8u262+ bas
 
 NOTE: A separate Payara Server Blue distribution is no longer required for IBM Java SDK.
 
-== Supported architectures
+== Supported Architectures
 
 The Payara Platform currently supports the `x64` and `arm64` CPU architectures. 
 
