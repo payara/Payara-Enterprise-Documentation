@@ -1,22 +1,33 @@
 [[monitoring-console]]
 = Monitoring Console
 
-The monitoring console module collects a multitude of metrics from all nodes and accumulates the data on the DAS. This can include user defined metrics. The data is visualised by the monitoring console web-application that for the time being is installed on the DAS explicitly like any normal web-application.
+The monitoring console module collects a multitude of metrics from all nodes and accumulates the data on the DAS.
+The data is visualised by the monitoring console web-application.
+
+The metrics include server metrics as well as metrics defined in user applications using _MicroProfile Metrics_ and metrics derived from _MicroProfile Health_.
 
 NOTE: Please be aware that following details reflect the current state of a evolving product that are likely to change in the future.
 
 [[monitoring-console-installation]]
-== Installation
-To start the monitoring console run the following asadmin command:
+== Enabling the GUI
+By default the monitoring console GUI is automatically enabled for the `production` domain.
+Links can be found on the _Common Tasks_ home page in section _Monitoring_ or on the _Monitoring Data_ page.
+
+For `domain1` the GUI is not enabled by default and the `set-monitoring-console-configuration` is used to enable it on demand.
+
+To enable the monitoring console GUI run the following asadmin command:
 
         asadmin> set-monitoring-console-configuration --enabled=true
 
 The console is now available at http://localhost:8080/monitoring-console/ .
 Like the admin GUI the monitoring console only runs on the DAS.
 
-To stop the monitoring console run:
+To stop the monitoring console GUI run:
 
         asadmin> set-monitoring-console-configuration --enabled=false
+
+Stopping the GUI does not disable the data collection.
+This is a background process that is controlled separately as described in the next section.
 
 NOTE: The monitoring console feature is only contained in Payara Server distribution.
 
@@ -30,7 +41,7 @@ NOTE: To remove only the monitoring data collection from the server without disa
 
 [[monitoring-console-gui]]
 == Graphical User Interface
-After enabling the monitoring console open the home page at `/monitoring-console/`.
+After enabling the monitoring console open the home page at `/monitoring-console/` (usually on port 8080).
 
 The console comes with a set of xref:#monitoring-console-presets[preconfigured pages] each focussing on different aspects of the server.
 
