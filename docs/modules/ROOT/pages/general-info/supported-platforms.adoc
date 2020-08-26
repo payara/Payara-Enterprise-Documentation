@@ -17,15 +17,11 @@ The Payara Platform currently supports the following Java Virtual Machines:
 * Adopt Open JDK: 8, 11 (11.0.5+)
 * Adopt Open JDK with Eclipse Open J9
 
+The Payara Platform currently supports the `x64` and `arm64` variants of the above JVMs. Payara Enterprise customers can request support for other CPU architecture variants.
+
 TLS 1.3 is supported on JDK 8 with Zulu Enterprise 1.8.222+, Open JDK 8u262+ based builds, and all version 11 of all above JDKs.
 
 NOTE: A separate Payara Server Blue distribution is no longer required for IBM Java SDK.
-
-== Supported Architectures
-
-The Payara Platform currently supports the `x64` and `arm64` CPU architectures. 
-
-In general, Payara Server supports any architecture supported by at least one of the supported JVMs.
 
 == Supported Operating Systems
 
