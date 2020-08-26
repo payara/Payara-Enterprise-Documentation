@@ -859,7 +859,7 @@ a| The notifier to configure. One of (case insensitive):
 | -
 | yes
 
-|`--enable`
+|`--enabled`
 |Boolean
 |Enables or disables the notifier
 |false
@@ -923,7 +923,7 @@ the _[NOTIFIER_NAME]_ placeholder.
 |Default
 |Mandatory
 
-|`--enable`
+|`--enabled`
 |Boolean
 |Enables or disables the notifier
 |false
