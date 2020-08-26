@@ -11,12 +11,15 @@ Similarly, other platforms can always be requested for support.
 
 The Payara Platform currently supports the following Java Virtual Machines:
 
-* Oracle JDK8 (u162+), Oracle JDK 11 (11.0.5+)
-* Azul Zulu JDK8 (u162+), Azul Zulu JDK 11 (11.0.5u10+)
-* OpenJDK JDK8 (u162+), OpenJDK 11 (11.0.5+)
-* All other JVMs based on OpenJDK 8u162+ or 11.0.5+ (for example Corretto JDK, Liberica JDK, AdoptOpenJDK)
+* Zulu Enterprise JDK: 8 (u162+), 11 (11.0.5u10+)
+* Oracle JDK: 8 (u162+), 11 (11.0.5+)
+* Amazon Corretto: 8, 11 (11.0.5+)
+* Adopt Open JDK: 8, 11 (11.0.5+)
+* Adopt Open JDK with Eclipse Open J9: 8, 11 (11.0.5+)
 
-TLS 1.3 is supported on JDK 8 with Azul Zulu 1.8.222+, Open JDK 8u262+ based builds, and all JDK 11 versions.
+The Payara Platform currently supports the `x64` and `arm64` variants of the above JVMs. Payara Enterprise customers can request support for other CPU architecture variants.
+
+TLS 1.3 is supported on JDK 8 with Zulu Enterprise 1.8.222+, Open JDK 8u262+ based builds, and all version 11 of all above JDKs.
 
 NOTE: A separate Payara Server Blue distribution is no longer required for IBM Java SDK.
 
@@ -25,15 +28,16 @@ NOTE: A separate Payara Server Blue distribution is no longer required for IBM J
 The Payara Platform currently supports the following Operating Systems in all the versions listed below and all their newer versions:
 
 * Windows
-** Windows 7+
+** Windows 7+ (only in development)
 ** Windows Server 2008+
 * Linux
 ** Ubuntu 14.04 (Trusty Tahr) LTS+
-** Debian 7 (Wheezy)+
-** CentOS 6+
-** RHEL 5+
-** OpenSUSE 42.2+
 ** SUSE 11.4, 12.2+, 15.0+
+** RHEL 5+
+** Amazon Linux (all versions)
+** Debian 7 (Wheezy)+
 * Other
-** MacOS(OSX) 10.10.5 (Yosemite)+
+** MacOS(OSX) 10.10.5 (Yosemite)+ (only in development)
 ** IBM AIX 7.1+ 
+
+In general, Payara Server runs on any system supported by at least one of the supported JVMs.
