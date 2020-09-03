@@ -53,8 +53,7 @@ Apache Derby, Linux, Ubuntu 18.04.3 +
 Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
 
 
-== Test results
-### appclient
+### appclient 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 50 tests.
@@ -63,7 +62,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### assembly
+### assembly 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 30 tests.
@@ -75,22 +74,32 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
 ### beanvalidation
 
 ```
-[INFO] Tests run: 1043, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 640.91 s - in TestSuite
-[INFO]
+[INFO] Tests run: 1043, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 625.026 s - in TestSuite
+[INFO] 
 [INFO] Results:
-[INFO]
+[INFO] 
 [INFO] Tests run: 1043, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-surefire-report-plugin:2.21.0:report-only (generate-test-report) @ hibernate-validator-tck-runner ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
 ```
 ### cdi
 
 ```
- [mvn.test] [INFO] Tests run: 1805, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1,934.632 s - in TestSuite
- [mvn.test] [INFO]
+ [mvn.test] [INFO] Tests run: 1805, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1,670.322 s - in TestSuite
+ [mvn.test] [INFO] 
  [mvn.test] [INFO] Results:
- [mvn.test] [INFO]
+ [mvn.test] [INFO] 
  [mvn.test] [INFO] Tests run: 1805, Failures: 0, Errors: 0, Skipped: 0
+ [mvn.test] [INFO] 
+ [mvn.test] [INFO] 
+ [mvn.test] [INFO] --- maven-surefire-report-plugin:2.19.1:report-only (generate-test-report) @ weld-payara-runner-tck11 ---
+ [mvn.test] [INFO] ------------------------------------------------------------------------
+ [mvn.test] [INFO] BUILD SUCCESS
 ```
-### compat12
+### compat12 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 12 tests.
@@ -99,7 +108,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### compat13
+### compat13 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 15 tests.
@@ -108,7 +117,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### concurrency
+### concurrency 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 205 tests.
@@ -117,7 +126,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### connector
+### connector 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 495 tests.
@@ -126,13 +135,13 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### di
+### di 
 
 ```
     [junit] Testsuite: org.jboss.weld.atinject.tck.AtInjectTCK
-    [junit] Tests run: 50, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 sec
+    [junit] Tests run: 50, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 sec
 ```
-### ejb
+### ejb 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1809 tests.
@@ -141,7 +150,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/assembly
+### ejb30/assembly 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 51 tests.
@@ -150,7 +159,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/bb
+### ejb30/bb 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1200 tests.
@@ -159,7 +168,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/appexception
+### ejb30/lite/appexception 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 365 tests.
@@ -168,7 +177,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/async
+### ejb30/lite/async 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 300 tests.
@@ -177,7 +186,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/basic
+### ejb30/lite/basic 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 105 tests.
@@ -186,7 +195,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/ejbcontext
+### ejb30/lite/ejbcontext 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 50 tests.
@@ -195,7 +204,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/enventry
+### ejb30/lite/enventry 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 30 tests.
@@ -204,7 +213,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/interceptor
+### ejb30/lite/interceptor 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 175 tests.
@@ -213,7 +222,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/lookup
+### ejb30/lite/lookup 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 30 tests.
@@ -222,7 +231,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/naming
+### ejb30/lite/naming 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 54 tests.
@@ -231,7 +240,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/nointerface
+### ejb30/lite/nointerface 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 60 tests.
@@ -240,7 +249,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/packaging
+### ejb30/lite/packaging 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 211 tests.
@@ -249,7 +258,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/singleton
+### ejb30/lite/singleton 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 230 tests.
@@ -258,7 +267,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/stateful
+### ejb30/lite/stateful 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 129 tests.
@@ -267,7 +276,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/tx
+### ejb30/lite/tx 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 358 tests.
@@ -276,7 +285,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/view
+### ejb30/lite/view 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 95 tests.
@@ -285,7 +294,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/lite/xmloverride
+### ejb30/lite/xmloverride 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 30 tests.
@@ -294,7 +303,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/misc
+### ejb30/misc 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 100 tests.
@@ -303,7 +312,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/sec
+### ejb30/sec 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 99 tests.
@@ -312,7 +321,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/timer
+### ejb30/timer 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 178 tests.
@@ -321,7 +330,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/webservice
+### ejb30/webservice 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 3 tests.
@@ -330,7 +339,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb30/zombie
+### ejb30/zombie 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1 tests.
@@ -339,7 +348,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### ejb32
+### ejb32 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 825 tests.
@@ -348,7 +357,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### el
+### el 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 667 tests.
@@ -357,7 +366,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### integration
+### integration 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 18 tests.
@@ -384,7 +393,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### j2eetools
+### j2eetools 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 134 tests.
@@ -393,7 +402,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jacc
+### jacc 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 40 tests.
@@ -402,7 +411,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jaspic
+### jaspic 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 68 tests.
@@ -411,7 +420,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### javaee
+### javaee 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 24 tests.
@@ -420,7 +429,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### javamail
+### javamail 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 112 tests.
@@ -429,7 +438,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jaxr
+### jaxr 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1372 tests.
@@ -438,7 +447,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jaxrpc
+### jaxrpc 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1478 tests.
@@ -447,7 +456,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jaxrs
+### jaxrs 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 2803 tests.
@@ -456,7 +465,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jbatch
+### jbatch 
 
 ```
 [javatest.batch] Completed running 322 tests.
@@ -465,7 +474,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
 [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jdbc_appclient
+### jdbc_appclient 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1231 tests.
@@ -474,7 +483,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jdbc_ejb
+### jdbc_ejb 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1231 tests.
@@ -483,7 +492,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jdbc_jsp
+### jdbc_jsp 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1231 tests.
@@ -492,7 +501,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jdbc_servlet
+### jdbc_servlet 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1231 tests.
@@ -501,7 +510,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jms/core
+### jms/core 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 2379 tests.
@@ -510,7 +519,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jms/core20
+### jms/core20 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 852 tests.
@@ -519,7 +528,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jms/ee
+### jms/ee 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 207 tests.
@@ -528,7 +537,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jms/ee20
+### jms/ee20 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 72 tests.
@@ -537,7 +546,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jpa_appmanaged
+### jpa_appmanaged 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1733 tests.
@@ -546,7 +555,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jpa_appmanagedNoTx
+### jpa_appmanagedNoTx 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1873 tests.
@@ -555,7 +564,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jpa_pmservlet
+### jpa_pmservlet 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1881 tests.
@@ -564,7 +573,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jpa_puservlet
+### jpa_puservlet 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1871 tests.
@@ -573,7 +582,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jpa_stateful3
+### jpa_stateful3 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1733 tests.
@@ -582,7 +591,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jpa_stateless3
+### jpa_stateless3 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1883 tests.
@@ -591,7 +600,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jsf
+### jsf 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 5526 tests.
@@ -600,7 +609,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jsonb
+### jsonb 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1062 tests.
@@ -609,7 +618,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jsonp
+### jsonp 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 744 tests.
@@ -618,7 +627,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jsp
+### jsp 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 731 tests.
@@ -627,7 +636,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jstl
+### jstl 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 541 tests.
@@ -636,7 +645,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### jta
+### jta 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 195 tests.
@@ -645,7 +654,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### rmiiiop
+### rmiiiop 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 129 tests.
@@ -654,7 +663,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### samples
+### samples 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 13 tests.
@@ -663,7 +672,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### securityapi
+### securityapi 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 83 tests.
@@ -672,16 +681,20 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### servlet
+### servlet 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 1746 tests.
-   [runcts] OUT => [javatest.batch] Number of Tests Passed      = 1746
+   [runcts] OUT => [javatest.batch] Number of Tests Passed      = 1731
+   [runcts] OUT => [javatest.batch] Number of Tests Failed      = 15
+   [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
+   [runcts] OUT => [javatest.batch] Completed running 15 tests.
+   [runcts] OUT => [javatest.batch] Number of Tests Passed      = 15
    [runcts] OUT => [javatest.batch] Number of Tests Failed      = 0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### signaturetest/javaee
+### signaturetest/javaee 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 5 tests.
@@ -690,7 +703,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### webservices
+### webservices 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 507 tests.
@@ -699,7 +712,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### webservices12
+### webservices12 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 242 tests.
@@ -708,7 +721,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### webservices13
+### webservices13 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 53 tests.
@@ -717,7 +730,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### websocket
+### websocket 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 745 tests.
@@ -726,7 +739,7 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
 
-### xa
+### xa 
 
 ```
    [runcts] OUT => [javatest.batch] Completed running 66 tests.
@@ -734,5 +747,3 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests Failed      = 0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
-
-
