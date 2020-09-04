@@ -48,7 +48,7 @@ image::eclipse-plugin/new-server-resources.png[New Server Resources]
 == Adding Resources to Server
 
 1. First import or create some project, deployable to the *Payara Server*.
-  Here we use one of the xref:https://github.com/javaee-samples/javaee7-samples[Java EE 7 Samples] .
+  Here we use one of the https://github.com/javaee-samples/javaee7-samples[Java EE 7 Samples] .
 2. Right click the target server in the *Servers* view and click *Add and Remove...*
 +
 image::eclipse-plugin/add-resource-menu.png[Add and Remove menu]
