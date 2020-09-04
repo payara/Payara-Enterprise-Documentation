@@ -5,7 +5,7 @@ When creating a Java EE application, it is important that development and
 testing take place on a server that's as close to your target production
 environment as possible.
 
-By using the xref:https://codehaus-cargo.github.io/cargo/Maven2+plugin.html[Maven Cargo
+By using the https://codehaus-cargo.github.io/cargo/Maven2+plugin.html[Maven Cargo
 plugin] within your Maven project, it is possible to deploy your application to
 local and remote instances of Payara Server Enterprise. The plugin makes use of the REST
 management API in Payara Server.
@@ -164,6 +164,6 @@ to a Maven profile in your pom:
 </plugin>
 ----
 
-A complete example can be found in xref:https://github.com/payara/Payara-Examples/blob/master/ecosystem/payara-maven/pom.xml[
+A complete example can be found in https://github.com/payara/Payara-Examples/blob/master/ecosystem/payara-maven/pom.xml[
 the Payara Examples repository.] The example demonstrates the same remote and 
 local deployment methods in two separate profiles.

@@ -9,6 +9,6 @@ This section documents several extensions made to the security mechanisms and AP
 
 == Extra Resources
 
-* xref:https://javaee.github.io/tutorial/security-intro005.html[Java EE Tutorial: Working with Realms, Users, Groups, and Roles]
-* xref:https://dzone.com/refcardz/getting-started-java-ee[DZone: Security in Java EE Applications]
+* https://javaee.github.io/tutorial/security-intro005.html[Java EE Tutorial: Working with Realms, Users, Groups, and Roles]
+* https://dzone.com/refcardz/getting-started-java-ee[DZone: Security in Java EE Applications]
 

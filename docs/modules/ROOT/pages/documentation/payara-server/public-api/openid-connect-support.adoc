@@ -35,7 +35,7 @@ public class SecurityBean {
 }
 ----
 
-See xref:https://github.com/javaee-samples/vendoree-samples/tree/master/payara/openid[this sample project] for a more detailed example.
+See https://github.com/javaee-samples/vendoree-samples/tree/master/payara/openid[this sample project] for a more detailed example.
 
 When defining a OpenID Connect flow within an application deployed on Payara Server, 
 it is possible to retrieve the access token, identity token, user claims and the other authentication information within any bean in the scope of the callback/redirectURI resource used to configure the authentication:

@@ -34,7 +34,7 @@ public class TestRolesPermitted {
 }
 ----
 
-See xref:https://github.com/javaee-samples/vendoree-samples/tree/master/payara/rolesPermitted[this sample project] for a more detailed example.
+See https://github.com/javaee-samples/vendoree-samples/tree/master/payara/rolesPermitted[this sample project] for a more detailed example.
 
 [[configuration]]
 == Configuration
@@ -131,4 +131,4 @@ public void updateCustomer(Customer customer){
 
 == Extra Resources
 
-See xref:https://javaee.github.io/javaee-spec/javadocs/javax/annotation/security/RolesAllowed.html[@RolesAllowed] for the original annotation on which this annotation is based.
+See https://javaee.github.io/javaee-spec/javadocs/javax/annotation/security/RolesAllowed.html[@RolesAllowed] for the original annotation on which this annotation is based.

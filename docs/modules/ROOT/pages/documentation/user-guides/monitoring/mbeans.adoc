@@ -910,5 +910,5 @@ response time from among the response times
 
 Payara Server includes OpenMQ as a JMS broker, which includes its own MBeans.
 Documentation on them can be found in the official
-xref:https://javaee.github.io/glassfish/doc/4.0/mq-dev-guide-jmx.pdf[GlassFish reference guide for coding JMX clients].
+https://javaee.github.io/glassfish/doc/4.0/mq-dev-guide-jmx.pdf[GlassFish reference guide for coding JMX clients].
 Check section 3: _Message Queue MBean Reference_

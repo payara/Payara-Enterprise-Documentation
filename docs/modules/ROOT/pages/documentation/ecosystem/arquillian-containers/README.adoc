@@ -26,7 +26,7 @@ Some containers will be either in development or an early release version. In th
 the same process can be used, but the artifact will need to be built from source.
 The containers can be found in the main Payara source.
 
-Clone the xref:https://github.com/payara/Payara[Payara] Git repository:
+Clone the https://github.com/payara/Payara[Payara] Git repository:
 
 [source,Shell]
 ----
