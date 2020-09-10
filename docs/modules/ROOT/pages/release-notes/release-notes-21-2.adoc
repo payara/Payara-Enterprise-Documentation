@@ -1,4 +1,8 @@
-*Payara Platform 5.21.2 Release Notes*
+== Supported APIs and Applications
+
+* Java EE 8 Applications
+* MicroProfile 3.3
+* Jakarta EE 8 Applications
 
 *Notes*
 

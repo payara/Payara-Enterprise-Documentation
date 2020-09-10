@@ -4,7 +4,7 @@
 * MicroProfile 3.3
 * Jakarta EE 8 Applications
 
-== New Feature
+== New Features
 
 * [https://github.com/payara/Payara/pull/4630[APPSERV-20]] - MicroProfile ConfigSource for Payara Variable Expressions
 * [https://github.com/payara/Payara/pull/4711[APPSERV-150]] - Asadmin
