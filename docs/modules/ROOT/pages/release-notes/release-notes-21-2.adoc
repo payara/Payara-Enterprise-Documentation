@@ -1,0 +1,24 @@
+*Payara Platform 5.21.2 Release Notes*
+
+*Notes*
+
+In this release of Payara Enterprise we're unfortunately temporarily reverting an improvement we added in 5.21 - HTTP/2 support for JDK Native ALPN APIs (FISH-31). It has proved to be unstable in certain situations and so we've taken the decision to remove it from the Enterprise distributions until it's matured further - we were too quick to bring this feature in to Enterprise and apologise if this impacts you. This reversion means that HTTP/2 support will not work when using JDK 8u252 or higher (including JDK 11), and a warning will be printed in the log related to this. HTTP/2 should still work when using an older supported version of JDK 8 (8u162-8u242).
+
+*Bug Fixes*
+
+* [https://github.com/payara/Payara-Enterprise/pull/171[_FISH-37_]] - @DataSourceDefinition passes serverName and URL DataSource in some cases
+* [https://github.com/payara/Payara-Enterprise/pull/168[_FISH-55_]] - Creating Java Mail Session targeted to Deployment Group fails
+* [https://github.com/payara/Payara-Enterprise/pull/150[_FISH-59_]] - Payara Micro --enableRequestTracing argument not accepting values
+* [https://github.com/payara/Payara-Enterprise/pull/162[_FISH-66_]] - Zip file closed on EJB initialization
+* [https://github.com/payara/Payara-Enterprise/pull/152[_FISH-82_]] - Command Line option --warmup results in an Exception when Payara Micro instance stops when Request Tracing is activated
+* [https://github.com/payara/Payara-Enterprise/pull/157[_FISH-89_]] - Possible NPE in request tracing during startup
+* [https://github.com/payara/Payara-Enterprise/pull/156[_FISH-90_]] - wscompile NoClassDefFoundError with JDK8
+* [https://github.com/payara/Payara-Enterprise/pull/166[_FISH-379_]] - Admin Console Masthead Looks Different Between Firefox and Chrome
+* [https://github.com/payara/Payara-Enterprise/pull/161[_FISH-388_]] - Fix NPE when printing out Active Span
+* [https://github.com/payara/Payara-Enterprise/pull/165[_FISH-393_]] - asadmin command list-rest-endpoints doesn't list PATCH methods
+* [https://github.com/payara/Payara-Enterprise/pull/172[_FISH-407_]] - List of enabled application targets is not always correct
+* [https://github.com/payara/Payara-Enterprise/pull/169[_FISH-425_]] - Revert FISH-31 - HTTP/2 Support for JDK Native ALPN APIs
+
+*Security Improvements*
+
+* [https://github.com/payara/Payara-Enterprise/pull/159[_FISH-381_]] - Upgrade Nimbus JOSE+JWT to 8.20
