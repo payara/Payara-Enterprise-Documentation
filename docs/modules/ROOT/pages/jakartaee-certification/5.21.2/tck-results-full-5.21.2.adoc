@@ -21,7 +21,7 @@ http://download.eclipse.org/jakartaee/platform/8/eclipse-jakartaeetck-8.0.2.zip[
 
 - Public URL of TCK Results Summary:
 +
-http://docs.payara.fish/v/master/jakartaee-certification/5.21.2/tck-results-full-5.21.2.html
+https://docs.payara.fish/enterprise/docs/5.21.0/jakartaee-certification/5.21.2/tck-results-full-5.21.2.html
 
 - Any Additional Specification Certification Requirements:
 
@@ -734,5 +734,4 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
    [runcts] OUT => [javatest.batch] Number of Tests Failed      = 0
    [runcts] OUT => [javatest.batch] Number of Tests with Errors = 0
 ```
-
 
