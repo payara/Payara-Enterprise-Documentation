@@ -2,6 +2,7 @@
 * xref:README.adoc[Introduction]
 ** xref:general-info/general-info.adoc[Overview]
 ** xref:release-notes/README.adoc[Release Notes]
+*** xref:release-notes/release-notes-21-2.adoc[Payara Enterprise 5.21.2 Rlease Notes]
 *** xref:release-notes/release-notes-21-1.adoc[Payara Enterprise 5.21.1 Release Notes]
 *** xref:release-notes/release-notes-21-0.adoc[Payara Enterprise 5.21.0 Release Notes]
 ** xref:security/security.adoc[Security]
@@ -283,6 +284,8 @@
 * xref:schemas/README.adoc[Schemas]
 
 * xref:jakartaee-certification/README.adoc[Jakarta EE Platform 8 certification summaries]
+** xref:jakartaee-certification/5.21.2/README.adoc[Payara Server 5.21.2]
+*** xref:jakartaee-certification/5.21.2/tck-results-full-5.21.2.adoc[5.21.2 Full Profile]
 ** xref:jakartaee-certification/5.201/README.adoc[Payara Server 5.201]
 *** xref:jakartaee-certification/5.201/tck-results-full-5.201.adoc[5.201 Full Profile]
 ** xref:jakartaee-certification/5.194/README.adoc[Payara Server 5.194]

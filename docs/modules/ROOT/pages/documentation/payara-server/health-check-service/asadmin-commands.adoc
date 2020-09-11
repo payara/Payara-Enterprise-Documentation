@@ -354,7 +354,7 @@ value
 |no
 
 |`--stuck-threads-threshold-unit`
-|xref:https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html[`TimeUnit`]
+|https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html[`TimeUnit`]
 |The unit for the threshold for when a thread should be considered stuck. Only available for `st` service.
 |-
 |no
@@ -697,7 +697,7 @@ frequency as you would do with the `healthcheck-configure-service` command.
 
 | `--unit`
 | TimeUnit
-| The time unit to set the frequency of the metric monitoring. Must correspond to a valid xref:https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html[`java.util.concurrent.TimeUnit`] value
+| The time unit to set the frequency of the metric monitoring. Must correspond to a valid https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html[`java.util.concurrent.TimeUnit`] value
 | `SECONDS`
 | no
 
@@ -771,7 +771,7 @@ Configures the Stuck Thread checker. The Stuck Threads checker is comparable to 
 |no
 
 |`--unit`
-|xref:https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html[`TimeUnit`]
+|https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html[`TimeUnit`]
 |The unit for the time between healthchecks
 |-
 |no
@@ -783,7 +783,7 @@ Configures the Stuck Thread checker. The Stuck Threads checker is comparable to 
 |no
 
 |`--thresholdUnit`
-|xref:https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html[`TimeUnit`]
+|https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html[`TimeUnit`]
 |The unit for the threshold for when a thread should be considered stuck
 |-
 |no

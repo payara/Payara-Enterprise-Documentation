@@ -2,7 +2,7 @@
 
 
 Payara Platform provides the Payara VSCode extension to integrate Payara Server Enterprise and Payara Micro Enterprise into Visual Studio Code.
-The extension is available in the xref:https://marketplace.visualstudio.com/items?itemName=Payara.payara-vscode[Visual Studio Marketplace].
+The extension is available in the https://marketplace.visualstudio.com/items?itemName=Payara.payara-vscode[Visual Studio Marketplace].
 
 * <<prerequisite-extension,Prerequisite VSCode Extensions>>
 * <<installing-extension,Installing Payara VSCode Extension>>
@@ -12,7 +12,7 @@ The extension is available in the xref:https://marketplace.visualstudio.com/item
 [[prerequisite-extensions]]
 == Prerequisite VSCode Extensions
 
-xref:https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack[Java Extension Pack, by Microsoft]
+https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack[Java Extension Pack, by Microsoft]
 
 [[installing-extension]]
 == Installing Payara VSCode extension

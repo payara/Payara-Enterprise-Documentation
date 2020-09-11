@@ -1,7 +1,7 @@
 [[enable-jmx]]
 = Enable JMX Monitoring in Payara Server
 
-After xref:http://www.payara.fish/downloads[downloading the latest version of
+After http://www.payara.fish/downloads[downloading the latest version of
 Payara Server] and starting it up, there will be JMX data available immediately,
 but this is data will only include generic statistics from the JVM itself and
 will not include any metrics from Payara Server. To view Payara Server metrics,
@@ -9,8 +9,8 @@ there are a few extra steps to complete first.
 
 Since we need to show the MBeans available, we will use VisualVM for this
 guide. This is available in the Oracle JDK as `jvisualvm`, or as a separate
-xref:http://visualvm.github.io/download.html[download from visualvm.github.io].
-To view MBeans, the xref:http://visualvm.github.io/plugins.html[_MBeans Browser_ plugin]
+http://visualvm.github.io/download.html[download from visualvm.github.io].
+To view MBeans, the http://visualvm.github.io/plugins.html[_MBeans Browser_ plugin]
 will need to be installed.
 
 With Payara Server Enterprise started, VisualVM will detect the running Payara Server as an
