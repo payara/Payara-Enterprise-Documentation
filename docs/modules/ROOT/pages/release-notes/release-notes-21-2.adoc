@@ -10,6 +10,10 @@ In Payara Enterprise 5.21.0 (released in July), we added HTTP/2 support for JDK 
 
 You may continue using HTTP/2 with an older supported version of JDK 8 (8u162-8u242). We will re-add HTTP/2 support for JDK Native ALPN APIs to Payara Enterprise in a future release after it’s deemed stable.
 
+*Security Improvements*
+
+* [https://github.com/payara/Payara/pull/4843[FISH-381]] - Upgrade Nimbus JOSE+JWT to 8.20
+
 *Bug Fixes*
 
 * [https://github.com/payara/Payara/pull/4870[FISH-37]] - @DataSourceDefinition passes serverName and URL DataSource in some cases
@@ -24,7 +28,3 @@ You may continue using HTTP/2 with an older supported version of JDK 8 (8u162-8u
 * [https://github.com/payara/Payara/pull/4854[FISH-393]] - asadmin command list-rest-endpoints doesn't list PATCH methods
 * [https://github.com/payara/Payara/pull/4868[FISH-407]] - List of enabled application targets is not always correct
 * [https://github.com/payara/Payara/pull/4871[FISH-425]] - Revert FISH-31 - HTTP/2 Support for JDK Native ALPN APIs
-
-*Security Improvements*
-
-* [https://github.com/payara/Payara/pull/4843[FISH-381]] - Upgrade Nimbus JOSE+JWT to 8.20
