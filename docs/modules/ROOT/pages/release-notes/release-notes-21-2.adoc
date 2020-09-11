@@ -6,7 +6,9 @@
 
 *Notes*
 
-In this release of Payara Enterprise we're unfortunately temporarily reverting an improvement we added in 5.21.0 - HTTP/2 support for JDK Native ALPN APIs (FISH-31). It has proved to be unstable in certain situations and so we've taken the decision to remove it from the Enterprise distributions until it's matured further - we were too quick to bring this feature in to Enterprise and apologise if this impacts you. This reversion means that HTTP/2 support will not work when using JDK 8u252 or higher (including JDK 11), and a warning will be printed in the log related to this. HTTP/2 should still work when using an older supported version of JDK 8 (8u162-8u242).
+In Payara Enterprise 5.21.0 (released in July), we added HTTP/2 support for JDK Native ALPN APIs. Unfortunately, we determined it has the potential for becoming unstable in certain situations. To maintain security and stability for all Enterprise customers in any situation - we've removed it from our Enterprise Editions until it's matured further. Reverting HTTP/2 support to how it worked in Payara Enterprise 5.20.0  means it will currently not work when using JDK 8u252 or higher (including JDK 11).
+
+You may continue using HTTP/2 with an older supported version of JDK 8 (8u162-8u242). We will re-add HTTP/2 support for JDK Native ALPN APIs to Payara Enterprise in a future release after it’s deemed stable.
 
 *Bug Fixes*
 
