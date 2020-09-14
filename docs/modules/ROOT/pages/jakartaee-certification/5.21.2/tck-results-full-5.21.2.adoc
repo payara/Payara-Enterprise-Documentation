@@ -46,7 +46,7 @@ SHA-256: `b6778914f78bfcce5d6934347d71502603b1b0a6bbfdfbcf956271c367d40974`
 ** Jakarta Batch 1.0 TCK tests are included in Jakarta EE 8 CTS tests, See test results in section `batch` 
 - Java runtime used to run the implementation:
 +
-`OpenJDK Runtime Environment (build 1.8.0_242-8u242-b08-0ubuntu3~18.04-b08)
+`OpenJDK Runtime Environment (build 1.8.0_162-8u162-b12-1-b12)
 - Summary of the information for the certification environment:
 +
 Apache Derby, Linux, Ubuntu 18.04.3 +
