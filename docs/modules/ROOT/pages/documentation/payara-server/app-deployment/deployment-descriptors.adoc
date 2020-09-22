@@ -67,3 +67,7 @@ The following elements are supported in Payara Server on top of elements support
 Since version __5.184__
 
 * `snapshot` (_property of transaction isolation, this isolation level is only supported by Microsoft SQL Server_)
+
+Since version __5.2020.5__
+
+* `log-jdbc-calls` (_attribute of jdbc-connection-pool_)
