@@ -10,7 +10,7 @@ NOTE: If no minimum and/or maximum JDK versions are set for a particular JVM opt
 [[versioning-syntax]]
 == Versioning Syntax
 
-JDK versions must follow standard the standard JDK versioning scheme (`1.$MAJOR.$MINOR.$UPDATE`). The syntax that can be used is a bit flexible, allowing the following variants to be correctly interpreted:
+JDK versions must follow the standard JDK versioning scheme (`1.$MAJOR.$MINOR.$UPDATE`). The syntax that can be used is a bit flexible, allowing the following variants to be correctly interpreted:
 
 * `1.8.0.162`
 * `1.8.0u162`
