@@ -43,6 +43,7 @@ image:logging/json_underscore_prefix_example.png[Example log file with the under
 
 [[additional-fields]]
 == Support for Additional Fields
+_Since Payara Server 5.22.0_
 
 The JSON Log Formatter also supports the definition of additional fields through the parameters property. This
 includes logging out the contents of a map.
