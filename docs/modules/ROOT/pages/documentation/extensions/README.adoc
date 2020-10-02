@@ -1,0 +1,9 @@
+= Extensions
+
+Payara Community Edition provides extensions for the server. This is a way of keeping the Community Edition server more compact, and allowing these extensions to be developed and released quickly without being forced into the Community release cycle. This also makes it much easier to extend the server functionality as you please to provide additional features.
+
+Currently, the following extensions are provided:
+
+== xref:documentation/extensions/notifiers/README.adoc[Notifier Extensions]
+
+The notifier extensions allow notifications from the Notification Service to propagate to various channels on top of the notifiers provided by default. See xref:documentation/payara-server/notification-service/notifiers.adoc[the notifier page] for more information on the default notifiers.

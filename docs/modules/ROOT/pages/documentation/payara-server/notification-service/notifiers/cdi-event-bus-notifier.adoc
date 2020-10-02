@@ -23,7 +23,7 @@ To make these changes via the asadmin tool, use the following command, which mir
 
 [source, shell]
 ----
-asadmin> notification-cdieventbus-configure --loopBack=true --dynamic=true --enabled=true --hazelcastEnabled=true
+asadmin> set-cdieventbus-notifier-configuration --loopBack=true --dynamic=true --enabled=true --hazelcastEnabled=true
 ----
 
 To check the current applied configuration from asadmin, run the command:
@@ -38,8 +38,8 @@ This will return the current configuration, with whether it is currently enabled
 [source, shell]
 ----
 $ asadmin get-cdieventbus-notifier-configuration
-Enabled  LoopBack  
-true     true      
+Enabled  Noisy  Loopback
+false    true   false    
 ----
 
 [[observing-events]]

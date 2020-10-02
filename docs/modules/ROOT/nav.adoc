@@ -263,6 +263,15 @@
 *** xref:documentation/ecosystem/docker-server-usage.adoc[Payara Server Docker Image Usage]
 *** xref:documentation/ecosystem/docker-micro-usage.adoc[Payara Micro Docker Image Usage]
 
+* xref:documentation/extensions/README.adoc[Extensions]
+** xref:documentation/extensions/notifiers/README.adoc[Notifiers]
+*** xref:documentation/extensions/notifiers/datadog-notifier.adoc[Datadog Notifier]
+*** xref:documentation/extensions/notifiers/email-notifier.adoc[Email Notifier]
+*** xref:documentation/extensions/notifiers/newrelic-notifier.adoc[New Relic Notifier]
+*** xref:documentation/extensions/notifiers/slack-notifier.adoc[Slack Notifier]
+*** xref:documentation/extensions/notifiers/snmp-notifier.adoc[SNMP Notifier]
+*** xref:documentation/extensions/notifiers/xmpp-notifier.adoc[XMPP Notifier]
+
 .User Guides
 * xref:documentation/user-guides/user-guides.adoc[User Guides Overview]
 ** xref:documentation/user-guides/backup-domain.adoc[Payara Server Domain Backup]

@@ -37,15 +37,15 @@ For any new domain, the notification service will be disabled by default. It
 can be enabled through the admin console as shown above, or via asadmin commands.
 
 To configure the log notifier through the asadmin tool, use the
-`notification-log-configure` subcommand:
+`set-log-notifier-configuration` subcommand:
 
 [source, shell]
 ----
 NAME
-     notification-log-configure
+     set-log-notifier-configuration
 
 SYNOPSIS
-     Usage: notification-log-configure 
+     Usage: set-log-notifier-configuration 
              --useseparatelogfile=true|false
              [--dynamic=false]
              [--target=server]
@@ -61,7 +61,7 @@ OPTIONS
 For example:
 [source, shell]
 ----
-asadmin> notification-log-configure --enabled=true --dynamic=true
+asadmin> set-log-notifier-configuration --enabled=true --dynamic=true
 ----
 
 More details on specific commands for the notification service can be
