@@ -40,3 +40,18 @@ By default, `fish.payara.deprecated.jsonlogformatter.underscoreprefix` property 
 Once underscore prefix enabled, all JSON fields should be prefixed with underscore, similar to this sample:
 
 image:logging/json_underscore_prefix_example.png[Example log file with the underscore prefix in JSON fields]
+
+[[additional-fields]]
+== Support for Additional Fields
+
+The JSON Log Formatter also supports the definition of additional fields through the parameters property. This
+includes logging out the contents of a map.
+
+You can set these additional fields via the `LogRecord.setParameters` method, like so:
+
+[source, java]
+----
+LogRecord lr = new LogRecord(Level.INFO, "some message");
+lr.setParameters(new Object[]{Collections.singletonMap(correlationIdKey, correlationIdValue)});
+logger.log(lr);
+----
