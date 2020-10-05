@@ -1,9 +1,9 @@
 [[tracing-remote-ejbs]]
 = Tracing Remote EJBs
 
-_Since Payara Server 5.2020.4_
+_Since Payara Server 5.22.0_
 
-Introduced in Payara Server 5.2020.4, RMI calls to an EJB from a Java SE client will now have the active Span Context
+Introduced in Payara Server 5.22.0, RMI calls to an EJB from a Java SE client will now have the active Span Context
 automatically propagated to the server, with the server-side span being created as a child of this client call.
 
 [[java-se-client-tracing]]
