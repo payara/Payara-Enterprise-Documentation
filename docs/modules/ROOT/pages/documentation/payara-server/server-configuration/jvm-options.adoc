@@ -88,6 +88,18 @@ Execute the _create_jvm_options_ but perform a double escaping of the special ch
 asadmin> create-jvm-options "-XX\\:MaxPermSize=512m"
 ----
 
+[[deleting-jvm-options]]
+=== Deleting JVM Options
+Deleting JVM options is done using either the Admin Console, or the `delete-jvm-options` asadmin command. It is not
+required for you to specify the JDK version braces for deleting a JVM option, though you can if you wish.
+
+For example, given the option "[1.8.0.160|1.8.0.200]XX\:NewRatio=3", either of the following will work:
+
+[source, shell]
+----
+asadmin> delete-jvm-options "XX\:NewRatio=3"
+asadmin> delete-jvm-options "[1.8.0.160|1.8.0.200]XX\:NewRatio=3"
+----
 
 
 
