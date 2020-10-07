@@ -257,6 +257,8 @@
 *** xref:documentation/ecosystem/cloud-connectors/mqtt.adoc[MQTT]
 ** xref:documentation/ecosystem/security-connectors.adoc[Security Connectors]
 ** xref:documentation/ecosystem/docker-images.adoc[Docker Images]
+*** xref:documentation/ecosystem/docker-server-usage.adoc[Payara Server Docker Image Usage]
+*** xref:documentation/ecosystem/docker-micro-usage.adoc[Payara Micro Docker Image Usage]
 
 .User Guides
 * xref:documentation/user-guides/user-guides.adoc[User Guides Overview]
