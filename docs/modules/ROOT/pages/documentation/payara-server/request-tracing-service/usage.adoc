@@ -89,7 +89,7 @@ To access the tracer in your applications, you can inject it like so:
 Tracer tracer;
 ----
 
-NOTE: You can only inject a Tracer when your application is running inside a Payara Platform runtime
+CAUTION: You can only inject a Tracer when your application is running inside a Payara Platform runtime
 - you cannot do so from a Java SE client. From a Java SE client you must use the OpenTracing.io
 `GlobalTracer`, see
 xref:/documentation/payara-server/request-tracing-service/tracing-remote-ejbs.adoc#getting-a-tracer[here]
