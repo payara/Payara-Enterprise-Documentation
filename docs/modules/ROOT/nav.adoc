@@ -142,6 +142,7 @@
 *** xref:documentation/payara-server/request-tracing-service/configuration.adoc[Configuration]
 *** xref:documentation/payara-server/request-tracing-service/usage.adoc[Usage]
 *** xref:documentation/payara-server/request-tracing-service/terminology.adoc[Terminology]
+*** xref:documentation/payara-server/request-tracing-service/tracing-remote-ejbs.adoc[Tracing Remote EJBs]
 ** xref:documentation/payara-server/phone-home/phonehome-overview.adoc[Phone Home]
 *** xref:documentation/payara-server/phone-home/phone-home-information.adoc[Gathered Data]
 *** xref:documentation/payara-server/phone-home/phone-home-asadmin.adoc[Asadmin Commands]
