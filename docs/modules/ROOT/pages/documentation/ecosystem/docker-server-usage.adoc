@@ -19,8 +19,6 @@ docker run -p 8080:8080 payara/server-full:{currentVersion}
 
 === JDK Version
 
-_Since Payara 5.2020.3_
-
 The Docker Images are available in 2 different flavours; either based on JDK 8 (tags without a suffix) or JDK 11 (tags with the `-jdk11` suffix).
 
 The command used in the Quick start above will start the Zulu JDK 8 version. If you need to run Zulu JDK 11, you need to add the `-jdk11` suffix to the tag name.
