@@ -28,7 +28,7 @@ To stop the GUI run:
 Stopping the GUI does not disable the data collection.
 This is a background process that is controlled separately as described in the next section.
 
-NOTE: Payara InSight is only bundeled with Payara Server Enterprise distribution.
+NOTE: Payara InSight is only bundled with Payara Server Enterprise distribution.
 
 
 [[monitoring-console-disable]]
