@@ -28,7 +28,7 @@ image::intellij-plugin/payara-server/add-artifact.png[Add artifact]
 image::intellij-plugin/payara-server/select-war-artifact.png[Select WAR artifact]
 
 * Now fix the debugger related warning by pressing the *Fix* button, which updates 
-the debugger settings in the domains.xml of the selected Payara Enterprise Server’s domain:
+the debugger settings in the domains.xml of the selected Payara Enterprise Server's domain:
 
 image::intellij-plugin/payara-server/fix-debugger-warning.png[Fix debugger warning]
 
@@ -46,8 +46,8 @@ and opens the application home page URL in the web browser:
 
 image::intellij-plugin/payara-server/home-page.png[Home Page]
 
-* You may see the log in the *Services ? Payara Log* window:
+* You may see the log in the *Services > Payara Log* window:
 
 image::intellij-plugin/payara-server/server-log.png[Payara Server log]
 
-image::intellij-plugin/payara-server/breakpoint-log.png[Debug breakpoint]
+image::intellij-plugin/payara-server/breakpoint.png[Debug breakpoint]
