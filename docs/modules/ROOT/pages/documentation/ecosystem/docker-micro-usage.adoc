@@ -1,0 +1,163 @@
+== Usage
+
+=== Quick start
+
+To start the docker container and run Payara Micro:
+
+....
+docker run -p 8080:8080 payara/micro
+....
+
+It runs Payara Micro without any applications, therefore accessing the HTTP server bound to port 8080 will just return HTTP code 404 - Not Found. The Payara Micro process runs under the `payara` user.
+
+You need to add your applications to the container and deploy them.
+
+It is always recommended to specify the tag name of the Docker Image that you like to run. Otherwise, you are running the latest version and might encounter some unwanted effects due to changes between versions.
+
+....
+docker run -p 8080:8080 payara/micro:{currentVersion}
+....
+
+
+=== JDK Version
+
+The Docker Images are available in 2 different flavours; either based on JDK 8 (tags without a suffix) or JDK 11 (tags with the `-jdk11` suffix).
+
+The command used in the Quick start above, will start the Zulu JDK 8 version. If you need the Zulu JDK 11 version, you need to add the `-jdk11` suffix to the image name.
+
+....
+docker run -p 8080:8080 payara/micro:{currentVersion}-jdk11
+....
+
+=== Open ports
+
+Most common default open ports that can be exposed outside of the container are:
+
+* 8080 - HTTP listener
+* 8443 - HTTPS listener
+* 6900 - Hazelcast cluster communication port
+
+=== Application deployment
+
+Payara Micro deploys applications during startup, according to provided command-line arguments. It does not open any port to deploy applications during runtime on request.
+
+There are number of ways how you can run your applications with Payara Micro within docker:
+
+* load applications from a mounted file-system (from a disk on the host system or on network)
+* derive a new docker image that also contains your applications on the file-system
+* load applications from a maven repository accessible from the docker container
+
+==== *Run from a mounted volume*
+
+Once we mount a volume that contains our applications, Payara Micro can access the applications and run them through the local file-system.
+
+The docker image already contains `/opt/payara/deployments` directory, which can be bound to a directory with your applications.
+
+The following command will run Payara Micro docker container and will deploy applications that exist in the directory `~/payara-micro/applications` on the host file-system:
+
+....
+docker run -p 8080:8080 \
+ -v ~/payara-micro/applications:/opt/payara/deployments payara/micro:{currentVersion}
+....
+
+To run a specific application within the directory, you can modify the default entry point and use `--deploy` option followed by path to the application file:
+
+....
+docker run -p 8080:8080 \
+ -v ~/payara-micro/applications:/opt/payara/deployments \
+ payara/micro:{currentVersion} \
+ --deploy /opt/payara/deployments/myapplication.war
+....
+
+==== *Build a new docker image to run your application*
+
+You can extend the docker image to add your deployables into the `/opt/payara/deployments` directory and run the resulting docker image instead of the original one.
+
+The following example Dockerfile will build an image that deploys `myapplication.war` when Payara Micro starts:
+
+....
+FROM payara/micro:{currentVersion}
+
+COPY myapplication.war $DEPLOY_DIR
+....
+
+==== *Run from a maven repository*
+
+If your application is already in a maven repository, you can run it with Payara Micro in the docker very easily. Payara Micro knows how to download an artifact from a maven repository and run it directly. You just need to provide an alternative entry point
+
+The following command runs Payara Micro in the docker image and runs an application stored in a maven repository. The application group is `fish.payara.examples`, artifact name is `my-application`, and version is `1.0-SNAPSHOT`. The maven repository is available on host `172.17.0.10`:
+
+....
+docker docker run -p 8080:8080 payara/micro:{currentVersion} \
+ --deployFromGAV "fish.payara.examples:my-application:1.0-SNAPSHOT" \
+ --additionalRepository https://172.17.0.10/content/repositories/snapshots
+....
+
+==== *Define context root*
+
+_Since Payara Micro 5.191_
+
+
+The context root of the deployed application(s) is determined based on the file name of the artifact which is deployed. You can explicitly define the value of the context root using the `--contextroot` option, including deploying the application on the root itself ( `/`, specify *ROOT* as option value).
+
+Some examples of how it can be used :
+
+....
+docker run -p 8080:8080 \
+ -v ~/payara-micro/applications:/opt/payara/deployments payara/micro:{currentVersion}  \
+ --deploymentDir /opt/payara/deployments  \
+ --contextroot myRoot
+....
+
+Deploys the (first) application within the mounted directory _~/payara-micro/applications_ under the root context _/myRoot_.
+
+....
+docker run -p 8080:8080 \
+ -v ~/payara-micro/applications:/opt/payara/deployments \
+ payara/micro:{currentVersion} \
+ --deploy /opt/payara/deployments/myapplication.war \
+ --contextroot ROOT
+....
+
+Deploys the _myapplication.war_ to the root.
+
+....
+FROM payara/micro:{currentVersion}
+
+COPY myapplication.war $DEPLOY_DIR
+
+CMD ["--deploymentDir", "/opt/payara/deployments", "--contextroot", "my"]
+....
+
+Creates a new Docker Image which results in the deployment of the _myapplication.war_ under the root context _/my_.
+
+== Speeding up Boot by disabling the Data Grid
+
+By default the image has the Data Grid enabled and instances of Payara Micro will form a Data Grid if they can see each other over multicast.
+
+If you don't intend to form a cluster and want to speed up boot time, you can disable Data Grid by modifying the CMD to add `--nocluster`.
+
+== Configuration
+
+=== Environment Variables
+
+The following environment variables are available to configure Payara Micro. 
+
+* `MEM_MAX_RAM_PERCENTAGE` - Value for the JVM parameter `-XX:MaxRAMPercentage` that indicates the percentage of memory assigned to the container that can be used by the Java Process. By default this is _70_.
+* `MEM_XSS` - Defines the value of the Stack size, used in the JVM parameter `-Xss`. The default value is _512k_.
+* `JVM_ARGS` - Specifies a list of JVM arguments which will be passed to Payara in the `entrypoint.sh` script.
+
+The following environment variables shouldn’t be changed, but may be helpful in your Dockerfile.
+
+[width="100%",cols="29%,50%,21%",options="header",]
+|===
+|Variable name |Value |Description
+|`HOME_DIR` |`/opt/payara` |The directory containing the Payara Micro binary
+|`PAYARA_DIR` |`/opt/payara` |The root directory of the Payara installation
+|`SCRIPT_DIR` |`/opt/payara` |The directory where the `entrypoint.sh` script can be found.
+|===
+
+== Details
+
+Payara Micro JAR file `payara-micro.jar` is located in the `/opt/payara/` directory. This directory is the default working directory of the docker image. The directory name is deliberately free of any versioning so that any scripts written to work with one version can be seamlessly migrated to the latest docker image.
+

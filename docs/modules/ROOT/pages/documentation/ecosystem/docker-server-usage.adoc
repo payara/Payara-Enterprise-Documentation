@@ -1,0 +1,171 @@
+== Usage
+
+=== Quick start
+
+To boot the default domain with HTTP listener exported on port 8080:
+
+....
+docker run -p 8080:8080 payara/server-full
+....
+
+The Docker container specifies the default entry point, starts the domain `production` in the foreground so that Payara Server becomes the main process. The _tini_ tool is used to guarantee that the Payara Server process runs seamlessly as the main docker process. The Payara Server process runs under the `payara` user.
+
+It is always recommended to specify the tag name of the Docker Image that you like to run. Otherwise, you are running the latest version and might encounter some unwanted effects due to changes between versions.
+
+....
+docker run -p 8080:8080 payara/server-full:{currentVersion}
+....
+
+
+=== JDK Version
+
+The Docker Images are available in 2 different flavours; either based on JDK 8 (tags without a suffix) or JDK 11 (tags with the `-jdk11` suffix).
+
+The command used in the Quick start above will start the Zulu JDK 8 version. If you need to run Zulu JDK 11, you need to add the `-jdk11` suffix to the tag name.
+....
+docker run -p 8080:8080 payara/server-full:{currentVersion}-jdk11
+....
+
+=== Payara Versions
+
+Besides the full profile version, the Payara Server Web version is also available as Docker Image.  The Docker Image name is:
+
+....
+docker run -p 8080:8080 payara/server-web:{currentVersion}
+....
+
+
+=== Open ports
+
+Most common default open ports that can be exposed outside of the container are:
+
+* 8080 - HTTP listener
+* 8181 - HTTPS listener
+* 4848 - HTTPS admin listener
+* 9009 - Debug port
+
+=== Administration
+
+To boot and export admin interface on port 4848 (and also the default HTTP listener on port 8080):
+
+....
+docker run -p 4848:4848 -p 8080:8080 payara/server-full:{currentVersion}
+....
+
+Because Payara Server doesn’t allow insecure remote admin connections (outside of a Docker container), the admin interface is secured by default, accessible using HTTPS on the host machine: https://localhost:4848; The default user and password is `admin`.
+
+=== Application deployment
+
+==== *Deploy applications from a folder on startup*
+
+The default Docker entry point will scan the folder `$DEPLOY_DIR` (by default points to `/opt/payara/deployments`) for files and folders and deploy them automatically after the domain is started. If RAR files are found in that directory, they will be deployed before any other file.
+
+In order to deploy applications, you can mount the `$DEPLOY_DIR` (`/opt/payara/deployments`) folder as a docker volume to a directory, which contains your applications. The following will run Payara Server in the docker and will start applications that exist in the directory `~/payara/apps` on the local file-system:
+
+....
+docker run -p 8080:8080 -v ~/payara/apps:/opt/payara/deployments payara/server-full:{currentVersion}
+....
+
+In order to build a Docker image that contains your applications and starts them automatically, you can copy the applications into the `$DEPLOY_DIR` directory and run the resulting docker image instead of the original one.
+
+The following example _Dockerfile_ will build an image that starts Payara Server and deploys `myapplication.war` when the Docker container is started:
+
+....
+FROM payara/server-full:{currentVersion}
+
+COPY myapplication.war $DEPLOY_DIR
+....
+
+You can now build the Docker image and run the application `myapplication.war` with the following commands:
+
+....
+docker build -t mycompany/myapplication:1.0 .
+....
+
+....
+docker run -p 8080:8080 mycompany/myapplication:1.0
+....
+
+==== *Remote deployment*
+
+If admin port is exposed, it is possible to deploy applications remotely, outside of the docker container, by means of admin console and asadmin tool as usual. See the _Administration_ section above for information how to access the admin interface remotely.
+
+=== Configuration
+
+==== *Environment Variables*
+
+The following environment variables are available to configure Payara Server to change the behaviour of the Payara Server instance. They can be either specified in the `Dockerfile`, passed to the `docker run` command via the `--env` or `--env-file` arguments or modified by an init script before the `startInForeground.sh` script is executed:
+
+* `POSTBOOT_COMMANDS` - The name of the file containing post boot commands for the Payara Server instance. This is the file written to in the `generate_deploy_commands.sh` script.
+* `MEM_MAX_RAM_PERCENTAGE` - Value for the JVM parameter `-XX:MaxRAMPercentage` that indicates the percentage of memory assigned to the container that can be used by the Java Process. By default this is _70_.
+* `MEM_XSS` - Defines the value of the Stack size, used in the JVM parameter `-Xss`. The default value is _512k_.
+* `DEPLOY_PROPS` - Specifies a list of properties to be passed with the deploy commands generated in the `generate_deploy_commands.sh` script, For example `'--properties=implicitCdiEnabled=false'`.
+* `PREBOOT_COMMANDS` - The name of the file containing pre boot commands for the Payara Server instance.
+* `PAYARA_ARGS` - additional arguments to the `start-domain` command that starts the server. Use this only if it’s not enough to specify the configuration using the `POSTBOOT_COMMANDS` or `PREBOOT_COMMANDS` file
+* `JVM_ARGS` - Specifies a list of JVM arguments which will be passed to Payara in the `startInForeground.sh` script.
+
+The following environment variables shouldn’t be changed, but may be helpful in your Dockerfile.
+
+[width="100%",cols="29%,50%,21%",options="header",]
+|===
+|Variable name |Value |Description
+|`HOME_DIR` |`/opt/payara` |The home directory for the `payara` user.
+|`PAYARA_DIR` |`/opt/payara/appserver` |The root directory of the Payara installation.
+|`SCRIPT_DIR` |`/opt/payara/scripts` |The directory where the `generate_deploy_commands.sh` and `startInForeground.sh` scripts can be found.
+|`CONFIG_DIR` |`/opt/payara/config` |The directory where the post and pre boot files are generated to by default.
+|`DEPLOY_DIR` |`/opt/payara/deployments` |The directory where applications are searched for in `generate_deploy_commands.sh` script.
+|`PASSWORD_FILE` |`/opt/payara/passwordFile` |The location of the password file for asadmin. This can be passed to asadmin using the `--passwordfile` parameter.
+|`ADMIN_USER` |`admin` |The user name for accessing the server with secure administration.
+|`ADMIN_PASSWORD` |`admin` | The password used for accessing the server in combination with user name defined in  `ADMIN_USER`. By default this is `admin`. Can only be set when the basic image is created.
+|`DOMAIN_NAME` |`production` | The name of the domain running within the container. 
+|`AS_ADMIN_MASTERPASSWORD` |`changit` |  The master password to pass to Payara Server. This is overriden if one is specified in the `$PASSWORD_FILE`.
+|===
+
+==== *Custom asadmin commands at server startup time*
+
+It’s possible to run a set of custom asadmin commands during Payara server startup. You can either specify the `PREBOOT_COMMANDS` or `POSTBOOT_COMMANDS` environment variables to point to the absolute path of your custom boot command file, or you can just copy a custom file to the expected path (default paths are `$CONFIG_DIR/post-boot-commands.asadmin` and `$CONFIG_DIR/pre-boot-commands.asadmin`).
+
+For example, the following command will execute commands defined in the `/local/path/with/boot/file` directory mounted as a volume:
+
+....
+docker run -p 8080:8080 -v /local/path/with/boot/file:/config -e POSTBOOT_COMMANDS=/config/post-boot-commands.asadmin payara/server-full:{currentVersion}
+....
+
+Alternatively, the following Dockerfile will build an image which will execute the commands in the `post-boot-commands.asadmin` file:
+
+....
+FROM payara/server-full:{currentVersion}
+
+COPY post-boot-commands.asadmin $POSTBOOT_COMMANDS
+....
+
+==== *Execution of custom scripts before server startup*
+
+In cases this is not sufficient, you can add your own init scripts to the `${SCRIPT_DIR}`. You need to follow the naming convention: `init_<num>_<text>.sh`, where `<num>` gives you a simple option to run scripts in order. Be aware that the default deploy commands script is using this naming too.
+
+If you do not want to create a sub-image, you can also mount a volume to `/opt/payara/scripts/init.d` and each `*.sh` file in there will be executed in standard file order.
+
+*CAUTION:* you can combine both approaches, but please keep in mind that scripts from `init.d` will run _after_ those from subimages!
+
+=== *The default Docker entry point*
+
+The default entry point is https://github.com/krallin/tini[tini], as the JVM should not run as PID 1. The default `CMD` argument for `tini` runs the `bin/entrypoint.sh` script in _exec_ mode, which in turn runs the following:
+
+* `${SCRIPT_DIR}/init_1_generate_deploy_commands.sh`. This script outputs deploy commands to the post boot command file located at `$POSTBOOT_COMMANDS` (default `$CONFIG_DIR/post-boot-commands.asadmin`). If the deploy commands are already found in that file, this script does nothing.
+* `${SCRIPT_DIR}/init_*.sh` scripts that you may provide for custom use as waiting or initializing during startup, *before* Payara Server starts.
+* `${SCRIPT_DIR}/startInForeground.sh`. This script starts the server in the foreground, in a manner that allows the Payara instance to be controlled by the docker host. The server will run the pre boot commands found in the file at `$PREBOOT_COMMANDS`, as well as the post boot commands found in the file at `$POSTBOOT_COMMANDS`.
+
+==== *Testing, browsing and configuring a container instance*
+
+For testing or other purposes, you can override the default entrypoint. For example, the following command will start the container at a bash prompt, without starting Payara Server. It allows you to browse the image and configure the Payara Server instance as you like:
+
+....
+docker run -p 8080:8080 -it payara/server-full:{currentVersion} bash
+....
+
+== Details
+
+Payara Server installation is located in the `/opt/payara/appserver` directory. The  `/opt/payara/` directory is the default working directory of the docker image. The directory name is deliberately free of any versioning so that any scripts written to work with one version can be seamlessly migrated to the latest docker image.
+
+
+
