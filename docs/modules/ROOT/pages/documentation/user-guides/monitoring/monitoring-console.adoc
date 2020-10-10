@@ -9,7 +9,7 @@ The metrics include server metrics from different sources within the server as w
 
 [[monitoring-console-installation]]
 == Enabling the GUI
-By default the GUI of Payara InSight is automatically enabled for the `production` domain.
+By default, the GUI of Payara InSight is automatically enabled for the `production` domain.
 Links can be found on the _Common Tasks_ home page of the Admin GUI in section _Monitoring_ or on the _Monitoring Data_ page.
 
 For `domain1` the GUI is not enabled by default and the `set-monitoring-console-configuration` is used to enable it on demand.
@@ -19,7 +19,7 @@ To enable the GUI manually run the following asadmin command:
         asadmin> set-monitoring-console-configuration --enabled=true
 
 Payara InSight is now available at http://localhost:8080/monitoring-console/ .
-Like the admin GUI it only runs on the DAS.
+Like the admin GUI, it only runs on the DAS.
 
 To stop the GUI run:
 
@@ -34,7 +34,7 @@ NOTE: Payara InSight is only bundled with Payara Server Enterprise distribution.
 [[monitoring-console-disable]]
 == Enabling Data Collection
 The collection of monitoring data gets enabled and disabled in connection with the general configuration: _Monitoring_ => _Monitoring Service_ => _Enabled_.
-By default this settings is enabled.
+By default, this settings is enabled.
 
 NOTE: To remove only the monitoring data collection from the server without disabling the monitoring service itself delete the `monitoring-console-core.jar` from the `/glassfish/modules` folder of your installation(s) and restart the server.
 
@@ -50,7 +50,7 @@ NOTE: Some metrics are only available when the monitoring configuration of certa
 
 [[monitoring-console-pages]]
 === Pages
-Payara InSight is organized in fully customisable pages. A page is a collection of xref:#monitoring-console-widgets[widgets] arranged in columns. Usually pages are focussed on visualising metrics of a specific area of the server, like HTTP or request tracing. The preconfigured pages are a starting point that can be changed and extended by the user. New custom pages can be created and populated with arbitrary metrics.
+Payara InSight is organized in fully customisable pages. A page is a collection of xref:#monitoring-console-widgets[widgets] arranged in columns. Usually, pages are focused on visualising metrics of a specific area of the server, like HTTP or request tracing. The pre-configured pages are a starting point that can be changed and extended by the user. New custom pages can be created and populated with arbitrary metrics.
 
 
 [[monitoring-console-page-switch]]
@@ -64,7 +64,7 @@ image::monitoring-console/mc_menu_left-min.png[Page Navigation (minimised)]
 Since version _5.20.0_, each page switch also updates the URL making the URL bookmarkable.
 URLs can be copied and shared with others to direct them to particular pages.
 
-Updating URLs after switching pages also means that navigation based on browser's page history is possible and the back button can be used to already visited pages.
+Updating URLs after switching pages also means that navigation based on the browser's page history is possible and the back button can be used to already visited pages.
 
 [[monitoring-console-page-layout]]
 ==== Changing Page Layout
@@ -75,7 +75,7 @@ Changing the column layout of a page does not change the preferred position of t
 
 [[monitoring-console-page-interval]]
 ==== Changing Page Update Interval
-By default the graphs on a page update every 2 seconds.
+By default, the graphs on a page update every 2 seconds.
 To control the interval use quick access in the left side menu or _General_ application settings.
 
 image::monitoring-console/mc_settings_app_general-h.png[General Application Settings]
@@ -118,7 +118,7 @@ NOTE: Pages that are based on a preset cannot be deleted. They can only be reset
 
 [[monitoring-console-page-reset]]
 ==== Reset a Page
-When the configuration of a preconfigured page or any of the widgets on it was changed by the user the page can be reset by clicking _Reset_ icon next to the page name in the expanded left side menu.
+When the configuration of a preconfigured page or any of the widgets on it was changed by the user the page can be reset by clicking the _Reset_ icon next to the page name in the expanded left side menu.
 
 image::monitoring-console/mc_menu_reset.png[Reset a Page]
 
@@ -128,20 +128,20 @@ image::monitoring-console/mc_dialog_reset-page.png[Reset a Page]
 
 WARNING: The reset will affect all widgets and the general page settings of the currently shown page. All changes made previously by a user will be overridden.
 
-NOTE: To reset all pages and remove all user created pages clear the browser's local storage of Payara InSight.
+NOTE: To reset all pages and remove all user-created pages, clear the browser's local storage of Payara InSight.
 
 image::monitoring-console/mc_sample_local-storage-chrome.png[Clear Local Storage in Chrome Browser]
 
 
 [[monitoring-console-page-rotation]]
 ==== Page Rotation
-Payara InSight is built with the intention of being used to display metrics on status monitors.
+Payara InSight is meant to be used to display metrics on status monitors.
 To allow viewing a variety of pages and their metrics on a single screen the pages can be automatically rotated showing each page for a configured interval duration.
 
 To start or stop page rotation either use the quick access button at the button of the left side menu or use the toggle switch in the _General_ application settings.
 This starts or stops the rotation immediately and each page is shown for the configured duration starting with the currently shown page.
 
-The duration can be adjusted changing the text field of the _Page Rotation_ to another time value.
+The duration can be adjusted by changing the text field of the _Page Rotation_ to another time value.
 Use units to express the duration, as for example: `1min`, `30sec`.
 Changes take effect immediately.
 
@@ -153,10 +153,10 @@ image::monitoring-console/mc_settings_page_general-h.png[Page Settings]
 [[monitoring-console-page-sync]]
 ==== Page Management
 Payara InSight uses the browser's local storage to store the page and widget configuration.
-This means by default changes to page configurations do not affect other users.
+This means that, by default, changes to page configurations do not affect other users.
 To make pages available to others and to start from a common base configuration pages are explicitly shared and updated from a persistent server configuration.
 
-The chosen role controls the behaviour and available options for the page management.
+The chosen role controls the behaviour and available options for page management.
 It is the _Administrator_'s role that is meant to manage the persistent server page configuration.
 The _Administrator_ explicitly pushes local pages to the server to share and update their base configuration.
 __User__s and __Guest__s pull the server configuration to update their local configuration with the base.
@@ -166,19 +166,19 @@ The _Page Synchronisation_ dialogue shown when entering the GUI allows the user 
 
 image::monitoring-console/mc_dialog_sync-pages.png[Page Synchronisation]
 
-By default all pages available remotely that have not been changed locally are preselected.
+By default, all pages available remotely that have not been changed locally are preselected.
 
 NOTE: _Guest_ automatically pull the servers base configuration, no dialogue is used
 
 The newest version is marked with an asterisk for easier orientation.
 
-This dialogue can also be opened from the _Pages_ application settings by clicking the _Update Local..._ button shown _Page Sync_ property.
+This dialogue can also be opened from the _Pages_ application settings by clicking the _Update Local..._ button for the _Page Sync_ property.
 
 image::monitoring-console/mc_settings_app_pages-h.png[Page Synchronisation Application Settings]
 
 __Administrator__s also find a button to _Update Server..._ pages with any changes applied to local changes.
 This is only needed for pages that are not using _auto_matic updates in their page settings.
-This simply should give administrators different approaches of managing the shared pages configuration.
+This simply should give administrators different approaches to managing the configuration of shared pages.
 To bulk update all server pages click the _Update Server..._ button and confirm the update:
 
 image::monitoring-console/mc_dialog_push-pages.png[Push All Pages Confirmation Dialogue]
@@ -210,7 +210,7 @@ Select the pages that should be imported.
 
 image::monitoring-console/mc_dialog_import-pages.png[Page Import Dialogue]
 
-WARNING: Importing a pages will override the local page with the same ID (name). Any customisation made to the local page will be lost.
+WARNING: Importing a page will override the local page with the same ID (name). Any customisation made to the local page will be lost.
 
 
 [[monitoring-console-user-role]]
@@ -221,7 +221,7 @@ A user of Payara InSight acts in one of three roles:
 * User: A user that uses Payara InSight to experiment with its features without affecting others.
 * Administrator:  A user that administrates the Payara InSight configuration that is the basis for other users.
 
-When no role is set from previous sessions the user is asked to choose a role when opening Payara InSight application.
+When no role is set from previous sessions the user is asked to choose a role when opening the Payara InSight application.
 
 image::monitoring-console/mc_dialog_role-selection.png[Role Selection]
 
@@ -229,13 +229,13 @@ The selection can be changed at any time in the _General_ application settings f
 
 image::monitoring-console/mc_settings_app_general-h.png[Role Setting]
 
-NOTE: At this point roles are not connected to accounts or other forms of permission management. User can switch between the roles to suit their current intentions when using Payara InSight. We plan to connect roles to accounts and require a login in the near feature.
+NOTE: At this point, roles are not connected to accounts or other forms of permission management. Users can switch between the roles to suit their current intentions when using Payara InSight. We plan to connect roles to accounts and require a login in the near feature.
 
 
 
 [[monitoring-console-widgets]]
 === Widgets
-Widgets are the components that can be placed on a page to show a particular metric or indeed sets of metrics.
+Widgets are the components that can be placed on a page to show a particular metric or a set of metrics.
 While there are different types of widgets usually a widget shows a line graph of one or more metrics for the entire cluster.
 
 
@@ -250,26 +250,26 @@ This opens the _Add New Widget_ dialogue.
 
 image::monitoring-console/mc_dialog_add-new-widget.png[Add New Widget Dialogue]
 
-Use any one or combination of the filter dropdowns to select a subset of metrics and/or enter a query text in any of the free text search input fields to further narrow down the results. All matching metrics will be shown in the left hand list.
-Select one or more items. Selected metrics are shown in the right hand list.
-Between selection the search can be changed.
+Use any one or combination of the filter dropdowns to select a subset of metrics and/or enter a query text in any of the free text search input fields to further narrow down the results. All matching metrics will be shown in the list on the left.
+Select one or more items. Selected metrics are shown in the list on the right.
+The search can be changed between selection.
 
-Finally confirm the selection by clicking the _Add_ button of the dialogue.
+Finally, confirm the selection by clicking the _Add_ button of the dialogue.
 
 Newly added widgets are automatically placed in a column so that widgets are evenly distributed on the page.
-Use the xref:#monitoring-console-widget-config[side panel widget settings] to change column, width, height or item position of the widget or use the quick menu for the widget by clicking the pencil symbol in the top right corner of the widget.
+Use the xref:#monitoring-console-widget-config[side panel widget settings] to change the column, width, height or item position of the widget or use the quick menu for the widget by clicking the pencil symbol in the top right corner of the widget.
 
 
 [[monitoring-console-widget-config]]
 ==== Configuring a Widget
 To configure a widget select it by clicking on its title or the pencil icon in the top right corner of the widget.
 
-This opens the right settings side panel and shows the detail configuration of the widget.
+This opens the right settings side panel and shows the detailed configuration of the widget.
 The side panel can be closed by either deselecting the widget, by clicking on its title again, or by clicking the collapse icon of the right sidebar.
 
 NOTE: If the settings have been opened explicitly through the _Settings_ menu an empty selection will not close the settings side panel.
 
-The _General_ widget settings are concerned with the widgets position within the page and its general appearance.
+The _General_ widget settings are concerned with the widget's position within the page and its general appearance.
 
 image::monitoring-console/mc_settings_widget_general-h.png[Widget General Settings]
 
@@ -330,7 +330,7 @@ image::monitoring-console/mc_settings_widget_extras-h.png[Widget Extras Settings
 | Aggregates | (none checked) | Check to add the all time minimum, maximum or average line to the graph
 | Waterline | (undefined) | Adds a simple reference line that could mark a upper or lower limit. Enter in unit of y-axis, e.g. 20ms, 5s, 2GB, 4%, 123
 | Threshold Reference | `Off` | Controls what value the _Alarming Threshold_ and _Critical Threshold_ are compared to. Usually this is the most recent value but in some cases the all time minimum, maximum or average are useful too.
-| Alarming Threshold | (undefined) | The limit for the _"Alarming"_ state. If _Critical Threshold_ is undefined or if it's value is larger than this value the alarming threshold is exceeded if the reference value is larger than the threshold. Otherwise, if the _Critical Threshold_ is lower than the _Alarming Threshold_, the threshold becomes 'inverse', and is exceeded when the reference value falls below the alarming value. When exceeded the status becomes _"Alarming"_. Enter in unit of y-axis, e.g. 20ms, 5s, 2GB, 4%, 123
+| Alarming Threshold | (undefined) | The limit for the _"Alarming"_ state. If _Critical Threshold_ is undefined or if its value is larger than this value the alarming threshold is exceeded if the reference value is larger than the threshold. Otherwise, if the _Critical Threshold_ is lower than the _Alarming Threshold_, the threshold becomes 'inverse', and is exceeded when the reference value falls below the alarming value. When exceeded the status becomes _"Alarming"_. Enter in unit of y-axis, e.g. 20ms, 5s, 2GB, 4%, 123
 | Critical Threshold | (undefined) | The limit of the _"Critical"_ state. If _Alarming Threshold_ is undefined or it's value is smaller than this value the critical threshold is exceeded if the reference value is larger then the threshold. Otherwise, if the _Critical Threshold_ is lower than the _Alarming Threshold_, the threshold becomes 'inverse', and is exceeded when the reference value falls below the critical value. When exceeded the status becomes _"Critical"_, overrides status _"Alarming"_. Enter in unit of y-axis, e.g. 20ms, 5s, 2GB, 4%, 123
 |====================
 
@@ -366,8 +366,8 @@ This is represented by states:
 * _Green_: values in this range indicate a healthy state
 * _White_: values in this range are in no particular state (neither good or bad, maybe undecidable)
 
-State changes to amber or red are reported as alerts. This show in the widget they affect.
-The settings allow to filter these related alerts to prevent them from showing.
+State changes to amber or red are reported as alerts. This is shown in the widget they affect.
+The settings allow filtering these related alerts to prevent them from showing.
 This makes sense on pages that have dedicated widgets to show alerts or just if users prefer to see the graph instead.
 
 image::monitoring-console/mc_settings_widget_alerts-h.png[Widget Alerts Settings]
@@ -378,7 +378,7 @@ image::monitoring-console/mc_settings_widget_alerts-h.png[Widget Alerts Settings
 | Filter | (none checked) | Do not show (when checked) _Amber_ and/or _Red_ alerts, _Ongoing_ and/or _Stopped_ alerts, _Acknowledged_ and/or _Unacknowledged_ alerts.
 |====================
 
-NOTE: If for any of these 3 groups of pairs both are checked no alerts would be shown. Widgets of type _Time Curve_ automatically exclude stopped and acknowledged alerts to avoid cluttering the graph with alerts that aren't relevant any more. Use a widget of type _Alerts Table_ to show all alerts according to the filter at all times.
+NOTE: If for any of these 3 groups of pairs both are checked no alerts would be shown. Widgets of type _Time Curve_ automatically exclude stopped and acknowledged alerts to avoid cluttering the graph with alerts that aren't relevant anymore. Use a widget of type _Alerts Table_ to show all alerts according to the filter at all times.
 
 
 [[monitoring-console-widget-handling-alerts]]
@@ -404,7 +404,7 @@ image::monitoring-console/mc_sample_widget-alert-table.png[Example of alert tabl
 
 image::monitoring-console/mc_sample_page-alerts.png[Example of a "global" alert table shown all alerts (as used by the alert page)]
 
-By default an alert table shows all alerts including stopped and acknowledged alerts.
+By default, an alert table shows all alerts including stopped and acknowledged alerts.
 Use the widget _Alerts_ xref:#monitoring-console-widget-alerts[settings] to exclude alerts with certain properties.
 
 An alert table shows the overall state of each instance in the table's legend.
@@ -440,7 +440,7 @@ image::monitoring-console/mc_settings_page_general-h.png[Common Page Settings]
 [cols="1,1,4",options="header"]
 |====================
 | Property | Default | Description
-| Name | - | The name as given by the user when the page was created or as defined in the page preset, only user created pages can be renamed
+| Name | - | The name as given by the user when the page was created or as defined in the page preset, only user-created pages can be renamed
 | Type | `Manual` | `Manual`: user populates pages with widget using add widget or `Query`: a query is used to populate page in intervals
 | Number Of Columns | 1 | The number of columns available to place widgets in
 | Include In Rotation | Yes | Yes: Page is included in the set of pages rotated during page rotation, No: page is excluded from this set
@@ -575,7 +575,7 @@ The below table describes possible choices for each step of a watch condition.
 | Segment | Type | Description
 | `is` _operator_ | Start | Select the comparison operator to use when comparing the actual value(s) to the threshold. The comparison is of form _actual operator threshold_.
 | `is` _threshold_ | Start | The numeric threshold. The upper/lower limit. With the right unit selected the number can be given with a unit such as `5min` for time units, or `4KB` for bytes.
-| `is` _scope_ | Start | Select a scopes for the actual values that are compared to the threshold. The semantics of the different scoped are described in a separate table below.
+| `is` _scope_ | Start | Select a scope for the actual values that are compared to the threshold. The semantics of different scopes are described in a separate table below.
 | `is` _scope-length_ | Start | The length defines how many of the most recent data points of the watched metric are included in the scope of the comparison. A number with time unit refers to the number of the points, a number with time unit to the duration of points to consider for the scope.
 | `until` _operator_ | Stop | same as for start
 | `until` _scope_ | Stop | same as for start
@@ -622,14 +622,14 @@ NOTE: System watches cannot be edited. To achieve the effect of a changed system
 ==== Disabling or Enabling a Watch
 Open the xref:#monitoring-console-watches[watch manager] as _Administrator_ and click the _Disable_ or _Enable_ button of the watch that should be disabled or enabled.
 The change has immediate effect and can easily be "undone" by toggling the state again.
-If there where any ongoing alerts due to a watch that gets disabled these alerts stops.
+If there were any ongoing alerts due to a watch that gets disabled, these alerts stops.
 Enabling such a watch again then requires matching the watches start condition again.
 
 
 [[monitoring-console-presets]]
 === Preconfigured Pages
 Payara InSight is shipped with a dozen of preconfigured pages.
-These are in no way privileged over user created pages.
+These are in no way privileged over the user-created pages.
 It is simply a configuration identical to one user can create manually that is hard coded as a preset.
 Users can modify these pages freely. However, these pages cannot be deleted.
 
@@ -650,7 +650,7 @@ image::monitoring-console/mc_page_core.png[Core Page]
 
 [[monitoring-console-preset-rag]]
 ==== Traffic Light Status Page
-The _Traffic Light Status_ page (a.k.a. RAG Status for Red-Amber-Green Status) gives an indication of the health status of the server and deployed application
+The _Traffic Light Status_ page (a.k.a. RAG Status for Red-Amber-Green Status) indicates the health status of the server and deployed application
 using traffic light signals to visualise the current state.
 
 image::monitoring-console/mc_page_rag.png[Traffic Light Status Page]
@@ -763,7 +763,7 @@ This data corresponds to the traces stored in the trace-store.
 For each trace, each of the spans corresponds to a bar in this graph.
 
 The details can be sorted by wall-time or by total duration.
-By default the traces are sorted longest (slowest) to shortest (fastest) total duration.
+By default, the traces are sorted longest (slowest) to shortest (fastest) total duration.
 On the time axis the spans are shown relative to the start of the trace.
 
 The legend gives average durations for each of the spans occurring for the traced method.
@@ -772,7 +772,7 @@ NOTE: The detail view shows a snapshot of the data found in the trace store. Cha
 
 When clicking on the bars in the details view the right side panel shows the trace span details of the clicked trace span.
 
-WARNING: Be aware that the graphs in the example images above show unrealistically low numbers due to the way that request tracing was configured. In a more realistic configurations the durations are more likely to be in range of few hundred milliseconds to some seconds.
+WARNING: Be aware that the graphs in the example images above show unrealistically low numbers due to the way that request tracing was configured. In a more realistic configuration, the durations are more likely to be in range of a few hundred milliseconds to some seconds.
 
 
 [[monitoring-console-preset-sql]]
