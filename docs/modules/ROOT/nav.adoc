@@ -282,7 +282,6 @@
 
 .Appendices
 * xref:release-notes/release-notes-history.adoc[History of Release Notes]
-** xref:release-notes/release-notes-22-0.adoc[Payara Enterprise 5.22.0 Release Notes]
 ** xref:release-notes/release-notes-21-2.adoc[Payara Enterprise 5.21.2 Release Notes]
 ** xref:release-notes/release-notes-21-1.adoc[Payara Enterprise 5.21.1 Release Notes]
 ** xref:release-notes/release-notes-21-0.adoc[Payara Enterprise 5.21.0 Release Notes]
