@@ -118,7 +118,7 @@ Aim::
 The renew-self-signed-certificates subcommand renews all self-signed certificates in a keystore using the old distinguished name and alias.
 These certificates are then placed in the key and trust stores of the target instance or listener, replacing the old ones.
 
-[[command-options-self]]
+[[command-options-renew]]
 === Command Options
 
 [cols="3,1,5,1,1",options="header"]
