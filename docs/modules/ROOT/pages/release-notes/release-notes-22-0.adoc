@@ -43,8 +43,6 @@ sonar warnings in jdbc40 module
 
 * [https://github.com/payara/Payara/pull/4914[FISH-25]] - SOAP Web
 Service Tester not working correctly (JDK 11)
-* [https://github.com/payara/Payara/pull/4832[FISH-48]] - OpenAPI
-document failed to use Generics within @Schema
 * [https://github.com/payara/Payara/pull/4820[FISH-53]] - Using
 Span.finish() doesn't finish a Propagated Span
 * [https://github.com/payara/Payara/pull/4914[FISH-93]] - wsgen
