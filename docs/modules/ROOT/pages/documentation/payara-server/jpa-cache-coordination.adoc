@@ -16,12 +16,12 @@ Here is a complete example:
              xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="MyPU" transaction-type="JTA">
+        <jta-data-source>jdbc/myDataSource</jta-data-source>
+        <shared-cache-mode>DISABLE_SELECTIVE</shared-cache-mode>
         <properties>
             <property name="eclipselink.cache.coordination.protocol" value="fish.payara.persistence.eclipselink.cache.coordination.HazelcastPublishingTransportManager"/>
             <property name="eclipselink.cache.coordination.channel" value="MyPUChannel"/>
         </properties>
-        <jta-data-source>jdbc/myDataSource</jta-data-source>
-        <shared-cache-mode>DISABLE_SELECTIVE</shared-cache-mode>
     </persistence-unit>
 </persistence>
 ----
