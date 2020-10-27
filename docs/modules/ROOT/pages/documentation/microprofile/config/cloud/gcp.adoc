@@ -68,7 +68,7 @@ To configure the GCP Secrets Cloud Config Source from the command line, use the 
 
 [source, shell]
 ----
-asadmin> set-gcp-config-source-configuration --dynamic true --enabled true --jsonKeyFile /path/to/token/file.json --project project-name
+asadmin> set-gcp-config-source-configuration --dynamic true --enabled true --jsonKeyFile /path/to/token/file.json --projectName project-name
 ----
 
 You can use the `--enabled` and `--dynamic` options to enable or disable the GCP Config Source on demand. You should pass the path to the json key file downloaded in the previous section to the `--jsonKeyFile` parameter.
@@ -79,7 +79,7 @@ Also, you can retrieve the current configuration for the GCP Config Source using
 ----
 asadmin> get-gcp-config-source-configuration
 
-Enabled  Project Name  Token File Path
+Enabled  Project Name  JSON Key File
 true     payara-test   payara-test-8a8aa4fbb520.json
 ----
 

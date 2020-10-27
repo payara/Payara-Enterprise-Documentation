@@ -3,6 +3,7 @@
 Config Sources are available to take configuration properties from the secret store of several cloud providers. The following cloud config sources are currently available:
 
 - xref:documentation/microprofile/config/cloud/gcp.adoc[GCP Secret Manager]
+- xref:documentation/microprofile/config/cloud/aws.adoc[AWS Secrets Manager]
 
 ## Configuration
 
