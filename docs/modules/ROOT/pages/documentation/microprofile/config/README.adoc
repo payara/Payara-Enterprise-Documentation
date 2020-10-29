@@ -95,6 +95,10 @@ xref:documentation/payara-server/server-configuration/var-substitution/types-of-
 |180
 |Reads configuration properties from various Cloud provider secret stores. You can find out more about our supported cloud config sources here: xref:documentation/microprofile/config/cloud/README.adoc[Cloud Config Sources]
 
+|`jdbc`
+|190
+|Reads configuration properties from a specified database table. You can find out more about JDBC config sources here: xref:documentation/microprofile/config/jdbc.adoc[JDBC Config Sources]
+
 |===
 
 

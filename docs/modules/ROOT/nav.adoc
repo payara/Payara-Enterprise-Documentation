@@ -223,6 +223,7 @@
 **** xref:documentation/payara-micro/appendices/javadoc.adoc[Javadoc]
 * xref:documentation/microprofile/README.adoc[MicroProfile]
 ** xref:documentation/microprofile/config/README.adoc[Config API]
+*** xref:documentation/microprofile/config/jdbc.adoc[JDBC Config Source]
 *** xref:documentation/microprofile/config/cloud/README.adoc[Cloud Config Sources]
 **** xref:documentation/microprofile/config/cloud/gcp.adoc[GCP Config Source]
 ** xref:documentation/microprofile/faulttolerance.adoc[Fault Tolerance API]
