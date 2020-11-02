@@ -297,6 +297,7 @@ image::monitoring-console/mc_settings_widget_data-h.png[Widget Data Settings]
 `Alerts`: shows a table of alerts,
 `Annotations`: shows a table or list of annotations; these are key-value attributes associated with a metric series.
 `RAG Status`: Shows UP/DOWN status generally used in connection with health checks
+`Top N`: Shows just the numbers (legend), use with _Legend_ ordering by value for top highest or lowest table
 | Mode | _(Default)_ | If available for the type of widget the display mode can be switched between _Table_ and _List_.
 Table view is best fitted for annotations that share common attributes, lists are better fitted for annotations with potentially differing attributes.
 | Series | - | The metric key as given when adding the metric, use pencil icon to edit
@@ -308,7 +309,15 @@ Table view is best fitted for annotations that share common attributes, lists ar
 | Background | _Fill_ | When _Fill_ is checked the area between line and axis is filled. The background transparency can be configured globally in the _Appearance_ application settings.
 | X-Axis | _Labels_ | Whether or not to show labels for the x-axis.
 | Y-Axis | (undefined) | Set a minimum or maximum number for the y-axis instead. When not set range is derived automatically from the data points.
+| Legend | _Alphabetical_ | The order applied to the legend. Possible choices:
+`None`: Items are shown as send by the server,
+`Alphabetically`: Items are shown in alphabetical order (instance name first, series based label second),
+`Increasing Value`: Items are shown ordered from smallest to largest current value,
+`Decreasing Value`: Items are shown ordered from largest to smallest current value,
+| Limit  | (undefined) | When set the maximum number of legend items shown (especially useful when ordering legend items)
+| Limit Hide Constant Zero | `false` | When set series that have been zero for a while are not shown in legend and line graph
 | Coloring | _Instance Name_ | Used to select the colours the data is shown with. _Instance Name_ will show data in the same colour that belongs to the same instance. _Series Name_ shows the metric series in the same colour (independent of instance). This is individual to each widget. _Result Set Index_ will show each matching series in a different colour. _Instance and Series Name_ shows the same instance and series in the same colour. This is global. This means another widget using this colouring with the same instance and series will have the same colour as well.
+| Coloring Mapping | (undefined) | A space separated mapping of series group values to a named colour value as defined by the application appearance _Defaults_ settings. For example to color a series shown with label _AmberAck_ in amber color the entry is `AmberAck:amber` (`amber` here refers to the default name used for _Degraded_ (internal name)).
 |====================
 
 [[monitoring-console-widget-decorations]]
