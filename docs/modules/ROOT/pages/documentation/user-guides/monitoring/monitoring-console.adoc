@@ -490,6 +490,19 @@ The _Pages_ application settings give access to different page management operat
 
 image::monitoring-console/mc_settings_app_pages-h.png[Application Pages Settings]
 
+[[monitoring-console-settings-app-alerts]]
+==== Alerts Settings
+The _Alerts_ application settings contain general alert configuration that applies globally (to any page).
+
+image::monitoring-console/mc_settings_app_alerts-h.png[Application Alerts Settings]
+
+.Alerts Settings
+[cols="1,1,4",options="header"]
+|====================
+| Property | Default | Description
+| Popups | _On_ | When _On_ any alert status change is shown in form of a pop-up dialogue regardless of the currently viewed page. With this feature no alarms will be missed.
+|====================
+
 ==== Appearance Settings
 Newer versions of Payara InSight allow to configure the colours used in graphs.
 There is a global colour configuration affecting all graphs.
@@ -515,6 +528,60 @@ image::monitoring-console/mc_dialog_switch-theme.png[Switch Theme Dialogue]
 Any further customisation of individual colours can and should be done after applying the theme of choice as switching theme would reset such customisations again.
 Currently theme settings are individual to the browser and cannot be shared or preconfigured for other users.
 
+
+[[monitoring-console-alerts]]
+=== Alerts Management
+The values of series can be monitored using xref:#monitoring-console-watches[watches].
+If values fulfil all aspects of a start condition of a watch an alert is created.
+While alerts transition between the states _Unhealthy_, _Degraded_, _Healthy_ and possibly _Normal_ based on the watch definition they originated from there are two manual status fields available for each alert:
+
+* **Global**: _Acknowledged_/_Unacknowledged_: When an alert transitions to a more severe state it resets to _Unacknowledged_ waiting for users to manually acknowledge that they took notice (and care) of the degrading state transition.
+* **User**: _Confirmed_/_Unconfirmed_: Alerts are unconfirmed for a user if that user has not seen and confirmed the alert transition yet.
+
+Both of these manual states should help users to keep track of alert transitions and the alerts they have dealt with.
+
+[[monitoring-console-alerts-ack]]
+==== Acknowledge Alerts
+Alerts are manually acknowledged by system operators when they have checked and reacted to the alert and consider it done.
+It is a form of alert management tool that is shared by all users.
+
+To acknowledge alerts click the checkbox on left of an alert row.
+
+image::monitoring-console/mc_dialog_alerts2.png[Alert Acknowledge Checkbox (left)]
+
+An alert can be acknowledged
+
+* when shown as part of the _Alert Status Change_ pop-up dialogue
+* when shown on top of a line graph widget
+* when shown as part of a alert table widget
+
+
+[[monitoring-console-alerts-confirm]]
+==== Confirming Alerts
+When the state of alerts changed compared to the last state that has been confirmed by a user the change is indicated by the _Alert Status Change_ pop-up dialogue. It shows all transitions that took place since the user last confirmed alert status changes.
+
+image::monitoring-console/mc_dialog_alerts.png[Confirm Alerts Dialogue]
+
+When a user confirmed the change by either pressing _OK_ or _Show_ the shown transitions are considered as confirmed and are no longer shown.
+
+NOTE: The confirmation status is individual for the user (browser local state) so each user has its own confirmed state and based on his/her last confirmation will get different updates.
+
+The confirmation pop-ups can be disabled in the xref:#monitoring-console-settings-app-alerts[Application Alerts Popups setting].
+When disabled transitions are implicitly confirmed until the setting is enabled again.
+This is a more modest setting where alerts are only indicated globally by the alert indicator in the footer.
+
+[[monitoring-console-alerts-status]]
+==== Alert Status Indicator
+All alerts are indicated in the bottom right corner of the footer so that users do not miss alerts that would otherwise not show on the current page.
+
+image::monitoring-console/mc_footer-alerts.png[Alerts Indicator]
+
+The indicator gives a summary of the ongoing alerts:
+
+* In Red: # of Unacknowledged _Unhealthy_ state alerts (# of acknowledged _Unhealthy_ state alerts)
+* In Amber: # of Unacknowledged _Degraded_ state alerts (# of acknowledged _Degraded_ state alerts)
+
+Click on the indicator to jump to the alerts overview page.
 
 [[monitoring-console-watches]]
 === Watch Management

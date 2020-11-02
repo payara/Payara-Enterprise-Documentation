@@ -270,7 +270,7 @@
 ** xref:documentation/user-guides/monitoring/monitoring.adoc[Monitoring Payara Server]
 *** xref:documentation/user-guides/monitoring/enable-jmx-monitoring.adoc[Enable JMX Monitoring]
 *** xref:documentation/user-guides/monitoring/mbeans.adoc[MBeans]
-*** xref:documentation/user-guides/monitoring/monitoring-console.adoc[Payara Monitoring Console]
+*** xref:documentation/user-guides/monitoring/monitoring-console.adoc[Payara InSight]
 ** xref:documentation/user-guides/connection-pools/connection-pools.adoc[Configure a connection pool]
 *** xref:documentation/user-guides/connection-pools/sizing.adoc[Connection pool sizing]
 *** xref:documentation/user-guides/connection-pools/validation.adoc[Connection validation]
