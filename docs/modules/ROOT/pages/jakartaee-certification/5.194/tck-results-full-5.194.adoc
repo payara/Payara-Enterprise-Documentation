@@ -9,7 +9,14 @@ following is a summary of the TCK results for releases of Jakarta EE Platform, F
 
 - Product Name, Version and download URL (if applicable):
 +
-https://payara.fish/download[Payara Server 5.194]
+[cols="1,2",grid=none,frame=none]
+|===
+|image:JakartaEE_Logo_compatible-color.png[]
+|
+{empty} +
+{empty} +
+https://www.payara.fish/page/payara-enterprise-downloads/[Payara Server 5.194]
+|===
 
 - Specification Name, Version and download URL:
 +
