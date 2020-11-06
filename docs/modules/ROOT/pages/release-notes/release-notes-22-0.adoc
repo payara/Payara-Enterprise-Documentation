@@ -9,69 +9,48 @@
 
 == New Features
 
-* [https://github.com/payara/Payara/pull/4820[FISH-244]] - Expand Open
-Tracing Support across Remote EJB Calls
-* [https://github.com/payara/Payara-Enterprise/pull/208[FISH-277]] -
-Payara InSight Integration
-* [https://github.com/payara/Payara/pull/4570[FISH-433]] - OpenID
-Connect session timeout association with access and/or identity token
+* [FISH-244] - Expand OpenTracing Support across Remote EJB Calls
+* [FISH-277] - Payara InSight Integration
+* FISH-433] - OpenID Connect session timeout association with access and/or identity token
 expiry
 
 == Improvements
 
-* [https://github.com/payara/Payara/pull/4886[FISH-141]] - Support
+* [FISH-141] - Support
 Additional Fields with LogRecord when using JsonLogFormatter
-* [https://github.com/payara/Payara/pull/4890[FISH-154]] - Support
-log-jdbc-calls attribute in xml used by asadmin commands
+* [FISH-154] - Support log-jdbc-calls attribute in xml used by asadmin commands
 create-jdbc-connection-pool and add-resources (through xml)
-* [https://github.com/payara/Payara-Enterprise/pull/199[FISH-389]] - Add
-Transaction ID as a Baggage Item to Spans
-* [https://github.com/payara/Payara/pull/4874[FISH-426]] - Store initial
-request path when accessing protected resource with
+* [FISH-389] - Add Transaction ID as a Baggage Item to Spans
+* [FISH-426] - Store initial request path when accessing protected resource with
 OpenIdAuthenticationMechanism
-* [https://payara.atlassian.net/browse/FISH-435[FISH-435]] - Icons
-Integration
-* [https://github.com/payara/Payara/pull/4891[FISH-441]] -
-StatsProviderManagerDelegate should write warning instead of throwing
+* [FISH-435] - Icons Integration
+* [FISH-441] - StatsProviderManagerDelegate should write warning instead of throwing
 Exception when stats provider info is not found.
-* [https://github.com/payara/Payara/pull/4915[FISH-449]] - Oracle 19C
-Not Autodetected by EclipseLink
-* [https://github.com/payara/Payara/pull/4896[FISH-459]] - Cleanup of
-sonar warnings in jdbc40 module
+* [FISH-449] - Oracle 19C Not Autodetected by EclipseLink
+* [FISH-459] - Cleanup of sonar warnings in jdbc40 module
 
 == Bug Fixes
 
-* [https://github.com/payara/Payara/pull/4914[FISH-25]] - SOAP Web
-Service Tester not working correctly (JDK 11)
-* [https://github.com/payara/Payara/pull/4820[FISH-53]] - Using
-Span.finish() doesn't finish a Propagated Span
-* [https://github.com/payara/Payara/pull/4914[FISH-93]] - wsgen
-NoClassDefFoundError with jdk 11
-* [https://github.com/payara/Payara/pull/4935[FISH-196]] - EJB injection
-in EJB Stateless based JAX-RS resource doesn't work in EAR.
-* [https://github.com/payara/Payara/pull/4867[FISH-198]] -
-IllegalArgumentException on accessing the deploy asadmin REST endpoint
+* [FISH-25] - SOAP Web Service Tester not working correctly (JDK 11)
+* [FISH-53] - Using Span.finish() doesn't finish a Propagated Span
+* [FISH-93] - wsgen NoClassDefFoundError with jdk 11
+* [FISH-196] - EJB injection in EJB Stateless based JAX-RS resource doesn't work in EAR.
+* [FISH-198] - IllegalArgumentException on accessing the deploy asadmin REST endpoint
 with upload flag
-* [https://github.com/payara/Payara/pull/4851[FISH-392]] - Trace gets
-started even when RequestTracing is disabled.
-* [https://github.com/payara/Payara/pull/4882[FISH-396]] - When
-_JAVA_OPTIONS specified, Payara Server incorrectly detects Java version
+* [FISH-392] - Trace gets started even when RequestTracing is disabled.
+* [FISH-396] - When _JAVA_OPTIONS specified, Payara Server incorrectly detects Java version
 for JVM options
-* [https://github.com/payara/Payara/pull/4862[FISH-446]] - [Community
-Contribution: https://github.com/svendiedrichsen[*svendiedrichsen*]]
+* [FISH-446] - [Community Contribution: https://github.com/svendiedrichsen[*svendiedrichsen*]]
 Access to /metrics endpoint may cause ConcurrentModificationException
-* [https://github.com/payara/Payara/pull/4876[FISH-447]] - TCK Failure
-Websocket module. Relates to HTTP2
-* [https://github.com/payara/Payara/pull/4931[FISH-474]] - Admin Console
-doesn't display JDK distribution specified for a JVM option
-* [https://github.com/payara/Payara/pull/4850[FISH-477]] - Deployment
-Group Properties are Ignored
-* [https://github.com/payara/Payara/pull/4929[FISH-509]] - Deployment
+* [FISH-447] - TCK Failure Websocket module. Relates to HTTP2
+* [FISH-474] - Admin Console doesn't display JDK distribution specified for a JVM option
+* [FISH-477] - Deployment Group Properties are Ignored
+* [FISH-509] - Deployment
 failure due to 'The lifecycle method [postConstruct] must not throw a
 checked exception.'
 
 == Component Upgrades
 
-* [https://github.com/payara/Payara/pull/4939[FISH-604]] - EclipseLink 2.7.7
+* [FISH-604] - EclipseLink 2.7.7
 
 
