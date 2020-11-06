@@ -87,12 +87,6 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
 [INFO] Results:
 [INFO] 
 [INFO] Tests run: 1043, Failures: 0, Errors: 0, Skipped: 0
-[INFO] 
-[INFO] 
-[INFO] --- maven-surefire-report-plugin:2.21.0:report-only (generate-test-report) @ hibernate-validator-tck-runner ---
-[WARNING] Unable to locate Test Source XRef to link to - DISABLED
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
 ```
 ### cdi
 
@@ -102,12 +96,6 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
  [mvn.test] [INFO] Results:
  [mvn.test] [INFO] 
  [mvn.test] [INFO] Tests run: 1805, Failures: 0, Errors: 0, Skipped: 0
- [mvn.test] [INFO] 
- [mvn.test] [INFO] 
- [mvn.test] [INFO] --- maven-surefire-report-plugin:2.19.1:report-only (generate-test-report) @ weld-payara-runner-tck11 ---
- [mvn.test] [WARNING] Unable to locate Test Source XRef to link to - DISABLED
- [mvn.test] [INFO] ------------------------------------------------------------------------
- [mvn.test] [INFO] BUILD SUCCESS
 ```
 ### compat12 
 
