@@ -75,7 +75,7 @@ The easiest way to provide these system properties to the extension runtime is t
   <artifactId>maven-surefire-plugin</artifactId>
   <configuration>
     <systemPropertyVariables>
-      <bindHttpPort>true</bindHttpPort>
+      <bindHttpPort>8123</bindHttpPort>
     </systemPropertyVariables>
   </configuration>
 </plugin>
