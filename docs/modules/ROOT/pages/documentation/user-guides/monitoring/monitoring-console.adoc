@@ -453,7 +453,6 @@ image::monitoring-console/mc_settings_page_general-h.png[Common Page Settings]
 | Type | `Manual` | `Manual`: user populates pages with widget using add widget or `Query`: a query is used to populate page in intervals
 | Number Of Columns | 1 | The number of columns available to place widgets in
 | Include In Rotation | Yes | Yes: Page is included in the set of pages rotated during page rotation, No: page is excluded from this set
-| Fill Empty Cells | No | Yes: empty cells in widget grid are filled by extending the span of the widget above, No: empty cells left empty shown with a button to add a widget
 | Server Sync | (checked) | Auto: Changes made by an administrator to the page or the widgets of this page are automatically pushed to the shared configuration if and only if the page has been explicitly pushed to the shared configuration at some point in the past.
 |====================
 
