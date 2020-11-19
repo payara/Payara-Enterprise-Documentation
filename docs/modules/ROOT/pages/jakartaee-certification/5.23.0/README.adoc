@@ -6,3 +6,4 @@ As proof of compatibility, output of Jakarta EE Compatibility Test Suite tests a
 The following distributions of Payara 5.23.0 are certified:
 
 * xref:jakartaee-certification/5.23.0/tck-results-full-5.23.0.adoc[Payara Server 5.23.0 - Full profile]
+* xref:jakartaee-certification/5.23.0/tck-results-web-5.23.0.adoc[Payara Server 5.23.0 - Web profile]
