@@ -225,6 +225,7 @@
 ** xref:documentation/microprofile/config/README.adoc[Config API]
 *** xref:documentation/microprofile/config/dynamo-db.adoc[DynamoDB Config Source]
 *** xref:documentation/microprofile/config/jdbc.adoc[JDBC Config Source]
+*** xref:documentation/microprofile/config/ldap.adoc[LDAP Config Source]
 *** xref:documentation/microprofile/config/cloud/README.adoc[Cloud Config Sources]
 **** xref:documentation/microprofile/config/cloud/aws.adoc[AWS Config Source]
 **** xref:documentation/microprofile/config/cloud/azure.adoc[Azure Config Source]

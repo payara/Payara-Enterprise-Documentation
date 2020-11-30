@@ -99,6 +99,10 @@ xref:documentation/payara-server/server-configuration/var-substitution/types-of-
 |190
 |Reads configuration properties from a specified database table. You can find out more about JDBC config sources here: xref:documentation/microprofile/config/jdbc.adoc[JDBC Config Sources]
 
+|`ldap`
+|200
+|Reads configuration properties from a specified LDAP directory. You can find out more about LDAP config sources here: xref:documentation/microprofile/config/ldap.adoc[LDAP Config Sources]
+
 |===
 
 
