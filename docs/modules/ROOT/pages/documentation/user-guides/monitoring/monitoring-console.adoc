@@ -39,6 +39,43 @@ By default, this settings is enabled.
 NOTE: To remove only the monitoring data collection from the server without disabling the monitoring service itself delete the `monitoring-console-core.jar` from the `/glassfish/modules` folder of your installation(s) and restart the server.
 
 
+[[monitoring-console-history]]
+== Enabling Data Aggregation (History)
+By default InSight has a sliding window of data per metric of usually one minute length which contains 1 point per second.
+This allows typical "real-time" monitoring.
+This points represent the raw data as it is probed/collected.
+
+Without a history points that get "pushed" out of the sliding window are "forgotten".
+Since Payara Enterprise 5.23.1 a history can be enabled which aggregates the points per seconds to 1 aggregated point per minute, the minutes to 1 point per hour, the hours to 1 point per day.
+These aggregations equally have sliding windows so they hold the recent hour, day or month worth of data.
+The longer points are in the past the less points per fixed time-frame there are.
+In the most recent minute there are the raw (not aggregated) points per second.
+In the most recent hour there is 1 point per minute from aggregating the seconds within the last minute.
+In the most recent day there is 1 point per hour from aggregating the minutes within the last hour.
+In the most recent month there is 1 point per day from aggregating the hours within the last day.
+
+The aggregation of points must be enabled using the following asadmin command:
+
+		asadmin> set-monitoring-console-configuration --history-enabled=true
+
+This command starts the aggregation which starts to grow as time passes.
+The aggregated data is only stored in memory.
+Widgets can chose to show this data using the _Extras_ - _History_ setting.
+
+When aggregation of points is disabled again using the following asadmin command
+
+		asadmin> set-monitoring-console-configuration --history-enabled=true
+
+all aggregated data is discarded and cannot be restored.
+Equally history is lost when the server is restarted.
+
+The aggregated history feature is designed to keep memory usage fairly low.
+1000 metrics require in the range of single digit MBs of memory.
+So in most environments the extra memory and CPU effort for the history should not be an issue.
+
+In the future we might look into persisting the aggregated history for further features.
+
+
 [[monitoring-console-gui]]
 == Graphical User Interface
 When Payara InSight is enabled open the home page at `/monitoring-console/` (usually on port 8080).
@@ -334,6 +371,7 @@ image::monitoring-console/mc_settings_widget_extras-h.png[Widget Extras Settings
 [cols="1,1,4",options="header"]
 |====================
 | Property | Default | Description
+| History | _None_ | What period of additional aggregated data to show in the graph. _None_ shows just the recent minute ("real-time"), _1 Hour_ adds 1 point per minute in the recent hour (the most recent minute continues to show 1 point per second), _1 Day_ adds 1 point per hour in the recent day (the recent hour continues to show 1 point per minute, the recent minute 1 per second), _1 Month_ adds 1 point per day in the recent 31 days (again recent day continues 1 point per hour, recent hour per minute and recent minute per second). Note that this data is only available after enabling the history aggregation using the asadmin command.
 | Annotations | (checked) |  Whether or not to show annotations for in an alert table.
 | Annotations (Fields) | _(blank)_ | A comma or space separated list of fields to show for an annotation list or table. The given field order is reflected in the view.
 | Aggregates | (none checked) | Check to add the all time minimum, maximum or average line to the graph
