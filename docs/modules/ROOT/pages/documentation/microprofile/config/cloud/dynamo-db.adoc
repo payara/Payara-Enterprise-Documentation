@@ -40,9 +40,11 @@ NOTE: The region name is the snake-case notation, not the full words. E.g. `eu-w
 
 ### From the Admin Console
 
+To configure the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` password aliases from the admin console, refer to the xref:documentation/payara-server/password-aliases/password-alias-admin-console-commands.adoc[Password Aliases Admin Console configuration] guide.
+
 To configure the config source from the admin console, go to `Configs` -> `your-config` -> `MicroProfile` -> `Config` -> `DynamoDB`.
 
-image:microprofile/config/dynamodb/admin-console-config.png[Payara Server Administration Console configuration route]
+image:microprofile/config/cloud/dynamodb/admin-console-config.png[Payara Server Administration Console configuration route]
 
 From here you configure the name of the database table, the region name, name of the key column containing the key, name of the column containing the value and the maximum number of items to retrieves from the database table.
 
@@ -70,7 +72,7 @@ true     eu-west-2    Books       ISBN             Title              10
 
 Once all of the required options are configured. You should be able to read configuration properties from a database table. For example, let's look at the following diagram. It shows a table named Books with columns ISBN, Author and Title.
 
-image:microprofile/config/dynamodb/database-example.png[Database Example]
+image:microprofile/config/cloud/dynamodb/database-example.png[Database Example]
 
 If the key column name is set to ISBN and the value column name to Title. You can get the value of the Title column in relation to the ISBN column using the following command along with the ISBN value: 
 
