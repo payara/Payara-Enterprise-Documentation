@@ -11,15 +11,19 @@ Payara Server Enterprise supports specifying deployment configuration using Glas
 
 Additionally from version __5.183__, `payara-web.xml` can be used instead of `glassfish-web.xml`. The top level element for the `payara-web.xml` file must be `_payara-web-app_` and the schema can be refererenced by:
 
-[source,xml]
+[subs=attributes+]
+```
 <!DOCTYPE payara-web-app PUBLIC "-//Payara.fish//DTD Payara Server 4 Servlet 3.0//EN" "{payaraWebDtd}">
+```
 
 Since version __5.184__
 
 `payara-resources.xml` can also be used instead of `glassfish-resources.xml`. The schema can be referenced by:
 
-[source,xml]
+[subs=attributes+]
+```
 <!DOCTYPE resources PUBLIC "-//Payara.fish//DTD Payara Server 4 Resource Definitions//EN" "{payaraResourcesDtd}">
+```
 
 See the xref:/schemas/README.adoc[schema reference] for the list of deployment descriptor DTD files.
 
