@@ -71,7 +71,7 @@ Equally history is lost when the server is restarted.
 
 The aggregated history feature is designed to keep memory usage fairly low.
 1000 metrics require in the range of single digit MBs of memory.
-So in most environments the extra memory and CPU effort for the history should not be an issue.
+In typical environments the extra memory and CPU effort for the history should not be an issue.
 
 In the future we might look into persisting the aggregated history for further features.
 
