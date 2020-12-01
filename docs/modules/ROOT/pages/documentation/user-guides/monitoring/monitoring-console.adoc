@@ -41,7 +41,7 @@ NOTE: To remove only the monitoring data collection from the server without disa
 
 [[monitoring-console-history]]
 == Enabling Data Aggregation (History)
-By default InSight has a sliding window of data per metric of usually one minute length which contains 1 point per second.
+By default, InSight has a sliding window of data per metric of usually one minute length which contains 1 point per second.
 This allows typical "real-time" monitoring.
 These points represent the raw data as it is probed/collected.
 
