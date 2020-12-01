@@ -43,7 +43,7 @@ NOTE: To remove only the monitoring data collection from the server without disa
 == Enabling Data Aggregation (History)
 By default InSight has a sliding window of data per metric of usually one minute length which contains 1 point per second.
 This allows typical "real-time" monitoring.
-This points represent the raw data as it is probed/collected.
+These points represent the raw data as it is probed/collected.
 
 Without a history points that get "pushed" out of the sliding window are "forgotten".
 Since Payara Enterprise 5.23.1 a history can be enabled which aggregates the points per seconds to 1 aggregated point per minute, the minutes to 1 point per hour, the hours to 1 point per day.
