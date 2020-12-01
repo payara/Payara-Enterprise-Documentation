@@ -58,7 +58,7 @@ The aggregation of points must be enabled using the following asadmin command:
 
 		asadmin> set-monitoring-console-configuration --history-enabled=true
 
-This command starts the aggregation which starts to grow as time passes.
+This command starts the aggregation which increases over time.
 The aggregated data is only stored in memory.
 Widgets can chose to show this data using the _Extras_ - _History_ setting.
 
