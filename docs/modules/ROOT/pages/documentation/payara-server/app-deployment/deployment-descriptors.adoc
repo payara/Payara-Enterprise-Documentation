@@ -20,7 +20,7 @@ Since version __5.184__
 
 `payara-resources.xml` can also be used instead of `glassfish-resources.xml`. The schema can be referenced by:
 
-[subs=attributes+]
+[source,xml,subs=attributes+]
 ```
 <!DOCTYPE resources PUBLIC "-//Payara.fish//DTD Payara Server 4 Resource Definitions//EN" "{payaraResourcesDtd}">
 ```
