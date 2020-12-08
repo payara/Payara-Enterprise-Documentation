@@ -2,6 +2,7 @@
 * xref:README.adoc[Introduction]
 ** xref:general-info/general-info.adoc[Overview]
 ** xref:release-notes/README.adoc[Release Notes]
+*** xref:release-notes/release-notes-23-1.adoc[Payara Enterprise 5.23.1 Release Notes]
 *** xref:release-notes/release-notes-23-0.adoc[Payara Enterprise 5.23.0 Release Notes]
 ** xref:security/security.adoc[Security]
 *** xref:security/security-fix-list.adoc[Security Fixes Summary]
