@@ -8,6 +8,7 @@ Detailed information about features and fixes in every release.
 
 *2020*
 
+* 2020 December - xref:release-notes/release-notes-23-1.adoc[Payara Enterprise 5.23.1]
 * 2020 November - xref:release-notes/release-notes-23-0.adoc[Payara Enterprise 5.23.0]
 * 2020 October - xref:release-notes/release-notes-22-0.adoc[Payara Enterprise 5.22.0]
 * 2020 September - xref:release-notes/release-notes-21-2.adoc[Payara Enterprise 5.21.2]

@@ -2,6 +2,7 @@
 * xref:README.adoc[Introduction]
 ** xref:general-info/general-info.adoc[Overview]
 ** xref:release-notes/README.adoc[Release Notes]
+*** xref:release-notes/release-notes-23-1.adoc[Payara Enterprise 5.23.1 Release Notes]
 *** xref:release-notes/release-notes-23-0.adoc[Payara Enterprise 5.23.0 Release Notes]
 ** xref:security/security.adoc[Security]
 *** xref:security/security-fix-list.adoc[Security Fixes Summary]
@@ -282,6 +283,8 @@
 
 .Appendices
 * xref:release-notes/release-notes-history.adoc[History of Release Notes]
+** xref:release-notes/release-notes-23-1.adoc[Payara Enterprise 5.23.1 Release Notes]
+** xref:release-notes/release-notes-23-0.adoc[Payara Enterprise 5.23.0 Release Notes]
 ** xref:release-notes/release-notes-22-0.adoc[Payara Enterprise 5.22.0 Release Notes]
 ** xref:release-notes/release-notes-21-2.adoc[Payara Enterprise 5.21.2 Release Notes]
 ** xref:release-notes/release-notes-21-1.adoc[Payara Enterprise 5.21.1 Release Notes]
@@ -292,6 +295,9 @@
 * xref:schemas/README.adoc[Schemas]
 
 * xref:jakartaee-certification/README.adoc[Jakarta EE Platform 8 certification summaries]
+** xref:jakartaee-certification/5.23.1/README.adoc[Payara Server 5.23.1]
+*** xref:jakartaee-certification/5.23.1/tck-results-full-5.23.1.adoc[5.23.1 Full Profile]
+*** xref:jakartaee-certification/5.23.1/tck-results-web-5.23.1.adoc[5.23.1 Web Profile]
 ** xref:jakartaee-certification/5.23.0/README.adoc[Payara Server 5.23.0]
 *** xref:jakartaee-certification/5.23.0/tck-results-full-5.23.0.adoc[5.23.0 Full Profile]
 *** xref:jakartaee-certification/5.23.0/tck-results-web-5.23.0.adoc[5.23.0 Web Profile]
