@@ -52,7 +52,7 @@ xref:documentation/payara-server/server-configuration/certificate-management.ado
 
 [source,shell]
 ----
-asadmin add-to-keystore --file mycert.p12 --alias mydomain_certificate
+asadmin add-to-keystore --file mycert.p12 mydomain_certificate
 ----
 
 [discrete]
