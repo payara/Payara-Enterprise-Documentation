@@ -92,7 +92,7 @@ xref:documentation/payara-server/server-configuration/certificate-management.ado
 
 [source,shell]
 ----
-asadmin add-to-truststore --file mycert.crt --alias mydomain_certificate
+asadmin add-to-truststore --file mycert.crt mydomain_certificate
 ----
 
 [discrete]
