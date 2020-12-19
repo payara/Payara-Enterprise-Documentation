@@ -5,3 +5,10 @@ This section covers how to use the JCache functionality in Payara
 Server Enterprise.
 
 _JSR107 (JCache)_ is implemented in Payara by Hazelcast.
+
+xref:documentation/payara-server/jcache/jcache-accessing.adoc[Accessing the Caching Provider and Cache Manager]
+
+xref:documentation/payara-server/jcache/jcache-creating.adoc[Creating a Cache Instance]
+
+xref:documentation/payara-server/jcache/jcache-annotations.adoc[Using JCache Annotations]
+

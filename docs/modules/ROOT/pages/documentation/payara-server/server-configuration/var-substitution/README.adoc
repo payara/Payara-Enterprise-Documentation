@@ -5,3 +5,7 @@ Variable references in the configuration are useful for reusing the same
 configuration in several scenarios, e.g. for several instances in the
 same cluster, or to provide an environment-specific configuration from
 the environment later when Payara Server Enterprise is started.
+
+xref:documentation/payara-server/server-configuration/var-substitution/types-of-variables.adoc[Type of Variable references]
+
+xref:documentation/payara-server/server-configuration/var-substitution/usage-of-variables.adoc[Using Variable References]
