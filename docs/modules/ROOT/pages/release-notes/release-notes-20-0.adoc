@@ -61,14 +61,7 @@ injected
 
 == Component Upgrades
 
-<<<<<<< HEAD
-* [https://github.com/payara/Payara/pull/4674[APPSERV-80]] - Upgrade Weld to 3.1.4.Final
-* [https://github.com/payara/Payara/pull/4643[APPSERV-109]] - Update EclipseLink to 2.7.6
-* [https://github.com/payara/Payara/pull/4654[APPSERV-110]] - Update Grizzly to 2.4.4
-* [https://github.com/payara/Payara/pull/4550[CUSTCOM-211]] - Upgrade Trilead SSH 2 to support ECDSA keys
-=======
 * [APPSERV-80] - Upgrade Weld to 3.1.4.Final
 * [APPSERV-109] - Update EclipseLink to 2.7.6
 * [APPSERV-110] - Update Grizzly to 2.4.4
 * [CUSTCOM-211] - Upgrade Trilead SSH 2 to support ECDSA keys
->>>>>>> 9203c4b... Remove PR links from release notes as they are for another product.
