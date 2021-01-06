@@ -176,6 +176,7 @@
 ** xref:documentation/payara-server/docker/README.adoc[Docker]
 *** xref:documentation/payara-server/docker/docker-nodes.adoc[Docker Nodes]
 *** xref:documentation/payara-server/docker/docker-instances.adoc[Docker Instances]
+** xref:documentation/payara-server/upgrade-server.adoc[Upgrade Server]
 * xref:documentation/payara-micro/payara-micro.adoc[Payara Micro Documentation]
 ** xref:documentation/payara-micro/rootdir.adoc[Root Configuration Directory]
 ** xref:documentation/payara-micro/starting-instance.adoc[Starting an Instance]

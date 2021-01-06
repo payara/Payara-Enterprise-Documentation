@@ -1,0 +1,67 @@
+[[Upgrade Server]]
+= Upgrade Payara Server
+
+Payara Server can be upgraded to new versions from version *5.24.0*
+
+[[upgrade-server-command]]
+== Upgrade Server Command
+
+*Usage*::
+`asadmin> upgrade-server`
+
+*Aim*::
+This command can be used to upgrade Payara Server to the specified and distribution along with all ssh nodes in the domain.xml.
+This will also back the old version first to allow for rolling back.
+
+[[command-options-1]]
+=== Command Options
+
+[cols=",,,,",options="header",]
+|=======================================================================
+|Option |Type |Description |Default |Mandatory
+|`--username` |String | The username for the Payara Nexus server.||Yes
+|`--version` |String |Specifies the version number of the new version of Payara to use.| |Yes
+|`--distribution` |Enum |Specifies the distribution of Payara Server to download. This can payara, payara-web, payara-ml, or payara-web-ml.|payara|No
+|`--target` |String |Specifies the domain to perform the upgrade on number of the new version of Payara to use.| domain1|No
+|=======================================================================
+
+[[example-5]]
+=== Example
+
+This example upgrades a Payara Web distribution to version 5.24.1
+
+[source, shell]
+----
+asadmin> upgrade-server --username example-user --distribution web --verson 5.24.1
+----
+
+
+NOTE: Uprading Payara Server does not currently work on Windows.
+
+[[Rollback-server-command]]
+== Rollback Server Command
+
+*Usage*::
+`asadmin> rollback-server`
+
+*Aim*::
+This command can be used to rollback Payara Server to the point before the upgrad-server command was run.
+
+[[command-options-1]]
+=== Command Options
+
+[cols=",,,,",options="header",]
+|=======================================================================
+|Option |Type |Description |Default |Mandatory
+|`--target` |String |Specifies the domain to perform the upgrade on number of the new version of Payara to use.| domain1|No
+|=======================================================================
+
+[[example-5]]
+=== Example
+
+This example rolls back a domain called payaradomain.
+
+[source, shell]
+----
+asadmin> rollback-server --target payaradomain
+----
