@@ -7,6 +7,7 @@ Detailed information about features and fixes in every release.
 == All Release Notes
 
 *2021*
+
 * 2021 January - xref:release-notes/release-notes-24-0.adoc[Payara Enterprise 5.24.0]
 
 *2020*
