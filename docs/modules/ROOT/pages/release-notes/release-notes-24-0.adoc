@@ -10,18 +10,6 @@
 
 * [FISH-656] - CLI Upgrade Tool MVP for Payara Server Enterprise
 
-== Improvements
-
-* [FISH-152] - Mark applications as "unavailable" as soon as they are disabled
-* [FISH-520] - InSight QOL: Add Warning Icon to Confirmation Dialogs
-* [FISH-521] - InSight QOL: Adjust Used Font Sizes for More Consistent User Experience
-* [FISH-522] - InSight QOL: Improve the Flow of Newly Created Pages
-* [FISH-523] - InSight QOL: Renaming a Watch should not leave Watch with old name behind
-* [FISH-651] - Allow JWT verification to skip type validation
-* [FISH-732] - Improve message when same name is used in metrics.xml for exposed AMX bean
-* [FISH-752] - Payara InSight: Aggregated History (sliding windows)
-* [FISH-766] - [Community] Improper synchronization of session map
-
 == Bug Fixes
 
 * [FISH-505] - Server instance tries to load Application not assigned to instance
