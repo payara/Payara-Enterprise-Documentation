@@ -3,12 +3,12 @@
 == Supported APIs and Applications
 
 * Java EE 8 Applications
+* Jakarta EE 8
 * MicroProfile 3.3
-* Jakarta EE 8 Applications
 
 == New Features
 
-* [FISH-656] - CLI Upgrade Tool MVP for Payara Server Enterprise
+* [FISH-656] - xref:documentation/payara-server/upgrade-server.adoc[CLI Upgrade Tool MVP for Payara Server Enterprise]
 
 == Bug Fixes
 
@@ -22,6 +22,5 @@
 
 == Component Upgrades
 
-* [FISH-184] - Backport Yasson 1.0.6 to Payara Enterprise
-
+* [FISH-184] - https://github.com/eclipse-ee4j/yasson/releases/tag/1.0.6-RELEASE[Backport Yasson 1.0.6 to Payara Enterprise]
 
