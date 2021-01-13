@@ -13,59 +13,40 @@ The Payara Platform Enterprise Edition project is released each month. Each rele
 
 As of June 2020, The naming strategy of the Payara Platform Enterprise Edition releases is changed.
 
-The general format of the version number is **Major Version Number** . **Minor Number** . **Patch Number**
+The general format of the version number is:
 
-**Major Version** numbers will start from 5 (the current major version of Payara Platform) and only increment by 1 when a new major version (E.g Payara 6) is released.  Fundamental changes (e.g. Javax to Jakarta breaking change) will only be released in Major Versions. There is currently no set cadence for this version change. The change of a major version number is a product management and marketing decision.
+----
+Major Version Number. Minor Version Number. Patch Version Number
+----
+
+**Major Version** numbers will start from **5** (the current major version of Payara Platform) and only increment by 1 when a new major version (E.g Payara 6) is released.  Fundamental changes (e.g. Javax to Jakarta breaking change) will only be released in Major Versions. There is currently no set cadence for this version change. The change of a major version number is a product management and marketing decision.
 
 Customers should expect changes to their applications and configuration scripts to move to a new Major version.
 
-**Minor Version** numbers will start from 20 (the year that Payara Enterprise and Community versions diverge)
-and increment by 1 quarterly.  These version changes will introduce significant features (typically originating from the Product Management process or stabilised and adopted from Community releases). 
+**Minor Version** numbers will start from **20** (the year that Payara Enterprise and Community versions diverge) and increment by 1 as required. These version changes will introduce significant features (typically originating from the Product Management process or stabilised and adopted from Community releases). 
 
 Features introduced during a minor version change must be backwards compatible with previous minor releases with no intervention required by an operator. 
-
 Features introduced during a minor version change can only introduce breaking changes as a last resort and with product management approval and appropriate customer messaging.
 
-The Minor Version number will reset to 0 on a Major Version release.
+The Minor Version number will reset to **0** on a Major Version release.
 
 Customers should not expect to change their applications and configuration scripts to move to a minor version unless by choice to take advantage of newly introduced features.
 
-**Patch Version** numbers will start from 0 and increment monthly after each release. This version change will introduce bug fixes and patches.  The Patch Version number will reset to 0 on a Minor Version release.
+**Patch Version** numbers will start from 0 and as a minimum increment as required.  These version change will introduce bug fixes and patches. The Patch Version number will reset to **0** on a Minor Version release.
 
-Customer specific Payara Platform builds will add an additional 4th level number where the number can reflect something meaningful to the customer e.g. the number of the hotfix. For example  5.20.5.1234
+Customer specific versions will add an additional 4th level number where the number can reflect something meaningful to the customer e.g. the number of the hotfix. For example if we provide a customer specific hotfix or downported fix for a bug identified with _1234_ then the release number for that customer will be _5.20.5.1234_
 
 Customers should not expect to change their applications and configuration scripts to move to a patch version.
 
-[cols=-2*,options="header"]
-|=== 
+[[new-naming-strategy-examples]]
+=== Examples
 
-| Release date| Version  
+NOTE: The examples shown below are used only to showcase possible future releases and are not be followed up as a release plan when planning updates on your organization.
 
-| June 2020 | 5.20.0
-
-| July 2020 | 5.20.1
-
-| August 2020 | 5.20.2
-
-| September 2020 | 5.21.0
-
-| ... | 5.21.1
-
-| ...| ...
-
-| March 2021 | 5.23.0
-
-| April 2021 | 5.23.1
-
-| May 2021 | 5.23.2
-
-| June 2021 | 5.24.0
-
-| ... | 5.24.1
-
-| ...| ...
-
-|=== 
+* `5.20.0` = Major Version `5`, Minor Version `20`, Patch `0`
+* `5.20.1` = Major Version `5`, Minor Version `20`, Patch `1`
+* `5.21.2` = Major Version `5`, Minor Version `21`, Patch `2`
+* `6.0.0` = Major Version `6`, Minor Version `0`, Patch `0`
 
 [[naming-strategy]]
 == Previous Naming Strategy
