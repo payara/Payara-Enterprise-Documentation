@@ -28,7 +28,7 @@ http://download.eclipse.org/jakartaee/platform/8/eclipse-jakartaeetck-8.0.2.zip[
 
 - Public URL of TCK Results Summary:
 +
-https://docs.payara.fish/enterprise/docs/5.23.1/jakartaee-certification/5.23.1/tck-results-web-5.23.1.html
+https://docs.payara.fish/enterprise/docs/5.24.0/jakartaee-certification/5.24.0/tck-results-web-5.24.0.html
 
 - Any Additional Specification Certification Requirements:
 
