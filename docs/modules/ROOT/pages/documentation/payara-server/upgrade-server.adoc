@@ -1,0 +1,50 @@
+[[upgrade-server]]
+= Upgrade Payara Server
+
+__Since Payara Platform 5.24.0. Can be installed manually to Payara Platform 5.20.0 and newer._
+
+This tool can be used to upgrade a Payara Server installation to a newer version. The Upgrade Tool is bundled in Payara Server versions from version *5.24.0*. It can also be obtained from Payara Nexus as the https://nexus.payara.fish/#browse/browse:payara-enterprise:fish%2Fpayara%2Fextras%2Fpayara-upgrade-tool[payara-upgrade-tool artifact] (groupId: `fish.payara.extras`, artifactId: `payara-upgrade-tool`). If obtained from the Payara Nexus, drop the JAR artifact into your Payara Server installation under `payara5/glassfish/lib/asadmin`. The version 1.0 of the standalone upgrade tool can be installed into Payara Server Enterprise 5.20.0 or newer and supports upgrading to any newer Payara Server Enterprise version.
+
+NOTE: This feature is currently released as a Minimum Viable Product (MVP) and will be gradually getting additional enhancements in future Payara Enterprise releases.
+
+CAUTION: The update tool is not currently supported on Windows yet.
+
+[[upgrade-server-command]]
+== Upgrade Server Command
+
+*Usage*::
+`asadmin> upgrade-server`
+
+*Aim*::
+This command can be used to upgrade Payara Server to the specified distribution along with all SSH nodes in the _domain.xml_.
+The command will also back up the old version and domains in the default location (_payara5/glassfish/domains_) to allow for rolling back. The command can also be used to downgrade to an older Payara version although this is not encouraged.
+
+[[command-options-1]]
+=== Command Options
+
+[cols=",,,,",options="header",]
+|=======================================================================
+|Option |Type |Description |Default |Mandatory
+|`--username` |String | The username for the Payara Nexus server.||Yes
+|`--version` |String |Specifies the version number of the new version of Payara to use.| |Yes
+|`--distribution` |Enum |Specifies the distribution of Payara Server to download. This can payara, payara-web, payara-ml, or payara-web-ml.|payara|No
+|=======================================================================
+
+[[upgrade-example]]
+=== Example
+
+This example upgrades a Payara Web distribution to version 5.24.1
+
+[source, shell]
+----
+asadmin> upgrade-server --username example-user --distribution web --verson 5.24.1
+----
+
+[[rollback-server-command]]
+== Rollback Server Command
+
+*Usage*::
+`asadmin> rollback-server`
+
+*Aim*::
+This command can be used to rollback Payara Server to the point before the upgrade-server command was run. The backup of the domain is not restored automatically. If you need that, you should perform a xref:/documentation/user-guides/restore-domain.adoc[restore-domain command] manually pointing to the ZIP created during the upgrade-server process under `$domaindir/backups` (e.g. `payara5/glassfish/domains/domain1/backups`).
