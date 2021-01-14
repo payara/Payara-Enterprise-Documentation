@@ -13,7 +13,6 @@ can or have impacted Payara Server across releases:
 
 |https://nvd.nist.gov/vuln/detail/CVE-2019-17195[CVE-2019-17195] | 9.8 | FIXED | Connect2id Nimbus JOSE+JWT before v7.9 can throw various uncaught exceptions while parsing a JWT, which could result in an application crash (potential information disclosure) or a potential authentication bypass. | 5.21.2 |  | Fixed by upgrading Nimbus JOSE+JWT to 8.20
 
-=======
 |https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-6950[CVE-2020-6950] | 7.5 | FIXED | Eclipse Mojarra vulnerable to path trasversal flaw via either loc/con parameters | 5.201 | https://github.com/payara/Payara/pull/4492[#4492] | Fixed by upgrading Mojarra to 2.3.14
 
 |https://nvd.nist.gov/vuln/detail/CVE-2019-12086[CVE-2019-12086] | 7.5 | FIXED | A Polymorphic Typing issue was discovered in FasterXML jackson-databind 2.x before 2.9.9 | 5.193, 5.192.1, 5.191.4 | https://github.com/payara/Payara/pull/4004[#4004] | 
