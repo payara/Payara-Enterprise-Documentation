@@ -116,10 +116,41 @@ the classes mentioned:
 </dependency>
 ----
 
-_Since Payara Server 5.183_
+[[clean-jbatch-repository]]
+== `clean-jbatch-repository`
+
+_Since Payara Server 5.25.0_
+
+*Usage*::
+`asadmin> clean-jbatch-repository --status COMPLETED|ALL --days <int.value> <JobName>
+
+*Aim*::
+The clean-jbatch-repository subcommand deletes records of job executions
+
+[[command-options-clean]]
+=== Command Options
+
+[cols=",,,,",options="header",]
+|=======================================================================
+|Option | Type |Description |Default |Mandatory
+|`--status` | ALL/COMPLETED| The status of batch jobs executions to which delete the records of.
+If ALL then all job executions will be deleted, regardless of status.
+If COMPLETED only job executions that successfully completed will be deleted. | COMPLETED |No
+|`--days` | Integer| The number of days previous that the end time of the job execution must be to deleted. | 0 | No
+|=======================================================================
+
+[[example-clean]]
+===Example
+
+[source, shell]
+----
+asadmin > clean-jbatch-repository --status=ALL --days=7
+----
 
 [[list-batch-jobs]]
 == `list-batch-jobs`
+
+_Since Payara Server 5.183_
 
 *Usage*::
 `asadmin> list-batch-jobs --output jobname,appname,instancecount,instanceid,
@@ -128,7 +159,6 @@ executionid,batchstatus,starttime,endtime,exitstatus --limit <long.value>
 
 *Aim*::
 Lists batch jobs and information about them.
-
 
 [[command-options-2]]
 === Command Options
