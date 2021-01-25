@@ -79,7 +79,7 @@ public class EmbeddedPayara{
     public static void main(String[] args) throws BootstrapException{
        PayaraMicro micro = PayaraMicro.getInstance();
        micro.addDeployFromGAV("fish.payara.testing,clusterjsp,1.1");
-       micro.addDeployFromGAV("fish.payara.testing,clusterjsp,1.2");
+       micro.addDeployFromGAV("fish.payara.testing,demo,1.0");
        micro.bootStrap();
     }
 }
