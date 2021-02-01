@@ -122,7 +122,7 @@ the classes mentioned:
 _Since Payara Server 5.25.0_
 
 *Usage*::
-`asadmin> clean-jbatch-repository --status COMPLETED|ALL --days <int.value> <JobName>
+`asadmin> clean-jbatch-repository --status COMPLETED|ALL --days <int.value> <JobName>`
 
 *Aim*::
 The clean-jbatch-repository subcommand deletes records of job executions
@@ -136,12 +136,12 @@ The clean-jbatch-repository subcommand deletes records of job executions
 |`--status` | ALL/COMPLETED| The status of batch jobs executions to which delete the records of.
 If ALL then all job executions will be deleted, regardless of status.
 If COMPLETED only job executions that successfully completed will be deleted. | COMPLETED |No
-|`--days` | Integer| The number of days previous that the end time of the job execution must be to deleted. | 0 | No
+|`--days` | Integer| The number of days previous that the end time of the job execution must be to get deleted. | 0 | No
 |=======================================================================
 
 [[example-clean]]
-===Example
-
+=== Example
+The following command will delete all Batch jobs that were executed before 7 days ago.
 [source, shell]
 ----
 asadmin > clean-jbatch-repository --status=ALL --days=7
