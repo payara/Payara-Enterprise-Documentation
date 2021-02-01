@@ -133,7 +133,11 @@ The clean-jbatch-repository subcommand deletes records of job executions
 [cols=",,,,",options="header",]
 |=======================================================================
 |Option | Type |Description |Default |Mandatory
-|`--status` | ALL/COMPLETED| The status of batch jobs executions to which delete the records of.
+|`--status` 
+|
+* ALL
+* COMPLETED
+| The status of batch jobs executions to which delete the records of.
 If ALL then all job executions will be deleted, regardless of status.
 If COMPLETED only job executions that successfully completed will be deleted. | COMPLETED |No
 |`--days` | Integer| The number of days previous that the end time of the job execution must be to get deleted. | 0 | No
