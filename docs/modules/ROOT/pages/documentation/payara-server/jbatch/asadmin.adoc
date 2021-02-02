@@ -130,7 +130,7 @@ The clean-jbatch-repository subcommand deletes records of job executions
 [[command-options-clean]]
 === Command Options
 
-[cols=",,,,",options="header",]
+[cols=",a,,,",options="header",]
 |=======================================================================
 |Option | Type |Description |Default |Mandatory
 |`--status` 
