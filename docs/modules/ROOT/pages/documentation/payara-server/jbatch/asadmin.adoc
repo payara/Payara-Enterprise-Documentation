@@ -127,7 +127,7 @@ _Since Payara Server 5.25.0_
 *Aim*::
 The clean-jbatch-repository subcommand deletes records of job executions.
 
-IMPORTANT: With version 5.25.0 only H2 database is supported by this command.
+IMPORTANT: The command will only clean jobs that are stored in the internal embedded H2 database. If a separate database is used to store the records for JBatch jobs, the command will not clear them. Support for other database storage types will come later in the future.
 
 [[command-options-clean]]
 === Command Options
