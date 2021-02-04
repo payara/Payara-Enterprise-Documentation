@@ -125,7 +125,9 @@ _Since Payara Server 5.25.0_
 `asadmin> clean-jbatch-repository --status COMPLETED|ALL --days <int.value> <JobName>`
 
 *Aim*::
-The clean-jbatch-repository subcommand deletes records of job executions
+The clean-jbatch-repository subcommand deletes records of job executions.
+
+IMPORTANT: The command will only clean jobs that are stored in the internal embedded H2 database. If a separate database is used to store the records for JBatch jobs, the command will not clear them. Support for other database storage types will come later in the future.
 
 [[command-options-clean]]
 === Command Options
@@ -148,7 +150,7 @@ If COMPLETED only job executions that successfully completed will be deleted. | 
 The following command will delete all Batch jobs that were executed before 7 days ago.
 [source, shell]
 ----
-asadmin > clean-jbatch-repository --status=ALL --days=7
+asadmin > clean-jbatch-repository --status=ALL --days=7 test job
 ----
 
 [[list-batch-jobs]]
