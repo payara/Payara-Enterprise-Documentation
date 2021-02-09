@@ -12,5 +12,3 @@ For a full overview of the API, review https://github.com/eclipse/microprofile-m
 A key goal of the specification was to provide HTTP endpoints in Prometheus format (as well as JSON). Since the https://prometheus.io/docs/instrumenting/exposition_formats/#text-format-details[Prometheus Text format] is widely used by monitoring products other than Prometheus, this gives a lot of compatibility out-of-the-box.
 
 {mpMetricsSpecUrl}[MicroProfile Metrics 1.1] was released in MicroProfile 1.3
-
-IMPORTANT: Version {mpMetricsVersion} of the Metrics specification does not define the behaviour of implementations where multiple applications are deployed to the same container. This limitation will be addressed in a later version of the Metrics specification.

@@ -79,15 +79,15 @@ image:microprofile/fault-tolerance.png[Set Fault Tolerance Configuration]
 [[using-asadmin-commands]]
 === Using Asadmin Commands
 
-NOTE: Since Payara Platform Enterprise 5.20.0, the configuration no longer allows configuring user defined executor to run the fault tolerance execution. Instead, Fault Tolerance uses two dedicated executors that are well suited for the usage pattern typically experienced when executing Fault Tolerance semantics. It's possible to configure the maximum size of these pools to scale them up or down.
+NOTE: On Payara Platform 5.2021.1, it is a known issue that the `set-fault-tolerance-configuration` command is broken and it can't be used to configure user-defined executor to run the fault tolerance execution. To work around this issue, use the following `set` command to configure managed executor pool: `asadmin set configs.config.server-config.microprofile-fault-tolerance-configuration.managed-executor-service` and similar use the following  command to configure scheduled managed executor pool: `asadmin set configs.config.server-config.microprofile-fault-tolerance-configuration..managed-scheduled-executor-service`. Finally, a server restart is required for the commands to take effect.
 
 ==== `set-fault-tolerance-configuration`
 
 *Usage*::
 ```
 asadmin>set-fault-tolerance-configuration
-  [--asyncmaxpoolsize=asyncmaxpoolsize]
-  [--delaymaxpoolsize=delaymaxpoolsize]
+  [--managedexecutorservicename=managedexecutorservicename]
+  [--managedscheduledexecutorservicename=managedscheduledexecutorservicename]
   [--target=server-config]
 ```
 
@@ -96,12 +96,24 @@ Provides a way to set the configuration of the fault tolerance service of the ta
 
 ===== Command Options
 
+NOTE: Since Payara Platform 5.2021.1, the options `asyncmaxpoolsize` and `delaymaxpoolsize` has been deprecated as they are no longer applicable because the default managed executor pools are being used.
+
 [cols="4,10,1,1", options="header"]
 |===
 |Option
 |Description
 |Default
 |Mandatory
+
+|`managedexecutorservicename`
+|The Logical JNDI name of the Managed Executor Service to look up. Changes to this configuration require a restart of the server to take effect.
+|`java:comp/DefaultManagedExecutorService`
+|no
+
+|`managedscheduledexecutorservicename`
+|The Logical JNDI name of the Managed Scheduled Executor Service to look up. Changes to this configuration require a restart of the server to take effect.
+|`java:comp/DefaultManagedScheduledExecutorService`
+|no
 
 |`asyncmaxpoolsize`
 |The maximum size of the thread pool used to run asynchronous execution. The dedicated executor will create threads dynamically on rising demand and dispose idle threads on falling demand. Changes to this configuration take effect without restart.
@@ -127,8 +139,7 @@ Provides a way to set the configuration of the fault tolerance service of the ta
 
 [source,Shell]
 ----
-asadmin> set-fault-tolerance-configuration --asyncmaxpoolsize=2000
---delaymaxpoolsize=30 --target instance1
+asadmin> set-fault-tolerance-configuration --managedexecutorservicename=java:comp/DefaultManagedExecutorService --target instance1
 ----
 
 ==== `get-fault-tolerance-configuration`
@@ -159,5 +170,5 @@ Returns the current configuration options for the Fault Tolerance service on the
 
 [source,Shell]
 ----
-asadmin> get-fault-tolerance-configuration --target=cluster1
+asadmin> get-fault-tolerance-configuration --target=instance1
 ----

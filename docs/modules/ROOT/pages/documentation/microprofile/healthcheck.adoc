@@ -34,12 +34,12 @@ The MicroProfile Healthchecks API defines the following list of REST endpoints t
 |On invocation, all registered health checks annotated with `@Readiness` are performed and the results aggregated.
 
 |`/health`
-|Readiness + Liveness + Backward compatible
-|On invocation, all registered health checks annotated with `@Liveness`, `@Readiness` and `@Health` are performed and the results aggregated.
+|Readiness + Liveness 
+|On invocation, all registered health checks annotated with `@Liveness` and `@Readiness` are performed and the results aggregated.
 |====
 
 This root endpoint can be altered using the `set-microprofile-healthcheck-configuration` asadmin command to prevent collisions with other HTTP endpoints that might need to use the `health` context root.
-   
+
 NOTE: This endpoint will not be available until at least one application has been deployed.
 
 [[health-check-configuration]]
@@ -141,12 +141,3 @@ By default, HealthCheck endpoints bind to root context application which is
 application uses the default realm (`file`) of the server. If user application deployed 
 with the empty context-root then the security configuration of the deployed 
 application will be shared by HealthCheck endpoints.
-
-[[backward-compatible]]
-=== Backward compatible
-Since MicroProfile Health Check 2.0, `@Health` annotation is deprecated 
-and JSON payload elements `outcome` and `state` in endpoint response are replaced by `status`.
-By default for backward compatibility, the deprecated `/health` endpoint invokes 
-all registered health checks having `@Health`, `@Liveness` or `@Readiness` annotation.
-And to enable the backward compatibility in response JSON format, set the value of 
-`MP_HEALTH_BACKWARD_COMPATIBILITY_ENABLED` MicroProfile config property to true.

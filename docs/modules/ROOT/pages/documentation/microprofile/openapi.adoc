@@ -64,6 +64,22 @@ The OpenAPI can be configured through the xref:documentation/microprofile/config
 | `mp.openapi.servers.operation.` | Prefix of the configuration property to specify an alternative list of servers to service an operation.
 Operations that want to specify an alternative list of servers must define an `operationId`, a unique string used to identify the operation. For example,
 `mp.openapi.servers.operation.getBooking=https://abc.io/v1`
+| `mp.openapi.schema.` a| Prefix of the configuration property to specify an alternative list of servers to service an operation.
+Prefix of the configuration property to specify a schema for a specific class, in JSON format. The remainder of the property key must be the fully-qualified class name. The value must be a valid OpenAPI schema object, specified in the JSON format. The use of this property is functionally equivalent to the use of the `@Schema` annotation on a Java class, but may be used in cases where the application developer does not have access to the source code of a class.
+
+When a `name` key is provided with a string value, the schema will be added to the `schemas` collection in the `components` object of the resulting OpenAPI document using `name`'s value as the key.
+
+For example, in the case where an application wishes to represent a Java `Date` object in epoch-style milliseconds, the following configuration can be used (line escapes and indentation added for readability):
+
+[source, json]
+----
+mp.openapi.schema.java.util.Date = { \
+  "name": "EpochMillis", \
+  "type": "number", \
+  "format": "int64", \
+  "description": "Milliseconds since January 1, 1970, 00:00:00 GMT" \
+}
+----
 |===
 
 [[sources-model-reader]]
