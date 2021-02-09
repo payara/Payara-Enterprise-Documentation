@@ -59,3 +59,13 @@ asadmin> migrate-timers --target server1 server2
 ----
 
 Where `server1` is the active instance to migrate timers to and `server2` is the failed instance.
+
+[[migration-live-instance]]
+=== Migration from Live Instances
+
+_Since Payara Server 5.25.0_
+
+The `migrate-timers` command can also be used to migrate timers that are scheduled to expire on a live instance.
+Users previously had little control over the instance on a deployment group that a timer would execute on, with the
+only way to force migration to another instance being to stop the instance they were currently executing on. This change
+allows a user to pre-emptively move their timers around without having to resort to failover mechanics.
