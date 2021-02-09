@@ -47,4 +47,5 @@ asadmin> upgrade-server --username example-user --distribution web --verson 5.24
 `asadmin> rollback-server`
 
 *Aim*::
-This command can be used to rollback Payara Server to the point before the upgrade-server command was run. The backup of the domain is not restored automatically. If you need that, you should perform a xref:/documentation/user-guides/restore-domain.adoc[restore-domain command] manually pointing to the ZIP created during the upgrade-server process under `$domaindir/backups` (e.g. `payara5/glassfish/domains/domain1/backups`).
+This command can be used to rollback Payara Server to the point before the upgrade-server command was run, restoring the most recent backup of the domain (expected to be the backup created during execution of the `upgrade-server` command).
+
