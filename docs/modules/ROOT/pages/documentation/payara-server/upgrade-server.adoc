@@ -37,7 +37,7 @@ This example upgrades a Payara Web distribution to version 5.24.1
 
 [source, shell]
 ----
-asadmin> upgrade-server --username example-user --distribution web --verson 5.24.1
+asadmin> upgrade-server --username example-user --distribution web --version 5.24.1
 ----
 
 [[rollback-server-command]]
