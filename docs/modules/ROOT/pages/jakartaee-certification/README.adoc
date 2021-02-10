@@ -1,13 +1,4 @@
 = Jakarta EE Platform 8 certification summaries
 
-Payara Server is certified https://jakarta.ee/[Jakarta EE] implementation.
-As proof of compatibility, output of Jakarta EE Compatibility Test Suite tests are presented for each certified version.
-
-The following versions are certified:
-
-* xref:jakartaee-certification/5.22.0/README.adoc[Payara Server 5.22.0]
-* xref:jakartaee-certification/5.21.2/README.adoc[Payara Server 5.21.2]
-* xref:jakartaee-certification/5.20.0/README.adoc[Payara Server 5.20.0]
-* xref:jakartaee-certification/5.201/README.adoc[Payara Server 5.201]
-* xref:jakartaee-certification/5.194/README.adoc[Payara Server 5.194]
-* xref:jakartaee-certification/5.193/README.adoc[Payara Server 5.193]
+Payara Server is a certified https://jakarta.ee/[Jakarta EE] implementation.
+As proof of compatibility, pages in this section present output of Jakarta EE Compatibility Test Suite tests for each certified version and distribution on a separate page.
