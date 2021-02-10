@@ -5,6 +5,10 @@ As proof of compatibility, output of Jakarta EE Compatibility Test Suite tests a
 
 The following versions are certified:
 
+* xref:jakartaee-certification/5.25.0/README.adoc[Payara Server 5.25.0]
+* xref:jakartaee-certification/5.24.0/README.adoc[Payara Server 5.24.0]
+* xref:jakartaee-certification/5.23.1/README.adoc[Payara Server 5.23.1]
+* xref:jakartaee-certification/5.23.0/README.adoc[Payara Server 5.23.0]
 * xref:jakartaee-certification/5.22.0/README.adoc[Payara Server 5.22.0]
 * xref:jakartaee-certification/5.21.2/README.adoc[Payara Server 5.21.2]
 * xref:jakartaee-certification/5.20.0/README.adoc[Payara Server 5.20.0]
