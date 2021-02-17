@@ -35,12 +35,14 @@ Environment variable references are used like system property references,
 but contain an extra `ENV` qualifier and equals sign before the variable name.
 An example of a reference to an environment variable `HOME` then looks like:
 
------------
+------------------------------
 ${ENV=HOME}
------------
+${ENV=MAYBE_AVAILABLE:default}
+------------------------------
 
 Environment variables need to be specified in the environment before a
-Payara instance is started.
+Payara instance is started. By adding a colon after the variable name,
+you may append a default value if the variable has not been set.
 
 [[password-aliases]]
 == References to password aliases
@@ -64,8 +66,12 @@ MicroProfile property references can be used exactly like an environment
 variable reference, but using the `MPCONFIG` qualifier.
 An example of a reference to a MicroProfile property called `foo` would look like:
 
------------
+-----------------------
 ${MPCONFIG=foo}
------------
+${MPCONFIG=bar:default}
+-----------------------
 
-MicroProfile properties need to be declared in one of the Payara defined xref:/documentation/microprofile/config.adoc#config-sources[config sources].
+MicroProfile properties need to be declared in one of the Payara defined
+xref:/documentation/microprofile/config/README.adoc#config-sources[config sources].
+By adding a colon after the property name, you may append a default value if
+the property has not been set.
