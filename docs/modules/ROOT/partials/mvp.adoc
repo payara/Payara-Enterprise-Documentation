@@ -1,0 +1,13 @@
+////
+
+A partial page to include into a feature which is a minimum viable product.
+Variable "mvpVersion" specifies the Payara version for the MVP
+
+Include by (for example):
+
+include::partial$mvp.adoc[]
+
+////
+
+NOTE: This feature is currently released as a *Minimum Viable Product* (MVP) and will gradually recieve additional enhancements in future Payara Enterprise releases.
+
