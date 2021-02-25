@@ -12,8 +12,5 @@ If {mvpVersion} == {currentVersion}, the fragment will be visible for all versio
 
 ////
 
-ifeval::[{mvpVersion} == {currentVersion}]
-
 NOTE: This feature is currently released as a *Minimum Viable Product* (MVP) and will gradually recieve additional enhancements in future Payara Enterprise releases.
 
-endif::[]
