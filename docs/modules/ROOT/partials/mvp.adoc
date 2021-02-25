@@ -5,10 +5,7 @@ Variable "mvpVersion" specifies the Payara version for the MVP
 
 Include by (for example):
 
-:mvpVersion: "5.25.0"
 include::partial$mvp.adoc[]
-
-If {mvpVersion} == {currentVersion}, the fragment will be visible for all versions.
 
 ////
 
