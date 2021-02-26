@@ -7,8 +7,6 @@ This tool can be used to upgrade a Payara Server installation to a newer version
 
 include::partial$mvp.adoc[]
 
-CAUTION: The update tool is not currently supported on Windows yet.
-
 [[upgrade-server-command]]
 == Upgrade Server Command
 
@@ -17,7 +15,7 @@ CAUTION: The update tool is not currently supported on Windows yet.
 
 *Aim*::
 This command can be used to upgrade Payara Server to the specified distribution along with all SSH nodes in the _domain.xml_.
-The command will also back up the old version and domains in the default location (_payara5/glassfish/domains_) to allow for rolling back. The command can also be used to downgrade to an older Payara version although this is not encouraged.
+The command will also back up the old version and domains in the default location (_payara5/glassfish/domains_) or the location specified using the `--domaindir` option to allow for rolling back. The command can also be used to downgrade to an older Payara version although this is not encouraged.
 
 [[command-options-1]]
 === Command Options
@@ -28,6 +26,8 @@ The command will also back up the old version and domains in the default locatio
 |`--username` |String | The username for the Payara Nexus server.||Yes
 |`--version` |String |Specifies the version number of the new version of Payara to use.| |Yes
 |`--distribution` |Enum |Specifies the distribution of Payara Server to download. This can payara, payara-web, payara-ml, or payara-web-ml.|payara|No
+|`--stage` |Boolean |Determines if the upgrade should be installed in-place, or staged into "_x.new_" directories. Scripts are provided that can be used to apply and rollback the staged install. This option is automatically enabled when running the command on Windows. |False on Unix, True on Windows| No
+|`--domaindir` |String |The directory containing the domains. The domains in this directory are backed up, and their config is used to determine the nodes which will also be upgraded. | ${as-install}/domains | No
 |=======================================================================
 
 [[upgrade-example]]
@@ -49,3 +49,77 @@ asadmin> upgrade-server --username example-user --distribution web --version 5.2
 *Aim*::
 This command can be used to rollback Payara Server to the point before the upgrade-server command was run, restoring the most recent backup of the domain (expected to be the backup created during execution of the `upgrade-server` command).
 
+CAUTION: This command is not supported on Windows, please use the rollbackUpgrade.bat script.
+
+[[command-options-2]]
+=== Command Options
+
+[cols=",,,,",options="header",]
+|=======================================================================
+|Option |Type |Description |Default |Mandatory
+|`--domaindir` |String |The directory containing the domains. The domains in this directory are backed up, and their config is used to determine the nodes which will also be upgraded. | ${as-install}/domains | No
+|=======================================================================
+
+[[staged-upgrades]]
+== Staged Upgrades
+
+When the `upgrade-server` command is used on Windows, or with the `--stage` option enabled, the new server install is installed next to the current one in various _.new_ directories (e.g. `payara5/glassfish/bin.new`).
+
+
+[[apply-staged-upgrades]]
+=== Apply Staged Upgrade Script
+
+*Usage*::
+`> ./payara5/glassfish/bin/applyStagedUpgrade`
+
+*Aim*::
+This script is used to apply an upgrade staged using the `upgrade-server` command.
+It will move the current installation into _.old_ directories, and the staged _.new_ installation into the expected "current" location.
+It will then upgrade the nodes of the domains in the default domain dir, or the domains in the directory provided using `--domaindir`
+
+CAUTION: This script should not be run repeatedly without restaging a release, doing so can leave you with no "current" installation.
+
+[[command-options-3]]
+==== Command Options
+
+[cols=",,,,",options="header",]
+|=======================================================================
+|Option |Type |Description |Default |Mandatory
+|`--domaindir` |String |The directory containing the domains. The config of the domains in this directory are used to determine the nodes which will also be upgraded. | ${as-install}/domains | No
+|=======================================================================
+
+[[rollback-upgrade-script]]
+=== Rollback Upgrade Script
+
+*Usage*::
+`> ./payara5/glassfish/bin/rollbackUpgrade`
+
+*Aim*::
+This script is used to rollback a server upgrade applied using the `applyStagedUpgrade` script.
+It will move the _.old_ installation back into the expected "current" location, and the applied upgrade back into _.new_ directories.
+It will then rollback the nodes of the domains in the default domain dir, or the domains in the directory provided using `--domaindir`
+
+CAUTION: This script should not be run repeatedly, doing so can leave you with no "current" installation.
+
+[[command-options-3]]
+==== Command Options
+
+[cols=",,,,",options="header",]
+|=======================================================================
+|Option |Type |Description |Default |Mandatory
+|`--domaindir` |String |The directory containing the domains. The config of the domains in this directory are used to determine the nodes which will also be rolled back. | ${as-install}/domains | No
+|=======================================================================
+
+[[cleanup-upgrade]]
+=== Cleanup Upgrade Script
+
+*Usage*::
+`> ./payara5/glassfish/bin/cleanupUpgrade`
+
+*Aim*::
+This script is used to clean up any leftovers from a staged upgrade: any _.old_ folders and any _.new_ folders will be deleted.
+
+CAUTION: Use of this script will prevent you from rolling back or applying a staged upgrade.
+
+NOTE: This script cannot be used to clean up upgrades from releases prior to 5.26.0,
+as it uses a config file to determine the directories to delete which is only generated by the `upgrade-server` command from 5.26.0 onwards.
