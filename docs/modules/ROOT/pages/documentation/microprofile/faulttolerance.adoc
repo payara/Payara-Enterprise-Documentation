@@ -12,7 +12,6 @@ A full overview for the reasoning behind the API can be found in
 https://github.com/eclipse/microprofile-fault-tolerance/blob/master/README.adoc[the
 README for the source code repository.]
 
-
 == Additions to the Fault Tolerance Spec
 In addition to the functionality
 https://github.com/eclipse/microprofile-fault-tolerance/blob/master/spec/src/main/asciidoc/microprofile-fault-tolerance-spec.asciidoc[
@@ -21,9 +20,7 @@ detailed in the spec], the following is also implemented in Payara Server Enterp
 === Configurable Executor Services
 The managed and scheduled managed executor pool can be configured via the _set-fault-tolerance-configuration_ asadmin command.
 
-The executor service is used to execute methods annotated with `@Asynchronous`, whereas the scheduled executor
-service is used by the CircuitBreaker and Timeout interceptors for their timeout operations (scheduling the circuit breaker
-to be set to half open, and just timing out respectively).
+The executor service is used to execute methods annotated with `@Asynchronous`, whereas the scheduled executor service is used by the CircuitBreaker and Timeout interceptors for their timeout operations (scheduling the circuit breaker to be set to half open, and just timing out respectively).
 
 === Alternative @Asynchronous Annotations
 Since 5.192 the Payara specific configuration property `MP_Fault_Tolerance_Alternative_Asynchronous_Annotations` can be used to specify a comma separated list of fully qualified class names of those annotations that should have the same effect as FT's `@Asynchronous`. These annotations do not have to be interceptor bindings.
@@ -60,7 +57,6 @@ Since 5.192 interactions between annotations are handled as described by the 2.0
 
 As specified the interceptor priority can be changed using the property `mp.fault.tolerance.interceptor.priority` affecting all annotations including alternative ones.
 
-
 [[fault-tolerance-configuration]]
 == Fault Tolerance Configuration
 
@@ -79,8 +75,6 @@ image:microprofile/fault-tolerance.png[Set Fault Tolerance Configuration]
 [[using-asadmin-commands]]
 === Using Asadmin Commands
 
-NOTE: On Payara Platform 5.2021.1, it is a known issue that the `set-fault-tolerance-configuration` command is broken and it can't be used to configure user-defined executor to run the fault tolerance execution. To work around this issue, use the following `set` command to configure managed executor pool: `asadmin set configs.config.server-config.microprofile-fault-tolerance-configuration.managed-executor-service` and similar use the following  command to configure scheduled managed executor pool: `asadmin set configs.config.server-config.microprofile-fault-tolerance-configuration..managed-scheduled-executor-service`. Finally, a server restart is required for the commands to take effect.
-
 ==== `set-fault-tolerance-configuration`
 
 *Usage*::
@@ -96,7 +90,7 @@ Provides a way to set the configuration of the fault tolerance service of the ta
 
 ===== Command Options
 
-NOTE: Since Payara Platform 5.2021.1, the options `asyncmaxpoolsize` and `delaymaxpoolsize` has been deprecated as they are no longer applicable because the default managed executor pools are being used.
+NOTE: Since Payara Platform 5.2021.2, the options `asyncmaxpoolsize` and `delaymaxpoolsize` have been removed as they are no longer applicable due to the configurable managed executor pools being used.
 
 [cols="4,10,1,1", options="header"]
 |===
@@ -115,24 +109,12 @@ NOTE: Since Payara Platform 5.2021.1, the options `asyncmaxpoolsize` and `delaym
 |`java:comp/DefaultManagedScheduledExecutorService`
 |no
 
-|`asyncmaxpoolsize`
-|The maximum size of the thread pool used to run asynchronous execution. The dedicated executor will create threads dynamically on rising demand and dispose idle threads on falling demand. Changes to this configuration take effect without restart.
-|`1000`
-|no
-
-|`delaymaxpoolsize`
-|The maximum size of the executor used to schedule delays and detect timeouts as part of the Fault Tolerance execution. The dedicated executor is likely to use up to this number of threads. Changes to this configuration require a restart of the server to take effect.
-|`20`
-|no
-
 |`target`
 |The target Payara config to apply the change to
 |server (the DAS)
 |no
 
 |===
-
-
 
 
 ===== Example
