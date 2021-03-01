@@ -12,25 +12,8 @@ xref:/documentation/payara-server/request-tracing-service/request-tracing-servic
 The Notification service provides the ability to disseminate
 notification events through various channels that are being created by
 other services. This service is provided with a number of configurable
-_notifiers_, the default being a log notification mechanism which can be
-seen in the following `domain.xml` snippet:
+_notifiers_, the default being the Log Notifier.
 
-[source, shell]
-----
-<notification-service-configuration enabled="true">
-    <log-notifier-configuration enabled="true" />
-</notification-service-configuration>
-----
-
-The main configuration tag `notification-service-configuration` has only
-one attribute: `enabled`, which can be set to either `true` or
-`false`. This provides the ability to globally enable or disable all
-configured notifiers.
-
-The `<log-notifier-configuration>` tag registers a log notifier to the
-pub-sub model of the notification service where it subscribes to each
-log notification event that would get published by another service.
-
-The Notification service can be configured through the admin console:
+The Notification service can be configured using the xref:documentation/payara-server/notification-service/asadmin-commands.adoc[Asadmin tool] or through the admin console:
 
 image:notification-service/general-config.png[Notification Service General Configuration]
