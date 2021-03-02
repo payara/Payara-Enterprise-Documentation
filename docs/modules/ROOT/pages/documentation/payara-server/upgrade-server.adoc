@@ -78,6 +78,7 @@ It will move the current installation into _.old_ directories, and the staged _.
 It will then upgrade the nodes of the domains in the default domain dir, or the domains in the directory provided using `--domaindir`
 
 CAUTION: This script should not be run repeatedly without restaging a release, doing so can leave you with no "current" installation.
+Checks to help prevent this will be added in a future release.
 
 [[command-options-3]]
 ==== Command Options
@@ -99,7 +100,8 @@ This script is used to rollback a server upgrade applied using the `applyStagedU
 It will move the _.old_ installation back into the expected "current" location, and the applied upgrade back into _.new_ directories.
 It will then rollback the nodes of the domains in the default domain dir, or the domains in the directory provided using `--domaindir`
 
-CAUTION: This script should not be run repeatedly, doing so can leave you with no "current" installation.
+CAUTION: This script should not be run repeatedly, doing so can leave you with no "current" installation. Checks to help
+prevent this will be added in a future release.
 
 [[command-options-3]]
 ==== Command Options
