@@ -2,13 +2,13 @@
 = Slack Notifier
 
 https://slack.com/[Slack] is a functional enterprise chat and team
-collaboration tool inspired by IRC. It allows an organisation to create
+collaboration tool inspired by IRC. It allows an organization to create
 specific *domains* and discuss work topics or subjects in separate
 *channels* that can either be public or private.
 
 Payara Server Enterprise includes a special notifier to send notifications from the
 xref:/documentation/payara-server/notification-service/notification-service.adoc[Notification service]
-to an organisation's domain channel using Slack API integrations.
+to an organization's domain channel using Slack API integrations.
 
 [[slack-integration-configuration]]
 == Slack Integration Configuration
@@ -17,7 +17,7 @@ In order to allow the notification service to log events on a Slack
 channel of your choice, you must fulfill the following requirements
 first:
 
-* Have created a Slack account within your organisation's domain (for
+* Have created a Slack account within your organization's domain (for
 example *payara.slack.com*)
 * Have an Slack account with granted permissions to create channels and
 configure API integrations.
@@ -47,7 +47,7 @@ image:notification-service/slack/channel-selection.png[Incoming WebHook Channel 
 +
 NOTE: It's recommended to choose a _private_ channel, since it will keep these
 notifications events protected in case of unwanted disclosure and it won't
-spam other users of your organisation with unwanted notifications
+spam other users of your organization with unwanted notifications
 
 . With this, the WebHook configuration is finished. Now, take special
 attention to the WebHook URL, which is usually follows this structure:
@@ -64,12 +64,12 @@ later.
 We recommend that you configure the following settings in the
 channel integration to give better visualization for your notifications:
 +
-* *Descriptive Label*: Use a name that's easy to understand to identify this
+* *Descriptive Label*: Use a well descripted text to identify this
 WebHook integration
 * *Customize Name*: Insert a name for the "agent" that will report the
 notification messages
 * *Customize Icon*: Insert a custom icon to identify the agent that will
-be visualized in the messages. We recommend using one of the Payara logos
+be visualized in the messages We recommend using one of the Payara logos
 like in this sample:
 +
 image:notification-service/slack/webhook-additional-settings.png[WebHook Additional Settings]
@@ -99,12 +99,12 @@ previous section. Hit the *Save* button to preserve the changes.
 === From the Command Line
 
 To configure the Notification Service from the command line, use the
-`set-slack-notifier-configuration` asadmin command, specifying the tokens
+`notification-slack-configure` asadmin command, specifying the tokens
 like this:
 
 [source, shell]
 ----
-asadmin> set-slack-notifier-configuration --enabled=true --dynamic=true --token1=T43CHENUC --token2=B441EFQB1 --token3=Jas8P3jCZ4wK8Y2m88dCxGkn
+asadmin > notification-slack-configure --enabled=true --dynamic=true --token1=T43CHENUC --token2=B441EFQB1 --token3=Jas8P3jCZ4wK8Y2m88dCxGkn
 ----
 
 You can use the `--enabled` and `--dynamic` options to enable or disable
@@ -117,8 +117,8 @@ using the `get-slack-notifier-configuration` asadmin command like this:
 ----
 asadmin > get-slack-notifier-configuration
 
-Enabled  Noisy  Token 1    Token 2    Token 3
-true     false  T43CHENUC  B441EFQB1  Jas8P3jCZ4wK8Y2m88dCxGkn
+Enabled  Token 1    Token 2    Token 3
+true     T43CHENUC  B441EFQB1  Jas8P3jCZ4wK8Y2m88dCxGkn
 ----
 
 [[on-the-domain.xml-configuration-file]]

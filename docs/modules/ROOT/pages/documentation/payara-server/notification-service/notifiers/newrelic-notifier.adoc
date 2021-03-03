@@ -1,5 +1,5 @@
-[[newrelic-notifier]]
-= New Relic Notifier
+[[slack-notifier]]
+= NewRelic Notifier
 
 _Since Payara Server 4.1.2.172_
 
@@ -16,20 +16,20 @@ generated from Payara Server's own monitoring systems like the Request Tracing a
 Healthcheck services can be automatically identified by this API and gathered correctly
 to identify performance issues on the application server.
 
-[[newrelic-integration-configuration]]
-== New Relic Configuration
+[[slack-integration-configuration]]
+== NewRelic Configuration
 
 In order for the notifier to work correctly, you must complete the following
 requirements:
 
-. Create a New Relic user account. You can signup for a new account https://newrelic.com/signup[here]
+. Create a NewRelic user account. You can signup for a new account https://newrelic.com/signup[here]
 +
-NOTE: New Relic offers 14-days trial accounts that  can be used to test the service
+NOTE: NewRelic offers 14-days trial accounts that  can be used to test the service
 for free.
 
 . Configure application performance monitoring (APM) for a Payara Server Enterprise instance
 by installing a New Relic Java agent
-. Configure a New Relic Insights API key that will be used to setup the
+. Configure a NewRelic Insights API key that will be used to setup the
 notifier.
 
 [[configure-apm]]
@@ -41,11 +41,11 @@ follow these steps:
 . Login to New Relic with your account credentials, and if you haven't setup a
 monitoring agent yet, the following screen will be shown:
 +
-image:notification-service/newrelic/agent-setup-1.png[New Relic agent setup welcome screen]
+image:notification-service/newrelic/agent-setup-1.png[NewRelic agent setup welcome screen]
 
 . Select the *Java* option and the agent installation procedure will be shown:
 +
-image:notification-service/newrelic/agent-setup-2.png[New Relic Java agent setup procedure]
+image:notification-service/newrelic/agent-setup-2.png[NewRelic Java agent setup procedure]
 +
 From the screen shown, copy the value of the _License Key_ (you need to press the
 *Reveal License Key* button first) since you will need it later.
@@ -144,18 +144,18 @@ and add the configuration of the Java agent as a JVM start argument:
 ----
 +
 NOTE: The agent setup page has a different set of instructions for Windows and Linux
-environments, but they are so similar that the instructions mentioned here should
-be sufficient.
+environments, but they are so similar on the result so the specific instructions
+mentioned here are more than enough.
 +
 
-TIP: If you are considering installing the New Relic Java agent on a Payara Server
+TIP: If you are considering installing the NewRelic Java agent on a Payara Server
 standalone instance or a cluster of multiple instances, you need to manually
 add the JVM (the installer won't work) option with the `javaagent` configuration
 to the instance/cluster referenced configuration. Also, make sure that the directory
 where the _newrelic.jar_ resides also contains the _newrelic.yml_ configuration file
 
-. Now that the agent has been installed, start the Payara Server domain.
-You will observe the following messages at the start of the domain's log
+. Now, that the agent has been installed proceed to start the Payara Server domain.
+You will observe the following similar messages at the start of the domain's log
 +
 [source, log]
 ----
@@ -164,41 +164,41 @@ INFO: New Relic Agent: Writing to log file: /opt/payara-4.1.2.172/glassfish/doma
 ...
 ----
 
-. After some minutes with the server working, you can login back to the New Relic
+. After some minutes with the server working, you can login back to the NewRelic
 portal and on the *APM* dashboard you can see a new entry for recently configured
 server:
 +
-image:notification-service/newrelic/apm-dashboard.png[New Relic APM Dashboard]
+image:notification-service/newrelic/apm-dashboard.png[NewRelic APM Dashboard]
 +
-You can also access the latest monitoring statistics:
+You can access the latest monitoring statistics if you wish so:
 +
-image:notification-service/newrelic/apm-application-details.png[New Relic Application Details]
+image:notification-service/newrelic/apm-application-details.png[NewRelic Application Details]
 
 
 [[retrieving-api-key]]
-=== Retrieving the API Key from New Relic Insights
+=== Retrieving the API Key from NewRelic Insights
 
-Now that the agent has been correctly installed, login back to your New Relic account
+Now that the agent has been correctly installed, login back to your NewRelic account
 portal and head to the *Insights* dashboard:
 
-image:notification-service/newrelic/insights-dashboard.png[New Relic Insights Dashboard]
+image:notification-service/newrelic/insights-dashboard.png[NewRelic Insights Dashboard]
 
 Access the _Manage Data_ option on the side menu, you will be presented the
 following screen:
 
-image:notification-service/newrelic/insights-api-keys-screen.png[New Relic Insights API Keys]
+image:notification-service/newrelic/insights-api-keys-screen.png[NewRelic Insights API Keys]
 
 Click on the `+` icon at the side of the *Insert Keys* header. Take note of the
 _Account ID_ and _API Key_ value on this screen. Also add a brief description to
 reference this key on the dashboard:
 
-image:notification-service/newrelic/insights-insert-api-key.png[New Relic Insights Insert API Keys]
+image:notification-service/newrelic/insights-insert-api-key.png[NewRelic Insights Insert API Keys]
 
 [[payara-server-configuration]]
 == Payara Server Configuration
 
-With the New Relic Java agent and Insights API Key correctly configured, you can
-proceed to configure the New Relic notifier on the Payara Server domain. As usual
+With the NewRelic Java agent and Insights API Key correctly configured, you can
+proceed to configure the NewRelic notifier on the Payara Server domain. As usual
 you can do this using the administration web console, from the command line or
 editing the _domain.xml_ configuration file directly.
 
@@ -207,38 +207,38 @@ editing the _domain.xml_ configuration file directly.
 
 To configure the Notification Service in the Administration Console, go to
 _Configuration -> [instance-configuration (like server-config)] -> Notification Service_
-and click on the *New Relic* tab:
+and click on the *NewRelic* tab:
 
-image:notification-service/newrelic/admin-console-configuration.png[New Relic Configuration on Admin Console]
+image:notification-service/newrelic/admin-console-configuration.png[NewRelic Configuration on Admin Console]
 
 Check the *Enabled* box (and the *Dynamic* box too if you don't want to
-restart the domain) and input the New Relic Account ID and the newly inserted
+restart the domain) and input the NewRelic Account ID and the newly inserted
 Insights API Key. Hit the *Save* button to preserve the changes.
 
 [[from-the-command-line]]
 === From the Command Line
 
 To configure the Notification Service from the command line, use the
-`set-newrelic-notifier-configuration` asadmin command, specifying the tokens
+`notification-newrelic-configure` asadmin command, specifying the tokens
 like this:
 
 [source, shell]
 ----
-asadmin> set-newrelic-notifier-configuration --dynamic=true --enabled=true --accountId=1658989 --key=b5815wdxj6lF_tmMBljQa5y1603JTiLh
+asadmin > notification-newrelic-configure --dynamic=true --enabled=true --accountId=1658989 --key=b5815wdxj6lF_tmMBljQa5y1603JTiLh
 ----
 
 You can use the `--enabled` and `--dynamic` options to enable or disable
-the New Relic notifier on demand.
+the NewRelic notifier on demand.
 
-Also, you can retrieve the current configuration for the New Relic notifier
+Also, you can retrieve the current configuration for the NewRelic notifier
 using the `get-newrelic-notifier-configuration` asadmin command like this:
 
 [source, shell]
 ----
 asadmin > get-newrelic-notifier-configuration
 
-Enabled  Noisy  Key                               Account Id
-true     true   b5815wdxj6lF_tmMBljQa5y1603JTiLh  1658989
+Enabled  Key                               Account Id
+true     b5815wdxj6lF_tmMBljQa5y1603JTiLh  1658989
 ----
 
 [[on-the-domain.xml-configuration-file]]
@@ -262,12 +262,12 @@ method, so be careful when considering this option.
 [[troubleshooting]]
 == Troubleshooting
 
-When you have correctly configured the New Relic notifier, it can be used observe
-notification events on the New Relic Insights service dashboard .
+When you have correctly configured the NewRelic notifier, it can be used observe
+notification events on the NewRelic Insights service dashboard .
 If you do not see any notification event messages on the data explorer, check the
 following:
 
-* Is the New Relic notifier enabled?
+* Is the NewRelic notifier enabled?
 * Is the Notification Service itself enabled?
 * Is there a service configured to use the notifier? (e.g. the
 HealthCheck service)
@@ -280,9 +280,9 @@ observe?
 Payara Server notifier?
 
 Here's a sample of how these notifications are visualized on the Data Explorer
-dashboard for the New Relic Insights service:
+dashboard for the NewRelic Insights service:
 
-image:notification-service/newrelic/insights-data-explorer-results.png[New Relic Insights Data Explorer]
+image:notification-service/newrelic/insights-data-explorer-results.png[NewRelic Insights Data Explorer]
 
 You can observe that the events are correctly identified depending the severity
 of the notification and they are correctly grouped by their custom category (in
