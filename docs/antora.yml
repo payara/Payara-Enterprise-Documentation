@@ -1,6 +1,6 @@
 name: docs
 title: Payara Platform
-version: 5.25.0
+version: master
 start_page: ROOT:README.adoc
 nav:
 - modules/ROOT/nav.adoc
