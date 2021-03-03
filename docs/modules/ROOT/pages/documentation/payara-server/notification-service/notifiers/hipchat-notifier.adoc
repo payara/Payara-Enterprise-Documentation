@@ -1,0 +1,119 @@
+[[hipchat-notifier]]
+= HipChat Notifier
+
+_Since Payara Server 4.1.1.171_
+
+HipChat is a team chat application created by **Atlassian**. It can be used
+for teams to discuss topics in separate "rooms", but also supports
+integrations from services to notify users of events.
+
+Payara Server Enterprise has now included functionality to send notifications from
+the
+xref:/documentation/payara-server/notification-service/notification-service.adoc[Notification Service]
+to a HipChat room
+
+[[requirements]]
+== Requirements
+
+To use HipChat as a notification target you must have a HipChat account
+and a room where notifications will be sent.
+
+[[configuration]]
+== Configuration
+
+At a high level, the steps to configure the HipChat notifier are the following:
+
+. In HipChat, create a new notification token for the required room.
+. Proceed to configure the notifier on Payara Server
+
+[[hipchat-configuration]]
+== HipChat Configuration
+
+Assuming you already have a HipChat account, the steps to create a room
+and generate a notification token are as follows:
+
+. Create a new room in HipChat where your notifications will be sent,
+if one does not exist. The example below shows the creation of a room
+called "_payara-notifications_"
++
+image:notification-service/hipchat/hipchat-create-room.png[Create Hipchat room]
++
+After you have created the target room, or if a room already exists, visit
+`https://${your-team-name}.hipchat.com/rooms` and search for the room
+name to filter out any others, as shown below:
++
+image:notification-service/hipchat/hipchat-view-room.png[View Hipchat room]
+
+. Select your room and select the "*Tokens*" link in the left-hand menu to
+add a new notification token:
++
+image:notification-service/hipchat/hipchat-room-tokens.png[Select Hipchat Tokens]
+
+. Finally, give your token an informative label, since this will be displayed
+in your room when notifications are received:
++
+image:notification-service/hipchat/hipchat-create-token.png[Create Hipchat room token]
+
+[[payara-server-configuration]]
+== Payara Server Configuration
+
+Once you have a token, the configuration of the notifier within Payara
+Server Enterprise involves just one step. In the Admin Console, simply add the room
+name and token to the appropriate fields, as shown below:
+
+image:notification-service/hipchat/admin-console-configuration.png[Configuring Hipchat Notifier on Admin Console]
+
+Make sure that the *Enabled* box is ticked so that the notifier will be
+used. If you would like the changes to take effect without needing a
+restart, tick the *Dynamic* box as well.
+
+To make these changes using an `asadmin` command use the following command sample,
+which mirrors the above screenshot:
+
+[source, shell]
+----
+asadmin> notification-hipchat-configure --enabled=true --roomName="payara-notifications" --token="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" --dynamic=true
+----
+
+To check the current applied configuration from asadmin, run the following
+command:
+
+[source, shell]
+----
+asadmin get-hipchat-notifier-configuration
+----
+
+It will return the current configuration, with whether it is currently
+enabled, the room name, and the current token in use:
+
+[source, shell]
+----
+$ asadmin get-hipchat-notifier-configuration
+
+Enabled         Room Name                 Token
+true            payara-notifications      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+----
+
+[[troubleshooting]]
+== Troubleshooting
+
+When you have correctly configured the HipChat notifier, it can be used
+to push notifications to your configured room. If you do not see any
+notifications, check the following:
+
+* Is the HipChat notifier enabled?
+* Is the notification service itself enabled?
+* Is there a service configured to use the notifier? (e.g. the
+HealthCheck service)
+* Is the service configured to send notifications frequently enough to
+observe?
+* Have you enabled the service after configuring it?
+* Check that you have not hit the
+https://developer.atlassian.com/hipchat/guide/hipchat-rest-api/api-rate-limits[rate limit for the HipChat API]
+
+Once configuring is complete and both the notification service and the
+service you are using are enabled, you should see output like the
+example, which shows the Healthcheck service outputting CPU information
+every _3 seconds_:
+
+image:notification-service/hipchat/hipchat-notifications.png[image] .

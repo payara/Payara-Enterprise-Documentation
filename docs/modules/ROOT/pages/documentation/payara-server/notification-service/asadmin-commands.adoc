@@ -33,11 +33,11 @@ server restart.
 asadmin> notification-configure --enabled=true --dynamic=true
 ----
 
-[[list-notifiers]]
-== `list-notifiers`
+[[notifier-list-services]]
+== `notifier-list-services`
 
 *Usage*::
-`asadmin> list-notifiers`
+`asadmin> notifier-list-services`
 
 *Aim*::
 Lists available notifiers to use with the service. These can then
@@ -60,7 +60,7 @@ Running the command on release _4.1.1.164_ would yield the following results:
 Available Notifier Services:
     service-log
 
-Command list-notifiers executed successfully.
+Command notifier-list-services executed successfully.
 ----
 
 [[get-notification-configuration]]

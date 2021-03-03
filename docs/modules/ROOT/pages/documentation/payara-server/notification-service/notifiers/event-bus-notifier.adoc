@@ -30,7 +30,7 @@ To make these changes via the asadmin tool, use the following command, which mir
 
 [source, shell]
 ----
-asadmin> set-eventbus-notifier-configuration --topicName=my-topic --dynamic=true --enabled=true
+asadmin> notification-eventbus-configure --topicName=my-topic --dynamic=true --enabled=true
 ----
 
 To check the current applied configuration from asadmin, run the command:
@@ -45,7 +45,7 @@ This will return the current configuration, with whether it is currently enabled
 [source, shell]
 ----
 $ asadmin get-eventbus-notifier-configuration
-Enabled  Noisy  Topic Name
-false    true   payara.notification.event
+Enabled  Topic Name  
+true     my-topic
 ----
 
