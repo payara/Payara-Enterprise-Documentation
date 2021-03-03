@@ -15,7 +15,7 @@ following is a summary of the TCK results for releases of Jakarta EE Platform, W
 |
 {empty} +
 {empty} +
-https://www.payara.fish/page/payara-enterprise-downloads/[Payara Server 5.23.1 (Web Profile)]
+https://www.payara.fish/page/payara-enterprise-downloads/[Payara Server 5.24.0 (Web Profile)]
 |===
 
 - Specification Name, Version and download URL:
