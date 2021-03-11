@@ -149,7 +149,7 @@ You can use the `--enabled` and `--dynamic` options to enable or disable
 the SNMP notifier on demand.
 
 Also, you can retrieve the current configuration for the SNMP notifier
-using the `get-slack-notifier-configuration` asadmin command like this:
+using the `get-snmp-notifier-configuration` asadmin command like this:
 
 [source, shell]
 ----
