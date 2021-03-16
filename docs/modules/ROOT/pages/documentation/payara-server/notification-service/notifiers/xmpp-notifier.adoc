@@ -181,7 +181,7 @@ configuration options like this:
 
 [source, shell]
 ----
-asadmin> set-xmpp-notifier-configuration --enabled=true --dynamic=true --hostname="172.28.128.3" --port=5222 --username="payara_notifier" --password="******" --securityDisabled=false --roomid=server
+asadmin> set-xmpp-notifier-configuration --enabled=true --dynamic=true --hostname="172.28.128.3" --xmppport=5222 --username="payara_notifier" --password="******" --securityDisabled=false --roomid=server
 ----
 
 You can use the `--enabled` and `--dynamic` options to enable or disable
@@ -194,8 +194,8 @@ using the `get-xmpp-notifier-configuration` asadmin command like this:
 ----
 asadmin > get-xmpp-notifier-configuration
 
-Enabled  Noisy  Host          Port  Service Name            Username         Password  Security Disabled  Room ID
-true     false  172.28.128.3  5222  conference.payara.fish  payara_notifier  payara    true               server
+Enabled  Noisy  Host          XMPP Port  Service Name            Username         Password  Security Disabled  Room ID
+true     false  172.28.128.3  5222       conference.payara.fish  payara_notifier  payara    true               server
 ----
 
 [[on-the-domain.xml-configuration-file]]
