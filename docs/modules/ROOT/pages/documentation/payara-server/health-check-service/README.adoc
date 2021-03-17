@@ -12,6 +12,7 @@ When enabled it can periodically check the following performance metrics:
 * Payara Server’s JVM Heap Usage
 * CPU Usage of individual threads
 * Detects stuck threads
+* Monitors metrics exposed by MicroProfile Metrics
 
 If there is a problem with any of these metrics and they exceed a
 configurable threshold then a `GOOD`, `WARNING` or `CRITICAL` event
@@ -20,6 +21,8 @@ to one or more notifiers, e.g. a log file.
 
 This allows operations teams to rapidly detect problems or work out what happened after these
 problems have occurred.
+
+NOTE: Since Payara Server 5.26.0 it is possible to display metrics produced by HealthCheck service on MicroProfile Health xref:/documentation/microprofile/healthcheck.adoc#rest-endpoints[REST endpoints]. You can find more information on xref:/documentation/payara-server/health-check-service/asadmin-commands.adoc#set-healthcheck-service-configuration[set-healthcheck-service-configuration].
 
 NOTE: The Host Memory Usage currently only works on Linux and BSD derivatives.
 

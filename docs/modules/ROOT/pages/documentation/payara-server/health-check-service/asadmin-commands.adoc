@@ -189,14 +189,17 @@ Running the command will show output similar to the example below:
 
 ----
 Available Health Check Services:
-        healthcheck-cpool
-        healthcheck-cpu
-        healthcheck-gc
-        healthcheck-heap
-        healthcheck-threads
-        healthcheck-machinemem
-
-Command healthcheck-list-services executed successfully.
+Name                    Description
+healthcheck-mp          Checks that all instances are responding to Microprofile Healthcheck requests with an UP response
+healthcheck-cpu         Provides ratio on cpu usage time with severity according to defined threshold values
+healthcheck-gc          Provides ratio on garbage collection count with severity according to defined threshold values
+healthcheck-heap        Provides ratio on used heap memory with severity according to defined threshold values
+healthcheck-threads     Lists hogging threads with their id when given thresholds exceed
+healthcheck-machinemem  Provides ratio on used machine memory with severity according to defined threshold values
+healthcheck-cpool       Provides ratio on connection usage for a given pool name with severity according to defined threshold values
+healthcheck-stuck       Provides thread name, id and stack trace for requests which reach over defined threshold values
+healthcheck-mpmetrics   Provides a way to monitor and log the values of metrics exposed by MicroProfile Metrics
+Command list-healthcheck-services executed successfully.
 ----
 
 
@@ -209,29 +212,7 @@ NOTE: This is deprecated in 5.191 and will be removed in the future as it is rep
 `asadmin> healthcheck-list-services`
 
 *Aim*::
-Lists the names of all available metric checker services.
-
-[[command-options-1]]
-=== Command Options
-
-There are no options available.
-
-[[example-1]]
-=== Example
-
-Running the command will show output similar to the example below:
-
-----
-Available Health Check Services:
-        healthcheck-cpool
-        healthcheck-cpu
-        healthcheck-gc
-        healthcheck-heap
-        healthcheck-threads
-        healthcheck-machinemem
-
-Command healthcheck-list-services executed successfully.
-----
+Exactly the same as the <<list-healthcheck-services>> command.
 
 [[set-healthcheck-service-configuration]]
 == `set-healthcheck-service-configuration`
@@ -240,9 +221,11 @@ Command healthcheck-list-services executed successfully.
 
 ----
 set-healthcheck-service-configuration
- --service=<service.name>
  --enabled=true|false
  --dynamic=true|false
+ --service=<service.name>
+ --checker-name=<string.value>
+ --add-to-microprofile-health=true|false
  --time=<integer.value>
  --time-unit=DAYS|HOURS|MINUTES|SECONDS|MILLISECONDS
  --threshold-critical=80
@@ -252,6 +235,8 @@ set-healthcheck-service-configuration
  --hogging-threads-retry-count=<integer.value>
  --stuck-threads-threshold=<integer.value>
  --stuck-threads-threshold-unit=DAYS|HOURS|MINUTES|SECONDS|MILLISECONDS
+ --add-metric=<metric.name>
+ --delete-metric=<metric.name>
 ----
 
 *Aim*::
@@ -299,9 +284,31 @@ a| The service metric name. One of:
   * `machine-memory-usage` or `mmu`
   * `stuck-thread` or `st`
   * `mp-health` or `mh`
+  * `mp-metrics` or `mm`
 
 | -
 | yes
+
+| `--checker-name`
+| String
+| A user determined name for easy identification of the checker. This should be unique among the services you have configured, to avoid confusion on the notification messages.
+| Depends on the service checker. One of:
+
+  * `CONP`
+  * `CPUC`
+  * `GBGC`
+  * `HEAP`
+  * `HOGT`
+  * `MEMM`
+  * `MP`
+  * `MPM`
+| no
+
+| `--add-to-microprofile-health`
+| String
+| When enabled the checker is add to MicroProfile Health and all health check result for the checker is displayed on MicroProfile Health xref:/documentation/microprofile/healthcheck.adoc#rest-endpoints[REST endpoints]. 
+| false
+| no
 
 | `--time`
 | Integer
@@ -356,6 +363,18 @@ value
 |`--stuck-threads-threshold-unit`
 |https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeUnit.html[`TimeUnit`]
 |The unit for the threshold for when a thread should be considered stuck. Only available for `st` service.
+|-
+|no
+
+|`--add-metric`
+|String
+|Adds a metric exposed by MicroProfile Metrics to monitor. Takes a string of the format `'metricName=MetricName description=Description'`, where `metricName` is required. 
+|-
+|no
+
+|`--delete-metric`
+|String
+|Removes a metric exposed by MicroProfile Metrics that has been added to monitor. Takes a string of the format `'metricName=MetricName'`, where `metricName` is required. 
 |-
 |no
 
@@ -437,6 +456,21 @@ asadmin> set-healthcheck-service-configuration
  --stuck-threads-threshold-unit=MINUTES
 ----
 
+[[example-15]]
+The following example configures the Microprofile Metrics Checker to add 
+`base_thread_max_count` metrics for monitoring, adds the checker to MicroProfile Health to 
+display its result on MicroProfile Health xref:/documentation/microprofile/healthcheck.adoc#rest-endpoints[REST endpoints] 
+and applies the configuration change without needing a restart:
+
+[source, Shell]
+----
+asadmin> set-healthcheck-service-configuration
+ --service=mp-metrics
+ --enabled=true
+ --dynamic=true
+ --add-to-microprofile-health=true
+ --add-metric='metricName=base_thread_max_count'
+----
 
 [[healthcheck-configure-service]]
 == `healthcheck-configure-service`
@@ -999,15 +1033,17 @@ JMS       false
 
 Below are the list of configuration details of each checker listed by its name.
 
-Name  Enabled  Time  Unit
-GBGC  true     2     MINUTES
+Name  Enabled  Time  Unit     Add to MicroProfile Health  Critical Threshold  Warning Threshold  Good Threshold
+CPUC  true     5     MINUTES  true                        80                  50                 0
+HEAP  true     5     MINUTES  false                       80                  50                 0
+Name   Enabled  Time  Unit     Add to MicroProfile Health  Threshold Time  Threshold Unit
+STUCK  true     5     MINUTES  false                       5               MINUTES
+Name  Enabled  Time  Unit     Add to MicroProfile Health
+MPM   true     5     MINUTES  false
 
-Name  Enabled  Time  Unit     Threshold Percentage  Retry Count
-HOGT  true     5     MINUTES  78                    5
-
-Name  Enabled  Time  Unit     Critical Threshold  Warning Threshold  Good Threshold
-CPUC  true     30    SECONDS  80                  50                 0
-HEAP  true     1     MINUTES  80                  50                 0
+Monitored Metric Name  Description
+base_thread_max_count Displays the peak live thread count since the Java virtual machine started or peak was reset. This includes daemon and non-daemon threads.
+base_gc_total_total    Displays the total number of collections that have occurred. This attribute lists -1 if the collection count is undefined for this collector.
 
 Command get-healthcheck-configuration executed successfully.
 ----
