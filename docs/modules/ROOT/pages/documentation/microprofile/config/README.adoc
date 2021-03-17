@@ -19,10 +19,11 @@ README for the source code repository.]
 == Config Sources
 A `ConfigSource` is a definition of a source of configuration values that can be
 used by an application. In addition to
-https://github.com/eclipse/microprofile-config/blob/master/spec/src/main/asciidoc/configsources.asciidoc[
+https://github.com/eclipse/microprofile-config/blob/master/spec/src/main/asciidoc/configsources.asciidoc#default-configsources[
 the default ConfigSources outlined by the specification], the following are also
 supported ConfigSources:
 
+NOTE: Where multiple configuration properties exist, the property from a source with a higher ordinal number is preferred.
 
 [cols="2,1,10", options="header"]
 |===
@@ -37,10 +38,21 @@ is the configuration property name and the contents of the file are the config p
 value. This config source can be used to read https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod[Kubernetes secrets files].
 See below on how to specify the directory to be used for secrets files using asadmin.
 
+|`password`
+|105
+|Retrieves and stores config values in the password alias store. These will be 
+available to all server instances in a domain.
+
 |`domain`
 |110
 |Retrieves and stores config values in the domain.xml as key values. These will
 then apply to all instances within a domain
+
+|`jndi`
+|115
+|Retrieves and stores config values within the jndi tree. The property name being
+the dotted name path in the JNDI tree and the value being stored in the JNDI tree.
+These are modifiable by current admin console functionality.
 
 |`config`
 |120
@@ -70,17 +82,6 @@ on all server instances it is deployed
 |Retrieves and stores config values in the *Hazelcast* cluster as name value pairs.
 These will be available for all server instances that are members of the cluster.
 
-|`jndi`
-|115
-|Retrieves and stores config values within the jndi tree. The property name being
-the dotted name path in the JNDI tree and the value being stored in the JNDI tree.
-These are modifiable by current admin console functionality.
-
-|`password`
-|105
-|Retrieves and stores config values in the password alias store. These will be 
-available to all server instances in a domain.
-
 |`payara expression`
 |170
 |Reads configuration properties from a `payara-expression-config.properties` file. This
@@ -89,6 +90,18 @@ This file can be used to reference properties containing variables which will be
 translated to their actual values upon retrieval. The property values should be in
 the format referenced here:
 xref:documentation/payara-server/server-configuration/var-substitution/types-of-variables.adoc[Types of Variables]
+
+|`cloud`
+|180
+|Reads configuration properties from various Cloud provider secret stores. You can find out more about our supported cloud config sources here: xref:documentation/microprofile/config/cloud/README.adoc[Cloud Config Sources]
+
+|`jdbc`
+|190
+|Reads configuration properties from a specified database table. You can find out more about JDBC config sources here: xref:documentation/microprofile/config/jdbc.adoc[JDBC Config Sources]
+
+|`ldap`
+|200
+|Reads configuration properties from a specified LDAP directory. You can find out more about LDAP config sources here: xref:documentation/microprofile/config/ldap.adoc[LDAP Config Sources]
 
 |===
 
@@ -160,7 +173,7 @@ you can use in your application to find information about the Payara runtime env
 [[config-ordinal-configuration]]
 == Config Ordinal Configuration
 
-Config Ordinal can be configured by using Admin Console or Asadmin commands. 
+Config Ordinal can be configured by using Admin Console or Asadmin commands.
 
 _Since *5.183*&nbsp;_
 
@@ -185,8 +198,7 @@ IMPORTANT: A `--source` value of `jndi` is not supported for these asadmin comma
 server|application|module|cluster`
 *Aim*::
 Provides a way to set the ordinal for a given config source. Where multiple 
-configuration properties exist, the property from a source with a  higher
-ordinal number is preferred.
+configuration properties exist, the property from a source with a higher ordinal number is preferred.
 
 ===== Command Options
 

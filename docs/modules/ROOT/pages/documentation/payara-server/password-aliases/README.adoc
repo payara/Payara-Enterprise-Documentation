@@ -45,4 +45,4 @@ xref:/documentation/payara-server/password-aliases/password-alias-asadmin-comman
 [[using-password-alias-microprofile]]
 == MicroProfile Config support
 
-Password aliases can also be accessed using MicroProfile Config, as detailed xref:/documentation/microprofile/config.adoc[here].
+Password aliases can also be accessed using MicroProfile Config, as detailed xref:/documentation/microprofile/config/README.adoc[here].

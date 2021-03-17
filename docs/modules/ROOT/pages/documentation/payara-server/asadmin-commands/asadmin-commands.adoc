@@ -10,7 +10,7 @@ Here's a list of Payara Server Asadmin commands that are not supported by GlassF
 - xref:/documentation/payara-server/health-check-service/asadmin-commands.adoc[Healthcheck Commands]
 - xref:/documentation/payara-server/jbatch/asadmin.adoc[JBatch Commands]
 - xref:/documentation/payara-server/jmx-monitoring-service/asadmin-commands.adoc[JMX Monitoring Commands]
-- xref:/documentation/microprofile/config.adoc[Microprofile Config Commands]
+- xref:/documentation/microprofile/config/README.adoc[Microprofile Config Commands]
 - xref:/documentation/payara-server/notification-service/asadmin-commands.adoc[Notification Service Commands]
 - xref:/documentation/payara-server/phone-home/phone-home-asadmin.adoc[Phone Home Commands]
 - xref:/documentation/payara-server/request-tracing-service/asadmin-commands.adoc[Request Tracing Commands]
