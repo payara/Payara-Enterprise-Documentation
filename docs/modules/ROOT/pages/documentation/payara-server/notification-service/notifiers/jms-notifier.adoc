@@ -51,7 +51,7 @@ which mirrors the above screenshot:
 +
 [source, shell]
 ----
-asadmin notification-jms-configure --dynamic=true --enabled=true --contextFactoryClass=com.sun.enterprise.naming.SerialInitContextFactory --target=server-config --queueName=notifierQueue --url=localhost:7676 --connectionFactoryName=jms/_defaultConnectionFactory
+asadmin set-jms-notifier-configuration --dynamic=true --enabled=true --contextFactoryClass=com.sun.enterprise.naming.SerialInitContextFactory --target=server-config --queueName=notifierQueue --url=localhost:7676 --connectionFactoryName=jms/_defaultConnectionFactory
 ----
 
 [[verify-the-configuration]]
@@ -68,11 +68,11 @@ CPU metrics to a notifier every _5 seconds_:
 +
 [source, shell]
 ----
-asadmin> healthcheck-configure --enabled=true --dynamic=true
+asadmin> healthcheck-configure --enabled=true --dynamic=true --enableNotifiers=jms-notifier
 asadmin> healthcheck-configure-service --serviceName=healthcheck-cpu --enabled=true --dynamic=true --time=5 --unit=SECONDS
 ----
 +
-Providing the JMS notifier is already configured, these messages will
+This also configures the healthcheck service to send notifications to the JMS notifier, so these messages will
 begin to be sent to the configured queue right away.
 
 . To consume the messages using a **JMS 2.0** compliant MDB, the following
@@ -130,9 +130,9 @@ will reflect the configuration done in the previous section:
 
 [source, shell]
 ----
-asadmin> notification-jms-configure --dynamic=true --enabled=true
+asadmin> set-jms-notifier-configuration --dynamic=true --enabled=true
   --contextFactoryClass=com.sun.enterprise.naming.SerialInitContextFactory
-  --connectionFactoryName=jms//__defaultConnectionFactory
+  --connectionFactoryName=jms/__defaultConnectionFactory
   --queueName=notifierQueue
   --url=localhost:7676
   --username= ****
@@ -155,8 +155,8 @@ It will return the details of the current JMS notifier configuation,
 like in the following example:
 
 ----
-Enabled     Context Factory Class                               Connection Factory Name         Queue Name     URL                  Username    Password
-true        com.sun.enterprise.naming.SerialInitContextFactory  jms/__defaultConnectionFactory  notifierQueue  localhost:7676
+Enabled  Noisy  Context Factory Class                               Connection Factory Name         Queue Name     URL             Username    Password
+true     true   com.sun.enterprise.naming.SerialInitContextFactory  jms/__defaultConnectionFactory  notifierQueue  localhost:7676  myusername  mypassword
 ----
 
 [[troubleshooting]]

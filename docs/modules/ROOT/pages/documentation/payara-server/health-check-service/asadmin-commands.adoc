@@ -47,7 +47,7 @@ Enables and disables the HealthCheck service. This includes configuration for tr
 |Boolean
 |Whether to enable or disable the service
 |N/A
-|yes
+|no
 
 |`--historic-trace-enabled`
 |Boolean
