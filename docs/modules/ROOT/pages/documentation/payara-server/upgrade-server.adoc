@@ -28,7 +28,7 @@ The command will also back up the old version and domains in the default locatio
 |`--distribution` |Enum |Specifies the distribution of Payara Server to download. This can payara, payara-web, payara-ml, or payara-web-ml.|payara|No
 |`--stage` |Boolean |Determines if the upgrade should be installed in-place, or staged into "_x.new_" directories. Scripts are provided that can be used to apply and rollback the staged install. This option is automatically enabled when running the command on Windows. |False on Unix, True on Windows| No
 |`--domaindir` |String |The directory containing the domains. The domains in this directory are backed up, and their config is used to determine the nodes which will also be upgraded. | ${as-install}/domains | No
-|`--usedownloaded` |String |The path to the local Payara Server zip archive to use for upgrading instead of downloading from Payara Nexus. When this parameter is specified, the `--username`, `--password`, and `--version` parameters are not required.| |No
+|`--usedownloaded` |String |The path to the local Payara Server zip archive to use for upgrading instead of downloading from the Payara Enterprise repository. When this parameter is specified, the `--username`, `--password`, and `--version` parameters are not required.| |No
 |=======================================================================
 
 [[upgrade-example]]
