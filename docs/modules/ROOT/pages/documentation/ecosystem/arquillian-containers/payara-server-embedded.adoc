@@ -21,8 +21,7 @@ You can find the latest artifact version https://mvnrepository.com/artifact/fish
 
 == Configuring the Container
 
-The following configuration options are available, each of which can be provided
-through the specified system properties in the arquillian JVM:
+The container can be configured via the arquillian.xml using the standard http://arquillian.org/arquillian-core/#container-configuration[Arquillian Container Configuration] mechanism.
 
 [cols="10,80,10"]
 .Configuration Options
@@ -37,15 +36,9 @@ through the specified system properties in the arquillian JVM:
 | The port number of the https-listener for the embedded Payara Server Enterprise.
 | `8182`
 
-| `instanceRoot`
-| The instance root directory is the domain directory and embedded Payara Server Enterprise
- uses the server instance directory for domain configuration files.
-| `N/A`
-
-| `installRoot`
-| The install root directory is the parent directory of a Payara Server Enterprise instance
- directory and corresponds to the base directory for an installation of Payara Server.
-| `N/A`
+| `cleanup`
+| Specifies whether Arquillian should cleanup on shutdown. This recursively deletes files in the `instanceRoot` directory.
+| `true`
 
 | `configurationReadOnly`
 | Specifies whether Payara should write back any changes to specified 
@@ -53,23 +46,30 @@ configuration file or config/domain.xml at the specified instance root.
 | `true`
 
 | `configurationXml`
-| Set the location of configuration file i.e. domain.xml using which the Payara Server Enterprise should run.
-| `N/A`
+| Set the location of configuration file i.e. domain.xml using which the Payara Server Community should run.
+| 
+
+| `installRoot`
+| The install root directory is the parent directory of a Payara Server Community instance
+ directory and corresponds to the base directory for an installation of Payara Server.
+| 
+
+| `instanceRoot`
+| The instance root directory is the domain directory and embedded Payara Server Community
+ uses the server instance directory for domain configuration files.
+| the default domain directory
 
 | `resourcesXml`
 | A comma-separated list of Payara resources.xml files containing resources 
 that will be added to the Payara instance using the `add-resources` command.
-| `N/A`
+| 
 
-| `cleanup`
-| Specifies whether Arquillian should cleanup on shutdown. This recursively deletes files in the `instanceRoot` directory.
-| `true`
 |===
 
-The easiest way to provide these system properties to the extension runtime is by using an `arquillian.xml` file placed on the test classpath.
+To configure the Arquillian Container options, you need to use an `arquillian.xml` file placed on the test classpath. Here's an example `arquillian.xml` file. It configures `adminPort` with a static value. It configures `bindHttpsPort` as a value of a system property `my.httpsport`, which you can specify for example in the maven `surefire` plugin using the `systemPropertyVariables` option or on command line like `mvn -Dmy.httpsport=8081 test`.
 
 [source,XML]
-.Example
+.Example `arquillian.xml` file
 ----
 <?xml version="1.0"?>
 <arquillian xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -80,8 +80,25 @@ The easiest way to provide these system properties to the extension runtime is b
     <container qualifier="payara-embedded" default="true">
         <configuration>
             <property name="bindHttpPort">8080</property>
+            <property name="bindHttpsPort">${my.httpsport}</property>
         </configuration>
     </container>
 </arquillian>
+----
 
+If you want to configure more containers, you can switch between them by setting the `arquillian.launch` system property to the container's qualifier. This is how you can do it with the maven `surefire` plugin (`my.httpsport` system property is used to set the `bindHttpsPort` property in `arquillian.xml`):
+
+[source,XML]
+.Example Surefire plugin configuration in a `pom.xml` file
+----
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <configuration>
+        <systemPropertyVariables>
+            <arquillian.launch>payara</arquillian.launch>
+            <my.httpsport>8081</my.httpsport>
+        </systemPropertyVariables>
+    </configuration>
+</plugin>
 ----
