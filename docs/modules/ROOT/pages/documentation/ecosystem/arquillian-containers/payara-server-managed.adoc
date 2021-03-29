@@ -176,7 +176,7 @@ If you want to configure more containers, you can switch between them by setting
 [[automatic-download-example]]
 ### Downloading Payara Server automatically from Maven
 
-You can configure your Maven project to automatically download and install the Payara Server needed by the Arquillian plugin
+You can configure your Maven project to automatically download and install the Payara Server needed by the Arquillian plugin.
 
 To download and install Payara Server, you can use the Maven Dependency plugin as follows:
 
