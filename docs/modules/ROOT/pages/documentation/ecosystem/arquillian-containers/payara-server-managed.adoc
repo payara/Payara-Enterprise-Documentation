@@ -5,6 +5,7 @@ The Payara Server Managed Arquillian container is remote container same as a
  (startup/shutdown) is managed by Arquillian and run as a separate process for
  integration testing. 
 
+[[usage]]
 == Usage
 
 The Payara Server Managed Arquillian container can be found on Maven Central,
@@ -21,6 +22,7 @@ and can be included in your project using the following Maven coordinates:
 
 You can find the latest artifact version https://mvnrepository.com/artifact/fish.payara.arquillian/arquillian-payara-server-managed[from here].
 
+[[configure]]
 == Configuring the Container
 
 The container can be configured via the arquillian.xml using the standard http://arquillian.org/arquillian-core/#container-configuration[Arquillian Container Configuration] mechanism.
@@ -127,7 +129,17 @@ proxy configuration).
 
 NOTE: The context root that will be used to run the tests is also retrieved automatically from the DAS server. If you do not have a `sun-web.xml`, `glassfish-web.xml` or `payara-web.xml` file in your web application, Payara will use the name of your deployment without the extension as context root. The same rule is applied for enterprise applications if there is no `application.xml` file. The jar test-deployments are treated as a web application. You can use the above standard GlassFish / Payara XML files as normal to declare your context root to be applied. You should consider the above description to avoid any conflict with your already deployed web or enterprise applications in your administrative domain. 
 
+<<<<<<< HEAD
 To configure the Arquillian Container options, you need to using an `arquillian.xml` file placed on the test classpath. Here's an example `arquillian.xml` file. It configures `adminPort` with a static value. It configures `adminPassword` as a value of a system property `my.admin.password`, which you can specify for example in the maven `surefire` plugin using the `systemPropertyVariables` option or on command line like `mvn -Dmy.admin.password=mypassword test`.
+=======
+[[examples]]
+== Examples
+
+[[configure-example]]
+=== Exampe Configuration
+
+To configure the Arquillian Container options, you need to use an `arquillian.xml` file placed on the test classpath. Here's an example `arquillian.xml` file. It configures `adminPort` with a static value. It configures `adminPassword` as a value of a system property `my.admin.password`, which you can specify for example in the maven `surefire` plugin using the `systemPropertyVariables` option or on command line like `mvn -Dmy.admin.password=mypassword test`.
+>>>>>>> More updates to Arquillian docs
 
 [source,XML]
 .Example `arquillian.xml` file
@@ -160,6 +172,52 @@ If you want to configure more containers, you can switch between them by setting
             <arquillian.launch>payara</arquillian.launch>
             <payara.home>/path/to/payara</payara.home>
             <my.admin.password>mypassword</my.admin.password>
+        </systemPropertyVariables>
+    </configuration>
+</plugin>
+----
+
+[[automatic-download-example]]
+### Downloading Payara Server automatically from Maven
+
+You can automate downloading and installing Payara Server with maven so that the Arquillian plugin can be automatically configured and used without installing Payara Server manually.
+
+To download and install Payara Server, you can use the Maven Dependency plugin as follows:
+
+[source,XML]
+.Example Dependency plugin configuration in a `pom.xml` file
+----
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-dependency-plugin</artifactId>
+    <executions>
+        <execution>
+            <id>unpack</id>
+            <phase>process-test-classes</phase>
+            <goals>
+                <goal>unpack</goal>
+            </goals>
+            <configuration>
+                <artifactItems>
+                    <artifactItem>
+                        <groupId>fish.payara.distributions</groupId>
+                        <artifactId>payara</artifactId>
+                        <version>${payara.version}</version>
+                        <type>zip</type>
+                        <overWrite>false</overWrite>
+                        <outputDirectory>${project.build.directory}</outputDirectory>
+                    </artifactItem>
+                </artifactItems>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <configuration>
+        <systemPropertyVariables>
+            <payara.home>${project.build.directory}/payara5</payara.home>
         </systemPropertyVariables>
     </configuration>
 </plugin>

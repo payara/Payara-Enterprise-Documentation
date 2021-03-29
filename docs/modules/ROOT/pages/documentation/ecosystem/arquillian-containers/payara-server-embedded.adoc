@@ -3,6 +3,7 @@
 The Payara Server Enterprise Embedded container lifecycle is managed by Arquillian and
  resides in the same JVM where tests are executed using a local protocol.
 
+[[usage]]
 == Usage
 
 The Payara Server Enterprise Embedded Arquillian container can be found on Maven Central,
@@ -19,6 +20,7 @@ and can be included in your project using the following Maven coordinates:
 
 You can find the latest artifact version https://mvnrepository.com/artifact/fish.payara.arquillian/arquillian-payara-server-embedded[from here].
 
+[[configure]]
 == Configuring the Container
 
 The container can be configured via the arquillian.xml using the standard http://arquillian.org/arquillian-core/#container-configuration[Arquillian Container Configuration] mechanism.
@@ -66,6 +68,12 @@ that will be added to the Payara instance using the `add-resources` command.
 
 |===
 
+<<<<<<< HEAD
+=======
+[[examples]]
+== Examples
+
+>>>>>>> More updates to Arquillian docs
 To configure the Arquillian Container options, you need to use an `arquillian.xml` file placed on the test classpath. Here's an example `arquillian.xml` file. It configures `adminPort` with a static value. It configures `bindHttpsPort` as a value of a system property `my.httpsport`, which you can specify for example in the maven `surefire` plugin using the `systemPropertyVariables` option or on command line like `mvn -Dmy.httpsport=8081 test`.
 
 [source,XML]

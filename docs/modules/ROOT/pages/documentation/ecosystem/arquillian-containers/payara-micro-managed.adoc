@@ -3,6 +3,7 @@
 The Payara Micro Managed Arquillian container provides a managed Payara Micro
 instance for integration testing.
 
+[[usage]]
 == Usage
 
 The Payara Micro Managed Arquillian container can be found on Maven Central,
@@ -19,6 +20,7 @@ and can be included in your project using the following Maven coordinates:
 
 You can find the latest artifact version https://mvnrepository.com/artifact/fish.payara.arquillian/arquillian-payara-micro-managed[from here].
 
+[[configure]]
 == Configuring the Container
 
 The container can be configured via the arquillian.xml using the standard http://arquillian.org/arquillian-core/#container-configuration[Arquillian Container Configuration] mechanism, via system properties, or via environment variables.
@@ -34,7 +36,7 @@ The following configuration options are available:
 | Provides the location of the Payara Micro Enterprise Jar.
 | `payara.microJar`
 | `MICRO_JAR`
-| `null`
+| 
 
 | `startupTimeoutInSeconds`
 | Specifies the amount of time in seconds that the
@@ -81,16 +83,23 @@ To change this, provide java debug options to `cmdOptions`.
 | Provides additional options to the Java process running the Micro instance (I.e. between `java` and `-jar`.).
 | `payara.cmdOptions`
 | `MICRO_CMD_OPTIONS`
-| `null`
+| 
 
 | `extraMicroOptions`
 | Provides additional options to the Micro instance (I.e. at the end of the command.).
 | `payara.extraMicroOptions`
 | `EXTRA_MICRO_OPTIONS`
-| `null`
+| 
 |===
 
+<<<<<<< HEAD
 To configure the Arquillian Container options, you need to use an `arquillian.xml` file placed on the test classpath. Here's an example `arquillian.xml` file. It configures `randomHttpPort` and `autoBindHttp` options.
+=======
+[[examples]]
+== Examples
+
+To configure Container options using Arquillian container properties, you need to use an `arquillian.xml` file placed on the test classpath. Here's an example `arquillian.xml` file. It configures `randomHttpPort` and `autoBindHttp` options.
+>>>>>>> More updates to Arquillian docs
 
 [source,XML]
 .Example `arquillian.xml` file
