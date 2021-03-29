@@ -92,14 +92,10 @@ To change this, provide java debug options to `cmdOptions`.
 | 
 |===
 
-<<<<<<< HEAD
-To configure the Arquillian Container options, you need to use an `arquillian.xml` file placed on the test classpath. Here's an example `arquillian.xml` file. It configures `randomHttpPort` and `autoBindHttp` options.
-=======
 [[examples]]
 == Examples
 
 To configure Container options using Arquillian container properties, you need to use an `arquillian.xml` file placed on the test classpath. Here's an example `arquillian.xml` file. It configures `randomHttpPort` and `autoBindHttp` options.
->>>>>>> More updates to Arquillian docs
 
 [source,XML]
 .Example `arquillian.xml` file

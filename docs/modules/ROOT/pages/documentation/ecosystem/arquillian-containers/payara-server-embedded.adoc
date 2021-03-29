@@ -48,16 +48,16 @@ configuration file or config/domain.xml at the specified instance root.
 | `true`
 
 | `configurationXml`
-| Set the location of configuration file i.e. domain.xml using which the Payara Server Community should run.
+| Set the location of configuration file i.e. domain.xml using which the Payara Server Enterprise should run.
 | 
 
 | `installRoot`
-| The install root directory is the parent directory of a Payara Server Community instance
+| The install root directory is the parent directory of a Payara Server Enterprise instance
  directory and corresponds to the base directory for an installation of Payara Server.
 | 
 
 | `instanceRoot`
-| The instance root directory is the domain directory and embedded Payara Server Community
+| The instance root directory is the domain directory and embedded Payara Server Enterprise
  uses the server instance directory for domain configuration files.
 | the default domain directory
 
@@ -68,12 +68,9 @@ that will be added to the Payara instance using the `add-resources` command.
 
 |===
 
-<<<<<<< HEAD
-=======
 [[examples]]
 == Examples
 
->>>>>>> More updates to Arquillian docs
 To configure the Arquillian Container options, you need to use an `arquillian.xml` file placed on the test classpath. Here's an example `arquillian.xml` file. It configures `adminPort` with a static value. It configures `bindHttpsPort` as a value of a system property `my.httpsport`, which you can specify for example in the maven `surefire` plugin using the `systemPropertyVariables` option or on command line like `mvn -Dmy.httpsport=8081 test`.
 
 [source,XML]
