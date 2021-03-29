@@ -2,12 +2,18 @@
 
 The Payara Arquillian containers provide various Arquillian containers for integration testing with Payara Enterprise.
 
-In version {currentVersion}, there are containers available for the following distributions:
+In version {currentVersion}, the following containers are available:
 
-* xref:documentation/ecosystem/arquillian-containers/payara-micro-managed.adoc[Payara Micro Managed]
+Payara Server:
+
 * xref:documentation/ecosystem/arquillian-containers/payara-server-remote.adoc[Payara Server Remote]
 * xref:documentation/ecosystem/arquillian-containers/payara-server-managed.adoc[Payara Server Managed]
 * xref:documentation/ecosystem/arquillian-containers/payara-server-embedded.adoc[Payara Server Embedded]
+
+Payara Micro:
+
+* xref:documentation/ecosystem/arquillian-containers/payara-micro-managed.adoc[Payara Micro Managed]
+
 
 == Obtaining the Containers
 
@@ -24,19 +30,18 @@ Arquillian containers are included in a project via their Maven coordinates:
 
 Some containers will be either in development or an early release version. In these cases
 the same process can be used, but the artifact will need to be built from source.
-The containers can be found in the main Payara source.
+The containers can be found in the Payara Arquillian source code repository.
 
-Clone the https://github.com/payara/Payara[Payara] Git repository:
+Clone the https://github.com/payara/ecosystem-arquillian-connectors[ecosystem-arquillian-connectors] Git repository:
 
 [source,Shell]
 ----
-git clone https://github.com/payara/Payara.git
+git clone https://github.com/payara/ecosystem-arquillian-connectors.git
 ----
 
 Build and install:
 
 [source,Shell]
 ----
-cd Payara/
 mvn clean install -DskipTests
 ----

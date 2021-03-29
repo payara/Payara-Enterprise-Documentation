@@ -3,6 +3,7 @@
 The Payara Micro Managed Arquillian container provides a managed Payara Micro
 instance for integration testing.
 
+[[usage]]
 == Usage
 
 The Payara Micro Managed Arquillian container can be found on Maven Central,
@@ -19,21 +20,23 @@ and can be included in your project using the following Maven coordinates:
 
 You can find the latest artifact version https://mvnrepository.com/artifact/fish.payara.arquillian/arquillian-payara-micro-managed[from here].
 
+[[configure]]
 == Configuring the Container
 
-The following configuration options are available, each of which can be provided
-through the specified system properties or environment variables:
+The container can be configured via the arquillian.xml using the standard http://arquillian.org/arquillian-core/#container-configuration[Arquillian Container Configuration] mechanism, via system properties, or via environment variables.
+
+The following configuration options are available:
 
 [cols="1,3,2,2,1"]
 .Configuration Options
 |===
-| Option | Description | System Property | Environment Variable | Default
+| Container Option | Description | System Property | Environment Variable | Default
 
 | `microJar`
 | Provides the location of the Payara Micro Enterprise Jar.
 | `payara.microJar`
 | `MICRO_JAR`
-| `null`
+| 
 
 | `startupTimeoutInSeconds`
 | Specifies the amount of time in seconds that the
@@ -80,20 +83,22 @@ To change this, provide java debug options to `cmdOptions`.
 | Provides additional options to the Java process running the Micro instance (I.e. between `java` and `-jar`.).
 | `payara.cmdOptions`
 | `MICRO_CMD_OPTIONS`
-| `null`
+| 
 
 | `extraMicroOptions`
 | Provides additional options to the Micro instance (I.e. at the end of the command.).
 | `payara.extraMicroOptions`
 | `EXTRA_MICRO_OPTIONS`
-| `null`
+| 
 |===
 
-These options can all be provided through either an environment variable or system property.
-The easiest way to provide these to the test instance is by using an `arquillian.xml` file placed on the test classpath.
+[[examples]]
+== Examples
+
+To configure Container options using Arquillian container properties, you need to use an `arquillian.xml` file placed on the test classpath. Here's an example `arquillian.xml` file. It configures `randomHttpPort` and `autoBindHttp` options.
 
 [source,XML]
-.Example
+.Example `arquillian.xml` file
 ----
 <?xml version="1.0"?>
 <arquillian xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -108,4 +113,31 @@ The easiest way to provide these to the test instance is by using an `arquillian
         </configuration>
     </container>
 </arquillian>
+----
+
+You can configure the options also using system properties. Here's an example configuration if you run your tests using the maven `surefire` plugin:
+
+[source,XML]
+.Example Surefire plugin configuration in a `pom.xml` file
+----
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <configuration>
+        <systemPropertyVariables>
+            <arquillian.launch>payara-micro-managed</arquillian.launch>
+            <payara.randomHttpPort>false</payara.randomHttpPort>
+            <payara.autoBindHttp>false</payara.autoBindHttp>
+        </systemPropertyVariables>
+    </configuration>
+</plugin>
+----
+
+You can also configure the options using environment variables, for example when running the maven `mvn test` command:
+
+[source,shell]
+----
+export MICRO_RANDOM_HTTP_PORT=false
+export MICRO_AUTOBIND_HTTP=false
+mvn test
 ----
