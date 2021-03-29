@@ -104,7 +104,7 @@ _(Adjective-Fish)_.
 |Do not unpack the Nested Jars when booting the server. This is generally slower
 than unpacking the runtime.| _false_
 |`--nocluster`
-|Disables clustering for this instance.| _false_
+|Disables Hazelcast and clustering for this instance.| _false_
 |`--nohostaware`|Disables Host Aware Paritioning. See `--hostaware`|
 |`--outputuberjar <file-path>`
 |Packages up an Uber JAR at the specified path based on the provided command
