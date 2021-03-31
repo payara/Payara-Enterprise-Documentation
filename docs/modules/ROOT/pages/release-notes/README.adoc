@@ -11,6 +11,7 @@ Detailed information about features and fixes in every release.
 * 2021 January - xref:release-notes/release-notes-24-0.adoc[Payara Enterprise 5.24.0]
 * 2021 February - xref:release-notes/release-notes-25-0.adoc[Payara Enterprise 5.25.0]
 * 2021 March - xref:release-notes/release-notes-26-0.adoc[Payara Enterprise 5.26.0]
+* 2021 April - xref:release-notes/release-notes-27-0.adoc[Payara Enterprise 5.27.0]
 
 *2020*
 
