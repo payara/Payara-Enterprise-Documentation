@@ -8,7 +8,7 @@ NOTE: This repository also contains Docker images for Payara Server 4 for versio
 IMPORTANT: Access to this registry is restricted by a valid Payara Enterprise subscription Nexus account.
 
 [[docker-authentication]]
-= Docker Authentication
+== Docker Authentication
 
 Before accessing the images published in the registry, you have to configure your Docker environment to access it securely. To do this, run the docker login command against the hostname and port of the registry like this:
 
@@ -27,4 +27,4 @@ Payara Enterprise Docker images will be maintained as we perform the following a
 * Remove expired certificates from the Trusted Certificates Keystore file.
 * Update of the JDK used to the latest tested version Payara is compatible with (both JDK 8 and JDK 11 versions).
 
-NOTE: Maintenance is done on previously released images, so this means that you need to perform an explicit `docker pull` command to retrieve the latest version on your environment to get the corresponding updates.
+NOTE: Maintenance is done on previously released images, which means that you need to perform an explicit `docker pull` command to retrieve the latest version on your environment to get the latest updates.

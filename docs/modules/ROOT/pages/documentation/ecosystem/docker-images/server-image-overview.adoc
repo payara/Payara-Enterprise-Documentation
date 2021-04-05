@@ -196,7 +196,7 @@ The default entry point of the Docker image is defined using the https://github.
 The default `CMD` argument for _tini_ runs the `bin/entrypoint.sh` shell script in `exec` mode, which in turn runs the following scripts in order:
 
 . `${SCRIPT_DIR}/init_1_generate_deploy_commands.sh`: This script outputs deploy commands to the post-boot command file located at `$POSTBOOT_COMMANDS` (default `$CONFIG_DIR/post-boot-commands.asadmin`). If deploy commands are already found in that file, this script does nothing.
-. `${SCRIPT_DIR}/init.d/*.sh`: As described above, these scripts can be provided by you to run and configure the environment *before* the domain startup.
+. `${SCRIPT_DIR}/init.d/\*.sh`: As described above, these scripts can be provided by you to run and configure the environment *before* the domain startup.
 . `${SCRIPT_DIR}/startInForeground.sh`. This script starts the domain in the foreground, in a manner that allows the JVM to be controlled by the docker host.
 
 [[browsing-container]]
