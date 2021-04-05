@@ -10,7 +10,7 @@ Launch a new Payara Micro instance running in a container listening in port `808
 
 [source, shell]
 ----
-docker run -p 8080:8080 payara/micro
+docker run -p 8080:8080 nexus.payara.fish:5000/payara/micro
 ----
 
 Keep in mind the following:
@@ -21,10 +21,10 @@ Keep in mind the following:
 
 IMPORTANT: It is recommended to specify the tag name of the Docker image that you plan to use, to guarantee that the correct Payara Enterprise version is used on your environment for guaranteed long-term stability
 
-[source, shell]
+[source, shell, subs=attributes+]
 .Using a specific version
 ----
-docker run -p 8080:8080 payara/micro:{currentVersion}
+docker run -p 8080:8080 nexus.payara.fish:5000/payara/micro:{currentVersion}
 ----
 
 [[jdk-version]]
@@ -39,7 +39,7 @@ To switch from the default JDK 8 based image to the JDK 11 compatible one, just 
 
 [source, shell]
 ----
-docker run -p 8080:8080 payara/micro:{currentVersion}-jdk11
+docker run -p 8080:8080 nexus.payara.fish:5000/payara/micro:{currentVersion}-jdk11
 ----
 
 [[ports]]
@@ -75,19 +75,19 @@ You can instruct the container to deploy all application artefacts that belong t
 
 The following command will start a new Payara Micro instance container and deploy all artefacts located in the `~/payara-micro/applications` directory:
 
-[source, shell]
+[source, shell, subs=attributes+]
 ----
 docker run -p 8080:8080 \
- -v ~/payara-micro/applications:/opt/payara/deployments payara/micro
+ -v ~/payara-micro/applications:/opt/payara/deployments nexus.payara.fish:5000/payara/micro:{currentVersion}
 ----
 
 To only deploy a specific artefact within the directory, simply pass the `--deploy` argument to the container's run command and specify which application to deploy:
 
-[source, shell]
+[source, shell, subs=attributes+]
 ----
 docker run -p 8080:8080 \
  -v ~/payara-micro/applications:/opt/payara/deployments \
- payara/micro --deploy /opt/payara/deployments/myapplication.war
+ nexus.payara.fish:5000/payara/micro:{currentVersion} --deploy /opt/payara/deployments/myapplication.war
 ----
 
 NOTE: Make sure to prefix the artefact names with the absolute path to the local deployment directory.
@@ -99,9 +99,9 @@ You can also prepare a custom image based on the official Payara Micro Docker im
 
 The following sample _Dockerfile_ can be used to prepare a custom Payara Micro image that deploys the `myapplication.war` artefact at runtime:
 
-[source, Docker]
+[source, Docker, subs=attributes+]
 ----
-FROM payara/micro
+FROM nexus.payara.fish:5000/payara/micro:{currentVersion}
 COPY myapplication.war $DEPLOY_DIR
 ----
 
@@ -112,9 +112,9 @@ If your application's artefact is already available in a Maven repository, you c
 
 Here's an example of how to deploy a sample application located in a local Maven repository:
 
-[source, shell]
+[source, shell, subs=attributes+]
 ----
-docker docker run -p 8080:8080 payara/micro \
+docker run -p 8080:8080 nexus.payara.fish:5000/payara/micro:{currentVersion} \
  --deployFromGAV "fish.payara.examples:my-application:1.0-SNAPSHOT" \
  --additionalRepository https://172.17.0.10/content/repositories/snapshots
 ----
@@ -133,30 +133,30 @@ NOTE: To deploy an application using the default context root (`/`), set its val
 
 Here are some basic examples:
 
-[source, shell]
+[source, shell, subs=attributes+]
 .One application deployed, uses the `myRoot` context root
 ----
 docker run -p 8080:8080 \
- -v ~/payara-micro/applications:/opt/payara/deployments payara/micro  \
+ -v ~/payara-micro/applications:/opt/payara/deployments nexus.payara.fish:5000/payara/micro:{currentVersion}  \
 --deploymentDir /opt/payara/deployments  \
  --contextroot myRoot
 ----
 
-[source, shell]
+[source, shell, subs=attributes+]
 .First application in the directory uses the `/` context root
 ----
 docker run -p 8080:8080 \
  -v ~/payara-micro/applications:/opt/payara/deployments \
- payara/micro \
+ nexus.payara.fish:5000/payara/micro:{currentVersion} \
  --deploy /opt/payara/deployments/myapplication.war \
  --contextroot ROOT
 ----
 
 You can also prepare a custom Docker image that overrides the default `CMD` instruction to specify the context root like this:
 
-[source, Docker]
+[source, Docker, subs=attributes+]
 ----
-FROM payara/micro
+FROM nexus.payara.fish:5000/payara/micro:{currentVersion}
 COPY myapplication.war $DEPLOY_DIR
 CMD ["--deploymentDir", "/opt/payara/deployments", "--contextroot", "my"]
 ----
@@ -170,10 +170,10 @@ The Data Grid initialization and maintenance consumes extra resources, so in cas
 
 To disable the Data Grid, you can pass the `--noCluster` argument to the entry point of the run command:
 
-[source, shell]
+[source, shell, subs=attributes+]
 ----
 docker run -p 8080:8080 \
- -v ~/payara-micro/applications:/opt/payara/deployments payara/micro --noCluster
+ -v ~/payara-micro/applications:/opt/payara/deployments nexus.payara.fish:5000/payara/micro:{currentVersion} --noCluster
 ----
 
 [[using-environment-variables]]

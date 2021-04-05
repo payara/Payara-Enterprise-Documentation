@@ -19,9 +19,9 @@ Keep in mind the following:
 * The _tini_ utility is used to guarantee that the server runs seamlessly as the single child process. 
 * The server's JVM process runs under the `payara` user.
 
-IMPORTANT: It is recommended to specify the tag name of the Docker image that you plan to use, to guarantee that the correct Payara Enterprise version is used on your environment for guaranteed long-term stability
+IMPORTANT: It is recommended to specify the tag of the correct Payara Enterprise version that will be used on your production environment for guaranteed long-term stability
 
-[source, shell]
+[source, shell, subs=attributes+]
 .Using a specific version
 ----
 docker run -p 8080:8080 nexus.payara.fish:5000/payara/server-full:{currentVersion}
@@ -42,7 +42,7 @@ There are 2 different, alternative versions of the JDK images:
 
 To switch from the default JDK 8 based image to the JDK 11 compatible one, just add the corresponding suffix to the tag's name like this:
 
-[source, shell]
+[source, shell, subs=attributes+]
 ----
 docker run -p 8080:8080 nexus.payara.fish:5000/payara/server-full:{currentVersion}-jdk11
 ----
@@ -62,7 +62,7 @@ The default ports that are exposed by this image are:
 
 To access the DAS' administration interface (either by remote asadmin commands or by using the Web Admin Console), just map the container's Admin Service port when launching the container:
 
-[source, shell]
+[source, shell, subs=attributes+]
 ----
 docker run -p 4848:4848 -p 8080:8080 nexus.payara.fish:5000/payara/server-full:{currentVersion}
 ----
@@ -71,7 +71,7 @@ By default, the admin service will be secure-enabled, meaning that HTTPS communi
 
 IMPORTANT: The default administrator user with access to the admin interface will use the `admin/admin` credentials.
 
-WARNING: If you plan to use this image in a production environment, make sure to update these credentials after the domain has started.
+CAUTION: Make sure to update the administrator credentials after the domain has started.
 
 [[installation-details]]
 == Installation Details
@@ -94,7 +94,7 @@ To deploy your applications, you can mount this directory as a Docker volume map
 
 The following sample command will launch a new Payara Server container and deploy all applications located in the `~/payara/apps` directory:
 
-[docker, shell]
+[docker, shell, subs=attributes+]
 ----
 docker run -p 8080:8080 -v ~/payara/apps:/opt/payara/deployments nexus.payara.fish:5000/payara/server-full:{currentVersion}
 ----
@@ -106,7 +106,7 @@ You can also prepare a custom image based on the official Payara Server Docker i
 
 The following sample _Dockerfile_ can be used to prepare a custom Payara Server image that deploys the `myapplication.war` artefact at runtime:
 
-[source, Docker]
+[source, Docker, subs=attributes+]
 ----
 FROM nexus.payara.fish:5000/payara/server-full:{currentVersion}
 COPY myapplication.war $DEPLOY_DIR
@@ -164,16 +164,16 @@ It’s possible to run a set of custom administration commands during the domain
 
 For example, the following sample command will execute all commands listed in the `post-boot-commands.asadmin` file inside the `/local/path/with/boot/file` directory mounted volume:
 
-[source, shell]
+[source, shell, subs=attributes+]
 ----
 docker run -p 8080:8080 -v /local/path/with/boot/file:/config -e POSTBOOT_COMMANDS=/config/post-boot-commands.asadmin nexus.payara.fish:5000/payara/server-full:{currentVersion}
 ----
 
 Alternatively, the same outcome can be achieved by defining a custom Docker image:
 
-[source, Docker]
+[source, Docker, subs=attributes+]
 ----
-FROM nexus.payara.fish:5000/payara/server-full
+FROM nexus.payara.fish:5000/payara/server-full:{currentVersion}
 COPY post-boot-commands.asadmin $POSTBOOT_COMMANDS
 ----
 
@@ -204,7 +204,7 @@ The default `CMD` argument for _tini_ runs the `bin/entrypoint.sh` shell script 
 
 You can override the default entrypoint if needed to test or browse the container to examine that everything's in place. The following command will start the container at a bash prompt, without starting the domain.
 
-[source, shell]
+[source, shell, subs=attributes+]
 ----
 docker run -p 8080:8080 -it nexus.payara.fish:5000/payara/server-full:{currentVersion} bash
 ----
