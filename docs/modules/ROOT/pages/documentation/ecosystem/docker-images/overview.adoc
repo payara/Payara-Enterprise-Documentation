@@ -1,0 +1,30 @@
+[[docker-images]]
+= Docker Images
+
+As the Payara Enterprise Platform requires a subscription-based license for use, Docker images are only available to any users with an active subscription. Payara Enterprise customers have special access to a private Docker registry that is located in Payara Services Ltd Sonatype Nexus server. To access this registry, your Docker commands and configuration must prefix the `nexus.payara.fish:5000` URL to the corresponding image's name.
+
+NOTE: This repository also contains Docker images for Payara Server 4 for versions 4.1.2.191.18 and newer. Docker images for older versions are added on demand.
+
+IMPORTANT: Access to this registry is restricted by a valid Payara Enterprise subscription Nexus account.
+
+[[docker-authentication]]
+== Docker Authentication
+
+Before accessing the images published in the registry, you have to configure your Docker environment to access it securely. To do this, run the docker login command against the hostname and port of the registry like this:
+
+[source, shell]
+----
+docker login nexus.payara.fish:5000
+----
+
+Your docker client utility will request user credentials, which correspond to your organisation's Nexus account username and password. Once you supply them, the authentication mechanism will be stored locally in the `~/.docker/config.json` file, so whenever the client utility needs to connect to the registry access is allowed.
+
+[[maintenance]]
+== Maintenance
+
+Payara Enterprise Docker images will be maintained as we perform the following actions:
+
+* Remove expired certificates from the Trusted Certificates Keystore file.
+* Update of the JDK used to the latest tested version Payara is compatible with (both JDK 8 and JDK 11 versions).
+
+NOTE: Maintenance is done on previously released images, which means that you need to perform an explicit `docker pull` command to retrieve the latest version on your environment to get the latest updates.
