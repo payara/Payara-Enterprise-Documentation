@@ -268,9 +268,9 @@
 *** xref:documentation/ecosystem/cloud-connectors/azure-sb.adoc[Azure Service Bus]
 *** xref:documentation/ecosystem/cloud-connectors/mqtt.adoc[MQTT]
 ** xref:documentation/ecosystem/security-connectors.adoc[Security Connectors]
-** xref:documentation/ecosystem/docker-images.adoc[Docker Images]
-*** xref:documentation/ecosystem/docker-server-usage.adoc[Payara Server Docker Image Usage]
-*** xref:documentation/ecosystem/docker-micro-usage.adoc[Payara Micro Docker Image Usage]
+** xref:documentation/ecosystem/docker-images/overview.adoc[Docker Images]
+*** xref:documentation/ecosystem/docker-images/server-image-overview.adoc[Payara Server Docker Image Overview]
+*** xref:documentation/ecosystem/docker-images/micro-image-overview.adoc[Payara Micro Docker Image Overview]
 
 .User Guides
 * xref:documentation/user-guides/user-guides.adoc[User Guides Overview]
