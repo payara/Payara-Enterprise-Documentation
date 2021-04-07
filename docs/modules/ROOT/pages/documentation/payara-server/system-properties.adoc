@@ -13,7 +13,7 @@ for HTTPS communication on a listener. | TLSv1, TLSv1.1, TLSv1.2, TLSv1.3 |TLSv1
 
 | fish.payara.classloading.delegate | Boolean | When set to false,
 libraries from applications, and
-_latexmath:[${Domain}_/lib will override the library in _$]\{Product-Root}_/modules
+`<domain>/lib` will override the library in `<payara-installation>/glassfish/modules`
 directory | true, false | true
 
 | fish.payara.shutdowngrace | Integer | After server shutdown is initiated the server waits this period of time to finish ongoing requests before terminating. Currently, new requests are still accepted during this grace period.| 0 - Integer.MAX | 0
