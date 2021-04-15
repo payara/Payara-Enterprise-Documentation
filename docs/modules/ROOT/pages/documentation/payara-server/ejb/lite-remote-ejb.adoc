@@ -180,7 +180,7 @@ asadmin > get-ejb-invoker-configuration --target cluster1
 
 Client applications that wish to use HTTP(S) as the transport protocol when calling remote EJBs will have to use a special *thin-client* dependency. In order to do this, you can add the following Maven dependency to your client project:
 
-[source, xml]
+[source, xml, subs=attributes+]
 ----
 <dependency>
     <groupId>fish.payara.extras</groupId>

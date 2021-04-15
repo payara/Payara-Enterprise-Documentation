@@ -14,17 +14,14 @@ methods to your application to use Payara Micro Enterprise programmatically.
 
 In your project's POM, include the following dependency:
 
-[source, xml]
+[source, xml, subs=attributes+]
 ----
 <dependency>
     <groupId>fish.payara.extras</groupId>
     <artifactId>payara-micro</artifactId>
-    <version>${payara.version}</version>
+    <version>{currentVersion}</version>
 </dependency>
 ----
-
-`${payara.version}` is a Maven property, which specifies the version of the Maven
-artifact, e.g. {currentVersion}.
 
 [[public-api-reference]]
 === Public API Reference

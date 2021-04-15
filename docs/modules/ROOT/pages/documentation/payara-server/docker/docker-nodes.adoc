@@ -40,7 +40,7 @@ instances require secure admin to be enabled to start.
 * TLS - Whether or not to use HTTPS to communicate with the Docker engine or not.
 * Docker Port - The port that the Docker engine is listening on. Defaults to 2376.
 * Docker Image - The Docker image to use. Payara Server will default to using the
-_payara/payaraserver-node:{currentVersion}_ image.
+`payara/payaraserver-node:{currentVersion}` image.
 
 The configuration options of CONFIG nodes are also available, namely _nodehost_, _nodedir_, and _installdir_. Specifying
 the _nodehost_ option remains mandatory, but for docker nodes the _installdir_ and _nodedir_ options can safely be left as
