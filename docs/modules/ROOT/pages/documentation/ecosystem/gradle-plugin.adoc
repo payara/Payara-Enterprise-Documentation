@@ -17,7 +17,8 @@ plugins {
 
 === Configuration Example:
 
-```
+[source, json, subs=attributes+]
+----
 payaraMicro {
     payaraVersion = '{currentVersion}'
     deployWar = false
@@ -26,7 +27,7 @@ payaraMicro {
     commandLineOptions = [port: 2468]
     javaCommandLineOptions = [Dtest: 'test123', ea:true] 
 }
-```
+----
 
 For more information, https://plugins.gradle.org/plugin/fish.payara.micro-gradle-plugin[click here].
 
@@ -47,11 +48,11 @@ the specified configurations.
 
 |`javaPath`
 |java
-|Absolute path to the java executable..
+|Absolute path to the java executable
 
 |`payaraVersion`
 |{currentVersion}
-|By default `microBundle` task fetches payara-micro with version {currentVersion}.
+|By default `microBundle` task fetches payara-micro with version {currentVersion}
 
 |=== 
 
