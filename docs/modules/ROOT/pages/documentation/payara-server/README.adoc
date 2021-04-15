@@ -3,7 +3,7 @@
 
 Documentation of Payara Server Enterprise features. Includes full documentation of the features added on top of _GlassFish Server {glassfishVersion} Open Source Edition_ as well as features shared with GlassFish Server or their improvements specific to Payara Server.
 
-All documentation for _GlassFish Server {glassfishVersion}_ is also valid for Payara Server Enterprise {currentVersion} unless stated otherwise in Payara Server Enterprise documentation.
+All documentation for _GlassFish Server {glassfishVersion}_ is also valid for Payara Server Enterprise {currentVersion} unless stated otherwise.
 
 [[references]]
 == References

@@ -85,7 +85,7 @@ with the provided class.
 
 |`payaraVersion`
 |{currentVersion}
-|By default bundle mojo fetches Payara Micro with version {currentVersion}.
+|By default bundle mojo fetches Payara Micro with version {currentVersion}
 
 |`deployArtifacts`
 |_None_
@@ -127,7 +127,7 @@ and transferred to the `MICRO-INF` directory of the created uber jar artifact.
 
 Example:
 
-[source,XML]
+[source, xml, subs=attributes+]
 ----
 <plugin>
     <groupId>fish.payara.maven.plugins</groupId>
