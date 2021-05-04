@@ -8,7 +8,7 @@
 
 == Notes
 === Metro (JAX-WS implementation) remote code vulnerability
-We have fixed a remote code vulnerability in the Metro framework. If you have an application deployed on the Payara Server that makes use of the JAX-WS features, please update your environment.
+IMPORTANT: We have fixed a remote code vulnerability in the Metro framework. If you have an application deployed on Payara Server that makes use of any JAX-WS features, please update your environment as soon as possible.
 
 === New Features
 * [FISH-1021] - Add Support for Setting the HSTS Header
