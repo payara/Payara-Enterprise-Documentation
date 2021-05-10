@@ -4,7 +4,7 @@ image:payara-logo-blue.png[Payara Logo]
 
 This is the documentation for the Payara Platform Enterprise Edition, designed to increase stability and security in production environments and provide customers with access to production-oriented features, tools, and capabilities.
 
-Payara Platform Enterprise which has a monthly release cadence, is designed for production environments and new features are added to Payara Platform Enterprise after they have been thoroughly tested for stability.
+Payara Platform Enterprise consists of Payara Server and Payara Micro. They have a monthly release cadence, are designed for production environments, and new features are added to Payara Platform Enterprise after they have been thoroughly tested for stability.
 
 == Download
 
