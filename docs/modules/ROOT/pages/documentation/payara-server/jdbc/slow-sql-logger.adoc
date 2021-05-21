@@ -5,8 +5,8 @@
 Many performance problems in Enterprise Applications can be traced to
 slow database access. Payara Server Enterprise includes capabilities to detect
 and log slow SQL queries executed via a JDBC Connection pool. The Slow
-SQL logger monitors all queries executed on the connection pool and if t
-hey exceed a configurable execution time in seconds a warning message is
+SQL logger monitors all queries executed on the connection pool and if
+they exceed a configurable execution time in seconds a warning message is
 logged into the server log.
 
 The warning message (see below) logs the SQL query and the stack trace to the code
@@ -15,6 +15,9 @@ lines of code to investigate.
 
 [[configuring-the-slow-sql-logger]]
 == Configuring the Slow SQL Logger
+
+Ensure Wrap JDBC Objects is enabled in your JDBC Connection Pool (enabled by default)
+for the Slow SQL Logger to function correctly.
 
 There are a number of ways to configure the slow SQL threshold time on a
 JDBC connection pool.
