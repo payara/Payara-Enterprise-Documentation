@@ -1,0 +1,43 @@
+[[tck-results]]
+= TCK Results
+
+As required by the
+https://www.eclipse.org/legal/tck.php[Eclipse Foundation Technology Compatibility Kit License],
+following is a summary of the TCK results for releases of Jakarta EE Platform, Web Profile.
+
+**Payara Server 5.28.1 Web Profile Certification Summary**
+
+- Product Name, Version and download URL (if applicable):
++
+[cols="1,2",grid=none,frame=none]
+|===
+|image:JakartaEE_Logo_compatible-color.png[]
+|
+{empty} +
+{empty} +
+https://www.payara.fish/page/payara-enterprise-downloads/[Payara Server 5.28.1 (Web Profile)]
+|===
+
+- Specification Name, Version and download URL:
++
+https://jakarta.ee/specifications/platform/8/[Jakarta EE Platform, Web Profile 8]
+- TCK Version, digital SHA-256 fingerprint and download URL:
++
+http://download.eclipse.org/jakartaee/platform/8/eclipse-jakartaeetck-8.0.2.zip[Jakarta EE Platform CTS 8.0.2]
+, SHA-256: `14a21b617bb646055c2952f1422ec04a71389fb37301e1c2969f6c3700aee965`
+
+- Public URL of TCK Results Summary:
++
+https://docs.payara.fish/enterprise/docs/5.28.1/jakartaee-certification/5.28.1/tck-results-web-5.28.1.html
+
+- Any Additional Specification Certification Requirements:
+
+none
+
+- Java runtime used to run the implementation:
++
+`OpenJDK Runtime Environment (build 1.8.0_242-8u242-b08-0ubuntu3~18.04-b08)
+- Summary of the information for the certification environment:
++
+Apache Derby, Linux, Ubuntu 18.04.3 +
+
