@@ -46,32 +46,20 @@ Apache Derby, Linux, Ubuntu 18.04.3 +
 ### beanvalidation
 
 ```
-[INFO] Tests run: 1043, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 646.051 s - in TestSuite
-[INFO] 
-[INFO] Results:
-[INFO] 
-[INFO] Tests run: 1043, Failures: 0, Errors: 0, Skipped: 0
-[INFO] 
-[INFO] 
-[INFO] --- maven-surefire-report-plugin:2.21.0:report-only (generate-test-report) @ hibernate-validator-tck-runner ---
-[WARNING] Unable to locate Test Source XRef to link to - DISABLED
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
+   [INFO] Tests run: 1043, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 646.051 s - in TestSuite
+   [INFO] 
+   [INFO] Results:
+   [INFO] 
+   [INFO] Tests run: 1043, Failures: 0, Errors: 0, Skipped: 0
 ```
 ### cdi
 
 ```
- [mvn.test] [INFO] Tests run: 1655, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1,296.869 s - in TestSuite
- [mvn.test] [INFO] 
- [mvn.test] [INFO] Results:
- [mvn.test] [INFO] 
- [mvn.test] [INFO] Tests run: 1655, Failures: 0, Errors: 0, Skipped: 0
- [mvn.test] [INFO] 
- [mvn.test] [INFO] 
- [mvn.test] [INFO] --- maven-surefire-report-plugin:2.19.1:report-only (generate-test-report) @ weld-payara-runner-tck11 ---
- [mvn.test] [WARNING] Unable to locate Test Source XRef to link to - DISABLED
- [mvn.test] [INFO] ------------------------------------------------------------------------
- [mvn.test] [INFO] BUILD SUCCESS
+   [mvn.test] [INFO] Tests run: 1655, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1,296.869 s - in TestSuite
+   [mvn.test] [INFO] 
+   [mvn.test] [INFO] Results:
+   [mvn.test] [INFO] 
+   [mvn.test] [INFO] Tests run: 1655, Failures: 0, Errors: 0, Skipped: 0
 ```
 ### connector 
 
@@ -85,8 +73,8 @@ Apache Derby, Linux, Ubuntu 18.04.3 +
 ### di 
 
 ```
-    [junit] Testsuite: org.jboss.weld.atinject.tck.AtInjectTCK
-    [junit] Tests run: 50, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 sec
+   [junit] Testsuite: org.jboss.weld.atinject.tck.AtInjectTCK
+   [junit] Tests run: 50, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 sec
 ```
 ### ejb30/lite/appexception 
 
