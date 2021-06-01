@@ -32,3 +32,18 @@ image:logging/logging_setup.png[Logger Settings]
 
 xref:/documentation/payara-server/logging/daily-log-rotation.adoc[Daily log rotation] +
 Documentation about daily log rotation in Payara and how to configure it.
+
+
+[[env-var-replacement]]
+== Environment Variable Replacement
+
+_Since version 5.184_
+
+The logging properties file supports environment variables like
+
+[source]
+----
+.level=${ENV=logLevel}
+----
+
+Whenever the server starts up or the logging properties are changed, the value for the `.level` property will be taken from the environment variable `logLevel`.
