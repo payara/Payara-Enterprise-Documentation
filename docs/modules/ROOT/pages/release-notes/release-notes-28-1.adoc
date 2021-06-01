@@ -9,7 +9,7 @@
 == Notes
 
 === Incompatibility with the latest JVM / JDK versions and Monitoring
-IMPORTANT: Payara Platform products do run correctly on JDK 8u292, 11.0.11 or later. Due to removal of SSL/TLS 1.0 and 1.1 protocols, monitoring data will not be available because the JMX service fails to start, and will not produce monitoring data. Other issues due to the missing protocols may also be present.
+IMPORTANT: Due to removal of SSL/TLS 1.0 and 1.1 protocols in the latest OpenJDK versions, monitoring data will not be available on JDK 8u292 and 11.0.11 or later because the JMX service fails to start and will not produce monitoring data. Other issues due to the missing protocols may also be present.
 
 === Improvement
 * [FISH-1315] - (Community Contribution - https://github.com/AngelTG2[AngelTG2]) Improve loading time for REST application when there are many password aliases
