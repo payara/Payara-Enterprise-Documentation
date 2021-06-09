@@ -20,6 +20,7 @@ Here's a list of Payara Server Asadmin commands that are not supported by GlassF
 - xref:/documentation/payara-server/asadmin-commands/server-management-commands.adoc[Server Management Commands]
 - xref:/documentation/payara-server/asadmin-commands/print-certificate.adoc[Print Certificate Command]
 - xref:/documentation/payara-server/asadmin-commands/misc-commands.adoc[Miscellaneous Commands]
+- xref:/documentation/payara-server/asadmin-commands/enabling-jlink-event-expansion.adoc[Enabling JLink Event Expansion]
 
 == Command Autocompletion
 
