@@ -13,7 +13,7 @@ Payara has been part of the MicroProfile project from its inception and, therefo
 
 Version 4.0::
 Version 4.0 of MicroProfile is a major release that updates Config, Fault Tolerance, Health Check, JWT-Auth, Metrics, OpenAPI, OpenTracing and Rest Client. It is also the first version of MicroProfile to be based on Jakarta EE 8. All of the Java EE dependencies are replaced with Jakarta EE dependencies for all MicroProfile specifications.
-This is supported by both Payara Server and Payara Micro from release *5.2021.1*.
+This is supported by both Payara Server and Payara Micro from release *5.29.0*.
 
 Version 3.3::
 Version 3.3 of MicroProfile updates Config, Health Check, Fault Tolerance, Metrics, and Rest Client.

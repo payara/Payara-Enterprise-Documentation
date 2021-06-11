@@ -90,7 +90,7 @@ Provides a way to set the configuration of the fault tolerance service of the ta
 
 ===== Command Options
 
-NOTE: Since Payara Platform 5.2021.2, the options `asyncmaxpoolsize` and `delaymaxpoolsize` have been removed as they are no longer applicable due to the configurable managed executor pools being used.
+NOTE: Since Payara Platform 5.29.0, the options `asyncmaxpoolsize` and `delaymaxpoolsize` have been removed as they are no longer applicable due to the configurable managed executor pools being used.
 
 [cols="4,10,1,1", options="header"]
 |===
