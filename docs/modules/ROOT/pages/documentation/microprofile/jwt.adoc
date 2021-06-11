@@ -178,7 +178,7 @@ When the `custom.namespace` property is set, it will always take precedence over
 
 === Disabling Type Claim Verification
 
-_Since Payara Platform 5.2020.7_
+_Since Payara Platform 5.23.1_
 
 The MicroProfile JWT Authentication specification currently mandates that the type claim (`typ`) of any authorization token parsed by the container is present and is set to the `JWT` value. However, the current RFC document (https://tools.ietf.org/html/rfc7519[RFC 7519]) that defines the JWT standard states that this claim is **optional**:
 
