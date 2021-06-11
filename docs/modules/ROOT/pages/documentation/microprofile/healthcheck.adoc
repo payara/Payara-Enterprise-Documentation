@@ -33,9 +33,13 @@ The MicroProfile Healthchecks API defines the following list of REST endpoints t
 |Readiness
 |On invocation, all registered health checks annotated with `@Readiness` are performed and the results aggregated.
 
+|'/health/started'
+|Startup
+|On invocation, all registered health checks annotated with '@Startup' are performed and the results aggregated.
+
 |`/health`
-|Readiness + Liveness 
-|On invocation, all registered health checks annotated with `@Liveness` and `@Readiness` are performed and the results aggregated.
+|Readiness + Liveness + Startup
+|On invocation, all registered health checks annotated with `@Liveness`, `@Readiness`, or `@Startup` are performed and the results aggregated.
 |====
 
 This root endpoint can be altered using the `set-microprofile-healthcheck-configuration` asadmin command to prevent collisions with other HTTP endpoints that might need to use the `health` context root.
