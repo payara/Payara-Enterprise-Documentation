@@ -9,7 +9,7 @@ Set the environment variable `+AS_ADMIN_DISABLE_EVENT_EXPANSION+` to `+false+`
 
 === For Linux
 . Open the Terminal
-. Tyoe the following command
+. Type the following command
 +
 ----
 export AS_ADMIN_DISABLE_EVENT_EXPANSION=false
@@ -32,7 +32,7 @@ setx AS_ADMIN_DISABLE_EVENT_EXPANSION "false" /m
 set AS_ADMIN_DISABLE_EVENT_EXPANSION=false
 ----
 +
-. Check that the vraible is set by typing the following command
+. Check that the variable is set by typing the following command
 +
 ----
 echo %AS_ADMIN_DISABLE_EVENT_EXPANSION%
