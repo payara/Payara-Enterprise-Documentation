@@ -1,6 +1,8 @@
 = Enable JLine Event Expansion
 
-Enable this feature if you would like the ability to use the JLine special characters in the Asadmin multimode.
+Enable this feature if you would like to use the Event Designators inside the Asadmin Multimode.
+
+An Event Designator is a reference to a command line entry in the history list.
 
 This is disabled by default. 
 
