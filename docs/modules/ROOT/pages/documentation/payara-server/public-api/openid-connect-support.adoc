@@ -315,16 +315,16 @@ public class SecurityBean {
 ==== Groups mapping
 
 - To add the groups to the registered application, Sign in to the Azure portal > Azure Active Directory > Manage > App registrations > select your application:
-image::security-connector/oidc/azure/app_registrations.png[Select application]
+image:security-connector/oidc/azure/app_registrations.png[Select application]
 
 - You may also add the custom roles via **Roles and administrators** under the **Manage** section:
-image::security-connector/oidc/azure/custom_role.png[Add Custom Roles]
+image:security-connector/oidc/azure/custom_role.png[Add Custom Roles]
 
 - Now to map group claims, select **Token configuration** under the **Manage** section:
-image::security-connector/oidc/azure/token_configuration.png[Token configuration]
+image:security-connector/oidc/azure/token_configuration.png[Token configuration]
 
 - Press **Add groups claim** button to select group types and customize Id and/or Access token properties:
-image::security-connector/oidc/azure/add_groups_claim.png[Add Groups Claim]
+image:security-connector/oidc/azure/add_groups_claim.png[Add Groups Claim]
 
 - Groups claim can also be defined via Azure **Manifest** under the **Manage** section which is a JSON configuration file.
 
@@ -358,38 +358,38 @@ https://www.keycloak.org/documentation.html
 - Refer Keycloak https://www.keycloak.org/docs/latest/getting_started/index.html[getting started documentation] to run and setup keycloak.
 
 - After Keycloak setup done, login to Keycloak admin console and add the new realm by pressing the **Add Realm** button:
-image::security-connector/oidc/keycloak/add_realm.png[Add Realm]
+image:security-connector/oidc/keycloak/add_realm.png[Add Realm]
 
 - Copy the OpenId endpoint configuration URL from endpoint section:
-image::security-connector/oidc/keycloak/realm_endpoint.png[Realm Endpoint]
+image:security-connector/oidc/keycloak/realm_endpoint.png[Realm Endpoint]
 
 - Now add the **Role** that will be used by the application to define which users will be authorized to access the application.
-image::security-connector/oidc/keycloak/add-role.png[Add role]
+image:security-connector/oidc/keycloak/add-role.png[Add role]
 
 - Create the **Groups**:
-image::security-connector/oidc/keycloak/create-group.png[Create Groups]
+image:security-connector/oidc/keycloak/create-group.png[Create Groups]
 
 - Add the **User**:
-image::security-connector/oidc/keycloak/add-user.png[Add User]
+image:security-connector/oidc/keycloak/add-user.png[Add User]
 
 - After the user is created, set a new **password** for the user:
-image::security-connector/oidc/keycloak/set-user-password.png[Set Password]
+image:security-connector/oidc/keycloak/set-user-password.png[Set Password]
 
 - Now map the user to roles. Click on **Role Mappings** tab and assign the roles to the user from the available roles:
-image::security-connector/oidc/keycloak/user-role-mapping.png[User Role Mapping]
+image:security-connector/oidc/keycloak/user-role-mapping.png[User Role Mapping]
 
 - Assign the user to the groups. Click on **Groups** tab and join the groups from the available groups:
-image::security-connector/oidc/keycloak/join-group.png[Join Groups]
+image:security-connector/oidc/keycloak/join-group.png[Join Groups]
 
 - Create the OpenId Client by clicking the **Client** option from sidebar and press the **create** button:
-image::security-connector/oidc/keycloak/create-client.png[Create OpenID Client]
+image:security-connector/oidc/keycloak/create-client.png[Create OpenID Client]
 Enter the Client ID and select the Client Protocol **openid-connect** and press **Save**.
 
 - After the openid client is created change its **Access Type** to **confidential** and enter the valid **Redirect URIs**:
-image::security-connector/oidc/keycloak/client-access-type-confidentail.png[Access Type]
+image:security-connector/oidc/keycloak/client-access-type-confidentail.png[Access Type]
 
 - Next copy the client **secret** from **Credentials** tab.
-image::security-connector/oidc/keycloak/client-secret.png[Client Secret]
+image:security-connector/oidc/keycloak/client-secret.png[Client Secret]
 
 Here's an example that configures a OpenID Connect client for Keycloak provider.
 To test the KeyCloak OpenId provider, enter the copied Client Secret, Client ID (client name) and the endpoint configuration URL:
@@ -409,7 +409,7 @@ public class SecurityBean {
 ==== Groups mapping
 
 - To get the groups details in token claims, navigate to Keycloak admin console > OpenId **Client** > **Mappers** tab > press **create** button > Select **Group Membership** mapper type > enter the **Name** and **Token Claim Name** > press **Save**.
-image::security-connector/oidc/keycloak/groups-claim.png[Groups Claim]
+image:security-connector/oidc/keycloak/groups-claim.png[Groups Claim]
 
 - To retrieve and map the caller name & groups from token claims, set the caller name & group claim definition to `preferred_username` & `groups`.
 [source, java]
