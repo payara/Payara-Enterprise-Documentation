@@ -2,7 +2,7 @@
 
 Enable this feature if you would like to use the Event Designators inside the Asadmin Multimode.
 
-An Event Designator is a reference to a command line entry in the history list.
+An https://www.gnu.org/software/bash/manual/html_node/Event-Designators.html[Event Designator] is a reference to a command line entry in the history list.
 
 This is disabled by default. 
 
