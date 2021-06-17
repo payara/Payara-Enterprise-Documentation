@@ -4,7 +4,7 @@ Enable this feature if you would like to use the Event Designators inside the As
 
 An https://www.gnu.org/software/bash/manual/html_node/Event-Designators.html[Event Designator] is a reference to a command line entry in the history list.
 
-This is disabled by default. 
+This is enabled by default. 
 
 == Enabling JLine Event Expansion
 Set the environment variable `+AS_ADMIN_DISABLE_EVENT_EXPANSION+` to `+false+` 
