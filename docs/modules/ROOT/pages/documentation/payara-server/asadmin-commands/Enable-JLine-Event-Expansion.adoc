@@ -5,6 +5,7 @@ This feature enables using the Event Designators inside the Asadmin Multimode.
 An https://www.gnu.org/software/bash/manual/html_node/Event-Designators.html[Event Designator] is a reference to a command line entry in the history list.
 
 This is enabled by default. 
+
 NOTE: If this feature is enabled, all `\` characters are treated as escape characters and they are removed before running the command. If you need to pass `\` into an asadmin command, you need to escape it and turn it into `\\`. This needs to be done even if you enclose the string in quotes.
 
 == Enabling JLine Event Expansion
