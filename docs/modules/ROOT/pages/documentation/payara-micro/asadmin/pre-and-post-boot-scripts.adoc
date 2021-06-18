@@ -25,9 +25,11 @@ Here's a sample of a post boot script used to configure an instance for producti
 [source, shell]
 ----
 #Disable dynamic reloading of applications
-set "configs.config.server-config.admin-service.das-config.dynamic-reload-enabled=false"
+set configs.config.server-config.admin-service.das-config.dynamic-reload-enabled=false
+# Set a system property which contains spaces
+create-system-properties "property.name=This is a property value"
 #Disable auto deployment
-set "configs.config.server-config.admin-service.das-config.autodeploy-enabled=false"
+set configs.config.server-config.admin-service.das-config.autodeploy-enabled=false
 
 #Optimizing Heap size
 delete-jvm-options -client:-Xmx1024:-Xms512
@@ -37,10 +39,10 @@ create-jvm-options -server:-Xmx2048:-Xms2048
 set-hazelcast-configuration --clusterName=my-production-cluster --target=server-config
 
 #Using a reference to a system property payara.deployed-app-name
-set "configs.config.server-config.http-service.virtual-server.server.default-web-module=${payara.deployed-app-name}"
+set configs.config.server-config.http-service.virtual-server.server.default-web-module=${payara.deployed-app-name}
 
 #Using a reference to an environment variable security-enabled
-set "configs.config.server-config.network-config.protocols.protocol.http-listener-1.security-enabled=${ENV=security-enabled}"
+set configs.config.server-config.network-config.protocols.protocol.http-listener-1.security-enabled=${ENV=security-enabled}
 ----
 
 [[configuring-boot-scripts]]
