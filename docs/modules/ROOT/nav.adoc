@@ -64,6 +64,7 @@
 *** xref:documentation/payara-server/asadmin-commands/misc-commands.adoc[Miscellaneous Commands]
 *** xref:documentation/payara-server/asadmin-commands/disabling-jline.adoc[Disabling JLine]
 *** xref:documentation/payara-server/asadmin-commands/auto-naming.adoc[Auto-Naming]
+*** xref:documentation/payara-server/asadmin-commands/Enable-JLine-Event-Expansion.adoc[Enable JLine Event Expansion]
 ** xref:documentation/payara-server/rest-api/rest-api-documentation.adoc[REST API Documentation]
 *** xref:documentation/payara-server/rest-api/overview.adoc[Overview]
 *** xref:documentation/payara-server/rest-api/security.adoc[Security]
