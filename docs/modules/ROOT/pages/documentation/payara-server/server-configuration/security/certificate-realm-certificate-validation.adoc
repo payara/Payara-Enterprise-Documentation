@@ -1,18 +1,17 @@
 [[client-certificate-validator]]
 = Client Certificate Custom Validations
 
-_Since Payara Server 5.29.0_
-
 
 By default, Payara checks only if the submitted Client Certificate is present in the trust store. If it is found, it is accepted without any additional checks.
 
 Since Payara 5.29.0, you can now implement a Client Certificate Validator which performs additional checks in addition to the presence of the certificate in the trust store.  You can perform a check on the validity date, use the Online Certificate Status Protocol (OCSP) to validate the certificate when it has a Certificate Revocation List entry (CRL), or lookup the DN name in a database for example, and determine based on this information if the certificate is still accepted.
 
+== Creating Custom Validation
+
 When you want to implement custom validation, implement the `fish.payara.security.client.ClientCertificateValidator` interface and define your class through the ServiceLoader mechanism.
 
-== Creating Custom Validation.
 
-To have the `ClientCertificateValidator` interface available in your application, add the `payara-api` artifact to your application with the provided scope.
+To have the `ClientCertificateValidator` interface available in your application, add the `payara-api` artifact to your application with the provided scope. When using maven, add the following snippet if not already defined.
 
 
 [source, xml]
