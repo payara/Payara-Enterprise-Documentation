@@ -20,7 +20,7 @@ To have the `ClientCertificateValidator` interface available in your application
         <dependency>
             <groupId>fish.payara.api</groupId>
             <artifactId>payara-api</artifactId>
-            <version>{currentVersion}/version>
+            <version>{currentVersion}</version>
             <scope>provided</scope>
         </dependency>
 ----
@@ -49,4 +49,4 @@ This class is loaded through the Java ServiceLoader mechanism. Make sure you hav
 com.company.certificate.MyCertificateValidator
 ----
 
-NOTE: Since the class is loaded through the Java ServiceLoader mechanism, you cannot object CDI or EJB beans into it. You can retrieve an instance of a CDI bean using  `CDI.current().select(MyCDIBean.class).get()`.  When the tenant Control code available in Payara Community is stabilised, it will be possible to directly inject those beans.
+NOTE: Since the class is loaded through the Java ServiceLoader mechanism, you cannot inject CDI or EJB beans into it. You can retrieve an instance of a CDI bean using  `CDI.current().select(MyCDIBean.class).get()`.  When the tenant Control code available in Payara Community is stabilised, it will be possible to directly inject those beans.
