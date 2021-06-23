@@ -23,7 +23,7 @@ The managed and scheduled managed executor pool can be configured via the _set-f
 The executor service is used to execute methods annotated with `@Asynchronous`, whereas the scheduled executor service is used by the CircuitBreaker and Timeout interceptors for their timeout operations (scheduling the circuit breaker to be set to half open, and just timing out respectively).
 
 === Alternative @Asynchronous Annotations
-Since 5.192 the Payara specific configuration property `MP_Fault_Tolerance_Alternative_Asynchronous_Annotations` can be used to specify a comma separated list of fully qualified class names of those annotations that should have the same effect as FT's `@Asynchronous`. These annotations do not have to be interceptor bindings.
+The Payara specific configuration property `MP_Fault_Tolerance_Alternative_Asynchronous_Annotations` can be used to specify a comma separated list of fully qualified class names of those annotations that should have the same effect as FT's `@Asynchronous`. These annotations do not have to be interceptor bindings.
 
 For example:
 

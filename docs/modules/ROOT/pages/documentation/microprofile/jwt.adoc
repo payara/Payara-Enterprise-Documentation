@@ -146,8 +146,6 @@ This properties file should contain the key `accepted.issuer` with as value the 
 
 === Namespaced claims configuration
 
-_Since Payara Platform 5.184_
-
 Authentication services (like https://auth0.com/docs/scopes/current/custom-claims[auth0], https://connect2id.com/products/server/docs/config/claims-mapping[connect2id]) offer the possibility to add custom claims to JWT tokens
 but also enforce a namespaced format to avoid possible collisions with standard OpenID Connect claims.
 
@@ -178,8 +176,6 @@ When the `custom.namespace` property is set, it will always take precedence over
 
 === Disabling Type Claim Verification
 
-_Since Payara Platform 5.23.1_
-
 The MicroProfile JWT Authentication specification currently mandates that the type claim (`typ`) of any authorization token parsed by the container is present and is set to the `JWT` value. However, the current RFC document (https://tools.ietf.org/html/rfc7519[RFC 7519]) that defines the JWT standard states that this claim is **optional**:
 
 > 5.1.  "typ" (Type) Header Parameter
@@ -197,8 +193,6 @@ NOTE: This property has to be defined in the `payara-mp-jwt.properties` configur
 IMPORTANT: Keep in mind that tokens which are missing their type claim and are propagated to other services running on other Eclipse MicroProfile runtimes might be rejected, as the specification mandates the inclusion of the claim.
 
 === Caching the Public Key
-
-_Since Payara Platform 5.25.0_
 
 By default, the public key retrieved by the `mp.jwt.verify.publickey.location` configuration property will be cached in memory for 5 minutes after being read from either a local file or a remote location. You can modify this _"time-to-live"_ which determines how long the key stays cached in memory in the case you are dealing with long-lived keys, this is done by setting the `publicKey.cache.ttl` custom property.
 
