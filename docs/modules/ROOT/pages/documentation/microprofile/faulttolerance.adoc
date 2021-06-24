@@ -154,3 +154,54 @@ Returns the current configuration options for the Fault Tolerance service on the
 ----
 asadmin> get-fault-tolerance-configuration --target=instance1
 ----
+
+
+[[microprofile-4-upgrade]]
+== Upgrading from MicroProfile 3.x to 4.x
+
+MicroProfile 4.0 brings with it a number of changes to MicroProfile Fault Tolerance. There are two incompatible changes
+with the previous version of MicroProfile Fault Tolerance.
+
+=== Metric Names and Scopes Changed
+The metrics added automatically by MicroProfile Fault Tolerance have been updated to take advantage of support for
+metric tags which were added to MicroProfile Metrics in version 2.0. As a result, some information which was previously
+contained in the metric name is now instead included in tags.
+
+In addition, metrics have moved from the `application` scope to the `base` scope for consistency with other
+MicroProfile specifications. Note that this means:
+
+* Metrics are now exported under `/metrics` and `/metrics/base`, instead of `/metrics` and `/metrics/application` as in previous versions.
+* In the JSON format, when metrics are retrieved from `/metrics` they appear in the base object rather than the application object.
+* In the OpenMetrics format, the names are prefixed with `base_` instead of `application_`.
+
+There unfortunately is not a workaround for this change, users must simply ensure that any dashboard or application
+making use of these metrics must be updated to look at the new locations.
+
+==== Example
+
+Old metric:
+[source,Shell]
+----
+application:ft.<name>.timeout.callsTimedOut.total
+----
+
+New metric:
+[source,Shell]
+----
+base:ft.timeout.calls.total{method="<name>", timedOut="true"}
+----
+
+=== Lifecycle of CircuitBreakers and Bulkheads Specified
+In previous versions of MicroProfile Fault Tolerance, the lifecycle of `CircuitBreaker` and `Bulkhead`
+annotations was not specified. These fault tolerance strategies hold state between invocations, so their
+lifecycle is important for correct functioning.
+
+`CircuitBreaker` and `Bulkhead` are now treated as singletons identified by the annotated bean class and the
+guarded method. This means that if a `RequestScoped` bean has a method annotated with `CircuitBreaker` and/or
+`Bulkhead`, all invocations of that method will share the same `CircuitBreaker` and/or `Bulkhead` state, even
+though each request will have a different instance of the annotated bean.
+
+There is unfortunately no workaround for this change in behaviour.
+
+
+
