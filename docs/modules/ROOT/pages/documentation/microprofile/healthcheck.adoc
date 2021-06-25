@@ -141,3 +141,12 @@ By default, HealthCheck endpoints bind to root context application which is
 application uses the default realm (`file`) of the server. If user application deployed 
 with the empty context-root then the security configuration of the deployed 
 application will be shared by HealthCheck endpoints.
+
+[[microprofile-4-upgrade]]
+== Upgrading from MicroProfile 3.x to 4.x
+
+MicroProfile 4.0 brings with it a number of changes to MicroProfile Health. The main incompatible change
+brought in by this upgrade is the removal of the deprecated `@Health` annotation.
+
+There isn't a workaround for this, the annotation is simply gone: all health checks must be registered as a
+`@Readiness`, `@Liveness`, or `@Startup` check.
