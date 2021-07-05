@@ -647,3 +647,78 @@ asadmin> set-config-cache
     --duration=30
     --target=myAppCluster
 ----
+
+[[microprofile-4-upgrade]]
+== Upgrading from MicroProfile 3.x to 4.x
+
+MicroProfile 4.0 brings with it a number of changes to MicroProfile Config. There are three incompatible changes
+with the previous version of MicroProfile Config, though one is only important when writing your own _ConfigSources_.
+
+=== ConfigSource#getPropertyNames No Longer Default
+The `ConfigSource#getPropertyNames` method is no longer a default method. If you've written your own _ConfigSources_,
+you will need to implement this method yourself. While dependant on the nature of your ConfigSource, this can
+frequently be achieved by simply returning the `keySet` of the collection returned by the `getProperties` method
+of the _ConfigSource_ implementation.
+
+==== Example
+
+[source,Java]
+----
+@Override
+public Set<String> getPropertyNames() {
+    return getProperties().keySet();
+}
+----
+
+=== Evaluation of Property Expressions
+Previous versions of the specification would not evaluate _Property Expressions_ (a config property referencing
+another config property). As such, previous working configuration may behave differently if any MicroProfile Config
+properties contain values with
+https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#property-expressions[_Property Expressions_]
+syntax.
+
+==== Example
+
+The following microprofile-config.properties file will now evaluate the `server.url` property to
+`http://example.org:8080/foo`, whereas before it would just evaluate to
+`http://${server.host:example.org}:${server.port}/${server.endpoint}`.
+
+```
+server.url=http://${server.host:example.org}:${server.port}/${server.endpoint}
+server.port=8080
+server.endpoint=${server.endpoint.path.${server.endpoint.path.bar}}
+server.endpoint.path.foo=foo
+server.endpoint.path.bar=foo
+```
+
+NOTE: This can also affect the behaviour of MicroProfile Config variable references within a
+`payara-expression-config.properties` file.
+
+==== Disabling MicroProfile Config Property Expansion
+
+The following system property can be defined to make the Payara Platform revert to the previous behaviour of not
+evaluating the embedded expressions: `mp.config.property.expressions.enabled`
+
+This can be set in the same manner as other system properties on a config, with the potential for instance-by-instance
+overrides.
+
+===== Using Asadmin Commands
+
+Disable on a specific config.
+[source,Shell]
+----
+asadmin> create-system-properties --target=my-config "mp.config.property.expressions.enabled=false"
+----
+
+Disable on a specific instance.
+[source,Shell]
+----
+asadmin> create-system-properties --target=my-instance "mp.config.property.expressions.enabled=false"
+----
+
+=== Empty Values and Special Characters No Longer Valid
+Empty value or other special characters (e.g. a standalone ",") are no longer a valid config value return type. Empty
+values will now cause a `NoSuchElementException` to be thrown.
+
+There unfortunately isn't a workaround to this: you must simply ensure that your config properties do not return an
+empty value or a special character.

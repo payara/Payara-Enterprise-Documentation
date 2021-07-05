@@ -146,8 +146,6 @@ This properties file should contain the key `accepted.issuer` with as value the 
 
 === Namespaced claims configuration
 
-_Since Payara Micro 5.184_
-
 Authentication services (like https://auth0.com/docs/scopes/current/custom-claims[auth0], https://connect2id.com/products/server/docs/config/claims-mapping[connect2id]) offer the possibility to add custom claims to JWT tokens
 but also enforce a namespaced format to avoid possible collisions with standard OpenID Connect claims.
 
@@ -176,6 +174,29 @@ Then the JSON Parser search for namespace prefixed claims, remove the namespace 
 ==== *custom.namespace*
 When the `custom.namespace` property is set, it will always take precedence over the default namespace and be used instead.
 
+=== Disabling Type Claim Verification
+
+The MicroProfile JWT Authentication specification currently mandates that the type claim (`typ`) of any authorization token parsed by the container is present and is set to the `JWT` value. However, the current RFC document (https://tools.ietf.org/html/rfc7519[RFC 7519]) that defines the JWT standard states that this claim is **optional**:
+
+> 5.1.  "typ" (Type) Header Parameter
+>
+> The "typ" (type) Header Parameter defined by [JWS] and [JWE] is used by JWT applications to declare the media type [IANA.MediaTypes] of this complete JWT.  This is intended for use by the JWT application when values that are not JWTs could also be present in an application data structure that can contain a JWT object; the application can use this value to disambiguate among the different kinds of objects that might be present.
+> 
+> ...
+>
+> Use of this Header Parameter is OPTIONAL.
+
+For this reason, some third-party token issuers may generate tokens that are not compatible with the MicroProfile JWT specification. The Payara Platform allows to set this verification off, so you can use the `disable.type.verification` custom property and set its value to `true` to this effect. 
+
+NOTE: This property has to be defined in the `payara-mp-jwt.properties` configuration file described in the previous section.
+
+IMPORTANT: Keep in mind that tokens which are missing their type claim and are propagated to other services running on other Eclipse MicroProfile runtimes might be rejected, as the specification mandates the inclusion of the claim.
+
+=== Caching the Public Key
+
+By default, the public key retrieved by the `mp.jwt.verify.publickey.location` configuration property will be cached in memory for 5 minutes after being read from either a local file or a remote location. You can modify this _"time-to-live"_ which determines how long the key stays cached in memory in the case you are dealing with long-lived keys. This is done by setting the `publicKey.cache.ttl` custom property to the number of milliseconds after which the public key should be refreshed.
+
+NOTE: This property has to be defined in the `payara-mp-jwt.properties` configuration file described in the previous section.
 == Activating JWT Authentication
 
 An application activates the JWT authentication mechanism and identity store by annotating a class in the application, for instance, the JAX-RS `Application` class, with `@LoginConfig(authMethod = "MP-JWT")`. 

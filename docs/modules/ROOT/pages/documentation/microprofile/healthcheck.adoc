@@ -19,7 +19,7 @@ https://github.com/eclipse/microprofile-health/blob/master/README.adoc[the READM
 
 The MicroProfile Healthchecks API defines the following list of REST endpoints that are available from the root context at `/health/${type}` by default:
 
-[cols="1,1,10", options="header"]
+[cols="1,1,3", options="header"]
 |====
 |Context
 |Type
@@ -33,13 +33,17 @@ The MicroProfile Healthchecks API defines the following list of REST endpoints t
 |Readiness
 |On invocation, all registered health checks annotated with `@Readiness` are performed and the results aggregated.
 
+|'/health/started'
+|Startup
+|On invocation, all registered health checks annotated with '@Startup' are performed and the results aggregated.
+
 |`/health`
-|Readiness + Liveness + Backward compatible
-|On invocation, all registered health checks annotated with `@Liveness`, `@Readiness` and `@Health` are performed and the results aggregated.
+|Readiness + Liveness + Startup
+|On invocation, all registered health checks annotated with `@Liveness`, `@Readiness`, or `@Startup` are performed and the results aggregated.
 |====
 
 This root endpoint can be altered using the `set-microprofile-healthcheck-configuration` asadmin command to prevent collisions with other HTTP endpoints that might need to use the `health` context root.
-   
+
 NOTE: This endpoint will not be available until at least one application has been deployed.
 
 [[health-check-configuration]]
@@ -83,7 +87,7 @@ Enables or disables the MicroProfile healthcheck service and configures the endp
 [[command-options]]
 ===== Command Options
 
-[cols="1,1,10,1,1", options="header"]
+[cols="3,2,6,3,1", options="header"]
 |====
 |Option
 |Type
@@ -142,11 +146,11 @@ application uses the default realm (`file`) of the server. If user application d
 with the empty context-root then the security configuration of the deployed 
 application will be shared by HealthCheck endpoints.
 
-[[backward-compatible]]
-=== Backward compatible
-Since MicroProfile Health Check 2.0, `@Health` annotation is deprecated 
-and JSON payload elements `outcome` and `state` in endpoint response are replaced by `status`.
-By default for backward compatibility, the deprecated `/health` endpoint invokes 
-all registered health checks having `@Health`, `@Liveness` or `@Readiness` annotation.
-And to enable the backward compatibility in response JSON format, set the value of 
-`MP_HEALTH_BACKWARD_COMPATIBILITY_ENABLED` MicroProfile config property to true.
+[[microprofile-4-upgrade]]
+== Upgrading from MicroProfile 3.x to 4.x
+
+MicroProfile 4.0 brings with it a number of changes to MicroProfile Health. The main incompatible change
+brought in by this upgrade is the removal of the deprecated `@Health` annotation.
+
+There isn't a workaround for this, the annotation is simply gone: all health checks must be registered as a
+`@Readiness`, `@Liveness`, or `@Startup` check.
