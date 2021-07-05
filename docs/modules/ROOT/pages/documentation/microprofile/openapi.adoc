@@ -147,14 +147,14 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 [[openApi-configuration]]
 == OpenAPI Configuration
 
-OpenAPI can be configured by using Admin Console or Asadmin commands. 
+OpenAPI can be configured by using Admin Console or Asadmin commands.
 
 _Since *5.183*&nbsp;_
 
 [[using-the-admin-console]]
 === Using the Admin Console
 
-To configure the OpenAPI in the Admin Console, go to Configuration 
+To configure the OpenAPI in the Admin Console, go to Configuration
 → [instance-configuration (like server-config)] → MicroProfile → OpenAPI:
 
 image:microprofile/openapi.png[Set OpenAPI Configuration]
@@ -171,7 +171,7 @@ asadmin> set-openapi-configuration
         [--enabled=true|false]
         [--corsheaders=true|false]
         [--securityenabled=true|false]
-        [--roles=<role-list>] 
+        [--roles=<role-list>]
         [--target=<target[default:server]>]
         [--virtualservers=<virtualserver-list>]
 ----
@@ -269,3 +269,66 @@ By default, OpenAPI endpoints binds to root context application which is
 application uses default realm (`file`) of server. If user application deployed 
 with the empty context-root then the security configuration of the deployed 
 application will be shared by OpenAPI endpoints.
+
+[[microprofile-4-upgrade]]
+== Upgrading from MicroProfile 3.x to 4.x
+MicroProfile 4.0 brings with it a number of changes to MicroProfile OpenAPI, among these changes are some which break
+previous behaviour. The breaking changes are primarily to do with the removal of a number of methods previously marked
+as deprecated from the API, and only affect the use of OpenAPI programmatically (there are no breaking changes
+pertaining to the use of the annotations).
+
+* `Scopes` interface removed - Use `Map<String, ServerVariable>`.
+* `ServerVariables` interface removed - Use `Map<String, ServerVariable>`.
+* The following interfaces no longer extend `Map` - Ensure you are not using
+any of the methods or functionality gained from the `Map` class:
+** `APIResponses`
+*** `get(Object key)` - Use `getAPIResponse(String)`.
+*** `containsKey(Object key)` - Use `hasAPIResponse(String)`.
+*** `put(String key, PathItem value)` - Use `addAPIResponse(String, APIResponse)`.
+*** `putAll(Map<? extends String, ? extends APIResponse> m)` - Use `setAPIResponses(Map)`.
+*** `remove(Object key)` - Use `removeAPIResponse(String)`.
+** `Callback`
+*** `get(Object key)` - Use `getPathItem(String)`.
+*** `containsKey(Object key)` - Use `hasPathItem(String)`.
+*** `put(String key, PathItem value)` - Use `addPathItem(String, PathItem)`.
+*** `putAll(Map<? extends String, ? extends PathItem> m)` - Use `setPathItems(Map)`.
+*** `remove(Object key)` - Use `removePathItem(String)`.
+** `Content`
+*** `get(Object key)` - Use `getMediaType(String)`.
+*** `containsKey(Object key)` - Use `hasMediaType(String)`.
+*** `put(String key, MediaType value)` - Use `addMediaType(String, MediaType)`.
+*** `putAll(Map<? extends String, ? extends MediaType> m)` - Use `setMediaTypes(Map)`.
+*** `remove(Object key)` - Use `removeMediaType(String)`.
+** `Path`
+*** `get(Object key)` - Use `getPathItem(String)`.
+*** `containsKey(Object key)` - Use `hasPathItem(String)`.
+*** `put(String key, PathItem value)` - Use `addPathItem(String, PathItem)`.
+*** `putAll(Map<? extends String, ? extends PathItem> m)` - Use `setPathItems(Map)`.
+*** `remove(Object key)` - Use `removePathItem(String)`.
+** `SecurityRequirement`
+*** `get(Object key)` - Use `getScheme(String)`.
+*** `containsKey(Object key)` - Use `hasScheme(String)`.
+*** `put(String key, List<String> value)` - Use `addScheme(String, List<String>)`.
+*** `putAll(Map<? extends String, ? extends List<String> m)` - Use `setSchemes(Map)`.
+*** `remove(Object key)` - Use `removeScheme(String)`.
+* A number of methods have been removed from model interfaces, in addition to those above:
+** OASFactory
+*** `createScopes` - use `Map<String, String>`.
+*** `createServerVariables` - use `Map<String, ServerVariable>`.
+** OAuthFlow
+*** `setScopes(Scopes scopes)` - Use `setScopes(Map)`.
+*** `scopes(Scopes scopes)` - Use `scopes(Map)`.
+** OpenAPI
+*** `path(String name, PathItem path)` - use `Paths#addPathItem(String, PathItem)` on `OpenAPI#getPaths`
+** PathItem
+*** `readOperations` - use `Map#values()` on `PathItem#getOperations()`.
+*** `readOperationsMap` - use `getOperations()`.
+** Schema
+*** `getAdditionalProperties` - use `getAdditionalPropertiesSchema()` or `getAdditionalPropertiesBoolean()`.
+*** `setAdditionalProperties(Schema additionalProperties)` - use `setAdditionalPropertiesSchema(Schema)`.
+*** `setAdditionalProperties(Boolean additionalProperties)` - use `setAdditionalPropertiesBoolean(Boolean)`.
+*** `additionalProperties(Schema additionalProperties)` - use `additionalPropertiesSchema(Schema)`.
+*** `additionalProperties(Boolean additionalProperties)` - use `additionalPropertiesBoolean(Boolean)`.
+** Server
+*** `setVariables(ServerVariables variables)` - Use `setVariables(Map)`.
+*** `variables(ServerVariables variables)` - Use `variables(Map)`.
