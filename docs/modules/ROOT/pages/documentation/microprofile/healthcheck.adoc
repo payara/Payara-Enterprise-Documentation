@@ -19,7 +19,7 @@ https://github.com/eclipse/microprofile-health/blob/master/README.adoc[the READM
 
 The MicroProfile Healthchecks API defines the following list of REST endpoints that are available from the root context at `/health/${type}` by default:
 
-[cols="1,1,10", options="header"]
+[cols="1,1,3", options="header"]
 |====
 |Context
 |Type
@@ -83,7 +83,7 @@ Enables or disables the MicroProfile healthcheck service and configures the endp
 [[command-options]]
 ===== Command Options
 
-[cols="1,1,10,1,1", options="header"]
+[cols="3,2,6,3,1", options="header"]
 |====
 |Option
 |Type
