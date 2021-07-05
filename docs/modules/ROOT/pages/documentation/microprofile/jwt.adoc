@@ -194,12 +194,9 @@ IMPORTANT: Keep in mind that tokens which are missing their type claim and are p
 
 === Caching the Public Key
 
-By default, the public key retrieved by the `mp.jwt.verify.publickey.location` configuration property will be cached in memory for 5 minutes after being read from either a local file or a remote location. You can modify this _"time-to-live"_ which determines how long the key stays cached in memory in the case you are dealing with long-lived keys, this is done by setting the `publicKey.cache.ttl` custom property.
+By default, the public key retrieved by the `mp.jwt.verify.publickey.location` configuration property will be cached in memory for 5 minutes after being read from either a local file or a remote location. You can modify this _"time-to-live"_ which determines how long the key stays cached in memory in the case you are dealing with long-lived keys. This is done by setting the `publicKey.cache.ttl` custom property to the number of milliseconds after which the public key should be refreshed.
 
 NOTE: This property has to be defined in the `payara-mp-jwt.properties` configuration file described in the previous section.
-
-IMPORTANT: The value of the `publicKey.cache.ttl` property is defined in milliseconds, so keep this in mind when modifying the property
-
 == Activating JWT Authentication
 
 An application activates the JWT authentication mechanism and identity store by annotating a class in the application, for instance, the JAX-RS `Application` class, with `@LoginConfig(authMethod = "MP-JWT")`. 
