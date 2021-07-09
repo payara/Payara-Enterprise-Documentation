@@ -51,3 +51,18 @@ Activating Request Tracing is done either via the admin console or using the com
 NOTE: All other options for request tracing are ignored as the created Spans are not processed within Payara.
 
 As an example, see https://github.com/payara/ecosystem-jaeger-tracing, which shows how to integrate a Jaeger client tracer. This can be added as a library to Payara with the command `add-library jaeger-tracer-lib-with-dependencies`. Enabling request tracing in Payara Server is then required, which will then send traces from OpenTracing to a Jaeger collector on the same host.
+
+[[microprofile-4-upgrade]]
+== Upgrading from MicroProfile 3.x to 4.x
+MicroProfile 4.0 brings with it a number of changes to MicroProfile OpenTracing, among these changes are some which break
+previous behaviour. The breaking changes are primarily to do with the removal of a number of methods from the API, and
+only affect the use of OpenTracing programmatically (the use of the annotations has not changed).
+
+The following methods have all been removed, and the alternative method to use provided if available:
+
+* `ScopeManager.active()` - This method no longer returns a `Scope`, and now returns the active `Span`.
+* `ScopeManager.activate(Span, boolean)` - Use `ScopeManager.activate(Span)`
+* `Scope.span()` - Use `ScopeManager.activeSpan()`, `Tracer.activeSpan()`, or hold the `Span` reference returned from
+`SpanBuilder.start()`.
+* `SpanBuilder.startActive()` - Use `Tracer.activateSpan(Span)` or `ScopeManager.activate(Span)`
+* `SpanBuilder.startManual()` - Use `SpanBuilder.start()`.
