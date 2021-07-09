@@ -172,6 +172,7 @@ asadmin> set-openapi-configuration
         [--corsheaders=true|false]
         [--securityenabled=true|false]
         [--roles=<role-list>]
+        [--endpoint=<context-root[default:openapi]>]
         [--target=<target[default:server]>]
         [--virtualservers=<virtualserver-list>]
 ----
@@ -219,6 +220,12 @@ _Since Payara Server 5.193_
 
 _Since Payara Server 5.193_
 |`microprofile`
+|No
+
+|`endpoint`
+|String
+|The context root used to expose the openapi checks endpoint.
+|openapi
 |No
 
 |`target`
