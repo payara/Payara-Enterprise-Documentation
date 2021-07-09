@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Advanced Connection Pool Properties in Deployment Descriptors :: Payara Documentation Preview</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <meta name="docsearch:version" content="community-latest" />
+  </head>
+  <body class="article">
+  <header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">Payara Documentation Preview</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-item hide-for-print">
+        Version: <div class="page-versions">
+  <button class="version-menu-toggle single-version" title="Current version">master</button>
+</div>
+
+      </div>
+      <div class="navbar-item hide-for-print">
+            <div id="search-input-container">
+      <input type="text" id="search-input" name="search-input" placeholder="Search...">
+    </div>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="https://www.payara.fish/products/downloads/">Download</a>
+          </span>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary enterprise" href="../../../../../enterprise">Documentation for Payara Enterprise</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="docs" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../../README.html">Payara Platform</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">General Info</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../README.html">Introduction</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../general-info/general-info.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../release-notes/README.html">Release Notes</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../release-notes/release-notes-2021-4.html">Payara Community 5.2021.4 Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../security/security.html">Security</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../security/security-fix-list.html">Security Fixes Summary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../general-info/supported-platforms.html">Supported Platforms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../general-info/technical-preview.html">Technical Preview</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../getting-started/getting-started.html">Getting Started</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../build-instructions/build-instructions.html">Build Instructions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../general-info/contributing-to-payara.html">Contributing to Payara</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Technical Documentation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../README.html">Payara Server Documentation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../server-configuration/README.html">Server Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../server-configuration/var-substitution/README.html">Variables in the configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../server-configuration/var-substitution/types-of-variables.html">Variable types</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../server-configuration/var-substitution/usage-of-variables.html">Using variables</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../server-configuration/http/README.html">HTTP Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../server-configuration/http/network-listeners.html">Network Listeners</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link" href="../server-configuration/http/security/sni.html">SNI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../server-configuration/http/protocols.html">Protocols</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link" href="../server-configuration/http/protocols/standard-options.html">Standard options</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link" href="../server-configuration/http/protocols/http-options.html">HTTP options</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link" href="../server-configuration/http/protocols/http2-options.html">HTTP/2 options</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link" href="../server-configuration/http/protocols/ssl-options.html">SSL/TLS options</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link" href="../server-configuration/http/protocols/protocols-asadmin.html">Asadmin commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../server-configuration/http/virtual-servers.html">Virtual Servers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../server-configuration/security/README.html">Security Extensions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../server-configuration/security/certificate-realm-principal-name.html">Certificate Realm - Principal Name</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../server-configuration/security/certificate-realm-groups.html">Certificate Realm - Group Mapping</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../server-configuration/security/multiple-mechanism-in-ear.html">Multiple HttpAuthenticationMechanism in EAR</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../server-configuration/jvm-options.html">JVM Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../server-configuration/jsf-options.html">JSF Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../server-configuration/ssl-certificates.html">SSL Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../deployment-groups/README.html">Deployment Groups</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../deployment-groups/asadmin-commands.html">Deployment Groups ASAdmin commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../deployment-groups/timers.html">Timers in Deployment Groups</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jacc.html">JACC</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">JDBC</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="jdbc-connection-validation.html">JDBC Connection Validation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="slow-sql-logger.html">Slow SQL Logger</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="log-jdbc-calls.html">Log JDBC Calls</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="sql-trace-listeners.html">SQL Trace Listeners</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="advanced-connection-pool-properties.html">Advanced Connection Pool Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="sql-statement-overview.html">SQL Statement Overview</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="mysql-connectorj-8-changes.html">MySQL Connector/J 8 Changes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../h2/h2.html">H2 Database</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../logging/logging.html">Logging</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../logging/access-logging-max-file-size.html">Access Logging Max File Size</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../logging/access-logging-date-stamp-property.html">Access Logging Date Stamp Property</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../logging/notification-logging.html">Notification Logging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../logging/daily-log-rotation.html">Daily Log Rotation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../logging/ansi-colours.html">ANSI Coloured Logging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../logging/log-compression.html">Compression of log files</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../logging/json-formatter.html">JSON Log Formatter</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../logging/log-to-file.html">Log To File</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../logging/multiline.html">Multiline Mode</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../password-aliases/README.html">Password Aliases</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../password-aliases/password-alias-asadmin-commands.html">Password Aliases Asadmin Commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../password-aliases/password-alias-admin-console-commands.html">Password Aliases from the Admin Console</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../asadmin-commands/asadmin-commands.html">Asadmin Commands</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../asadmin-commands/server-management-commands.html">Server Management Commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../asadmin-commands/misc-commands.html">Miscellaneous Commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../asadmin-commands/disabling-jline.html">Disabling JLine</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../asadmin-commands/auto-naming.html">Auto-Naming</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../asadmin-commands/Enable-JLine-Event-Expansion.html">Enable JLine Event Expansion</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../rest-api/rest-api-documentation.html">REST API Documentation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../rest-api/overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../rest-api/security.html">Security</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../rest-api/resources.html">Resources</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../rest-api/definitions.html">Definitions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../javamail.html">JavaMail</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jce-provider-support.html">JCE Provider Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../admin-console/admin-console.html">Admin Console Enhancements</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../admin-console/asadmin-recorder.html">Asadmin Recorder</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../admin-console/auditing-service.html">Auditing Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../admin-console/environment-warning.html">Environment Warning</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../app-deployment/app-deployment.html">Application Deployment</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../app-deployment/deployment-descriptors.html">Deployment Descriptor Files</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../app-deployment/descriptor-elements.html">Elements of the Descriptor Files</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../app-deployment/concurrent-cdi-bean-loading.html">Concurrent CDI Bean Loading</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../ejb/README.html">EJB</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../ejb/ejb-jar-names.html">EJB JAR Archive Names</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../ejb/concurrent-instances.html">EJB Concurrent Instance Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../ejb/lite-remote-ejb.html">Lite Remote EJB Features</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../ejb/persistent-timers.html">Persistent Timers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../jaxws/README.html">JAX-WS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../jaxws/scanning.html">Additional Scanning Locations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../jbatch/jbatch.html">JBatch</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../jbatch/schema-name.html">Setting the Schema Name</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../jbatch/table-prefix-and-suffix.html">Setting the Table Prefix and/or Suffix</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../jbatch/database-support.html">Database Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../jbatch/asadmin.html">Asadmin Commands</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../jcache/jcache.html">JCache</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../jcache/jcache-accessing.html">Cache provider and manager</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../jcache/jcache-creating.html">Creating a Cache Instance</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../jcache/jcache-annotations.html">Using JCache Annotations</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../jpa-cache-coordination.html">JPA Cache Coordination</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hazelcast/README.html">Domain Data Grid</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hazelcast/discovery.html">Discovery Modes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hazelcast/enable-hazelcast.html">Enabling Data Grid</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hazelcast/configuration.html">Configuring Hazelcast</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hazelcast/viewing-members.html">Viewing Members</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hazelcast/using-hazelcast.html">Using Hazelcast</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hazelcast/asadmin.html">Administration Commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hazelcast/datagrid-encryption.html">Data Grid Encryption</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../health-check-service/README.html">HealthCheck Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../health-check-service/asadmin-commands.html">Asadmin Commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../health-check-service/config/README.html">Configuration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../health-check-service/config/common-config.html">Common Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../health-check-service/config/threshold-config.html">Threshold Checkers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../health-check-service/config/special-config.html">Special Checkers</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../notification-service/notification-service.html">Notification Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../notification-service/asadmin-commands.html">Asadmin Commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../notification-service/notifiers.html">Notifiers</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../notification-service/notifiers/log-notifier.html">Log Notifier</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../notification-service/notifiers/cdi-event-bus-notifier.html">CDI Event Bus Notifier</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../notification-service/notifiers/jms-notifier.html">JMS Notifier</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../notification-service/notifiers/event-bus-notifier.html">Event Bus Notifier</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../monitoring-service/monitoring-service.html">Monitoring Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../monitoring-service/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../monitoring-service/asadmin-commands.html">Asadmin Commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../jmx-monitoring-service/jmx-monitoring-service.html">JMX Monitoring Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../jmx-monitoring-service/amx.html">AMX</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../jmx-monitoring-service/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../jmx-monitoring-service/asadmin-commands.html">Asadmin Commands</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../jmx-monitoring-service/jmx-notification-configuration.html">JMX Notification Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../rest-monitoring/README.html">REST monitoring</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../rest-monitoring/using-rest-monitoring.html">Using the REST monitoring application</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../rest-monitoring/configuring-rest-monitoring.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../rest-monitoring/asadmin-commands.html">Asadmin commands</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../request-tracing-service/request-tracing-service.html">Request Tracing Service</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../request-tracing-service/asadmin-commands.html">Asadmin Commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../request-tracing-service/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../request-tracing-service/tracing-remote-ejbs.html">Tracing Remote EJBs</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../request-tracing-service/usage.html">Usage</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../request-tracing-service/terminology.html">Terminology</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../request-tracing-service/tracing-remote-ejbs.html">Tracing Remote EJBs</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../phone-home/phonehome-overview.html">Phone Home</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../phone-home/phone-home-information.html">Gathered Data</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../phone-home/phone-home-asadmin.html">Asadmin Commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../phone-home/disabling-phone-home.html">Disabling Phone Home</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../system-properties.html">System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../classloading.html">Enhanced Classloading</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../default-thread-pool-size.html">Default Thread Pool Size</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../public-api/README.html">Public API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../public-api/cdi-events.html">Remote CDI Events</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../public-api/clustered-singleton.html">Clustered Singleton</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../public-api/roles-permitted.html">roles-permitted</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../public-api/twoidentitystores.html">Two Identity Stores</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../public-api/oauth-support.html">OAuth2 Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../public-api/openid-connect-support.html">OpenID Connect Support</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../public-api/realm-identitystores/README.html">Realm Identity Stores</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../public-api/realm-identitystores/realm-identity-store-definition.html">Existing Realm Identity Store</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../public-api/realm-identitystores/file-identity-store-definition.html">File Realm Identity Store</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../public-api/realm-identitystores/certificate-identity-store-definition.html">Certificate Realm Identity Store</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../public-api/realm-identitystores/pam-identity-store-definition.html">PAM Realm Identity Store</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../public-api/realm-identitystores/solaris-identity-store-definition.html">Solaris Realm Identity Store</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../development-tools/README.html">Development Tools</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../development-tools/cdi-dev-mode/README.html">CDI Development Mode</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../development-tools/cdi-dev-mode/enabling-cdi-dev-web-desc.html">Enable using web.xml</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../development-tools/cdi-dev-mode/enabling-cdi-dev-console.html">Enable using Admin Console</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../development-tools/cdi-dev-mode/enabling-cdi-dev-asadmin.html">Enable using asadmin</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../development-tools/cdi-dev-mode/cdi-probe/README.html">CDI Probe</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link" href="../development-tools/cdi-dev-mode/cdi-probe/using-probe.html">Web Application</a>
+  </li>
+  <li class="nav-item" data-depth="5">
+    <a class="nav-link" href="../development-tools/cdi-dev-mode/cdi-probe/probe-rest-api.html">REST API</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../docker/README.html">Docker</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../docker/docker-nodes.html">Docker Nodes</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../docker/docker-instances.html">Docker Instances</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../payara-micro/payara-micro.html">Payara Micro Documentation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/rootdir.html">Root Configuration Directory</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/starting-instance.html">Starting an Instance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/stopping-instance.html">Stopping an Instance</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../payara-micro/deploying/deploying.html">Deploying Applications</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/deploying/deploy-cmd-line.html">From the Command Line</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../payara-micro/deploying/deploy-program.html">Programmatically</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../payara-micro/deploying/deploy-program-bootstrap.html">During Bootstrap</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../payara-micro/deploying/deploy-program-after-bootstrap.html">To a Bootstrapped Instance</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../payara-micro/deploying/deploy-program-asadmin.html">Using an asadmin Command</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../payara-micro/deploying/deploy-program-maven.html">From a Maven Repository</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/deploying/deploy-postboot-output.html">Post Boot Output</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../payara-micro/configuring/configuring.html">Configuring an Instance</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/configuring/config-cmd-line.html">From the Command Line</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/configuring/config-program.html">Programmatically</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/configuring/package-uberjar.html">Packaging as an Uber Jar</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/configuring/config-sys-props.html">Via System Properties</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/configuring/config-keystores.html">Alternate Keystores for SSL</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/configuring/instance-names.html">Instance Names</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../payara-micro/clustering/clustering.html">Clustering</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/clustering/autoclustering.html">Automatically</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/clustering/clustering-with-full-server.html">Clustering with Payara Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/clustering/lite-nodes.html">Lite Cluster Members</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/maven/maven.html">Maven Support</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/port-autobinding.html">HTTP(S) Auto-Binding</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../payara-micro/asadmin.html">Running asadmin Commands</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/asadmin/send-asadmin-commands.html">Send asadmin commands</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/asadmin/using-the-payara-micro-api.html">Using the Payara Micro API</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/asadmin/pre-and-post-boot-scripts.html">Pre and Post Boot Scripts</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/callable-objects.html">Running Callable Objects</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/services/request-tracing.html">Request Tracing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/logging-to-file.html">Logging to a file</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/adding-jars.html">Adding JAR files</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/jcache.html">JCache in Payara Micro</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/jca.html">JCA Support in Payara Micro</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/cdi-events.html">Remote CDI Events</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/persistent-ejb-timers.html">Persistent EJB timers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../payara-micro/h2/h2.html">H2 Database</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../payara-micro/appendices/appendices.html">Payara Micro Appendices</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/appendices/cmd-line-opts.html">Command Line Options</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../payara-micro/appendices/payara-micro-jar-structure.html">JAR Structure</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../payara-micro/appendices/micro-api.html">Payara Micro API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../payara-micro/appendices/config-methods.html">Configuration Methods</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../payara-micro/appendices/operation-methods.html">Operation Methods</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../payara-micro/appendices/javadoc.html">Javadoc</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../microprofile/README.html">MicroProfile</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../microprofile/config/README.html">Config API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../microprofile/config/jdbc.html">JDBC Config Source</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../microprofile/config/directory.html">Directory Config Source</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../microprofile/config/ldap.html">LDAP Config Source</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../microprofile/config/cloud/README.html">Cloud Config Sources</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../microprofile/config/cloud/aws.html">AWS Config Source</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../microprofile/config/cloud/azure.html">Azure Config Source</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../microprofile/config/cloud/dynamo-db.html">DynamoDB Config Source</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../microprofile/config/cloud/gcp.html">GCP Config Source</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../microprofile/config/cloud/hashicorp.html">HashiCorp Config Source</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../microprofile/faulttolerance.html">Fault Tolerance API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../microprofile/healthcheck.html">Health Check API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../microprofile/jwt.html">JWT Authentication API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../microprofile/metrics.html">Metrics API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../microprofile/metrics/metrics-rest-endpoint.html">REST Endpoint</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../microprofile/metrics/vendor-metrics.html">Vendor metrics</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../microprofile/metrics/metrics-configuration.html">Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../microprofile/openapi.html">OpenAPI API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../microprofile/opentracing.html">OpenTracing API</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../microprofile/rest-client.html">Rest Client API</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../ecosystem/ecosystem.html">Ecosystem</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../ecosystem/maven-plugin.html">Payara Micro Maven Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../ecosystem/maven-archetype.html">Payara Micro Maven Archetype</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../ecosystem/gradle-plugin.html">Payara Micro Gradle Plugin</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../ecosystem/maven-bom.html">Bill Of Material (BOM)</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../ecosystem/eclipse-plugin/README.html">Payara Eclipse IDE Plugin</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/eclipse-plugin/payara-server.html">Payara Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/eclipse-plugin/payara-micro.html">Payara Micro</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../ecosystem/netbeans-plugin/README.html">Payara Apache NetBeans IDE tools</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/netbeans-plugin/payara-server.html">Payara Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/netbeans-plugin/payara-micro.html">Payara Micro</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../ecosystem/intellij-plugin/README.html">Payara IntelliJ IDEA Plugin</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/intellij-plugin/payara-server.html">Payara Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/intellij-plugin/payara-micro.html">Payara Micro</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../ecosystem/vscode-extension/README.html">Payara Visual Studio Code Extension</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/vscode-extension/payara-server.html">Payara Server</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/vscode-extension/payara-micro.html">Payara Micro</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../ecosystem/arquillian-containers/README.html">Arquillian Containers</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/arquillian-containers/payara-server-remote.html">Payara Server Remote</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/arquillian-containers/payara-server-managed.html">Payara Server Managed</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/arquillian-containers/payara-server-embedded.html">Payara Server Embedded</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/arquillian-containers/payara-micro-managed.html">Payara Micro Managed</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../ecosystem/cloud-connectors/README.html">Cloud Connectors</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/cloud-connectors/amazon-sqs.html">Amazon SQS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/cloud-connectors/apache-kafka.html">Apache Kafka</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/cloud-connectors/azure-sb.html">Azure Service Bus</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/cloud-connectors/mqtt.html">MQTT</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../ecosystem/security-connectors.html">Security Connectors</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../ecosystem/docker-images/overview.html">Docker Images</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/docker-images/server-image-overview.html">Payara Server Docker Image Overview</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../ecosystem/docker-images/micro-image-overview.html">Payara Micro Docker Image Overview</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../extensions/README.html">Extensions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../extensions/autoscale/README.html">AutoScale</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../extensions/autoscale/nodes-scaling-group.html">Nodes Scaling Groups</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../extensions/autoscale/create-autoscale-extensions.html">Creating AutoScale Extensions</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../extensions/notifiers/README.html">Notifiers</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../extensions/notifiers/datadog-notifier.html">Datadog Notifier</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../extensions/notifiers/discord-notifier.html">Discord Notifier</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../extensions/notifiers/email-notifier.html">Email Notifier</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../extensions/notifiers/newrelic-notifier.html">New Relic Notifier</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../extensions/notifiers/slack-notifier.html">Slack Notifier</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../extensions/notifiers/snmp-notifier.html">SNMP Notifier</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../extensions/notifiers/teams-notifier.html">Teams Notifier</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../extensions/notifiers/xmpp-notifier.html">XMPP Notifier</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../extensions/notifiers/custom-notifier.html">Creating a Custom Notifier</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../user-guides/user-guides.html">User Guides Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user-guides/backup-domain.html">Payara Server Domain Backup</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user-guides/restore-domain.html">Restore a Payara Server Domain</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user-guides/upgrade-payara.html">Upgrade Payara Server</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../user-guides/monitoring/monitoring.html">Monitoring Payara Server</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user-guides/monitoring/enable-jmx-monitoring.html">Enable JMX Monitoring</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user-guides/monitoring/mbeans.html">MBeans</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user-guides/monitoring/monitoring-console.html">Payara Monitoring Console</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../user-guides/connection-pools/connection-pools.html">Configure a connection pool</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user-guides/connection-pools/sizing.html">Connection pool sizing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user-guides/connection-pools/validation.html">Connection validation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user-guides/connection-pools/leak-detection.html">Statement and Connection Leak Detection</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user-guides/bypassing-jms-connections-through-a-firewall.html">Bypassing JMS Connections through a Firewall</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user-guides/mdb-in-payara-micro.html">Using Payara Micro as a JMS Client</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user-guides/using-the-maven-cargo-plugin.html">Deploying to Payara Server from Maven</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user-guides/starter-with-jpa.html">Add JPA to MP Starter</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../release-notes/release-notes-history.html">History of Release Notes</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-2021-4.html">Payara Community 5.2021.4 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-2021-3.html">Payara Community 5.2021.3 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-2021-2.html">Payara Community 5.2021.2 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-2021-1.html">Payara Community 5.2021.1 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-2020-7.html">Payara Community 5.2020.7 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-2020-6.html">Payara Community 5.2020.6 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-2020-5.html">Payara Community 5.2020.5 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-2020-4.html">Payara Community 5.2020.4 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-2020-3.html">Payara Community 5.2020.3 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-2020-2.html">Payara Community 5.2020.2 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-201.html">Payara Server 5.201 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-194.html">Payara Server 5.194 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-193.html">Payara Server 5.193/5.193.1 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-192.html">Payara Server 5.192 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-191.html">Payara Server 5.191 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-4-191.html">Payara Server 4.1.2.191 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-184.html">Payara Server 5.184 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-4-184.html">Payara Server 4.1.2.184 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-183.html">Payara Server 5.183 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-4-183.html">Payara Server 4.1.2.183 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-182.html">Payara Server 5.182 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-4-182.html">Payara Server 4.1.2.182 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-181.html">Payara Server 5.181 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-4-181.html">Payara Server 4.1.2.181 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-174.html">Payara Server 4.1.2.174 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-173.html">Payara Server 4.1.2.173 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-172.html">Payara Server 4.1.2.172 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-171.html">Payara Server 4.1.1.171 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-164.html">Payara Server 4.1.1.164 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-163.html">Payara Server 4.1.1.163 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-162.html">Payara Server 4.1.1.162 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-161.1.html">Payara Server 4.1.1.161.1 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-161.html">Payara Server 4.1.1.161 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-154.html">Payara Server 4.1.1.154 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-153.html">Payara Server 4.1.153 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-152.1.html">Payara Server 4.1.152.1 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-152.html">Payara Server 4.1.152 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-151.html">Payara Server 4.1.151 Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release-notes/release-notes-144.html">Payara Server 4.1.144 Release Notes</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../../schemas/README.html">Schemas</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../jakartaee-certification/README.html">Jakarta EE Platform 8 certification summaries</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../jakartaee-certification/5.2021.4/README.html">Payara Server 5.2021.4</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../jakartaee-certification/5.2021.4/tck-results-full-5.2021.4.html">5.2021.4 Full Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../jakartaee-certification/5.2021.3/README.html">Payara Server 5.2021.3</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../jakartaee-certification/5.2021.3/tck-results-full-5.2021.3.html">5.2021.3 Full Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../jakartaee-certification/5.2021.2/README.html">Payara Server 5.2021.2</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../jakartaee-certification/5.2021.2/tck-results-full-5.2021.2.html">5.2021.2 Full Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../jakartaee-certification/5.2021.1/README.html">Payara Server 5.2021.1</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../jakartaee-certification/5.2021.1/tck-results-full-5.2021.1.html">5.2021.1 Full Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../jakartaee-certification/5.2020.7/README.html">Payara Server 5.2020.7</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../jakartaee-certification/5.2020.7/tck-results-full-5.2020.7.html">5.2020.7 Full Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../jakartaee-certification/5.2020.6/README.html">Payara Server 5.2020.6</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../jakartaee-certification/5.2020.6/tck-results-full-5.2020.6.html">5.2020.6 Full Profile</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../jakartaee-certification/5.2020.6/tck-results-web-5.2020.6.html">5.2020.6 Web Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../jakartaee-certification/5.2020.5/README.html">Payara Server 5.2020.5</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../jakartaee-certification/5.2020.5/tck-results-full-5.2020.5.html">5.2020.5 Full Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../jakartaee-certification/5.2020.2/README.html">Payara Server 5.2020.2</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../jakartaee-certification/5.2020.2/tck-results-full-5.2020.2.html">5.2020.2 Full Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../jakartaee-certification/5.201/README.html">Payara Server 5.201</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../jakartaee-certification/5.201/tck-results-full-5.201.html">5.201 Full Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../jakartaee-certification/5.194/README.html">Payara Server 5.194</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../jakartaee-certification/5.194/tck-results-full-5.194.html">5.194 Full Profile</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../../jakartaee-certification/5.193/README.html">Payara Server 5.193</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../jakartaee-certification/5.193/tck-results-full-5.193.1.html">5.193.1 Full Profile</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Payara Platform</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Payara Platform</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../../README.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../README.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../../README.html">Payara Platform</a></li>
+    <li>Technical Documentation</li>
+    <li><a href="../README.html">Payara Server Documentation</a></li>
+    <li><a href="index.html">JDBC</a></li>
+    <li><a href="advanced-connection-pool-properties.html">Advanced Connection Pool Configuration</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///home/kalin/git_environment/Payara-Community-Documentation/docs/modules/ROOT/pages/documentation/payara-server/jdbc/advanced-connection-pool-properties.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Advanced Connection Pool Properties in Deployment Descriptors</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Payara Server Community supports setting advanced JDBC connection pool
+properties directly on data source definitions made with the
+<code>@DataSourceDefinition</code> annotation or directly on deployment descriptors.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-properties-in-the-deployment-descriptor"><a class="anchor" href="#setting-properties-in-the-deployment-descriptor"></a>Setting properties in the deployment descriptor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In a Java EE 7 application, a data source definition can be added to a
+deployment descriptor of an application. For a web application,
+you would this in the standard <em>web.xml</em> deployment descriptor.
+To set advanced properties just add a <code>property</code> element as shown in the
+following example:</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-properties-via-annotations."><a class="anchor" href="#setting-properties-via-annotations."></a>Setting properties on the <code>@DataSourceDefinition</code> annotation.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In Java EE 7 applications, a JDBC data source can be deployed by adding the
+<code>@DataSourceDefinition</code> annotation to  a managed component (like and <code>@Stateless</code>
+EJB bean for example). To configure advanced JDBC properties, use the <code>properties</code>
+attribute of the annotation to define an array of the properties to configure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@DataSourceDefinition(
+    name = "java:app/MyApp/MyDS",
+    className = "org.h2.jdbcx.JdbcDataSource",
+    url = "jdbc:h2:mem:test",
+    properties = {"fish.payara.is-connection-validation-required=true"})</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;data-source&gt;
+    &lt;name&gt;java:global/ExampleDataSource&lt;/name&gt;
+    &lt;class-name&gt;com.mysql.jdbc.jdbc2.optional.MysqlXADataSource&lt;/class-name&gt;
+    &lt;server-name&gt;localhost&lt;/server-name&gt;
+    &lt;port-number&gt;3306&lt;/port-number&gt;
+    &lt;database-name&gt;mysql&lt;/database-name&gt;
+    &lt;user&gt;test&lt;/user&gt;
+    &lt;password&gt;test&lt;/password&gt;
+    &lt;!-- Example of how to use a Payara specific custom connection pool setting --&gt;
+    &lt;property&gt;
+       &lt;name&gt;fish.payara.is-connection-validation-required&lt;/name&gt;
+       &lt;value&gt;true&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/data-source&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="full-list-of-properties"><a class="anchor" href="#full-list-of-properties"></a>Full List of Properties</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The complete list of configurable properties is the following:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Value Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.is-connection-validation-required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true -
+Validate connections, allow server to reconnect in case of failure</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.connection-validation-method</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The method of connection validation table,
+autocommit, meta-data, custom-validation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.validation-table-name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the table used for validation if the validation method is
+set to table</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.validation-classname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the custom class used for validation if the
+validation-method is set to custom-validation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.fail-all-connections</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Close all connections
+and reconnect on failure, otherwise reconnect only when used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.allow-non-component-callers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable the
+pool to be used by non-component callers such as Servlet Filters</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.validate-atmost-once-period-in-seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the time interval in seconds between successive requests to
+validate a connection at most once. Default value is 0, which means the
+attribute is not enabled.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.connection-leak-timeout-in-seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 implies no
+connection leak detection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.connection-leak-reclaim</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If enabled, leaked
+connection will be reclaimed by the pool after connection leak timeout
+occurs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.connection-creation-retry-attempts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of
+attempts to create a new connection. 0 implies no retries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.connection-creation-retry-interval-in-seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time interval between retries while attempting to create a connection.
+Effective when Creation Retry Attempts is greater than 0.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.statement-timeout-in-seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Timeout property
+of a connection to enable termination of abnormally long running
+queries. -1 implies that it is not enabled.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.lazy-connection-enlistment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enlist a
+resource to the transaction only when it is actually used in a method</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.lazy-connection-association</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Connections
+are lazily associated when an operation is performed on them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.associate-with-thread</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When the same thread
+is in need of a connection, it can reuse the connection already
+associated with that thread</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.pooling</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When set to false, disables
+connection pooling for the pool</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.statement-cache-size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Caching is enabled when
+set to a positive non-zero value (for example, 10)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.match-connections</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Turns connection matching
+for the pool on or off</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.max-connection-usage-count</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Connections will be
+reused by the pool for the specified number of times, after which they
+will be closed. 0 implies the feature is not enabled.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.wrap-jdbc-objects</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When set to true,
+application will get wrapped jdbc objects for Statement,
+PreparedStatement, CallableStatement, ResultSet, DatabaseMetaData</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.sql-trace-listeners</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of classes that implement the
+org.glassfish.api.jdbc.SQLTraceListener interface</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.ping</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When enabled, the pool is pinged
+during creation or reconfiguration to identify and warn of any erroneous
+values for its attributes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.init-sql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify a SQL
+string to be executed whenever a connection is created from the pool</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.statement-leak-timeout-in-seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 implies no
+statement leak detection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.statement-leak-reclaim</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If enabled, leaked
+statement will be reclaimed by the pool after statement leak timeout
+occurs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.statement-cache-type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.slow-query-threshold-in-seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SQL queries
+that exceed this time in seconds will be logged. Any value &#8656; 0 disables
+Slow Query Logging</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fish.payara.log-jdbc-calls</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When set to true, all JDBC
+calls will be logged allowing tracing of all JDBC interactions including
+SQL</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example-datasource-configuration"><a class="anchor" href="#example-datasource-configuration"></a>Example Data source configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An example data source configured on the <em>web.xml</em> and deployed with a
+custom <strong>SQL Trace Listener</strong> is shown below. This data source is configured
+to also validate all connections returned from the connection pool
+before giving them to the application using the built-in <em>MySQL</em>
+<strong>Connection Validation</strong> class. The data source is also configured to log
+any queries that exceed <strong>5</strong> seconds and also logs ALL JDBC statements:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+     version="3.1"&gt;
+    &lt;session-config&gt;
+        &lt;session-timeout&gt;30&lt;/session-timeout&gt;
+    &lt;/session-config&gt;
+    &lt;data-source&gt;
+      &lt;name&gt;java:global/ExampleDataSource&lt;/name&gt;
+      &lt;class-name&gt;com.mysql.jdbc.jdbc2.optional.MysqlXADataSource&lt;/class-name&gt;
+      &lt;server-name&gt;localhost&lt;/server-name&gt;
+      &lt;port-number&gt;3306&lt;/port-number&gt;
+      &lt;database-name&gt;mysql&lt;/database-name&gt;
+      &lt;user&gt;test&lt;/user&gt;
+      &lt;password&gt;test&lt;/password&gt;
+      &lt;!-- Example of how to use a Payara specific custom connection pool setting --&gt;
+      &lt;property&gt;
+          &lt;name&gt;fish.payara.slow-query-threshold-in-seconds&lt;/name&gt;
+          &lt;value&gt;5&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+          &lt;name&gt;fish.payara.log-jdbc-calls&lt;/name&gt;
+          &lt;value&gt;true&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+          &lt;name&gt;fish.payara.sql-trace-listeners &lt;/name&gt;
+          &lt;value&gt;fish.payara.examples.payaramicro.datasource.example.CustomSQLTracer&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+          &lt;name&gt;fish.payara.is-connection-validation-required&lt;/name&gt;
+          &lt;value&gt;true&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+          &lt;name&gt;fish.payara.connection-validation-method&lt;/name&gt;
+          &lt;value&gt;custom-validation&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property&gt;
+          &lt;name&gt;fish.payara.validation-classname&lt;/name&gt;
+          &lt;value&gt;org.glassfish.api.jdbc.validation.MySQLConnectionValidation&lt;/value&gt;
+      &lt;/property&gt;
+    &lt;/data-source&gt;
+&lt;/web-app&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../../_/js/site.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> 
+(function () {
+    function getCurrentVersion() {
+        let docsVersion = null;
+        const versionMetaTag = document.querySelector('meta[name="docsearch:version"]');
+        if (versionMetaTag) {
+            docsVersion = versionMetaTag.content;
+        }
+        if (!docsVersion) {
+            const containerElement = document.getElementsByClassName("nav-container")[0];
+            if (containerElement) {
+                const versionAttribute = containerElement.attributes["data-version"];
+                if (versionAttribute) {
+                    docsVersion = versionAttribute.value;
+                }
+            }
+        }
+        return docsVersion;
+    }
+
+    var currentVersion = getCurrentVersion();
+    var facetFilters = currentVersion ? ["version:"+currentVersion] : []
+
+    var searchInput = document.getElementById("search-input");
+
+    if (searchInput) {
+        docsearch({
+        apiKey: '0e166e657e381ec2661d7bd2d4426011',
+        indexName: 'payara',
+        inputSelector: '#search-input',
+        algoliaOptions: { 'facetFilters': facetFilters, 'hitsPerPage' : 30 },
+        debug: false // Set debug to true if you want to inspect the dropdown
+        });
+        
+        searchInput.focus();
+    }
+})();
+</script>
+  </body>
+</html>

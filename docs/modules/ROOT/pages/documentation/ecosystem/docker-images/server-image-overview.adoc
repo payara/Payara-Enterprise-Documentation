@@ -131,8 +131,8 @@ The following environment variables can be used to configure multiple settings o
 [width="100%",cols="29%,50%,21%",options="header",]
 |===
 |Name |Description |Default Value
-|`PREBOOT_COMMANDS`| The name of the file containing commands to be executed before the domain is started _Since v5.2021.5, the file will not be modified by the Docker container_| `$CONFIG_DIR/post-boot-commands.asadmin` and `$CONFIG_DIR/pre-boot-commands.asadmin`
-|`POSTBOOT_COMMANDS` |The name of the file containing commands to be executed after the domain is started. This is the file written to in the `generate_deploy_commands.sh` script _Since v5.2021.5, the file will not be modified by the Docker container_| `$CONFIG_DIR/post-boot-commands.asadmin`
+|`PREBOOT_COMMANDS`| The name of the file containing commands to be executed before the domain is started _Since v5.29.0, the file will not be modified by the Docker container_| `$CONFIG_DIR/post-boot-commands.asadmin` and `$CONFIG_DIR/pre-boot-commands.asadmin`
+|`POSTBOOT_COMMANDS` |The name of the file containing commands to be executed after the domain is started. This is the file written to in the `generate_deploy_commands.sh` script _Since v5.29.0, the file will not be modified by the Docker container_| `$CONFIG_DIR/post-boot-commands.asadmin`
 |`MEM_MAX_RAM_PERCENTAGE`| Value for the JVM argument `-XX:MaxRAMPercentage` which indicates the percentage of memory assigned to the container that can be used by the Java process| `70`
 |`MEM_XSS`| Value for the JVM argument `-Xss` which controls the stack size| `512K`
 |`DEPLOY_PROPS`| Specifies a list of properties to be passed with the deploy commands generated in the `generate_deploy_commands.sh` script|
