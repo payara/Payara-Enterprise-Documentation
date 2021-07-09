@@ -17,8 +17,7 @@ No line breaks are allowed.
 as if you were running the commands in a multimode session from the command line.
 * Empty lines and comment lines (starting with the `#` character) are ignored.
 * Each _asadmin_ command may contain variable references (e.g. to environment variables or system properties) as described in xref:/documentation/payara-server/server-configuration/var-substitution/usage-of-variables.adoc[Using variables]
- (_Since Payara Micro 4.1.2.174_)
-* _asadmin_ commands that contain spaces in the value should be surrounded with quotations marks.
+NOTE: _asadmin_ commands that contain spaces in the value should be surrounded with quotations marks.
 
 Here's a sample of a post boot script used to configure an instance for production uses:
 
