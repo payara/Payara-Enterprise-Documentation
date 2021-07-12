@@ -98,7 +98,6 @@ DD and Weblogic Server DD when they are both present. When `gfdd.over.wlsdd`
 
 [[ignore.wlsdd]]
 ==== `ignore.wlsdd` property
-This system property controls whether we should just ignore Weblogic Server DD.
 When `ignore.wlsdd` property is set to true, WLS DD will be ignored and other
  DDs will be processed with the following precedence order:
 
