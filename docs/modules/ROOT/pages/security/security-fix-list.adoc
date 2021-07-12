@@ -9,6 +9,8 @@ can or have impacted Payara Server across releases:
 |=======================================================================
 |ID |CVSS v3.0 Base Score |Status |Summary |Release |Pull Requests |Observations
 
+| https://nvd.nist.gov/vuln/detail/CVE-2021-28170[CVE-2021-28170] | 5.3 | FIXED | A bug in the ELParserTokenManager enables invalid EL expressions to be evaluated as if they were valid | 5.29.0 | https://github.com/eclipse-ee4j/el-ri/pull/160[el-ri #160] | Fixed by backporting a fix from the latest Jakarta Expression Language snapshot version 
+
 |https://nvd.nist.gov/vuln/detail/CVE-2020-10693[CVE-2020-10693] | 5.3 | FIXED | A flaw was found in Hibernate Validator version 6.1.2.Final. A bug in the message interpolation processor enables invalid EL expressions to be evaluated as if they were valid. This flaw allows attackers to bypass input sanitation (escaping, stripping) controls. | 5.23.1 |  | Fixed by upgrading Hibernate Validator to 6.1.5
 
 |https://nvd.nist.gov/vuln/detail/CVE-2019-17195[CVE-2019-17195] | 9.8 | FIXED | Connect2id Nimbus JOSE+JWT before v7.9 can throw various uncaught exceptions while parsing a JWT, which could result in an application crash (potential information disclosure) or a potential authentication bypass. | 5.21.2 |  | Fixed by upgrading Nimbus JOSE+JWT to 8.20
