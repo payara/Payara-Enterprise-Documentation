@@ -1,7 +1,7 @@
 [[custom-vendor-metrics]]
 = Custom Vendor Metrics
 
-JMX Mbeans can be exposed as ***Custom Vendor Metrics*** by the user by supplying a custom https://github.com/payara/Payara/blob/f30de88abca76111caadf0d57249d77d53b067e7/appserver/payara-appserver-modules/microprofile/metrics/src/main/resources/metrics.xml[metrics.xml] file in the `${PAYARA_HOME}/glassfish/domains/${DOMAIN_NAME}/config/` folder with the following format:
+xref:documentation/user-guides/monitoring/mbeans.adoc[JMX Mbeans] can be exposed as ***Custom Vendor Metrics*** by the user by supplying a custom https://github.com/payara/Payara/blob/f30de88abca76111caadf0d57249d77d53b067e7/appserver/payara-appserver-modules/microprofile/metrics/src/main/resources/metrics.xml[metrics.xml] file in the `${PAYARA_HOME}/glassfish/domains/${DOMAIN_NAME}/config/` folder with the following format:
 
 [source, xml]
 ----
@@ -142,3 +142,7 @@ vendor:jdbc_connection_pool_resources/_h2_pool_pool_numconncreated#count 0
 ......
 ......
 ----
+
+== See Also
+
+* xref:documentation/user-guides/monitoring/mbeans.adoc[JMX MBeans Reference]
