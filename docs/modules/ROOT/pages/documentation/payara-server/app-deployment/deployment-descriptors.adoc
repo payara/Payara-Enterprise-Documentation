@@ -75,3 +75,31 @@ Since version __5.184__
 Since version __5.2020.5__
 
 * `log-jdbc-calls` (_attribute of jdbc-connection-pool_)
+
+
+[[payara-server-deployment-descriptor-precedence-order]]
+== Payara Server Deployment Descriptor Precedence Order
+
+When multiple deployment descriptors are present in the same archive, DDs are
+ processed with the following precedence order in default mode:
+
+    `WebLogic DD > Payara DD > GlassFish DD > Sun DD`
+
+The default precedence order can be customized and configured via following
+ System properties:
+
+[[gfdd.over.wlsdd]]
+==== `gfdd.over.wlsdd` property
+This system property controls the precedence between GlassFish Server 
+DD and Weblogic Server DD when they are both present. When `gfdd.over.wlsdd`
+ property is set to true, DDs are processed with the following precedence order:
+
+    `Payara DD > GlassFish DD > WebLogic DD > Sun DD`
+
+[[ignore.wlsdd]]
+==== `ignore.wlsdd` property
+This system property controls whether we should just ignore Weblogic Server DD.
+When `ignore.wlsdd` property is set to true, WLS DD will be ignored and other
+ DDs will be processed with the following precedence order:
+
+    `GlassFish DD > Payara DD > Sun DD`
