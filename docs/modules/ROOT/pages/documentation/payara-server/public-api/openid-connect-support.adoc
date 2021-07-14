@@ -231,7 +231,7 @@ IMPORTANT: By default, the EL expressions are evaluated only once after the  app
 [[multitenancy]]
 == Multitenancy Support (Session-scoped Configuration)
 
-_Since 5.2021.5_
+_Since 5.29.0_
 
 By default, the same configuration of the OpenID connector is applied for the whole application, for all authentication attempts. This is for performance reasons. The OpenID connector also supports reevaluating the configuration for each user session, before each authentication attempt. This is useful in a multitenant scenario to define a different configuration for each tenant. It's also useful if the user should be able to select which provider they want to use to authenticate.
 
@@ -315,7 +315,7 @@ public class SecurityBean {
 
 [[logout]]
 == Logout Functionality
-_Since 5.2020.3_
+_Since 5.22.0_
 
 With the `logout` parameter of the `OpenIdAuthenticationDefinition` you can define the behavior when the user logs out of the application and defines how the RP session is managed.
 
