@@ -27,12 +27,13 @@ Since version __5.184__
 
 See the xref:/schemas/README.adoc[schema reference] for the list of deployment descriptor DTD files.
 
+[[allowed-elements]]
 == Allowed configuration elements
 
 The following elements are supported in Payara Server on top of elements supported by GlassFish:
 
 [[glassfish-application.xml]]
-== _glassfish-application.xml_
+=== _glassfish-application.xml_
 
 * `classloading-delegate`
 * `enable-implicit-cdi`
@@ -42,7 +43,7 @@ The following elements are supported in Payara Server on top of elements support
 * `scanning-include`
 
 [[glassfish-web.xml]]
-== _glassfish-web.xml_ and _payara-web.xml_
+=== _glassfish-web.xml_ and _payara-web.xml_
 
 * `container-initialized-enabled`
 * `default-role-mapping` (_property_)
@@ -53,7 +54,7 @@ The following elements are supported in Payara Server on top of elements support
 * `whitelist-package`
 
 [[glassfish-ejb-jar.xml]]
-== _glassfish-ejb-jar.xml_
+=== _glassfish-ejb-jar.xml_
 
 * `webservice-default-login-config`
 * `default-role-mapping` (_property_)
@@ -67,7 +68,7 @@ The following elements are supported in Payara Server on top of elements support
 *** `clustered-detach-predestroy`
 
 [[payara-resources.xml]]
-== _payara-resources.xml_
+=== _payara-resources.xml_
 Since version __5.184__
 
 * `snapshot` (_property of transaction isolation, this isolation level is only supported by Microsoft SQL Server_)
@@ -89,7 +90,7 @@ The default precedence order can be customized and configured via following
  system properties:
 
 [[gfdd.over.wlsdd]]
-==== `gfdd.over.wlsdd` property
+=== `gfdd.over.wlsdd` property
 This system property controls the precedence between GlassFish Server 
 descriptor and Weblogic Server descriptor when they are both present. When `gfdd.over.wlsdd`
  property is set to true, the descriptors are processed with the following precedence order:
@@ -97,7 +98,7 @@ descriptor and Weblogic Server descriptor when they are both present. When `gfdd
     `Payara descriptor > GlassFish descriptor > WebLogic descriptor > Sun descriptor`
 
 [[ignore.wlsdd]]
-==== `ignore.wlsdd` property
+=== `ignore.wlsdd` property
 When `ignore.wlsdd` property is set to true, WLS descriptor will be ignored and other
  descriptors will be processed with the following precedence order:
 
