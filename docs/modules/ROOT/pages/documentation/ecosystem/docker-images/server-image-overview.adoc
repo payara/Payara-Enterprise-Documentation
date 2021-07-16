@@ -139,7 +139,7 @@ The following environment variables can be used to configure multiple settings o
 |`PAYARA_ARGS`| Additional arguments passed to the `start-domain` command that starts the DAS. _Use with caution._|
 |`JVM_ARGS`| Additional JVM arguments which will be used to configure the Payara Servers DAS JVM settings|
 |===
-IMPORTANT: Starting from release 5.29.0, preboot and post-boot command files will not be modified by the Docker container
+IMPORTANT: Preboot and post-boot command files will not be modified by the Docker container
 
 The following is a list of variables used by the Docker image to configure the Payara Server domain, so it is not recommended to alter their values:
 
