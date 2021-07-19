@@ -26,7 +26,7 @@ service is used by the CircuitBreaker and Timeout interceptors for their timeout
 to be set to half open, and just timing out respectively).
 
 === Alternative @Asynchronous Annotations
-Since 5.192 the Payara specific configuration property `MP_Fault_Tolerance_Alternative_Asynchronous_Annotations` can be used to specify a comma separated list of fully qualified class names of those annotations that should have the same effect as FT's `@Asynchronous`. These annotations do not have to be interceptor bindings.
+The Payara specific configuration property `MP_Fault_Tolerance_Alternative_Asynchronous_Annotations` can be used to specify a comma separated list of fully qualified class names of those annotations that should have the same effect as FT's `@Asynchronous`. These annotations do not have to be interceptor bindings.
 
 For example:
 
@@ -79,7 +79,7 @@ image:microprofile/fault-tolerance.png[Set Fault Tolerance Configuration]
 [[using-asadmin-commands]]
 === Using Asadmin Commands
 
-NOTE: Since Payara Platform Enterprise 5.20.0, the configuration no longer allows configuring user defined executor to run the fault tolerance execution. Instead, Fault Tolerance uses two dedicated executors that are well suited for the usage pattern typically experienced when executing Fault Tolerance semantics. It's possible to configure the maximum size of these pools to scale them up or down.
+NOTE: The configuration no longer allows configuring user defined executor to run the fault tolerance execution. Instead, Fault Tolerance uses two dedicated executors that are well suited for the usage pattern typically experienced when executing Fault Tolerance semantics. It's possible to configure the maximum size of these pools to scale them up or down.
 
 ==== `set-fault-tolerance-configuration`
 

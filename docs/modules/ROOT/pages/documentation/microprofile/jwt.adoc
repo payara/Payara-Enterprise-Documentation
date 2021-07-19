@@ -146,7 +146,6 @@ This properties file should contain the key `accepted.issuer` with as value the 
 
 === Namespaced claims configuration
 
-_Since Payara Micro 5.184_
 
 Authentication services (like https://auth0.com/docs/scopes/current/custom-claims[auth0], https://connect2id.com/products/server/docs/config/claims-mapping[connect2id]) offer the possibility to add custom claims to JWT tokens
 but also enforce a namespaced format to avoid possible collisions with standard OpenID Connect claims.
