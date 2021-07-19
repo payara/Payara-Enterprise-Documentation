@@ -28,7 +28,6 @@
 *** xref:documentation/payara-server/server-configuration/security/README.adoc[Security Extensions]
 **** xref:documentation/payara-server/server-configuration/security/certificate-realm-principal-name.adoc[Certificate Realm - Principal Name]
 **** xref:documentation/payara-server/server-configuration/security/certificate-realm-groups.adoc[Certificate Realm - Group Mapping]
-**** xref:documentation/payara-server/server-configuration/security/certificate-realm-certificate-validation.adoc[Certificate Realm - Custom Validation on Client Certificate]
 **** xref:documentation/payara-server/server-configuration/security/multiple-mechanism-in-ear.adoc[Multiple HttpAuthenticationMechanism in EAR]
 *** xref:documentation/payara-server/server-configuration/jvm-options.adoc[JVM Options]
 *** xref:documentation/payara-server/server-configuration/jsf-options.adoc[JSF Options]

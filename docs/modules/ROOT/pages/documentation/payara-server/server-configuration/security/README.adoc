@@ -5,7 +5,6 @@ This section documents several extensions made to the security mechanisms and AP
 
 * xref:documentation/payara-server/server-configuration/security/certificate-realm-principal-name.adoc[Certificate Realm: Principal Name]
 * xref:documentation/payara-server/server-configuration/security/certificate-realm-groups.adoc[Certificate Realm: Group Names]
-* xref:documentation/payara-server/server-configuration/security/certificate-realm-certificate-validation.adoc[Certificate Realm: Custom Validation of Client Certificate]
 * xref:documentation/payara-server/server-configuration/security/multiple-mechanism-in-ear.adoc[Multiple HttpAuthenticationMechanism in EAR]
 
 == Extra Resources
