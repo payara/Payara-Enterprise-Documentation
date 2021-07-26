@@ -3,7 +3,7 @@
 
 This section describes how to deal with known or unknown security issues and common vulnerabilities and exploits (CVEs) related to the Payara Platform.
 
-INFO: In the context of this page, for a Payara Enterprise customer to make a formal **request**, they will have to raise a new ticket in the https://support.payara.fish/[Payara Enterprise Customer Support Portal].
+NOTE: In the context of this page, for a Payara Enterprise customer to make a formal **request**, they will have to raise a new ticket in the https://support.payara.fish/[Payara Enterprise Customer Support Portal].
 
 [[download-security-fixes]]
 == Download Security Fixes
