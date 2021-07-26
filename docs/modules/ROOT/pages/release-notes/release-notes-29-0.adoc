@@ -1,4 +1,4 @@
-= Payara Enterprise 5.29.0 Release Notes
+= Release notes - Payara Platform Enterprise Edition - Version 5.29.0
 
 == Supported APIs and Applications
 
