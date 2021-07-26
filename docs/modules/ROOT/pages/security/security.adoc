@@ -24,7 +24,7 @@ Payara Services Limited is very active at identifying and fixing any detected se
 
 To make a report, make an official **request** through the Customer Support Portal. Please make sure to describe the vulnerability encountered in great detail, along with the steps to reproduce the issue and environment details like the Payara Platform distribution and release version in use, the Operating System where it was detected and its version and the provider and release of the JDK is involved in the reproducer.
 
-INFO: If the issue relates to an existing documented CVE vulnerability, you can simply link it in your report and save yourself the trouble of providing a reproducer scenario and a detailed description.
+NOTE: If the issue relates to an existing documented CVE vulnerability, you can simply link it in your report and save yourself the trouble of providing a reproducer scenario and a detailed description.
 
 == See Also
 
