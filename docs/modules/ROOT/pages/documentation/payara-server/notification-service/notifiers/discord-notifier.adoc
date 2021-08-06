@@ -29,8 +29,10 @@ To configure the Notification Service from the command line, use the
 
 [source, shell]
 ----
-asadmin> set-discord-notifier-configuration --enabled=true --dynamic=true --webhookId xxx --webhookToken yyy
+asadmin> set-discord-notifier-configuration --enabled=true --dynamic=true --webhookId=xxx --webhookToken=yyy
 ----
+
+Where the xxx and yyy are the respectively the id and token for the webhook you have configured within Discord.
 
 You can use the `--enabled` and `--dynamic` options to enable or disable
 the Discord notifier on demand.
