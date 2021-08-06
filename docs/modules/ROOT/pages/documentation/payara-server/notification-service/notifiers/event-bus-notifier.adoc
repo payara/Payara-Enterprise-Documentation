@@ -10,7 +10,7 @@ NOTE: Notifications sent to the internal Payara event bus using this notifier ar
 [[requirements]]
 == Requirements
 
-Hazelcast must be enabled for the Event Bus to be available.
+The Domain Data Grid must be enabled for the Event Bus to be available.
 
 [[configuration]]
 == Configuration
