@@ -9,6 +9,7 @@ MicroProfile is a specification which provides a set of APIs focused on microser
 
 Payara has been part of the MicroProfile project from its inception and, therefore, supports all specifications of the MicroProfile Umbrella project.
 
+[[support-for-microprofile]]
 == Payara Support for MicroProfile
 
 Version 4.1::

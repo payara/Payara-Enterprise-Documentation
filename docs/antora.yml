@@ -19,7 +19,7 @@ asciidoc:
     mpFaultToleranceVersion: '3.0'
     mpFaultToleranceSpecUrl: 'https://github.com/eclipse/microprofile-fault-tolerance/releases/tag/3.0'
     mpJwtVersion: '1.2.1'
-    mpJwtSpecUrl: 'https://github.com/eclipse/microprofile-jwt-auth/releases/tag/1.2.1'
+    mpJwtSpecUrl: 'https://github.com/eclipse/microprofile-jwt-auth/releases/tag/1.2'
     mpOpenTracingVersion: '2.0'
     mpOpenTracingSpecUrl: 'https://github.com/eclipse/microprofile-opentracing/releases/tag/2.0'
     mpOpenAPIVersion: '2.0'

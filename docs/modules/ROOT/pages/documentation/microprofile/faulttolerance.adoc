@@ -12,16 +12,19 @@ A full overview for the reasoning behind the API can be found in
 https://github.com/eclipse/microprofile-fault-tolerance/blob/master/README.adoc[the
 README for the source code repository.]
 
+[[additions-to-spec]]
 == Additions to the Fault Tolerance Spec
 In addition to the functionality
 https://github.com/eclipse/microprofile-fault-tolerance/blob/master/spec/src/main/asciidoc/microprofile-fault-tolerance-spec.asciidoc[
 detailed in the spec], the following is also implemented in Payara Server Enterprise and Payara Micro Enterprise:
 
+[[configurable-executor-services]]
 === Configurable Executor Services
 The managed and scheduled managed executor pool can be configured via the _set-fault-tolerance-configuration_ asadmin command.
 
 The executor service is used to execute methods annotated with `@Asynchronous`, whereas the scheduled executor service is used by the CircuitBreaker and Timeout interceptors for their timeout operations (scheduling the circuit breaker to be set to half open, and just timing out respectively).
 
+[[alternative-asynchronous]]
 === Alternative @Asynchronous Annotations
 The Payara specific configuration property `MP_Fault_Tolerance_Alternative_Asynchronous_Annotations` can be used to specify a comma separated list of fully qualified class names of those annotations that should have the same effect as FT's `@Asynchronous`. These annotations do not have to be interceptor bindings.
 
@@ -75,6 +78,7 @@ image:microprofile/fault-tolerance.png[Set Fault Tolerance Configuration]
 [[using-asadmin-commands]]
 === Using Asadmin Commands
 
+[[set-fault-tolerance-configuration]]
 ==== `set-fault-tolerance-configuration`
 
 *Usage*::
@@ -88,6 +92,7 @@ asadmin>set-fault-tolerance-configuration
 *Aim*::
 Provides a way to set the configuration of the fault tolerance service of the targetted config.
 
+[[set-fault-tolerance-configuration-options]]
 ===== Command Options
 
 NOTE: The options `asyncmaxpoolsize` and `delaymaxpoolsize` have been removed as they are no longer applicable due to the configurable managed executor pools being used.
@@ -117,6 +122,7 @@ NOTE: The options `asyncmaxpoolsize` and `delaymaxpoolsize` have been removed as
 |===
 
 
+[[set-fault-tolerance-configuration-example]]
 ===== Example
 
 [source,Shell]
@@ -124,6 +130,7 @@ NOTE: The options `asyncmaxpoolsize` and `delaymaxpoolsize` have been removed as
 asadmin> set-fault-tolerance-configuration --managedexecutorservicename=java:comp/DefaultManagedExecutorService --target instance1
 ----
 
+[[get-fault-tolerance-configuration]]
 ==== `get-fault-tolerance-configuration`
 
 *Usage*::
@@ -131,6 +138,7 @@ asadmin> set-fault-tolerance-configuration --managedexecutorservicename=java:com
 *Aim*::
 Returns the current configuration options for the Fault Tolerance service on the targetted config.
 
+[[get-fault-tolerance-configuration-options]]
 ===== Command Options
 
 [cols="2,6,2,1", options="header"]
@@ -162,6 +170,7 @@ asadmin> get-fault-tolerance-configuration --target=instance1
 MicroProfile 4.0 brings with it a number of changes to MicroProfile Fault Tolerance. There are two incompatible changes
 with the previous version of MicroProfile Fault Tolerance.
 
+[[names-and-scopes-changed]]
 === Metric Names and Scopes Changed
 The metrics added automatically by MicroProfile Fault Tolerance have been updated to take advantage of support for
 metric tags which were added to MicroProfile Metrics in version 2.0. As a result, some information which was previously
@@ -177,6 +186,7 @@ MicroProfile specifications. Note that this means:
 There unfortunately is not a workaround for this change, users must simply ensure that any dashboard or application
 making use of these metrics must be updated to look at the new locations.
 
+[[names-and-scopes-changed-example]]
 ==== Example
 
 Old metric:
@@ -191,6 +201,7 @@ New metric:
 base:ft.timeout.calls.total{method="<name>", timedOut="true"}
 ----
 
+[[lifecycle-specified]]
 === Lifecycle of CircuitBreakers and Bulkheads Specified
 In previous versions of MicroProfile Fault Tolerance, the lifecycle of `CircuitBreaker` and `Bulkhead`
 annotations was not specified. These fault tolerance strategies hold state between invocations, so their
@@ -202,6 +213,5 @@ guarded method. This means that if a `RequestScoped` bean has a method annotated
 though each request will have a different instance of the annotated bean.
 
 There is unfortunately no workaround for this change in behaviour.
-
 
 

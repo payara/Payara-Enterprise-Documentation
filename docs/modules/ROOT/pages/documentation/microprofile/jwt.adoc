@@ -144,6 +144,7 @@ This properties file should contain the key `accepted.issuer` with as value the 
 
 *Note :* Vendor-specific option for supplying the issuer will always take precedence.
 
+[[namespaced-claims-configuration]]
 === Namespaced claims configuration
 
 Authentication services (like https://auth0.com/docs/scopes/current/custom-claims[auth0], https://connect2id.com/products/server/docs/config/claims-mapping[connect2id]) offer the possibility to add custom claims to JWT tokens
@@ -171,9 +172,11 @@ If following JSON is the token payload and `enable.namespace` property is true.
 Then the JSON Parser search for namespace prefixed claims, remove the namespace from claim name, allow the processing of the token as usual. 
 
 
+[[custom-namespace]]
 ==== *custom.namespace*
 When the `custom.namespace` property is set, it will always take precedence over the default namespace and be used instead.
 
+[[disabling-type-claim-verification]]
 === Disabling Type Claim Verification
 
 The MicroProfile JWT Authentication specification currently mandates that the type claim (`typ`) of any authorization token parsed by the container is present and is set to the `JWT` value. However, the current RFC document (https://tools.ietf.org/html/rfc7519[RFC 7519]) that defines the JWT standard states that this claim is **optional**:
@@ -192,11 +195,14 @@ NOTE: This property has to be defined in the `payara-mp-jwt.properties` configur
 
 IMPORTANT: Keep in mind that tokens which are missing their type claim and are propagated to other services running on other Eclipse MicroProfile runtimes might be rejected, as the specification mandates the inclusion of the claim.
 
+[[caching-public-key]]
 === Caching the Public Key
 
 By default, the public key retrieved by the `mp.jwt.verify.publickey.location` configuration property will be cached in memory for 5 minutes after being read from either a local file or a remote location. You can modify this _"time-to-live"_ which determines how long the key stays cached in memory in the case you are dealing with long-lived keys. This is done by setting the `publicKey.cache.ttl` custom property to the number of milliseconds after which the public key should be refreshed.
 
 NOTE: This property has to be defined in the `payara-mp-jwt.properties` configuration file described in the previous section.
+
+[[activating-jwt]]
 == Activating JWT Authentication
 
 An application activates the JWT authentication mechanism and identity store by annotating a class in the application, for instance, the JAX-RS `Application` class, with `@LoginConfig(authMethod = "MP-JWT")`. 

@@ -654,12 +654,14 @@ asadmin> set-config-cache
 MicroProfile 4.0 brings with it a number of changes to MicroProfile Config. There are three incompatible changes
 with the previous version of MicroProfile Config, though one is only important when writing your own _ConfigSources_.
 
+[[get-property-names-no-longer-default]]
 === ConfigSource#getPropertyNames No Longer Default
 The `ConfigSource#getPropertyNames` method is no longer a default method. If you've written your own _ConfigSources_,
 you will need to implement this method yourself. While dependant on the nature of your ConfigSource, this can
 frequently be achieved by simply returning the `keySet` of the collection returned by the `getProperties` method
 of the _ConfigSource_ implementation.
 
+[[get-property-names-no-longer-default-example]]
 ==== Example
 
 [source,Java]
@@ -670,6 +672,7 @@ public Set<String> getPropertyNames() {
 }
 ----
 
+[[evaluation-of-expressions]]
 === Evaluation of Property Expressions
 Previous versions of the specification would not evaluate _Property Expressions_ (a config property referencing
 another config property). As such, previous working configuration may behave differently if any MicroProfile Config
@@ -677,6 +680,7 @@ properties contain values with
 https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#property-expressions[_Property Expressions_]
 syntax.
 
+[[evaluation-of-expressions-example]]
 ==== Example
 
 The following microprofile-config.properties file will now evaluate the `server.url` property to
@@ -694,6 +698,7 @@ server.endpoint.path.bar=foo
 NOTE: This can also affect the behaviour of MicroProfile Config variable references within a
 `payara-expression-config.properties` file.
 
+[[disabling-property-expansion]]
 ==== Disabling MicroProfile Config Property Expansion
 
 The following system property can be defined to make the Payara Platform revert to the previous behaviour of not
@@ -702,6 +707,7 @@ evaluating the embedded expressions: `mp.config.property.expressions.enabled`
 This can be set in the same manner as other system properties on a config, with the potential for instance-by-instance
 overrides.
 
+[[disabling-property-expansion-using-asadmin]]
 ===== Using Asadmin Commands
 
 Disable on a specific config.
@@ -716,8 +722,9 @@ Disable on a specific instance.
 asadmin> create-system-properties --target=my-instance "mp.config.property.expressions.enabled=false"
 ----
 
+[[some-values-no-longer-valid]]
 === Empty Values and Special Characters No Longer Valid
-Empty value or other special characters (e.g. a standalone ",") are no longer a valid config value return type. Empty
+Empty value or other special characters (e.g. a standalone ",") are no longer allowed as config values. Such
 values will now cause a `NoSuchElementException` to be thrown.
 
 There unfortunately isn't a workaround to this: you must simply ensure that your config properties do not return an
