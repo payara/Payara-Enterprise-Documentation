@@ -11,6 +11,46 @@ For a full overview of the API, review https://github.com/eclipse/microprofile-m
 
 A key goal of the specification was to provide HTTP endpoints in Prometheus format (as well as JSON). Since the https://prometheus.io/docs/instrumenting/exposition_formats/#text-format-details[Prometheus Text format] is widely used by monitoring products other than Prometheus, this gives a lot of compatibility out-of-the-box.
 
-{mpMetricsSpecUrl}[MicroProfile Metrics 1.1] was released in MicroProfile 1.3
+[[microprofile-4-upgrade]]
+== Upgrading from MicroProfile 3.x to 4.x
 
-IMPORTANT: Version {mpMetricsVersion} of the Metrics specification does not define the behaviour of implementations where multiple applications are deployed to the same container. This limitation will be addressed in a later version of the Metrics specification.
+MicroProfile 4.0 brings with it a number of changes to MicroProfile Metrics, among these changes are some which break
+previous behaviour. The majority of the breaking changes only affect those using the MicroProfile Metrics API
+programmatically (rather than using the annotations).
+
+[[upgrade-to-4-metrics-reusable]]
+=== All Metrics Now Reusable
+In Metrics 3.0 all metrics are now considered reusable, and as such a number of methods related to this have been
+removed from the API.
+
+There isn't a workaround for this, you must simply make sure that you're not using any of the methods from the API and
+that you were not expecting any of your custom metrics to not be reusable.
+
+[[upgrade-to-4-with-optional-removed]]
+===  MetadataBuilder.withOptional* Methods Removed
+
+Only relevant to those using the MicroProfile Metrics API programmatically (rather than using the annotations), these
+methods have simply been removed.
+
+You should instead use the `MetadataBuilder.with*` methods, which all accept `null` as a "not present" value (with the
+exception of the `withName` method which must have a defined value).
+
+As an example, if you were using the `MetadataBuilder.withOptionalDisplayName(String displayName)` method, you must now
+use the `MetadataBuilder.withDisplayName(String displayName)` method.
+
+[[upgrade-to-4-return-type-changed]]
+=== Metadata.getDescription() and Metadata.getUnit() Return Type Changed
+
+Only relevant to those using the MicroProfile Metrics API programmatically (rather than using the annotations), these
+methods now return a `String` rather than an `Optional<String>`.
+
+Two new methods have been added to the API for those who wish to still get an `Optional<String>` return type:
+`Metadata.description()` and `Metadata.unit()`
+
+[[upgrade-to-4-timer-methods-removed]]
+=== Timer.update(long duration, TimeUnit unit) Removed
+
+Only relevant to those using the MicroProfile Metrics API programmatically (rather than using the annotations), this
+method has been replaced by `Timer.update(Duration duration)`.
+
+There is no workaround for this, the original method has simply been removed and you must now use the new one.
