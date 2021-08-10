@@ -171,28 +171,28 @@ They are detailed below.
 | `tokenAutoRefresh`
 | `payara.security.openid.token.autoRefresh`
 | false
-| Enables or disables the automatically performed refresh of Access and Refresh Token.  _Since Payara Server 5.193_
+| Enables or disables the automatically performed refresh of Access and Refresh Token.
 | false
 | N/A.
 
 | `tokenMinValidity`
 | `payara.security.openid.token.minValidity`
 | false
-| Sets the minimum validity time(in milliseconds) the Access Token must be valid before it is considered expired. _Since Payara Server 5.193_
+| Sets the minimum validity time(in milliseconds) the Access Token must be valid before it is considered expired.
 | 10000
 | Value must not be negative.
 
 | `claimsDefinition.callerNameClaim`
 | `payara.security.openid.callerNameClaim`
 | false
-| Defines the name of callerName claim and maps the claim's value to caller name value in IdentityStore#validate. _Since Payara Server 5.184_
+| Defines the name of callerName claim and maps the claim's value to caller name value in IdentityStore#validate.
 | preferred_username
 | N/A.
 
 | `claimsDefinition.callerGroupsClaim`
 | `payara.security.openid.callerGroupsClaim`
 | false
-| Defines the name of callerGroups claim and maps the claim's value to caller groups value in IdentityStore#validate. _Since Payara Server 5.184_
+| Defines the name of callerGroups claim and maps the claim's value to caller groups value in IdentityStore#validate.
 | groups
 | N/A.
 
@@ -231,24 +231,23 @@ IMPORTANT: By default, the EL expressions are evaluated only once after the  app
 [[multitenancy]]
 == Multitenancy Support (Session-scoped Configuration)
 
-_Since 5.29.0_
+By default, the same configuration of the OpenID connector is applied for the whole application, for all authentication attempts. This is for performance reasons. The OpenID connector also supports re-evaluating the configuration for each user session, before each authentication attempt. This is useful in a multitenant scenario to define a different configuration for each tenant. It's also useful if the user should be able to select which provider they want to use to authenticate.
 
-By default, the same configuration of the OpenID connector is applied for the whole application, for all authentication attempts. This is for performance reasons. The OpenID connector also supports reevaluating the configuration for each user session, before each authentication attempt. This is useful in a multitenant scenario to define a different configuration for each tenant. It's also useful if the user should be able to select which provider they want to use to authenticate.
-
-To enable reevaluating the configuration for each user session, set the MicroProfile Configuration property `payara.security.openid.sessionScopedConfiguration` to `true`. To specify it directly in the application, you can place it in the https://download.eclipse.org/microprofile/microprofile-config-1.4/microprofile-config-spec.html#default_configsources[microprofile-config.properties] file in the `META-INF` directory on the classpath (in a WAR application it could be in `WEB-INF/classes/META-INF`).
+To enable re-evaluation of the configuration for each user session, set the MicroProfile Configuration property `payara.security.openid.sessionScopedConfiguration` to `true`. To specify it directly in the application, you can place it in the https://download.eclipse.org/microprofile/microprofile-config-1.4/microprofile-config-spec.html#default_configsources[microprofile-config.properties] file in the `META-INF` directory on the classpath (in a WAR application it could be in `WEB-INF/classes/META-INF`).
 
 With this enabled, it's possible to use EL expressions to dynamically adjust the configuration before each authantication attempt, e.g. based on any information in the incoming HTTP request. The information about the HTTP request can be retrieved from a `HttpServletRequest` object injected using `@Inject`.
 
 NOTE: It's not possible to use a different configuration for just a subset of secured resources. Once a user is authenticated, the authentication information is saved in the HTTP session. All secured resources will be accessed using the same user, having the same roles, until the user logs out.
 
+[[example-multitenant]]
 === Example multitenant authentication
 
 In this example, we'll:
 
-* enable session-scoped OpenID Connect configuration
-* resolve the tenant name from an HTTP request query parameter
-* use the tenant name to read the configuration value from the respective xref:documentation/microprofile/config/README.adoc[MicroProfile Config] property
-* retrieve the value from an EL expression defined in the `@OpenIdAuthenticationDefinition` annotation
+* Enable session-scoped OpenID Connect configuration
+* Resolve the tenant name from an HTTP request query parameter
+* Use the tenant name to read the configuration value from the respective xref:documentation/microprofile/config/README.adoc[MicroProfile Config] property
+* Retrieve the value from an EL expression defined in the `@OpenIdAuthenticationDefinition` annotation
 
 TIP: For example, the tenant can also be resolved from a cookie, which is set the first time a user loads the application; from the domain name in the URL (if different tenants use a different domain name to access the same application); from a path prefix that follows the context root and prepends all application URLs (e.g. contextroot/tenant1/index.xhtml, contextroot/tenant2/index.xhtml).
 
@@ -264,7 +263,7 @@ payara.security.openid.sessionScopedConfiguration=true
 
 This will provide configuration for `tenant1` and `tenant2` tenants. For each additional tenant, add a new line for its `providerURI`.
 
-Create `OpenidConfigBean` class with the `tokenEndpointURL` method. This class will be a CDI bean that injects `HttpServletRequest` to get information about which tenant to use. It will also inject `Config` to retrieve the configuration about each tenant from the `microprofile-config.properties` file:
+Create an `OpenidConfigBean` class with the `tokenEndpointURL` method. This class will be a CDI bean that injects `HttpServletRequest` to get information about which tenant to use. It will also inject `Config` to retrieve the configuration about each tenant from the `microprofile-config.properties` file:
 
 .OpenidConfigBeanEL.java
 [source,java]
@@ -315,7 +314,6 @@ public class SecurityBean {
 
 [[logout]]
 == Logout Functionality
-_Since 5.22.0_
 
 With the `logout` parameter of the `OpenIdAuthenticationDefinition` you can define the behavior when the user logs out of the application and defines how the RP session is managed.
 
@@ -403,6 +401,7 @@ Authorization Server.
 
 The Payara API provides the in-built support for Google OpenID Provider via the `@GoogleAuthenticationDefinition` annotation.
 
+[[google-token]]
 ==== Request Refresh Token
 To enable the refresh token feature, set the `tokenAutoRefresh` to true 
 and add the `access_type` parameter value to `offline`
@@ -431,6 +430,7 @@ public class SecurityBean {
 
 The Payara API also provides the in-built support for Azure AD OpenID Provider via the `@AzureAuthenticationDefinition` annotation.
 
+[[azure-token]]
 ==== Request Refresh Token
 To receive the refresh token, set the `tokenAutoRefresh` to true and explicitly add the `offline_access` scope to the definition.
 
@@ -449,6 +449,7 @@ public class SecurityBean {
 ----
 
 
+[[azure-groups]]
 ==== Groups mapping
 
 - To add the groups to the registered application, Sign in to the Azure portal > Azure Active Directory > Manage > App registrations > select your application:
@@ -543,6 +544,7 @@ public class SecurityBean {
 }
 ----
 
+[[keycloak-groups]]
 ==== Groups mapping
 
 - To get the groups details in token claims, navigate to Keycloak admin console > OpenId **Client** > **Mappers** tab > press **create** button > Select **Group Membership** mapper type > enter the **Name** and **Token Claim Name** > press **Save**.
