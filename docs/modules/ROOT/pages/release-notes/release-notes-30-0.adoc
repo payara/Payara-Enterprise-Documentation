@@ -6,6 +6,10 @@
  * Jakarta EE 8
  * MicroProfile 4.1
 
+=== Notes
+==== MicroProfile 4.1
+The release of Payara Enterprise 5.30.0 introduces an update of MicroProfile from 3.3 to 4.1, bringing with it some breaking changes. Details of these changes and how to work around them can be found within the documentation of each spec. 
+
 === New Features
 * [FISH-1526] - Upgrade Payara Enterprise to MicroProfile 4.1
 * [FISH-385] - OpenID Connect: Per-session configuration and multitenancy
