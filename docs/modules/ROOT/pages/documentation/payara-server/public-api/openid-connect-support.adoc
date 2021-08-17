@@ -387,7 +387,7 @@ A programmatic logout is performed by calling `OpenIdContext#logout()` which inv
 
 
 [[secret-alias]]
-=== Client Secret Aliasing
+== Client Secret Aliasing
 
 The client secret can be input directly, or for added security it can be aliased using any of the following features:
 
@@ -396,7 +396,7 @@ The client secret can be input directly, or for added security it can be aliased
 - xref:/documentation/microprofile/config/README.adoc[Config API]
 
 [[fetch-caller-data]]
-=== Fetch Caller Data
+== Fetch Caller Data
 As OpenId Connect Client is built on top of Jakarta EE Security API,
 therefore `javax.security.enterprise.SecurityContext` interface can provide 
 caller info which is available as a CDI bean and can be injected into any context-aware instance.
