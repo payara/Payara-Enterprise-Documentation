@@ -6,7 +6,7 @@ An https://www.gnu.org/software/bash/manual/html_node/Event-Designators.html[Eve
 
 Event Designators are enabled by default. 
 
-NOTE: If this feature is disabled, the `\` characters are not treated as escape characters when parsing the command and they are retained when running the command. The default behavior will treat them as escape characters and if you need to pass `\` into an asadmin command, you would need to escape it and turn it into `\\`. If event expansion is disabled, all `\` are passed to Payara Server without any change.
+NOTE: If this feature is disabled, the `\` characters are not treated as escape characters when parsing the command and they are retained when running the command. The default behavior would treat them as escape characters and if you need to pass `\` into an asadmin command, you would need to escape it and turn it into `\\`. If event expansion is disabled, all `\` are passed to Payara Server without any change.
 
 == Disabling JLine Event Expansion
 
