@@ -235,7 +235,7 @@ itself but by the Server (like `payara.security.openid.redirectURI=${baseURL}/Ca
 
 
 [[el-support]]
-=== Expression Language Support
+== Expression Language Support
 
 Additionally, the `@OpenIdAuthenticationDefinition` supports the use of expression language (EL) notation for dynamic configuration scenarios. 
 This means that you can use any CDI bean properties to set the OpenID Connect configuration like this:
