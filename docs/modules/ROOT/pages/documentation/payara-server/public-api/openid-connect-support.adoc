@@ -65,6 +65,22 @@ public class CallbackServlet extends HttpServlet {
 }
 ----
 
+
+The original protected URL called is stored so that a redirect can be issued to this page after the callback from the OpenIdConnect provider is handled.  
+
+NOTE: Only some basic redirect is supported namely a GET. Only the URL and query parameters are available, not the headers and the request body.
+
+[source, java]
+----
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // handling the OpenIdContext information. See previous example
+        // Now return to original requested page
+        response.sendRedirect(request.getSession().getAttribute(OpenIdConstant.ORIGINAL_REQUEST).toString());
+    }
+----
+
 [[configuration]]
 == Configuration
 
@@ -202,18 +218,28 @@ They are detailed below.
 | An array of extra options to be sent to the OpenID Connect provider.
 |
 | Must be in the form `"key=value"`.
+
+| `logout`
+|
+| @LogoutDefinition
+| Defines the functionality that is performed when the user logs out and defines the RP Session Management configuration.
+|
+| 
 |===
 
-*Note :* If both an annotation attribute and a MicroProfile Config property are defined for the same option 
+NOTE: If both an annotation attribute and a MicroProfile Config property are defined for the same option 
 then the MicroProfile Config property value always takes precedence over the `@OpenIdAuthenticationDefinition` annotation value.
 
-[[el-support]]
-== Expression Language Support
+NOTE: If you are using MicroProfile Config properties and the value contains a placeholder that should not be resolved by MicroProfile Config
+itself but by the Server (like `payara.security.openid.redirectURI=${baseURL}/Callback`) make sure the value is properly escaped. It will otherwise result in `NoSuchElementException`. Here's an example how such a value should be escaped: `payara.security.openid.redirectURI=\\${baseURL}/Callback`
 
-The `@OpenIdAuthenticationDefinition` supports the use of expression language (EL) notation for programmatic configuration scenarios. 
+
+[[el-support]]
+=== Expression Language Support
+
+Additionally, the `@OpenIdAuthenticationDefinition` supports the use of expression language (EL) notation for dynamic configuration scenarios. 
 This means that you can use any CDI bean properties to set the OpenID Connect configuration like this:
 
-.SecurityBean.java
 [source, java]
 ----
 @OpenIdAuthenticationDefinition(
@@ -359,8 +385,9 @@ With the `logout` parameter of the `OpenIdAuthenticationDefinition` you can defi
 A programmatic logout is performed by calling `OpenIdContext#logout()` which invalidates the RP's active OpenId Connect session. If `fish.payara.security.annotations.LogoutDefinition#notifyProvider` is set to true then it redirects the End-User's User Agent to the `end_session_endpoint` to notify the OP that the user has logged out of the RP's application. It will also ask the user whether they want to logout from the OP as well. After successful logout, the End-User's User Agent redirects back to the RP's `_post_redirect_uri_` configured via `fish.payara.security.annotations.LogoutDefinition#redirectURI`.
 
 
+
 [[secret-alias]]
-== Client Secret Aliasing
+=== Client Secret Aliasing
 
 The client secret can be input directly, or for added security it can be aliased using any of the following features:
 
@@ -369,7 +396,7 @@ The client secret can be input directly, or for added security it can be aliased
 - xref:/documentation/microprofile/config/README.adoc[Config API]
 
 [[fetch-caller-data]]
-== Fetch Caller Data
+=== Fetch Caller Data
 As OpenId Connect Client is built on top of Jakarta EE Security API,
 therefore `javax.security.enterprise.SecurityContext` interface can provide 
 caller info which is available as a CDI bean and can be injected into any context-aware instance.
@@ -393,15 +420,11 @@ Authorization Server.
 - The `getClaims()` method - Gets the User Claims that were received from the userinfo endpoint.
 - The `getProviderMetadata()` method - The OpenId Connect Provider's metadata document fetched via provider URI.
 
-[[specific-providers]]
-== Integration with specific providers
-
 [[google-oidc-integration]]
 === Google integration
 
 The Payara API provides the in-built support for Google OpenID Provider via the `@GoogleAuthenticationDefinition` annotation.
 
-[[google-token]]
 ==== Request Refresh Token
 To enable the refresh token feature, set the `tokenAutoRefresh` to true 
 and add the `access_type` parameter value to `offline`
@@ -430,7 +453,6 @@ public class SecurityBean {
 
 The Payara API also provides the in-built support for Azure AD OpenID Provider via the `@AzureAuthenticationDefinition` annotation.
 
-[[azure-token]]
 ==== Request Refresh Token
 To receive the refresh token, set the `tokenAutoRefresh` to true and explicitly add the `offline_access` scope to the definition.
 
@@ -449,7 +471,6 @@ public class SecurityBean {
 ----
 
 
-[[azure-groups]]
 ==== Groups mapping
 
 - To add the groups to the registered application, Sign in to the Azure portal > Azure Active Directory > Manage > App registrations > select your application:
@@ -495,11 +516,10 @@ https://www.keycloak.org/documentation.html
 
 - Refer Keycloak https://www.keycloak.org/docs/latest/getting_started/index.html[getting started documentation] to run and setup keycloak.
 
-- After Keycloak setup done, login to Keycloak admin console and add the new realm by pressing the **Add Realm** button:
-image:security-connector/oidc/keycloak/add_realm.png[Add Realm]
+- After Keycloak setup done, login to Keycloak admin console and add the new realm by pressing the **Add Realm** button: image:security-connector/oidc/keycloak/add-realm.png[Add Realm]
 
 - Copy the OpenId endpoint configuration URL from endpoint section:
-image:security-connector/oidc/keycloak/realm_endpoint.png[Realm Endpoint]
+image:security-connector/oidc/keycloak/realm-endpoint.png[Realm Endpoint]
 
 - Now add the **Role** that will be used by the application to define which users will be authorized to access the application.
 image:security-connector/oidc/keycloak/add-role.png[Add role]
@@ -544,7 +564,6 @@ public class SecurityBean {
 }
 ----
 
-[[keycloak-groups]]
 ==== Groups mapping
 
 - To get the groups details in token claims, navigate to Keycloak admin console > OpenId **Client** > **Mappers** tab > press **create** button > Select **Group Membership** mapper type > enter the **Name** and **Token Claim Name** > press **Save**.
@@ -568,6 +587,6 @@ public class SecurityBean {
 ----
 
 [[extra-resources]]
-== See Also
+== Extra Resources
 
 To read more about OpenID Connect itself, visit http://openid.net/specs/openid-connect-core-1_0.html
