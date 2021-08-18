@@ -30,5 +30,5 @@ The release of Payara Enterprise 5.30.0 introduces an update of MicroProfile fro
 * [FISH-786] - Integrate Security Connector with the Payara Platform
 
 === Security Fixes
-* [FISH-5545] - Upgrade jackson-databind to 2.12.3
+* [FISH-5545] - Upgrade jackson-databind to 2.12.4
 * [FISH-5544] - Upgrade json-smart dependency to 2.4.7
