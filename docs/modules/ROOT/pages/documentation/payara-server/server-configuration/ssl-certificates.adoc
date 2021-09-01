@@ -144,7 +144,7 @@ The information can also be entered in the Web Administration console, by naviga
 
 IMPORTANT: All additional keystores must have the same password as your domain master password.
 
-To add additional keystores to Payara Server you will need to have your keystore and truststore files in a local directory. You can then configure this using the admin console or asadmin commands. If you want to load more than one additional keystore use ':' as a delimiter between file paths.
+To add additional keystores to Payara Server you will need to have your keystore and truststore files in a local directory. You can then configure this using the admin console or asadmin commands. If you want to load more than one additional keystore, you will need to use a delimiter between the paths to the additional keystores. This is different depending on your OS, Windows uses ';' and Linux uses ':'.
 
 NOTE: When specifying the key or trust store for a specific listener, this is deemed as an absolute and any additional key or trust stores are not considered.
 
@@ -163,7 +163,7 @@ You can add the new JVM property and the relative paths to your keystores or tru
 image::ssl/add-additional-keystores-admin-console.png[Configure additional keystores and truststores in Admin Console]
 
 === Using Asadmin Commands
-JVM options can be configured using the 'create-jvm-options' asadmin command, you can configure your additional keystore and truststore files using this command. If you are loading in multiple additional keystores via asadmin commands, you will need to use '\:' as the delimiter to avoid creating multiple JVM options.
+JVM options can be configured using the 'create-jvm-options' asadmin command, you can configure your additional keystore and truststore files using this command. If you are loading in multiple additional keystores via asadmin commands, you will need to prefix the appropriate delimiter for your OS with '\' to avoid creating multiple JVM options.
 
 *Additional Keystores*
 [source, shell]
