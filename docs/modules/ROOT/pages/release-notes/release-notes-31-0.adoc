@@ -1,0 +1,30 @@
+= Release Notes - Payara Platform Enterprise 5.31.0
+
+== Supported APIs and Applications
+
+ * Java EE 8 Applications
+ * Jakarta EE 8
+ * MicroProfile 4.1
+
+=== Notes
+
+=== New Features
+* [FISH-5646] Add Client Certificate Validation API
+
+=== Bug Fixes
+* [FISH-5711] Fix Could Not Load Formatter Class Error in Payara Micro
+* [FISH-5701] Application does not deploy anymore on Payara Server Docker image
+* [FISH-5695] ArrayIndexOutOfBoundsException when the ConfigProperty value ends in a dollar sign \[Community Contribution\]
+* [FISH-5693] Delimiter for configuring multiple KeyStores and TrustStores must use JVM Platform Delimiter
+* [FISH-5691] Do not propagate non-transactional EM to managed tasks
+* [FISH-5690] Remove duplicate postInvoke handler invocation on failure
+* [FISH-5660] Deployment Failure on Payara Micro
+* [FISH-1058] Payara Micro - wrong ClassLoader with multiple apps
+* [FISH-966] Fix Asadmin stop-domain help text
+* [FISH-81] Fix Incorrect error "No valid EE environment for injection" for CDI reported for events
+
+=== Component Upgrades
+* [FISH-5655] Update Jersey to 2.34
+
+=== Security Fixes
+* [FISH-5702] Improper Limitation of a Pathname to a Restricted Directory \('Path Traversal'\) when context root is /
