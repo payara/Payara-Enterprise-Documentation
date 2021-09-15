@@ -16,7 +16,7 @@ xref:documentation/user-guides/monitoring/mbeans.adoc[JMX Mbeans] can be exposed
             <tags>
                 <tag>
                     <name>operatingSystem</name>
-                    <value>Linux</name>
+                    <value>Linux</value>
                 </tag>
             </tags>
             <name>system.cpu.load</name>

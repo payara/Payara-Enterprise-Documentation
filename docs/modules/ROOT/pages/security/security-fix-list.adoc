@@ -70,6 +70,7 @@ as well:
 [cols="<,<,<,<,<,<",options="header",]
 |=======================================================================
 |Reference |Status |Summary | Release |Pull Requests |Observations
+| Reported by the community | FIXED | Improper Limitation of a pathname to a restricted directory (exposes an application to "Path Traversal") when context root is / | 5.31.0 | | Recommended to immediately upgrade to this release if any of your applications is deployed on the / context root on Payara Server or Payara Micro
 | Payara Enterprise Support Ticket| FIXED | Vulnerability in Metro's WSDL Code Importing/Parsing - Remote Code Execution | 5.28.0 | https://github.com/payara/Payara-Enterprise/pull/362[#362], https://github.com/payara/Payara-Enterprise/pull/369[#369] | Recommended to immediately upgrade to this release if using any JAX-WS features in applications deployed in public-facing environments.
 | https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet[OWASP Docs] |FIXED | Web administration console is vulnerable against clickjacking/UI redress attacks. | 4.1.2.174 | https://github.com/payara/Payara/pull/2097[#2097] |
 | Payara Support Ticket | FIXED | Under some circumstances authenticated caller/user identities get confused. | 4.1.1.171.11 | https://github.com/payara/Payara/pull/2493/files[#2493] |
