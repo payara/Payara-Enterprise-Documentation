@@ -8,6 +8,8 @@ Detailed information about features and fixes in every release.
 
 *2021*
 
+* 2021 September - xref:release-notes/release-notes-31-0.adoc[Payara Enterprise 5.31.0]
+* 2021 August - xref:release-notes/release-notes-30-0.adoc[Payara Enterprise 5.30.0]
 * 2021 July - xref:release-notes/release-notes-29-0.adoc[Payara Enterprise 5.29.0]
 * 2021 June - xref:release-notes/release-notes-28-1.adoc[Payara Enterprise 5.28.1]
 * 2021 May - xref:release-notes/release-notes-28-0.adoc[Payara Enterprise 5.28.0]
