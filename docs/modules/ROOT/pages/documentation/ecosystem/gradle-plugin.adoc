@@ -114,7 +114,7 @@ values. key-value pairs will be formatted as `key=value`.
 
 |`hotDeploy`
 |false
-|Enables the hot reload mode.
+|Enables the Hot Deploy mode.
 
 |===
 
@@ -147,7 +147,7 @@ immediately kill the executing Payara Micro instance.
 === `microReload`
 *Aim*: This task reloads the Payara Micro application with the specified configuration.
 By default, this task performs the vanilla deployment of the application without restarting the 
-Payara Micro instance. If `hotDeploy` is set to true then the Hot Reload functionality
+Payara Micro instance. If `hotDeploy` is set to true then the Hot Deploy functionality
 will be enabled. 
 
 NOTE:
@@ -157,7 +157,7 @@ the existing application instance and updating its classloader & internal compon
 relative to the modified source. This can lead to significant savings of time when
 an application is redeployed and boost developer productivity even more.
 
-*Usage*: `mvn payara-micro:reload`
+*Usage*: `gradle microReload`
 
 .Configuration tags
 [cols="2,1,7",options="header"]
@@ -168,15 +168,15 @@ an application is redeployed and boost developer productivity even more.
 
 |`hotDeploy`
 |false
-|Enables the hot reload mode.
+|Enables the Hot Deploy mode.
 
 |`sourcesChanged`
 |_none_
 |Defines a list(comma separated) of the absolute paths to the source file which need
-to be reloaded via the Hot Reload feature.
+to be reloaded via the Hot Deploy feature.
 
 |`metadataChanged`
 |false
-|If set to true, reloads deployment descriptors metadata in hot deploy mode
+|If set to true, reloads deployment descriptors metadata in hot Deploy mode
 
 |===
