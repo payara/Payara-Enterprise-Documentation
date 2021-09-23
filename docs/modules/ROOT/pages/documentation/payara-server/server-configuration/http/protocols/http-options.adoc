@@ -140,6 +140,24 @@ Whether to enable HTTP/1.1 GZIP compression to save server bandwidth. Will be ig
 
 `set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.http.compression=[off/on/force]`
 
+[[configuration-http-compression-level]]
+== Compression Level
+
+The level of compression to be used, -1 corresponds to the default level, 0 is no compression, 1 is the best speed and 9 is the best compression.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.http.compression-level=[-1-9]`
+
+[[configuration-http-compression-strategy]]
+== Compression Strategy
+
+Sets the strategy to be used during HTTP compression.
+
+*Asadmin Command:*
+
+`set configs.config.server-config.network-config.protocols.protocol.${protocol-name}.http.compression-strategy=[Default/Filtered/Huffman Only]`
+
 [[configuration-http-compressable-mime-type]]
 == Compressible Mime Types
 
