@@ -30,5 +30,5 @@ directory | true, false | true
 
 | fish.payara.javax.servlet.jsp.disable-static-field-references | boolean | This option brings back the behaviour of evaluating EL in JSPs from GlassFish 3. When enabled, a static field reference won't be evaluated. | true, false | false (undefined)
 
-| fish.payara.upgrade.repo.url | String | This option defines the Maven repository download URL for the upgrade tool. | A URL pointing to the Payara Nexus repository to download from (expected to point to the `fish/payara/distributions` directory of the repo) | undefined (https://nexus.payara.fish/repository/payara-enterprise-downloadable-artifacts/fish/payara/distributions/)
+| fish.payara.upgrade.repo.url | String | This option defines the Maven repository download URL for the `upgrade-server` command. | A URL pointing to the Payara Nexus repository to download from (expected to point to the `fish/payara/distributions` directory of the repo) | undefined (https://nexus.payara.fish/repository/payara-enterprise-downloadable-artifacts/fish/payara/distributions/)
 |=======================================================================
