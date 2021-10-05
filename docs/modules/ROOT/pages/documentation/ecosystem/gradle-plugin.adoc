@@ -150,8 +150,7 @@ By default, this task performs the vanilla deployment of the application without
 Payara Micro instance. If `hotDeploy` is set to true then the Hot Deploy functionality
 will be enabled. 
 
-NOTE:
-This task is specifically designed for integration with the IDEs and Editors.
+NOTE: This task is specifically designed for integration with the IDEs and Editors.
 Payara Micro instance allows IDEs to deploy the application in Hot Deploy mode by reusing
 the existing application instance and updating its classloader & internal components
 relative to the modified source. This can lead to significant savings of time when
