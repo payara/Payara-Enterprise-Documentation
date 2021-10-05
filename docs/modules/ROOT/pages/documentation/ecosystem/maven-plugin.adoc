@@ -4,7 +4,7 @@ Payara Micro has a Maven plugin which can start and stop Payara Micro and create
 an Uber JAR bundle of the application and Payara Micro.
 
 The plugin requires JDK 8 or higher and the latest version is currently
-`1.0.5`
+`1.4.0`
 
 == Configurable Goals
 
@@ -243,6 +243,9 @@ values. key-value pairs will be formatted as `key=value`.
 |_none_
 |Defines a list of command line options that will be passed onto payara-micro.
 
+|`hotDeploy`
+|false
+|Enables the Hot Deploy mode.
 
 |===
 
@@ -314,6 +317,43 @@ the process id of the running Payara Micro instance.
 |`maxStopTimeoutMillis`
 |5000
 |Defines the maximum timeout in milliseconds to wait for the process of Payara Micro Enterprise instance to stop.
+
+|===
+
+=== `reload`
+*Aim*: This goal reloads the Payara Micro application with the specified configuration.
+By default, this goal performs the vanilla deployment of the application without restarting the 
+Payara Micro instance. If `hotDeploy` is set to true then the Hot Deploy functionality
+
+will be enabled. 
+
+NOTE: This goal is specifically designed for integration with the IDEs and Editors.
+Payara Micro instance allows IDEs to deploy the application in the Hot Deploy mode by reusing
+the existing application instance and updating its classloader & internal components
+relative to the modified source. This can lead to significant savings of time when
+an application is redeployed and boost developer productivity even more.
+
+*Usage*: `mvn payara-micro:reload`
+
+.Configuration tags
+[cols="2,1,7",options="header"]
+|===
+|Element
+|Default
+|Notes
+
+|`hotDeploy`
+|false
+|Enables the Hot Deploy mode.
+
+|`sourcesChanged`
+|_none_
+|Defines a list (comma separated) of the absolute paths to the source file which need
+to be reloaded via the Hot Deploy feature.
+
+|`metadataChanged`
+|false
+|If set to true, reloads deployment descriptors metadata in Hot Deploy mode
 
 |===
 
