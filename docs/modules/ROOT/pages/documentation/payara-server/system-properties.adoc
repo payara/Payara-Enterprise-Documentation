@@ -29,4 +29,6 @@ directory | true, false | true
 | deployment.resource.validation | boolean | This option (defined as JVM Option with -D or as System Property value) defines if the resources are validated during deployment of the application. When active, the default value, all JNDI references are verified but those references can be provided by the application itself and thus not yet available at deployment time (for example the `java:module/env/` based ones). By setting this option to false, validation is not performed and deployment will succeed. However, issues will occur at runtime of the application in case of errors in the references.| true, false | true
 
 | fish.payara.javax.servlet.jsp.disable-static-field-references | boolean | This option brings back the behaviour of evaluating EL in JSPs from GlassFish 3. When enabled, a static field reference won't be evaluated. | true, false | false (undefined)
+
+| fish.payara.upgrade.repo.url | String | This option defines the Maven repository download URL for the upgrade tool. | A URL pointing to the Payara Nexus repository to download from (expected to point to the `fish/payara/distributions` directory of the repo) | undefined (https://nexus.payara.fish/repository/payara-enterprise-downloadable-artifacts/fish/payara/distributions/)
 |=======================================================================
