@@ -29,6 +29,7 @@ stores
 * [APPSERV-146] - Monitoring Console: Bookmarkable Page URLs
 * [APPSERV-148] - Monitoring Console: MP Metrics Metadata as MC Annotations
 * [CUSTCOM-238] - Support JSP on Payara Micro Docker
+* [FISH-1332] - Allow Executing 'preboot' and 'postboot' Commands over Payara Micro API
 
 == Bug Fixes
 
