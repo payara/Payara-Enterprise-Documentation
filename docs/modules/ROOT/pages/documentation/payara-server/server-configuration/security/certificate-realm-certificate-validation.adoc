@@ -1,7 +1,7 @@
 [[client-certificate-validator]]
 = Client Certificate Custom Validations
 
-By default, Payara checks only if the submitted Client Certificate is present in the trust store. If it is found, it is accepted without any additional checks.
+By default, Payara checks if the submitted Client Certificate is present in the trust store and the certificate is valid time-wise. If it is found and valid, the Client Certificate is accepted without any additional checks.
 
 Custom Client Certificate Validation allows you to perform extra checks in addition to checking for the presence of the certificate in the trust store.
 You can perform a check on the validity date, and use the Online Certificate Status Protocol (OCSP) to validate the certificate when it has a Certificate Revocation List entry (CRL), or lookup the DN name in a database for example, and determine based on this information if the certificate is still accepted.
@@ -47,3 +47,29 @@ com.company.certificate.MyCertificateValidator
 ----
 
 NOTE: You can @Inject CDI and EJB beans in your validator implementation, however since the validator itself is not a Jakarta EE bean, `@PostConstruct` and `@PreDestroy`-annotated methods will not be called on the validator instance.
+
+[[client-certificate-expiration-validator]]
+== Certificate Expiration Validation
+By default, certificate expiration validation is enabled. This validation checks if the certificates in the trust store are valid time-wise. If the client certificate has expired or is not valid yet, a warning will be printed in the server logs.
+
+=== Using an `asadmin` command
+
+You can use the following asadmin command to set the value of the property through:
+
+[source, shell]
+----
+asadmin> set configs.config.${YOUR_INSTANCE_CONFIG}.security-service.auth-realm.certificate.property.certificate-validation=[true/false]
+----
+
+=== Using the Admin Console
+
+This feature can be configured on the default certificate realm as follows on the administration console:
+
+. Navigate to the applicable configuration page for your use (e.g. `server-config`) under the `Configurations` option
+in the side menu
+. Head to `Security` -> `Realms` and select the `certificate` realm
+. Set the property `certificate-validation` _value_ to `[true/false]`
+
+image:security/default-certificate-expiration-validation.png[Certificate Expiration Validation Setting]
+
+IMPORTANT: After setting the value of the property, make sure that you **restart the server instance** for the changes to take effect.
