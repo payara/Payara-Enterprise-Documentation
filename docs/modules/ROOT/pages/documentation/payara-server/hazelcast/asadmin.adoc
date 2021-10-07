@@ -45,8 +45,8 @@ Return the current Hazelcast configuration.
 [source, shell]
 ----
 asadmin> get-hazelcast-configuration
-Configuration File    Enabled  Start Port  MulticastGroup  MulticastPort  JNDIName            Lite Member  Cluster Name  Cluster Password  License Key          Host Aware Partitioning
-hazelcast-config.xml  true     5900        224.2.2.3       54327          payara/Hazelcast    false        clustername   password          XXXX-XXXX-XXXX-XXXX  false
+Configuration File    Enabled  Start Port  MulticastGroup  MulticastPort  JNDIName            Lite Member  Cluster Name  License Key          Host Aware Partitioning
+hazelcast-config.xml  true     5900        224.2.2.3       54327          payara/Hazelcast    false        clustername   XXXX-XXXX-XXXX-XXXX  false
 ----
 
 [[list-hazelcast-cluster-members]]
@@ -280,9 +280,6 @@ instance.||No
 |`--clustername`|Group Name|Specifies the Hazelcase group name, to be
 optionally used to help divide clusters into logical, segregated groups (i.e.
   _dev-group_, _prod_grop_).||No
-
-|`--clusterpassword`|Password|Specifies the password used to access the
-Hazelcast group.||No
 
 |`--jndiname`
 
