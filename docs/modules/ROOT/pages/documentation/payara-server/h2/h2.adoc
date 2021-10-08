@@ -4,6 +4,8 @@
 H2 is a Java-based Database which replaced Derby as the default database in Payara 5. Derby as a database service that can be started and managed by Payara Server Enterprise, has been removed starting from version 5.201.
 
 
+Starting from _Payara 5.32.0_ H2 Database is started with a password, this password is `changeit`. This change is due to upgrading H2 Database to version 1.4.200 and does not affect how you start/stop the database or how you connect to the H2 Console.
+
 [[why-replace-derby]]
 == Why replace Derby?
 In terms of performance, Derby is one of the slowest  embedded databases as  
