@@ -9,6 +9,10 @@ can or have impacted Payara Server across releases:
 |=======================================================================
 |ID |CVSS v3.0 Base Score |Status |Summary |Release |Observations
 
+| https://www.cvedetails.com/cve/CVE-2018-10054/[CVE-2018-10054] | 6.5 | FIXED | Remote code execution vulnerability in H2 DB because CREATE ALIAS can execute arbitrary Java code | 5.32.0 | Fixed by upgrading H2 DB to 1.4.200
+
+| https://www.cvedetails.com/cve/CVE-2018-14335/[CVE-2018-14335] | 4.0 | FIXED |  Insecure handling of permissions in the backup function of the H2 DB | 5.32.0 | Fixed by upgrading H2 DB to 1.4.200
+
 | https://nvd.nist.gov/vuln/detail/CVE-2021-41381[CVE-2021-41381]  | 5.3 | FIXED | Improper Limitation of a pathname to a restricted directory (exposes an application to "Path Traversal") when context root is / | 5.31.0 | Recommended to immediately upgrade to this release if any of your applications is deployed on the / context root on Payara Server or Payara Micro
 
 | https://nvd.nist.gov/vuln/detail/CVE-2020-25649[CVE-2020-25649] | 7.5 | FIXED | A flaw in FasterXML Jackson Databind 2.10.2 allows vulnerability to XML external entity (XXE) attacks. The highest threat from this vulnerability is data integrity. | 5.30.0 | Fixed by upgrading Jackson Databind to 2.12.4
