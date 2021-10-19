@@ -16,7 +16,7 @@ Since the Cluster Password is no longer supported on Hazelcast, the asadmin comm
 
 ##### Payara Nexus Repository Changes
 
-The structure of our Payara Nexus repository has changed. The name change, however, means that you might need to change the URLs pointing to the repository in your repository manager, CI environment, or development environment if you make use of the `payara-enterprise` repository.  You can read more details about the change and the new structure in our knowledge base article; https://support.payara.fish/hc/en-gb/articles/4408617212177[Payara Nexus repository changes after October 18th 2021].
+The structure of our Payara Nexus server has changed. This means that you might need to change the URLs pointing to the repository in your repository manager, CI environment, or development environment if you make use of the `payara-enterprise` repository.  You can read more details about the change and the new structure in our knowledge base article; https://support.payara.fish/hc/en-gb/articles/4408617212177[Payara Nexus repository changes after October 18th 2021].
 
 ### Improvements
 
