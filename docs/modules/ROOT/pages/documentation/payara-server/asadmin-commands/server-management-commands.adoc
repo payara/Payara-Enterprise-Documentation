@@ -295,7 +295,7 @@ The subcommand creates the following Windows Services Wrapper files for the serv
 
 On Linux systems, the create-service subcommand first detects System-V or SystemD init systems.
 
-On systems using System-V, it creates an initialization script `/etc/init.d/GlassFish_domain-or-instance-name` and installs a link to this script in the `/etc/rc?.d` directories. After this subcommand creates the script, you must use this script to start, stop, or restart the domain or instance.
+On systems using System-V, it creates an initialization script `/etc/init.d/payara_domain-or-instance-name` and installs a link to this script in the `/etc/rc?.d` directories. After this subcommand creates the script, you must use this script to start, stop, or restart the domain or instance.
 
 On systems using SystemD, the subcommand creates a configuration file `payara_domainname.service` in `/etc/systemd/system`. It is recommended to specify non-root user to run payara (parameter `--serviceuser`). It is possible to further configure the service via `--serviceproperties`.
 
@@ -325,7 +325,8 @@ To run these commands as non-root user, the system administrator must be contact
 
 If you delete a service that you created by using the create-service subcommand, you must delete the directory that contains the manifest file and the entire contents of the directory. Otherwise, an attempt to re-create the service by using the create-service subcommand fails. The Oracle Solaris command `svccfg` does not delete this directory.
 
-
+[[command-options-create-service]]
+=== Command Options
 
 [cols="2,1,4,1,1",options="header"]
 |===
@@ -382,7 +383,7 @@ If you delete a service that you created by using the create-service subcommand,
 
 | --serviceuser
 | string
-| (Linux systems only) The user that is to run the GlassFish Server software when the service is started. The default is the user that is running the subcommand. Specify this option if the Payara Server is to be run by a user other than the root user.
+| (Linux systems only) The user that is to run Payara Server when the service is started. The default is the user that is running the subcommand. Specify this option if Payara Server is to be run by a user other than the root user.
 | root
 | No
 
@@ -406,10 +407,13 @@ If you delete a service that you created by using the create-service subcommand,
 
 |===
 
-[[example]]
+[[example-create-service]]
 === Examples
 
-Example 1, Creating a Service on a Windows System This example creates a service for the default domain on a system that is running Windows.
+[[example-create-service-windows]]
+==== Example 1: Creating a Service on a Windows System
+
+This example creates a service for the default domain on a system that is running Windows.
 
 [source]
 ----
@@ -418,17 +422,17 @@ Found the Windows Service and successfully uninstalled it.
 The Windows Service was created successfully.  It is ready to be started.  Here are
 the details:
 ID of the service: domain1
-Display Name of the service:domain1 GlassFish Server
-Domain Directory: C:\glassfish3\glassfish\domains\domain1
-Configuration file for Windows Services Wrapper: C:\glassfish3\glassfish\domains\
+Display Name of the service:domain1 Payara Server
+Domain Directory: C:\payara\glassfish\domains\domain1
+Configuration file for Windows Services Wrapper: C:\payara\glassfish\domains\
 domain1\bin\domain1Service.xml
 The service can be controlled using the Windows Services Manager or you can use the
 Windows Services Wrapper instead:
-Start Command:  C:\glassfish3\glassfish\domains\domain1\bin\domain1Service.exe  start
-Stop Command:   C:\glassfish3\glassfish\domains\domain1\bin\domain1Service.exe  stop
-Uninstall Command:  C:\glassfish3\glassfish\domains\domain1\bin\domain1Service.exe
+Start Command:  C:\payara\glassfish\domains\domain1\bin\domain1Service.exe  start
+Stop Command:   C:\payara\glassfish\domains\domain1\bin\domain1Service.exe  stop
+Uninstall Command:  C:\payara\glassfish\domains\domain1\bin\domain1Service.exe
 uninstall
-Install Command:  C:\glassfish3\glassfish\domains\domain1\bin\domain1Service.exe
+Install Command:  C:\payara\glassfish\domains\domain1\bin\domain1Service.exe
 install
 
 This message is also available in a file named PlatformServices.log in the domain's
@@ -436,7 +440,10 @@ root directory
 Command create-service executed successfully.
 ----
 
-Example 2, Creating a Service on a Linux System using SystemD init This example creates a service for the default domain on a system that is running Linux and SystemD. It is necessary to inform SystemD about the new script by running systemctl daemon-reload. Then it is possible to start the service.
+[[example-create-service-systemd]]
+==== Example 2: Creating a Service on a Linux System using SystemD
+
+This example creates a service for the default domain on a system that is running Linux and SystemD. It is necessary to inform SystemD about the new script by running `systemctl daemon-reload`. Then it is possible to start the service.
 
 [source]
 ----
@@ -459,7 +466,10 @@ For your convenience this message has also been saved to this file:
 Command create-service executed successfully.
 ----
 
-Example 3, Creating a Service on a Linux System using SystemV init This example creates a service for the default domain on a system that is running Linux and SystemV.
+[[example-create-service-systemv]]
+==== Example 3: Creating a Service on a Linux System using SystemV
+
+This example creates a service for the default domain on a system that is running Linux and SystemV.
 
 [source]
 ----
@@ -468,17 +478,17 @@ Found the Linux Service and successfully uninstalled it.
 The Service was created successfully. Here are the details:
 Name of the service:domain1
 Type of the service:Domain
-Configuration location of the service:/etc/init.d/GlassFish_domain1
+Configuration location of the service:/etc/init.d/payara_domain1
 User account that will run the service: root
 You have created the service but you need to start it yourself.
 Here are the most typical Linux commands of interest:
 
-* /etc/init.d/GlassFish_domain1 start
-* /etc/init.d/GlassFish_domain1 stop
-* /etc/init.d/GlassFish_domain1 restart
+* /etc/init.d/payara_domain1 start
+* /etc/init.d/payara_domain1 stop
+* /etc/init.d/payara_domain1 restart
 
 For your convenience this message has also been saved to this file:
-/export/glassfish3/glassfish/domains/domain1/PlatformServices.log
+/opt/payara/glassfish/domains/domain1/PlatformServices.log
 Command create-service executed successfully.
 ----
 
@@ -490,11 +500,9 @@ asadmin> create-service
 The Service was created successfully. Here are the details:
 Name of the service:application/GlassFish/domain1
 Type of the service:Domain
-Configuration location of the service:/home/gfuser/glassfish-installations
-/glassfish3/glassfish/domains
+Configuration location of the service:/opt/payara/glassfish/domains
 Manifest file location on the system:/var/svc/manifest/application
-/GlassFish/domain1_home_gfuser_glassfish-installations_glassfish3
-_glassfish_domains/Domain-service-smf.xml.
+/GlassFish/domain1_opt_payara_glassfish_domains/Domain-service-smf.xml.
 You have created the service but you need to start it yourself.
 Here are the most typical Solaris commands of interest:
 * /usr/bin/svcs -a | grep domain1 // status
@@ -512,13 +520,16 @@ Command create-service executed successfully.
 `asadmin> _delete-service <options> <domain-or-instance-name>`
 
 *Aim*::
-The _delete-service subcommand delete init scripts created by the subcommand create-script.
+The _delete-service subcommand deletes scripts created by the subcommand create-service.
 
-If no operand is specified and the domains directory contains only one domain, the subcommand deletes the script starting the DAS for the default domain. If no operand is specified and the domains directory contains multiple domains, an error occurs.
+If no operand is specified and the domains directory contains only one domain, the subcommand deletes the script that starts the DAS for the default domain. If no operand is specified and the `domains` directory contains multiple domains, an error occurs.
 
 The subcommand contains internal logic to determine whether the supplied operand is a DAS or an instance.
 
 This subcommand is supported in local mode only.
+
+[[command-options-delete-service]]
+=== Command Options
 
 [cols="2,1,4,1,1",options="header"]
 |===
@@ -569,10 +580,10 @@ This subcommand is supported in local mode only.
 
 |===
 
-[[example]]
-=== Examples
+[[example-delete-service]]
+=== Example: Deleting a Service on a Linux System using SystemD init.
 
-Deleting a Service on a Linux System using SystemD init. This example deletes a service for the default domain on a system that is running Linux and SystemD. It is necessary to inform SystemD about deleting the script by running systemctl daemon-reload.
+This example deletes a service for the default domain on a system that is running Linux and SystemD. It is necessary to inform SystemD about deleting the script by running systemctl daemon-reload.
 
 [source]
 ----
