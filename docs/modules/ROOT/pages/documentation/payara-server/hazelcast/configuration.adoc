@@ -390,6 +390,8 @@ and config specific settings. You can pass the `--help` option to the command to
 usage instructions and available arguments in your terminal, both of which
 are listed below:
 
+NOTE: The `set-hazelcast-configuration` in previous Payara Server versions used to accept the `--clusterPassword` argument together with the `--clustername` argument. The argument `--clusterPassword` is no longer accepted. Instead, the `--clustername` argument should be used alone, without specifying a password.
+
 [cols="3,1,4,1,1",options="header"]
 |====
 |Option|Type|Description|Default|Mandatory
