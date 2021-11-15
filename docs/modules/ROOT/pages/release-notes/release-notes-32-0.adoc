@@ -1,24 +1,24 @@
 # Release Notes - Payara Platform Enterprise 5.32.0
 
-### Supported APIs and Applications
+## Supported APIs and Applications
 * Jakarta EE 8
 * Java EE 8 Applications
 * MicroProfile 4.1
 
 
-#### Breaking Changes
+## Breaking Changes
 
-##### Hazelcast 4 Upgrade
+### Hazelcast 4 Upgrade
 
 Since this Enterprise version contains an upgraded version of Hazelcast, there is no rolling upgrade possible due to the changes within Hazelcast. A domain or set of Payara Micro instances having a mixture of Hazelcast 3.x and Hazelcast 4.x results in errors.
 
-Since the Cluster Password is no longer supported on Hazelcast, the asadmin command `set-hazelcast-configuration` no longer has the optional `--clusterPassword` option.
+Since the Cluster Password is no longer supported on Hazelcast, the asadmin command xref:documentation/payara-server/hazelcast/configuration.adoc#configuring-hazelcast-using-asadmin[`set-hazelcast-configuration`] no longer has the optional `--clusterPassword` option.
 
-##### Payara Nexus Repository Changes
+### Payara Nexus Repository Changes
 
 The structure of our Payara Nexus server has changed. This means that you might need to change the URLs pointing to the repository in your repository manager, CI environment, or development environment if you make use of the `payara-enterprise` repository.  You can read more details about the change and the new structure in our knowledge base article; https://support.payara.fish/hc/en-gb/articles/4408617212177[Payara Nexus repository changes after October 18th 2021].
 
-### Improvements
+## Improvements
 
 [FISH-5782] Change the Default Nexus Repository in the Upgrade Tool to the New URL
 
@@ -37,11 +37,11 @@ The structure of our Payara Nexus server has changed. This means that you might 
 [FISH-146] Improvement of the Behaviour of DAS When 'admin port' is Changed for a Running Instance
 
 
-### Security Fixes
+## Security Fixes
 
 [FISH-5697] Upgrade H2 Database Engine to 1.4.200
 
-### Bug Fixes
+## Bug Fixes
 
 [FISH-5783] 'cleanupUpgrade.bat' Cannot Find 'checkCurrentPresent'
 
@@ -63,7 +63,7 @@ The structure of our Payara Nexus server has changed. This means that you might 
 
 
 
-### Component Upgrades
+## Component Upgrades
 
 [FISH-5776] Upgrade to Mojarra 2.3.14.payara-p3
 
