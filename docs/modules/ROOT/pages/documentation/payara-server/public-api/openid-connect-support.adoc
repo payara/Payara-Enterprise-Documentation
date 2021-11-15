@@ -421,7 +421,7 @@ Authorization Server.
 - The `getProviderMetadata()` method - The OpenId Connect Provider's metadata document fetched via provider URI.
 
 [[user-information-from-the-id-token]]
-=== User information from the ID Token
+== User information from the ID Token
 
 The following property is added to get user information from the ID Token.
 
@@ -441,7 +441,7 @@ NOTE: To integrate with Microsoft ADFS this property will be needed because by d
 |===
 
 [[user-information-from-the-id-token-example]]
-==== Example
+=== Example
 
 [source, java]
 ----
