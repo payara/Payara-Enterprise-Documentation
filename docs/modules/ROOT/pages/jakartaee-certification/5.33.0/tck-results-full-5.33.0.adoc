@@ -466,14 +466,14 @@ Interoperatibility tests carried out against Eclipse Glassfish 5.1.0
 ### jbatch
 
 ```
-[javatest.batch] Completed running 322 tests.
-[javatest.batch] Number of Tests Passed      = 321
-[javatest.batch] Number of Tests Failed      = 1
-[javatest.batch] Number of Tests with Errors = 0
-[javatest.batch] Completed running 1 tests.
-[javatest.batch] Number of Tests Passed      = 1
-[javatest.batch] Number of Tests Failed      = 0
-[javatest.batch] Number of Tests with Errors = 0
+    [javatest.batch] Completed running 322 tests.
+    [javatest.batch] Number of Tests Passed      = 321
+    [javatest.batch] Number of Tests Failed      = 1
+    [javatest.batch] Number of Tests with Errors = 0
+    [javatest.batch] Completed running 1 tests.
+    [javatest.batch] Number of Tests Passed      = 1
+    [javatest.batch] Number of Tests Failed      = 0
+    [javatest.batch] Number of Tests with Errors = 0
 ```
 
 ### jdbc_appclient
