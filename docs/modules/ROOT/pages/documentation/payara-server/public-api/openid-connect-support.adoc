@@ -85,9 +85,10 @@ NOTE: Only some basic redirect is supported namely a GET. Only the URL and query
 == Configuration
 
 OpenID Client can be configured with both `@OpenIdAuthenticationDefinition` annotation attributes and Microprofile Config properties.
-The annotation and MicroProfile properties has several configuration options.
 
-They are detailed below.
+CAUTION: When you provide configuration using MicroProfile Config properties and you use a reference to a variable provided by Payara using the `${}` notation inside the values, you need to escape the `$` sign with `\\`. Otherwise they will be treated as references to other MicroProfile Config properties, which may result in an error if such a MicroProfie property isn't found. This especially applies to the `baseURL` variable, which is only accepted in the value of the `redirectURI` option. For example, to specify `redirectURI` using a MicroProfile Config property which is equal to `${baseURL}/Callback` used in the annotation, you need to use the following MicroProfile Config key=value definition: `payara.security.openid.redirectURI=\\${baseURL}/Callback`.
+
+The annotation and MicroProfile properties has several configuration options. They are detailed below.
 
 .Configuration Options
 |===
@@ -117,7 +118,7 @@ They are detailed below.
 | `redirectURI`
 | `payara.security.openid.redirectURI`
 | true
-| The URL to redirect the user to upon successful authentication.
+|  The URL to redirect the user to upon successful authentication. Can include the variable ${baseURL}, which is replaced by the URL of the application's context path (e.g. `https://myhost:8080/myapp`)
 | ${baseURL}/Callback
 | Must be equal to one set in the OpenID Connect provider.
 
