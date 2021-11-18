@@ -86,9 +86,10 @@ NOTE: Only some basic redirect is supported namely a GET. Only the URL and query
 
 OpenID Client can be configured with both `@OpenIdAuthenticationDefinition` annotation attributes and Microprofile Config properties.
 
-CAUTION: When you provide configuration using MicroProfile Config properties and you use a reference to a variable provided by Payara using the `${}` notation inside the values, you need to escape the `$` sign with `\\`. Otherwise they will be treated as references to other MicroProfile Config properties, which may result in an error if such a MicroProfie property isn't found. This especially applies to the `baseURL` variable, which is only accepted in the value of the `redirectURI` option. For example, to specify `redirectURI` using a MicroProfile Config property which is equal to `${baseURL}/Callback` used in the annotation, you need to use the following MicroProfile Config key=value definition: `payara.security.openid.redirectURI=\\${baseURL}/Callback`.
+CAUTION: If you are using MicroProfile Config properties and the value contains a placeholder that should not be resolved by MicroProfile Config
+itself but by the Server (like `payara.security.openid.redirectURI=${baseURL}/Callback`) make sure the value is properly escaped. It will otherwise result in `NoSuchElementException`. Here's an example how such a value should be escaped: `payara.security.openid.redirectURI=\\${baseURL}/Callback`
 
-The annotation and MicroProfile properties has several configuration options. They are detailed below.
+The annotation and MicroProfile properties have several configuration options. They are detailed below.
 
 .Configuration Options
 |===
@@ -231,10 +232,6 @@ The annotation and MicroProfile properties has several configuration options. Th
 NOTE: If both an annotation attribute and a MicroProfile Config property are defined for the same option
 then the MicroProfile Config property value always takes precedence over the `@OpenIdAuthenticationDefinition` annotation value.
 
-NOTE: If you are using MicroProfile Config properties and the value contains a placeholder that should not be resolved by MicroProfile Config
-itself but by the Server (like `payara.security.openid.redirectURI=${baseURL}/Callback`) make sure the value is properly escaped. It will otherwise result in `NoSuchElementException`. Here's an example how such a value should be escaped: `payara.security.openid.redirectURI=\\${baseURL}/Callback`
-
-
 [[el-support]]
 == Expression Language Support
 
@@ -264,7 +261,7 @@ To enable re-evaluation of the configuration for each user session, set the Micr
 
 With this enabled, it's possible to use EL expressions to dynamically adjust the configuration before each authantication attempt, e.g. based on any information in the incoming HTTP request. The information about the HTTP request can be retrieved from a `HttpServletRequest` object injected using `@Inject`.
 
-NOTE: It's not possible to use a different configuration for just a subset of secured resources. Once a user is authenticated, the authentication information is saved in the HTTP session. All secured resources will be accessed using the same user, having the same roles, until the user logs out.
+IMPORTANT: It's not possible to use a different configuration for just a subset of secured resources. Once a user is authenticated, the authentication information is saved in the HTTP session. All secured resources will be accessed using the same user, having the same roles, until the user logs out.
 
 [[example-multitenant]]
 === Example multitenant authentication
