@@ -125,3 +125,66 @@ In this case you don't need to add it during the Rest Client Call
 You can find out more about MicroProfile Config property here: xref:documentation/microprofile/config/README.adoc[MicroProfile Config]
 
 NOTE: For this to work, you need to include the certificate with the given alias in the default payara keystore.
+
+[[proxy-configuration]]
+== Proxy Configuration
+
+MicroProfile Rest Client 2.0 introduced support for configuring proxy servers via MicroProfile Config and the
+`RestClientBuilder` API. On a vanilla install however, Payara Platform will not utilise these settings and the proxy
+will be ignored. This is due to Jersey, the JAX-RS client and underlying implementation of
+MicroProfile Rest Client of Payara Platform, not by default supportting configuration of proxies on a per-client basis (only via
+the global JVM system property). Jersey does however support proxy configuration on a per-client basis when using
+non-default "connectors" - the means by which Jersey performs the actual network call.
+
+If you wish to make use of this feature of MicroProfile Rest Client, you must perform a number of steps to configure
+Payara to make use of one of these connectors. Below are instructions for how to configure Payara Server to make
+use of Apache HTTP Client.
+
+[[create-restclientlistener]]
+=== Create a RestClientListener
+
+To configure Jersey to use Apache HTTP Client as its connector, a `RestClientListener` can be used to register the
+connector for each new client. You can add one to your application as described by Provider Declaration section of
+the {mpRestClientSpecUrl}[MicroProfile Rest Client specification].
+
+Below is a simple example of registering the Jersey Apache HTTP Client Connector:
+[source, java]
+----
+public class RestClientApacheHttpClientListener implements RestClientListener {
+
+    @Override
+    public void onNewClient(Class<?> aClass, RestClientBuilder restClientBuilder) {
+        restClientBuilder.register(new ApacheConnectorProvider());
+    }
+
+}
+----
+
+The `ApacheConnectorProvider` class can be found in the `org.glassfish.jersey.connectors:jersey-apache-connector`
+library, please refer to the Payara BOM artefact for the specific version of the Jersey connector to use.
+
+[[add-apache-http-client]]
+=== Add Apache HTTP Client
+
+In addition to the above, you will also need to add the following dependencies to Payara Server:
+
+* org.apache.httpcomponents:httpclient-osgi:4.5.13
+* org.apache.httpcomponents:httpcore-osgi:4.4.14
+* commons-logging:commons-logging:1.2
+
+These can be included with your application or added to the server via the `add-library` command:
+
+[source, bash]
+----
+asadmin add-library httpclient-osgi-4.5.13.jar httpcore-osgi-4.4.14.jar commons-logging-1.2.jar
+----
+
+If you haven't bundled the library in your application, you will also need to add the
+`org.glassfish.jersey.connectors:jersey-apache-connector` dependency to Payara Server:
+
+[source, bash]
+----
+asadmin add-library jersey-apache-connector-${jersey.version}.jar
+----
+
+Again, please refer to the Payara BOM artefact for the specific version of the Jersey connector to use.
