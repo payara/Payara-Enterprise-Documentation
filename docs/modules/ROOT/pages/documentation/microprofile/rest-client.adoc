@@ -132,7 +132,7 @@ NOTE: For this to work, you need to include the certificate with the given alias
 MicroProfile Rest Client 2.0 introduced support for configuring proxy servers via MicroProfile Config and the
 `RestClientBuilder` API. On a vanilla install however, Payara Platform will not utilise these settings and the proxy
 will be ignored. This is due to Jersey, the JAX-RS client and underlying implementation of
-MicroProfile Rest Client of Payara Platform, not by default supportting configuration of proxies on a per-client basis (only via
+MicroProfile Rest Client of Payara Platform, not by default supporting configuration of proxies on a per-client basis (only via
 the global JVM system property). Jersey does however support proxy configuration on a per-client basis when using
 non-default "connectors" - the means by which Jersey performs the actual network call.
 
