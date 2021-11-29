@@ -164,7 +164,7 @@ The `ApacheConnectorProvider` class can be found in the `org.glassfish.jersey.co
 library, please refer to the Payara BOM artefact for the specific version of the Jersey connector to use.
 
 [[add-apache-http-client]]
-=== Add Apache HTTP Client
+=== Add Apache HTTP Client Dependencies
 
 In addition to the above, you will also need to add the following dependencies to Payara Server:
 
