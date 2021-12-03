@@ -1,0 +1,27 @@
+[[fast-logging]]
+= Fast Logging
+
+By default, a toString() is forced on all parameters within the same thread as the application. This stops a mutable object being changed after the log statement is issued and thus wrong values be written out in the log entry, but can cause a performance impact with JPA entities as it may result in database access.
+
+With `Fast Logging` enabled, this forced toString() is skipped.
+
+WARNING: This can cause log messages with mutable parameters to be out of sync and contain changed values when the log is written.
+
+You can disable the forced toString() by enabling the `Fast Logging` option via the admin console or asadmin command.
+
+[[using-web-admin-console]]
+== Using the Admin Console
+
+To configure the `Fast Logging` option, set it in the Logger settings.
+
+image:logging/fast_logging.png[Fast Logging enabled]
+
+[[using-asadmin-utility]]
+== Using an asadmin command
+
+Use the following command to enable or disable fast logging:
+
+[source, shell]
+----
+asadmin> set-log-attributes com.sun.enterprise.server.logging.GFFileHandler.fastLogging=true
+----
