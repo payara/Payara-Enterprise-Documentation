@@ -91,7 +91,7 @@ itself but by the Server (like `payara.security.openid.redirectURI=${baseURL}/Ca
 
 The annotation and MicroProfile properties have several configuration options. They are detailed below.
 
-.Configuration Options
+.Configuration Options For `@OpenIdAuthenticationDefinition`
 |===
 | Option | MP Config property | Required | Description | Default value | Requirements
 
@@ -232,6 +232,20 @@ The annotation and MicroProfile properties have several configuration options. T
 NOTE: If both an annotation attribute and a MicroProfile Config property are defined for the same option
 then the MicroProfile Config property value always takes precedence over the `@OpenIdAuthenticationDefinition` annotation value.
 
+.Configuration Options For `@OpenIdProviderMetadata`
+|===
+| Option | MP Config property | Description | Default value
+
+| `endSessionEndpoint`
+| `payara.security.openid.provider.endSessionEndpoint`
+| OIDC provider’s logout endpoint URL. If set, overrides the URL obtained via the `end_session_endpoint` element of the OIDC provider’s metadata.
+|  
+
+| `disableScopeValidation`
+| `payara.security.openid.disableScopeValidation`
+| This property disables the scope validation for custom scope configurations
+| false 
+|===
 [[el-support]]
 == Expression Language Support
 
@@ -264,7 +278,7 @@ With this enabled, it's possible to use EL expressions to dynamically adjust the
 IMPORTANT: It's not possible to use a different configuration for just a subset of secured resources. Once a user is authenticated, the authentication information is saved in the HTTP session. All secured resources will be accessed using the same user, having the same roles, until the user logs out.
 
 [[example-multitenant]]
-=== Example multitenant authentication
+=== Example Multitenant Authentication
 
 In this example, we'll:
 
@@ -419,7 +433,7 @@ Authorization Server.
 - The `getProviderMetadata()` method - The OpenId Connect Provider's metadata document fetched via provider URI.
 
 [[user-information-from-the-id-token]]
-== User information from the ID Token
+== User Information from the ID Token
 
 The following property is added to get user information from the ID Token.
 
@@ -455,18 +469,43 @@ public class SecurityBean {
 }
 ----
 
+[[disable-scope-validation]]
+== Disable Scope Validation
+
+By default, Payara OpenID Connect connector validates that a scope is reported as a supported 
+scope by the provider. However, some providers support more scopes than they actually report as
+supported scopes. In order to disable the validation and allow using such scopes, it's possible to
+use the `disableScopeValidation` property of `OpenIdProviderMetadata`. See the <<configuration>> section for more details about this option.
+
+
+[[disable-scope-validation-example]]
+=== Example
+
+[source, java]
+----
+@OpenIdAuthenticationDefinition(
+       providerURI = "https://sample-openid-server.com",
+       clientId = "87068hgfg5675htfv6mrucov57bknst.apps.sample.com",
+       clientSecret = "{my-secret}",
+       redirectURI = "${baseURL}/callback",
+       providerMetadata = @OpenIdProviderMetadata(disableScopeValidation = true))
+public class SecurityBean {
+
+}
+----
+
 [[bearer-auth]]
-## Bearer Authentication and Authorization
+== Bearer Authentication and Authorization
 
 In order to authenticate and authorize calls between services using the OpenID mechanism, it is possible to use authorization compatible with https://datatracker.ietf.org/doc/html/rfc6750[RFC 6750]. In this case, the access token presented to the resource service is an JWT token that is used to verify that the caller has access to OAuth2 protected resources.
 
 [[obtaining-token]]
-### Obtaining JWT Token
+=== Obtaining JWT Token
 
 Obtaining the token is specific to the OAuth provider and the application. The usual approach is using https://datatracker.ietf.org/doc/html/rfc6749#section-4.4[Client Credentials Grant], where an application posts its clientId and secret to identity provider and receives access and refresh tokens in return.
 
 [[passing-token]]
-### Passing Token To The Resource Service
+=== Passing Token To The Resource Service
 
 The obtained access token is passed with every request to the resource service by adding it into the `Authorization` HTTP header:
 
@@ -475,7 +514,7 @@ Authorization: Bearer access__token
 ```
 
 [[processing-token]]
-### Processing Bearer Authorization
+=== Processing Bearer Authorization
 
 When Bearer authorization header is present in the request, the provided token is verified. It's validated that it comes from the expected issuer and hasn't expired.
 
@@ -511,7 +550,7 @@ public class Auth0BearerIdentityStore extends BearerGroupsIdentityStore {
 NOTE: Payara Platform also provides similar functionality by xref:documentation/microprofile/jwt.adoc[MicroProfile JWT Authentication], which is however limited only to securing JAX-RS resources. On the other hand, the OpenID Connect Bearer Authentication and Authorization feature is better aligned with the OpenID Connect support in Payara Platform and can also be used to secure other resources like servlets.
 
 [[specific-providers]]
-== Integration with specific providers
+== Integration with Specific Providers
 
 [[google-oidc-integration]]
 === Google integration
@@ -598,10 +637,14 @@ public class SecurityBean {
 ----
 
 [[microsoft-adfs-integration]]
-==== Microsoft ADFS integration
+==== Microsoft ADFS Integration
 
 To enable the integration for Microsoft ADFS it is needed to use the new property: userClaimsFromIDToken. See <<user-information-from-the-id-token>> for more information.
 
+[[azure-ad-scope-validation]]
+==== Azure AD Scope Validation
+
+To disable the scope validation for Azure AD integration it is needed to use the following property: disableScopeValidation. See <<disable-scope-validation>> for more information.
 
 [[keycloak-oidc-integration]]
 === Keycloak integration
