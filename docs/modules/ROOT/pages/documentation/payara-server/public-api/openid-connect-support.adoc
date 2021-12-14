@@ -222,11 +222,11 @@ The annotation and MicroProfile properties have several configuration options. T
 | N/A.
 
 | `extraParameters`
-|
+| `payara.security.openid.extraParams.raw` in form of URL query, e.g. `key1=value1&key2=value2&key2=value+with+spaces`
 | false
 | An array of extra options to be sent to the OpenID Connect provider.
 |
-| Must be in the form `"key=value"`.
+| Must be in the form `"key=value"`. Keys can repeat.
 
 | `logout`
 |
