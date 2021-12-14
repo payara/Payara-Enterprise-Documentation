@@ -15,7 +15,7 @@ Payara's Bill Of Material (BOM) artifact collects all of these versions for the 
 == Quick Start
 
 To make use of the BOM, you need to list the artifact in `dependencyManagement` section of your project in scope `import`.
-Some of the artifacts are Payara-specific patch versions which are available in our nexus repository https://nexus.payara.fish/repository/payara-artifacts/[payara-artifacts].
+Some of the artifacts are Payara-specific patch versions which are available in our nexus repository https://nexus.payara.fish/repository/payara-artifacts/[payara-artifacts]. You can find more information about the `payara-artifacts` repository in this https://support.payara.fish/hc/en-gb/articles/360020556033[Knowledgebase article] (only accessible for Enterprise Customers)
 
 Add following snippet to your Maven project:
 
