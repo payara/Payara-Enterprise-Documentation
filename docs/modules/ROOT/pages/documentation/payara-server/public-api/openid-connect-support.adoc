@@ -93,13 +93,20 @@ The annotation and MicroProfile properties have several configuration options. T
 
 .Configuration Options For `@OpenIdAuthenticationDefinition`
 |===
-| Option | MP Config property | Required | Description | Default value | Requirements
+| Option | MP Config property | Required/Type | Description | Default value | Requirements
 
 | `providerURI`
 | `payara.security.openid.providerURI`
-| true
-| The provider uri to discover the metadata of the OpenID Connect provider.
+| false
+| The provider uri to discover the metadata of the OpenID Connect provider. If not specified, metadata are read from `providerMetadata`.
 |
+| The endpoint must be HTTPS.
+
+| `providerMetadata`
+|
+| required if `providerURI` not specified, type: `@OpenIdProviderMetadata`
+| Alternative way to specify metadata if auto-configuration from `providerURI` can't be used.
+| `payara.security.openid.provider.*`
 | The endpoint must be HTTPS.
 
 | `clientId`
@@ -127,7 +134,7 @@ The annotation and MicroProfile properties have several configuration options. T
 | `payara.security.openid.scope`
 | false
 | The scopes requested from the OpenID Connect provider.
-| {openid, email, profile}
+| `{"openid", "email", "profile"}`
 | N/A.
 
 | `responseType`
@@ -396,6 +403,83 @@ With the `logout` parameter of the `OpenIdAuthenticationDefinition` you can defi
 
 A programmatic logout is performed by calling `OpenIdContext#logout()` which invalidates the RP's active OpenId Connect session. If `fish.payara.security.annotations.LogoutDefinition#notifyProvider` is set to true then it redirects the End-User's User Agent to the `end_session_endpoint` to notify the OP that the user has logged out of the RP's application. It will also ask the user whether they want to logout from the OP as well. After successful logout, the End-User's User Agent redirects back to the RP's `_post_redirect_uri_` configured via `fish.payara.security.annotations.LogoutDefinition#redirectURI`.
 
+[[provider-metadata]]
+=== Provider Metadata
+
+If the OpenId server doesn't provide autoconfiguration or it is necessary to customize it, it is possible to set these values in the `providerMetadata` field of the `@OpenIdAuthenticationDefinition` annotation. It's also possible to specify all values by MicroProfile Config properties. None of the fields are required in the annotation, but some options are required and must be specified either in the annotation or a MicroProfile property or must be provided by the OIDC provider. The order of evaluation is 1) MicroProfile Config, 2) `@OpenIdProviderMetadata`, 3) autoconfiguration on `providerURI` address.
+
+When fields, which are lists (e.g. `scopesSupported`, `responseTypesSupported`), are loaded from MicroProfile Config, they are separated by a comma, following https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html#_array_converters[MicroProfile Config Array conventions].
+
+.Provider Metadata Options
+|===
+| Option | MP Config property | Required | Description
+
+| `issuer`
+| `payara.security.openid.provider.issuer`
+| true
+| The base address of OpenId Connect Provider (OIDC Provider).
+
+| `authorizationEndpoint`
+| `payara.security.openid.provider.authorizationEndpoint`
+| true
+| The URL for the OAuth2 provider to provide authentication.
+
+| `tokenEndpoint`
+| `payara.security.openid.provider.tokenEndpoint`
+| true
+| The URL for the OAuth2 provider to give the authorization token.
+
+| `userinfoEndpoint`
+| `payara.security.openid.provider.userinfoEndpoint`
+| true
+| An OAuth 2.0 Protected Resource that returns Claims about the authenticated End-User.
+
+| `endSessionEndpoint`
+| `payara.security.openid.provider.endSessionEndpoint`
+| false
+| OIDC Provider's endpoint to notify that the End-User has logged out of the site and might want to log out of the OIDC Provider as well.
+
+| `jwksURI`
+| `payara.security.openid.provider.jwksURI`
+| true
+| An OIDC Provider's JSON Web Key Set document.
+
+| `scopesSupported`
+| `payara.security.openid.provider.scopesSupported`
+| recommended
+| List of the OAuth 2.0 scope values that this server supports, e.g. `openid`.
+
+| `responseTypesSupported`
+| `payara.security.openid.provider.responseTypeSupported`
+| true
+| List of the OAuth 2.0 response_type values that this OIDC Provider supports, e.g. `code`, `id_token`, `token id_token`.
+
+| `subjectTypesSupported`
+| `payara.security.openid.provider.subjectTypesSupported`
+| true
+| List of the Subject Identifier types that this OIDC Provider supports. Valid types include `pairwise` and `public`.
+
+| `idTokenSigningAlgValuesSupported`
+| `payara.security.openid.provider.idTokenSigningAlgorithmsSupported`
+| true
+| List of the JWS signing algorithms (alg values) supported by the OIDC Provider for the ID Token to encode the Claims in a JWT, e.g. `RS256`.
+
+| `idTokenEncryptionAlgValuesSupported`
+| `payara.security.openid.provider.idTokenEncryptionAlgValuesSupported`
+| false
+| List of the JWE encryption algorithms (`alg` values) supported by the OIDC Provider for the ID Token to encode the Claims in a JWT.
+
+| `idTokenEncryptionEncValuesSupported`
+| `payara.security.openid.provider.idTokenEncryptionEncValuesSupported`
+| false
+| List of the JWE encryption algorithms (`enc` values) supported by the OIDC Provider for the ID Token to encode the Claims in a JWT.
+
+| `claimsSupported`
+| `payara.security.openid.provider.claimsSupported`
+| recommended
+| List of the Claim Names of the Claims that the OIDC Provider MAY be able to supply values for. Note that for privacy or other reasons, this might not be an exhaustive list.
+
+|===
 
 
 [[secret-alias]]
