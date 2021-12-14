@@ -33,7 +33,7 @@
 
 [FISH-5858] Community Contribution - [https://github.com/svendiedrichsen[svendiedrichsen]] Fix Possible Deadlocks in RWLockDataStructure Class   
 
-[FISH-5851] Community Contribution - [https://github.com/payara/Payara/pull/5492[chrjohn]] Prevent NPE in com.sun.jts.CosTransactions.RecoveryManager
+[FISH-5851] Community Contribution - [https://github.com/chrjohn[chrjohn]] Prevent NPE in com.sun.jts.CosTransactions.RecoveryManager
 
 [FISH-5824] Monitoring Console Web Application Loads Files from External Sources
 
