@@ -6,6 +6,10 @@ Detailed information about features and fixes in every release.
 [[all-release-notes]]
 == All Release Notes
 
+*2022*
+
+* 2022 January - xref:release-notes/release-notes-35-0.adoc[Payara Enterprise 5.35.0]
+
 *2021*
 
 * 2021 December - xref:release-notes/release-notes-34-0.adoc[Payara Enterprise 5.34.0]
