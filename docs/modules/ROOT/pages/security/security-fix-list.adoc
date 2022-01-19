@@ -9,7 +9,7 @@ can or have impacted Payara Server across releases:
 |=======================================================================
 |ID |CVSS v3.0 Base Score |Status |Summary |Release |Observations
 
-|https://nvd.nist.gov/vuln/detail/CVE-2021-42392[CVE-2021-42392] | N/A | N/A | Unauthenticated RCE in H2 Database Console |  | Unrelated to Payara Platform. The Payara Platform doesn't launch the H2 Database Console and doesn't make it available in any way.
+|https://nvd.nist.gov/vuln/detail/CVE-2021-42392[CVE-2021-42392] | N/A | N/A | Unauthenticated RCE in H2 Database Console |  | Doesn't affect Payara Platform. The Payara Platform doesn't launch the H2 Database Console and doesn't make it available in any way.
 
 | https://nvd.nist.gov/vuln/detail/CVE-2021-40690/[CVE-2021-40690] | 7.5 | FIXED | The "secureValidation" property is not passed correctly when creating a KeyInfo from a KeyInfoReference element, allowing abuse of an XPath Transform to extract any local .xml files in a RetrievalMethod element. | 5.34.0 | Fixed by upgrading Apache Santuario to 2.2.3
 
