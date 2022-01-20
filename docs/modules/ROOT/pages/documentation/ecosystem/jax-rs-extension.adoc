@@ -15,21 +15,29 @@ To enable this we need to include the next dependency on the application
 
 Also it is needed to specify the next property for Rest Client call
 
-[cols="1,1", options="header"]
+[cols="1,1,1", options="header"]
 |===
 |Property
+|Payara xref:documentation/payara-server/public-api/README.adoc[Public API] constant
 |Description
 
 |`fish.payara.jaxrs.client.certificate.alias`
+| `PayaraConstants.JAXRS_CLIENT_CERTIFICATE_ALIAS`
 | The alias name of the certificate
 
 |===
+
+NOTE: The name of the property is defined as a constant in the `fish.payara.security.client.PayaraConstants` class.
 
 ==== Example
 
 [source, java]
 ----
-ClientBuilder.newBuilder().property("fish.payara.jaxrs.client.certificate.alias", "someAliasName").build()
-.target(new URI("https://localhost:8080/service")).request().get(Service.class)
+ClientBuilder.newBuilder()
+  .property(PayaraConstants.JAXRS_CLIENT_CERTIFICATE_ALIAS, "someAliasName")
+  .build()
+  .target(new URI("https://localhost:8080/service"))
+  .request().get(Service.class)
 ----
+
 NOTE: For this to work, you need to include the certificate with the given alias in the default payara keystore.
