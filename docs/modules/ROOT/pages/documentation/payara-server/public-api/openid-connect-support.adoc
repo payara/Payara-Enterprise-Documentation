@@ -487,8 +487,6 @@ When fields, which are lists (e.g. `scopesSupported`, `responseTypesSupported`),
 
 The client secret can be input directly, or for added security it can be aliased using any of the following features:
 
-- xref:/documentation/payara-server/password-aliases/README.adoc[Password Aliases]
-- xref:/documentation/payara-server/server-configuration/var-substitution/README.adoc[Environment Variables / System Properties]
 - xref:/documentation/microprofile/config/README.adoc[Config API]
 
 [[fetch-caller-data]]
