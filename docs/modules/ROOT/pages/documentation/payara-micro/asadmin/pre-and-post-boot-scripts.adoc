@@ -18,7 +18,7 @@ as if you were running the commands in a multimode session from the command line
 * Empty lines and comment lines (starting with the `#` character) are ignored.
 * Each _asadmin_ command may contain variable references (e.g. to environment variables or system properties) as described in xref:/documentation/payara-server/server-configuration/var-substitution/usage-of-variables.adoc[Using variables]
 
-NOTE: _asadmin_ commands that contain spaces in the value should be surrounded with quotations marks.
+NOTE: _asadmin_ commands that contain spaces in the value should be surrounded with quotations marks and nested quotation marks must be escaped with the `\` character.
 
 Here's a sample of a post boot script used to configure an instance for production uses:
 
@@ -26,8 +26,9 @@ Here's a sample of a post boot script used to configure an instance for producti
 ----
 #Disable dynamic reloading of applications
 set configs.config.server-config.admin-service.das-config.dynamic-reload-enabled=false
-# Set a system property which contains spaces
-create-system-properties "property.name=This is a property value"
+
+# Set a system property which contains spaces and quotation marks in the property value
+create-system-properties "property.name=This is a \"property\" value"
 #Disable auto deployment
 set configs.config.server-config.admin-service.das-config.autodeploy-enabled=false
 
@@ -82,7 +83,7 @@ A command in a boot script usually results in change of configuration in `config
 When persistent root directory is reused between restarts, it may cause some commands to fail, particulary those that create new resources, like for example `create-jdbc-connection-pool`.
 However, failure of a script command is not critical for server startup, just a warning is logged in such case.
 
-By utilizing <<../configuring/config-cmd-line.adoc#warmup, warmup run>>, these commands can be run as part of preparation of root directory rather than run on every startup.
+By utilizing xref:/documentation/payara-micro/configuring/config-cmd-line.adoc#warmup[warmup run], these commands can be run as part of preparation of root directory rather than run on every startup.
 That also spares startup time for productive instance.
 
 When command uses xref:/documentation/payara-server/server-configuration/var-substitution/usage-of-variables.adoc[variable references], the values for variables are determined during execution of the script, before executing the command and changing the configuration.
