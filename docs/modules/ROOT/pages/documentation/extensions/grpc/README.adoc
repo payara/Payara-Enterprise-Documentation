@@ -1,0 +1,24 @@
+= gRPC
+
+== What is gRPC?
+
+The gRPC is a modern open-source high performance Remote Procedure Call (RPC) framework.
+
+== What can we do with it?
+
+* We can create services more efficient than REST.
+* Use HTTP2 to provide full duplex communication between the client and the server.
+
+For more information about gRPC you can go to the following site: https://grpc.io/.
+
+The gRPC support provide the means for users to use the gRPC style service programming.
+
+You can find the code for the gRPC implementation here: https://github.com/payara/gRPC.
+
+== Installing gRPC Support
+
+You need to drop the JAR from the target generated files into the `${PAYARA_HOME}/glassfish/modules` directory of your Payara Server Installation.
+
+You must restart the server if it was running to see your extension activated.
+
+If you want to see details to create an example, please check the following: https://github.com/payara/Payara-Examples/tree/master/grpc.
