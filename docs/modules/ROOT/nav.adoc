@@ -273,6 +273,7 @@
 ** xref:documentation/ecosystem/docker-images/overview.adoc[Docker Images]
 *** xref:documentation/ecosystem/docker-images/server-image-overview.adoc[Payara Server Docker Image Overview]
 *** xref:documentation/ecosystem/docker-images/micro-image-overview.adoc[Payara Micro Docker Image Overview]
+** xref:documentation/ecosystem/jax-rs-extension.adoc[Payara JAX-RS Certificate Alias Extension]
 
 .User Guides
 * xref:documentation/user-guides/user-guides.adoc[User Guides Overview]
