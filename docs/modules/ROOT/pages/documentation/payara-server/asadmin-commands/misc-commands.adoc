@@ -105,7 +105,7 @@ similar to other bash commands.
 
 | force
 | boolean
-| whether to write over a file if one already exists
+| Whether to write over a file if one already exists
 | false
 | No
 
@@ -113,6 +113,12 @@ similar to other bash commands.
 | File path
 | The path for the resulting file
 | ${payara.home}/glassfish/bin/bash_autocomplete
+| No
+
+| localCommands
+| boolean
+| This option will include local asadmin commands
+| false
 | No
 |===
 
