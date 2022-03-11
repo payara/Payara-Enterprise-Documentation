@@ -6,4 +6,4 @@ As proof of compatibility, output of Jakarta EE Compatibility Test Suite tests a
 The following distributions of Payara 5.36.0 are certified, with results for each listed below:
 
 == Payara 5.36.0 Full Profile
-* xref:jakartaee-certification/5.36.0/microprofile-4.1-tck-results-full-5.36.0.adoc[Payara Server 5.36.0 - Full profile]
+* xref:microprofile-certification/5.36.0/microprofile-4.1-tck-results-full-5.36.0.adoc[Payara Server 5.36.0 - Full profile]
