@@ -321,6 +321,9 @@
 * xref:schemas/README.adoc[Schemas]
 
 * xref:jakartaee-certification/README.adoc[Jakarta EE Platform 8 certification summaries]
+** xref:jakartaee-certification/5.37.0/README.adoc[Payara Server 5.37.0]
+*** xref:jakartaee-certification/5.37.0/tck-results-full-5.37.0.adoc[5.37.0 Full Profile]
+*** xref:jakartaee-certification/5.37.0/tck-results-web-5.37.0.adoc[5.37.0 Web Profile]
 ** xref:jakartaee-certification/5.36.0/README.adoc[Payara Server 5.36.0]
 *** xref:jakartaee-certification/5.36.0/tck-results-full-5.36.0.adoc[5.36.0 Full Profile]
 *** xref:jakartaee-certification/5.36.0/tck-results-web-5.36.0.adoc[5.36.0 Web Profile]
