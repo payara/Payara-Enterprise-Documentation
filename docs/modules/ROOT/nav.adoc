@@ -275,6 +275,8 @@
 *** xref:documentation/ecosystem/docker-images/micro-image-overview.adoc[Payara Micro Docker Image Overview]
 ** xref:documentation/ecosystem/jax-rs-extension.adoc[Payara JAX-RS Certificate Alias Extension]
 
+xref:documentation/extensions/grpc/README.adoc[gRPC]
+
 .User Guides
 * xref:documentation/user-guides/user-guides.adoc[User Guides Overview]
 ** xref:documentation/user-guides/backup-domain.adoc[Payara Server Domain Backup]
