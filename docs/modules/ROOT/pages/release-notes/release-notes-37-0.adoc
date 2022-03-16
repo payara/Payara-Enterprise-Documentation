@@ -20,4 +20,4 @@
 * [FISH-5676] Cannot Apply Default Values in @DataSourceDefinition URL via Variable Expansion
 
 ### Component Upgrades
-* [FISH-6046] Update Docker Images to 11.0.14.1 & 8u322
+* [FISH-6046] Update Docker Images to JDK Versions 11.0.14.1 & 8u322
