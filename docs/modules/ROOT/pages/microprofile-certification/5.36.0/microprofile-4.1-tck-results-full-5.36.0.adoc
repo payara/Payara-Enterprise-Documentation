@@ -3,7 +3,7 @@
 
 As required by the
 https://www.eclipse.org/legal/tck.php[Eclipse Foundation Technology Compatibility Kit License],
-following is a summary of the TCK results for releases of MicroProfile Config 2.0.
+following is a summary of the TCK results for releases of MicroProfile 4.1 Specifications.
 
 **Payara Server 5.36.0 Full Profile Certification Summary**
 
