@@ -21,7 +21,7 @@ gRPC supports the means for users to implement gRPC style service programming.
 
 You need to download the following artifact from enterprise nexus repository: https://nexus.payara.fish/repository/payara-enterprise .
 
-NOTE: you must have enterprise credentials to download the artifact.
+IMPORTANT: You must have an active Payara Enterprise subscription to access this Nexus repository.
 
 This is the reference of the artifact to download:
  
