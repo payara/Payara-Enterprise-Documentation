@@ -60,7 +60,7 @@ This command starts all server instances in the deployment group
 | instanceTimeout
 | Integer
 | Add a timeout value to instances
-| 120
+| 600
 | No
 
 | timeout
@@ -99,7 +99,7 @@ This command stops all server instances in the deployment group
 | instanceTimeout
 | Integer
 | Add a timeout value to instances
-| 120
+| 600
 | No
 
 | timeout
@@ -144,7 +144,7 @@ This command stops all server instances in the deployment group
 | instanceTimeout
 | Integer
 | Add a timeout value to instances
-| 120
+| 600
 | No
 
 | timeout
