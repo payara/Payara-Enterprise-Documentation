@@ -26,7 +26,7 @@
 
 [FISH-6254] Cannot Find Upgrade Tool '--help'
 
-[FISH-6240] Upgrade Server Tool fails to reinstall SSH node via keyfile authentication and reports success
+[FISH-6240] Upgrade Server Tool Fails to Reinstall SSH Node via Keyfile Authentication and Reports Success
 
 ### Component Upgrades
 
