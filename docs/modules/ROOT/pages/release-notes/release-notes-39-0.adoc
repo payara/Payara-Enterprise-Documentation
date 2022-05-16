@@ -12,7 +12,7 @@
 
 [FISH-5958] Update ASM Opcodes to 9
 
-[FISH-5955] Support lib/ext libraries on JDK 11\+
+[FISH-5955] Support lib/ext libraries on JDK 11+
 
 [FISH-5928] Payara Enterprise Runs on JDK 17
 
