@@ -8,6 +8,7 @@ Detailed information about features and fixes in every release.
 
 *2022*
 
+* 2022 May - xref:release-notes/release-notes-39-0.adoc[Payara Enterprise 5.39.0]
 * 2022 April - xref:release-notes/release-notes-38-0.adoc[Payara Enterprise 5.38.0]
 * 2022 March - xref:release-notes/release-notes-37-0.adoc[Payara Enterprise 5.37.0]
 * 2022 February - xref:release-notes/release-notes-36-0.adoc[Payara Enterprise 5.36.0]
