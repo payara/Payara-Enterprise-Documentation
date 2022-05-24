@@ -24,3 +24,11 @@ using SNMP traps.
 
 Appropriate instructions on how to configure and use all of these
 notification mechanisms are included in this section.
+
+[[removing-notifiers]]
+== `Removing Notifiers`
+All Payara notifiers are included in Payara Enterprise by default, however they are fully pluggable and can be removed from your Payara installation. Each notifier consists of 2 parts, a notifier-core and a notifier-console-plugin. The notifier core is responsible for the notifier functionality and the asadmin commands, the notifier-console-plugin is not essential, but allows for the notifier to be configured through the admin console.
+
+To remove a notifier from Payara Enterprise edition, first find the relevant modules to the notifier you want to remove in `${PAYARA_HOME}/glassfish/modules`. To fully remove the notifier, you should delete both the notifier-core and the notifier-console-plugin files, then restart the domain.
+
+If you change your mind in the future, you can just drop both the notifier-core and optionally the notifier-console-plugin files back into the `${PAYARA_HOME}/glassfish/modules` directory and restart the domain.
