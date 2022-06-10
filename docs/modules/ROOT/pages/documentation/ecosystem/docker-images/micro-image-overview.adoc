@@ -47,7 +47,7 @@ To switch from the default JDK 8 based image to the JDK 17 compatible one, just 
 
 [source, shell, subs=attributes+]
 ----
-docker run -p 8080:8080 payara/micro:{currentVersion}-jdk17
+docker run -p 8080:8080 nexus.payara.fish:5000/payara/micro:{currentVersion}-jdk17
 ----
 
 [[ports]]
