@@ -1,6 +1,6 @@
 = Payara Enterprise Edition Documentation Repository
 
-WARNING: **This repository is no longer used to generate the Documentation for the Payara Platform Enterprise edition and has been replaced by the link:https://github.com/payara/Payara-Enterprise-Documentation[unified documentation repository]. This repository is kept for legacy purposes, as its used to generate the documentation for legacy releases equal to or older than `5.38.0`**
+WARNING: **This repository is no longer used to generate the Documentation for the Payara Platform Enterprise edition and has been replaced by the link:https://github.com/payara/Payara-Documentation[unified documentation repository]. This repository is kept for legacy purposes, as its used to generate the documentation for legacy releases equal to or older than `5.38.0`**
 
 Official technical documentation repository of the Payara Platform Enterprise Edition which is maintained by members of the Payara organization. All documentation material is written in Asciidoctor format.
 
